@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="eBook\eBookCode\GptExampleClass.cs" />
     <Compile Include="UsedBookControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -125,7 +126,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="eBook\eBookCode\" />
     <Folder Include="eBook\eBookFiles\eBookCover\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
