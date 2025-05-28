@@ -46,29 +46,29 @@ namespace SpecialTopic.eBook.eBookCode
         }
 
         /// <summary>
-        /// 將使用者選擇的電子書檔案複製到「eBook\eBookFiles」資料夾，並回傳相對路徑（儲存至資料庫用）
+        /// 將電子書檔案複製到 eBook\eBookFiles 資料夾，並回傳相對路徑（存入資料庫）
         /// </summary>
-        /// <param name="sourcePath">使用者選取的檔案完整路徑</param>
-        /// <returns>相對路徑（例如：eBook\eBookFiles\xxx.pdf）</returns>
+        /// <param name="sourcePath">原始檔案完整路徑（例如：C:\User\Desktop\abc.pdf）</param>
+        /// <returns>相對路徑（例如：eBook\eBookFiles\abc.pdf）</returns>
         public static string SaveEbookToFilesAndGetRelativePath(string sourcePath)
         {
-            // 取得檔名（例如 MyBook.pdf）
+            // 取得檔案名稱（例如從 C:\abc\mybook.pdf 取出 mybook.pdf）
             string fileName = Path.GetFileName(sourcePath);
 
-            // 將目的資料夾設定為執行目錄下的 "eBook\eBookFiles"
+            // 組出完整目的地資料夾路徑：Application.StartupPath\eBook\eBookFiles
             string destFolder = Path.Combine(Application.StartupPath, "eBook", "eBookFiles");
 
-            // 若資料夾尚不存在，則建立它（包含上層目錄）
+            // 如果該資料夾尚不存在，就自動建立資料夾（包含多層）
             if (!Directory.Exists(destFolder))
                 Directory.CreateDirectory(destFolder);
 
-            // 組出完整儲存目的檔案路徑
+            // 組出最終複製目的地檔案的完整路徑（包含檔名）
             string destPath = Path.Combine(destFolder, fileName);
 
-            // 複製檔案到目的地，若已存在則覆蓋
+            // 將來源檔案複製到目的地路徑，若檔案已存在則強制覆蓋
             File.Copy(sourcePath, destPath, true);
 
-            // 回傳相對路徑（儲存進資料庫，例如：eBook\eBookFiles\MyBook.pdf）
+            // 回傳給資料庫使用的相對路徑（不含絕對路徑）
             return Path.Combine("eBook", "eBookFiles", fileName);
         }
 
@@ -117,6 +117,37 @@ namespace SpecialTopic.eBook.eBookCode
             }
         }
 
+        /// <summary>
+        /// 儲存封面圖片到 eBookCover 資料夾，檔名為 cover_電子書ID.xxx，並回傳相對路徑
+        /// </summary>
+        /// <param name="sourcePath">圖片原始檔案完整路徑</param>
+        /// <param name="ebookID">電子書 ID，用來命名檔案</param>
+        /// <returns>儲存到資料庫用的相對路徑</returns>
+        public static string SaveCoverImageAndGetRelativePath(string sourcePath, long ebookID)
+        {
+            // 取得圖片副檔名（如 .jpg、.png）
+            string ext = Path.GetExtension(sourcePath);
+
+            // 組成統一命名檔名：例如 cover_1001.jpg
+            string fileName = $"cover_{ebookID}{ext}";
+
+            // 目的資料夾：eBook\eBookFiles\eBookCover
+            string destFolder = Path.Combine(Application.StartupPath, "eBook", "eBookFiles", "eBookCover");
+
+            // 若資料夾不存在則自動建立
+            if (!Directory.Exists(destFolder))
+                Directory.CreateDirectory(destFolder);
+
+            // 組出完整目的檔案路徑
+            string destPath = Path.Combine(destFolder, fileName);
+
+            // 將圖片複製到目的地，若已存在則覆蓋
+            File.Copy(sourcePath, destPath, true);
+
+            // 回傳相對路徑，方便資料庫記錄與讀取
+            return Path.Combine("eBook", "eBookFiles", "eBookCover", fileName);
+        }
+
 
         // 此函式根據 ebookID 從資料庫讀取 cover1 欄位的圖片資料，顯示到 PictureBox 上
         public static void LoadImageFromDatabaseToPictureBox(long ebookID, PictureBox pictureBox, SqlConnection conn)
@@ -150,10 +181,72 @@ namespace SpecialTopic.eBook.eBookCode
             }
         }
 
+        /// <summary>
+        /// 將圖片轉為 byte[] 並上傳到資料庫中的 eBookMain.cover1 欄位
+        /// </summary>
+        /// <param name="imagePath">圖片檔案完整路徑</param>
+        /// <param name="ebookID">電子書ID</param>
+        /// <param name="conn">已開啟的 SqlConnection 連線物件</param>
+        public static void UploadCoverToDatabase(string imagePath, long ebookID, SqlConnection conn)
+        {
+            // 使用 File.ReadAllBytes 將圖片檔案整個讀進 byte 陣列
+            byte[] imageBytes = File.ReadAllBytes(imagePath);
 
+            // SQL 語法：更新指定電子書的 cover1 欄位
+            string sql = "UPDATE eBookMain SET cover1 = @img WHERE ebookID = @id";
 
+            // 建立 SQL 指令並附帶參數
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                // 傳入圖片資料
+                cmd.Parameters.Add("@img", SqlDbType.VarBinary).Value = imageBytes;
 
+                // 傳入電子書主鍵 ID
+                cmd.Parameters.Add("@id", SqlDbType.BigInt).Value = ebookID;
 
+                // 執行更新語法
+                cmd.ExecuteNonQuery();
+            }
+        }
 
+        //使用範例（完整流程：電子書＋封面上傳）
+
+        //        // 選擇電子書檔案
+        //        OpenFileDialog ofdBook = new OpenFileDialog();
+        //        ofdBook.Filter = "電子書 (*.pdf;*.epub;*.txt)|*.pdf;*.epub;*.txt";
+
+        //if (ofdBook.ShowDialog() == DialogResult.OK)
+        //{
+        //    // 儲存電子書並取得相對路徑
+        //    string ebookRelativePath = SaveEbookToFilesAndGetRelativePath(ofdBook.FileName);
+        //        MessageBox.Show("電子書已儲存於：" + ebookRelativePath);
+        //    // ➜ 可儲存 ebookRelativePath 到資料庫欄位 eBookPosition
+        //}
+
+        //// 選擇封面圖檔案
+        //OpenFileDialog ofdCover = new OpenFileDialog();
+        //ofdCover.Filter = "圖片 (*.jpg;*.png;*.bmp)|*.jpg;*.png;*.bmp";
+
+        //if (ofdCover.ShowDialog() == DialogResult.OK)
+        //{
+        //    // 儲存封面圖並取得相對路徑
+        //    string coverRelativePath = SaveCoverImageAndGetRelativePath(ofdCover.FileName, 1001);
+        //    MessageBox.Show("封面圖已儲存於：" + coverRelativePath);
+
+        //    // 連接資料庫並將封面圖轉為 byte[] 存進 VARBINARY 欄位
+        //    using (SqlConnection conn = new SqlConnection("your_connection_string"))
+        //    {
+        //        conn.Open();
+        //        UploadCoverToDatabase(ofdCover.FileName, 1001, conn);
+        //    conn.Close();
+        //    }
     }
+
+
+
+
+
+
+
+}
 }
