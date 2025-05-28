@@ -126,7 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="eBook\eBookCode\" />
-    <Folder Include="eBook\eBookFiles\" />
+    <Folder Include="eBook\eBookFiles\eBookCover\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
