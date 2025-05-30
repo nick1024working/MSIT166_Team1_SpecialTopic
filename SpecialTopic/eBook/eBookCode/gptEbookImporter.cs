@@ -21,6 +21,8 @@ namespace SpecialTopic.eBook.eBookCode
         // 主函式：從 Excel 匯入資料，將 PDF 檔案複製、擷取封面並寫入資料庫
         public void ImportFromExcel_old(string excelPath, string pdfSourceFolder)
         {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
             //string connectionString = "your-connection-string"; // 替換為實際資料庫連線字串
             string connectionString = "Data Source = MSITxx - 00; Initial Catalog = TeamA_Project; Integrated Security = True";
 
@@ -108,8 +110,10 @@ namespace SpecialTopic.eBook.eBookCode
         // 主函式：從 Excel 匯入電子書資訊，並處理 PDF 複製與封面擷取
         public void ImportFromExcel(string excelPath, string pdfSourceFolder)
         {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
             //string connectionString = "your-connection-string"; // 請填入實際的 SQL Server 連線字串
-            string connectionString = "Data Source = MSITxx - 00; Initial Catalog = TeamA_Project; Integrated Security = True";
+            string connectionString = "Data Source=DESKTOP-I9APTSS;Initial Catalog=TeamA_Project;Integrated Security=True";
 
             // 指定 PDF 要複製到的專案內資料夾
             string destFolder = Path.Combine(Application.StartupPath, "eBookFiles");
