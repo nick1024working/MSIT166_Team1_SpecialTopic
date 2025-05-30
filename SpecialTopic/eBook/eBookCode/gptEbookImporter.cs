@@ -19,7 +19,7 @@ namespace SpecialTopic.eBook.eBookCode
     public class gptEbookImporter
     {
         // 主函式：從 Excel 匯入資料，將 PDF 檔案複製、擷取封面並寫入資料庫
-        public void ImportFromExcel(string excelPath, string pdfSourceFolder)
+        public void ImportFromExcel_old(string excelPath, string pdfSourceFolder)
         {
             //string connectionString = "your-connection-string"; // 替換為實際資料庫連線字串
             string connectionString = "Data Source = MSITxx - 00; Initial Catalog = TeamA_Project; Integrated Security = True";
@@ -105,117 +105,160 @@ namespace SpecialTopic.eBook.eBookCode
         }
 
         // 主函式：從 Excel 匯入資料，包含 PDF 複製、封面擷取、隨機銷量產生與資料庫寫入
-        public void ImportFromExcel_2(string excelPath, string pdfSourceFolder)
+        // 主函式：從 Excel 匯入電子書資訊，並處理 PDF 複製與封面擷取
+        public void ImportFromExcel(string excelPath, string pdfSourceFolder)
         {
-            string connectionString = "your-connection-string"; // 請填入實際資料庫連線字串
+            //string connectionString = "your-connection-string"; // 請填入實際的 SQL Server 連線字串
+            string connectionString = "Data Source = MSITxx - 00; Initial Catalog = TeamA_Project; Integrated Security = True";
 
-            // 設定儲存 PDF 的目標資料夾（eBookFiles）
+            // 指定 PDF 要複製到的專案內資料夾
             string destFolder = Path.Combine(Application.StartupPath, "eBookFiles");
-            Directory.CreateDirectory(destFolder); // 若無此資料夾則自動建立
+            Directory.CreateDirectory(destFolder); // 如果資料夾不存在則建立
 
-            using (var package = new ExcelPackage(new FileInfo(excelPath))) // 開啟 Excel
+            using (var package = new ExcelPackage(new FileInfo(excelPath)))
             {
                 var sheet = package.Workbook.Worksheets[0]; // 使用第一個工作表
                 int row = 2; // 從第2列開始（第1列是標題）
 
-                while (sheet.Cells[row, 1].Value != null) // 若 A 欄有值就持續讀取
+                while (sheet.Cells[row, 1].Value != null) // 若A欄有檔名就繼續讀取
                 {
-                    // 讀取 Excel 欄位內容
-                    string fileName = sheet.Cells[row, 1].Text.Trim(); // PDF 檔名
-                    string ebookName = sheet.Cells[row, 2].Text.Trim(); // 書名
-                    string class1 = sheet.Cells[row, 3].Text.Trim(); // 主分類
-                    string class2 = sheet.Cells[row, 4].Text.Trim(); // 次分類
-                    string author = sheet.Cells[row, 5].Text.Trim(); // 作者
-                    string publisher = sheet.Cells[row, 6].Text.Trim(); // 出版社
-                    DateTime publishedDate = DateTime.Parse(sheet.Cells[row, 7].Text.Trim()); // 出版日
-                    decimal fixedPrice = decimal.Parse(sheet.Cells[row, 8].Text.Trim()); // 定價
-                    decimal? actualPrice = null;
-                    if (decimal.TryParse(sheet.Cells[row, 9].Text.Trim(), out decimal parsedPrice))
-                    {
-                        actualPrice = parsedPrice;
-                    }
-                    string language = sheet.Cells[row, 10].Text.Trim(); // 語言
-                    string label1 = sheet.Cells[row, 11].Text.Trim(); // 主標籤
-                    string description = sheet.Cells[row, 12].Text.Trim(); // 書籍簡介
+                    // ================== Excel 欄位讀取 =====================
+                    string fileName = sheet.Cells[row, 1].Text.Trim(); // PDF檔案名稱
+                    string ebookName = sheet.Cells[row, 2].Text.Trim(); // 書名，與檔名不同時仍正確存入
+                    string class1 = sheet.Cells[row, 3].Text.Trim();
+                    string class2 = sheet.Cells[row, 4].Text.Trim();
+                    string author = sheet.Cells[row, 5].Text.Trim();
+                    string publisher = sheet.Cells[row, 6].Text.Trim();
+                    DateTime publishedDate = DateTime.Parse(sheet.Cells[row, 7].Text.Trim());
+                    string translator = sheet.Cells[row, 8].Text.Trim();
+                    string language = sheet.Cells[row, 9].Text.Trim();
+                    string isbn = sheet.Cells[row, 10].Text.Trim();
+                    string eisbn = sheet.Cells[row, 11].Text.Trim();
+                    string country = sheet.Cells[row, 12].Text.Trim();
+                    int cEpisode = int.Parse(sheet.Cells[row, 13].Text.Trim());
+                    int totalEpisode = int.Parse(sheet.Cells[row, 14].Text.Trim());
+                    string ext = sheet.Cells[row, 15].Text.Trim();
+                    string label1 = sheet.Cells[row, 16].Text.Trim();
+                    string label2 = sheet.Cells[row, 17].Text.Trim();
+                    string label3 = sheet.Cells[row, 18].Text.Trim();
+                    string label4 = sheet.Cells[row, 19].Text.Trim();
+                    string label5 = sheet.Cells[row, 20].Text.Trim();
+                    decimal fixedPrice = decimal.Parse(sheet.Cells[row, 21].Text.Trim());
+                    decimal? actualPrice = decimal.TryParse(sheet.Cells[row, 22].Text.Trim(), out var act) ? act : (decimal?)null;
+                    decimal? discount = decimal.TryParse(sheet.Cells[row, 23].Text.Trim(), out var disc) ? disc : (decimal?)null;
+                    string purchaseCountry = sheet.Cells[row, 24].Text.Trim();
+                    string description = sheet.Cells[row, 25].Text.Trim();
+                    byte maturityRating = byte.Parse(sheet.Cells[row, 26].Text.Trim());
 
-                    // 複製 PDF 到專案 eBookFiles 內
+                    // 自動隨機銷量/閱覽數產生（供測試）
+                    Random rnd = new Random();
+                    long weeksales = rnd.Next(10, 100);
+                    long monthsales = rnd.Next(100, 300);
+                    long totalsales = rnd.Next(300, 800);
+                    long weekviews = rnd.Next(50, 150);
+                    long monthviews = rnd.Next(200, 600);
+                    long totalviews = rnd.Next(600, 2000);
+
+                    // 複製 PDF 檔案並取得相對路徑
                     string sourcePath = Path.Combine(pdfSourceFolder, fileName);
                     string destPath = Path.Combine(destFolder, fileName);
                     File.Copy(sourcePath, destPath, true);
-                    string relativePath = $"eBookFiles\\{fileName}"; // 相對路徑
+                    string relativePath = $"eBookFiles\\{fileName}";
 
-                    // 擷取封面圖，存成 byte[] 並存為實體圖片
+                    // 擷取封面圖，存實體圖並轉為 byte[] 備存資料庫 cover1
                     byte[] coverBytes = ExtractCoverImage(sourcePath, out string imageFilePath);
 
-                    // 資料庫寫入電子書資料
                     using (SqlConnection conn = new SqlConnection(connectionString))
-                    using (SqlCommand cmd = new SqlCommand(@"
-                    INSERT INTO eBookMainTable (
-                        ebookName, eBookClass1, eBookClass2, author, publisher, publishedDate,
-                        fixedPrice, actualPrice, language, eBookLabel1, bookDescription,
-                        eBookPosition, eBookDataType, cover1,
-                        weeksales, monthsales, totalsales,
-                        weekviews, monthviews, totalviews, maturityRating
-                    )
-                    VALUES (
-                        @ebookName, @class1, @class2, @auth, @pub, @pubDate,
-                        @fixPrice, @actPrice, @lang, @label1, @desc,
-                        @pos, @type, @cover1,
-                        @ws, @ms, @ts, @wv, @mv, @tv, @rating
-                    )", conn))
                     {
-                        // 基本欄位對應參數
-                        cmd.Parameters.AddWithValue("@ebookName", ebookName);
-                        cmd.Parameters.AddWithValue("@class1", class1);
-                        cmd.Parameters.AddWithValue("@class2", class2);
-                        cmd.Parameters.AddWithValue("@auth", author);
-                        cmd.Parameters.AddWithValue("@pub", publisher);
-                        cmd.Parameters.AddWithValue("@pubDate", publishedDate);
-                        cmd.Parameters.AddWithValue("@fixPrice", fixedPrice);
-                        //cmd.Parameters.AddWithValue("@actPrice", (object?)actualPrice ?? DBNull.Value);
-                        cmd.Parameters.AddWithValue("@actPrice", actualPrice.HasValue ? (object)actualPrice.Value : DBNull.Value);
-                        cmd.Parameters.AddWithValue("@lang", language);
-                        cmd.Parameters.AddWithValue("@label1", label1);
-                        cmd.Parameters.AddWithValue("@desc", description);
-                        cmd.Parameters.AddWithValue("@pos", relativePath);
-                        cmd.Parameters.AddWithValue("@type", Path.GetExtension(fileName).TrimStart('.').ToUpper()); // 自動抓副檔名
-                        cmd.Parameters.AddWithValue("@cover1", coverBytes);
-
-                        // 隨機產生假銷量與閱覽數（方便測試）
-                        Random rnd = new Random();
-                        cmd.Parameters.AddWithValue("@ws", rnd.Next(10, 100));
-                        cmd.Parameters.AddWithValue("@ms", rnd.Next(100, 500));
-                        cmd.Parameters.AddWithValue("@ts", rnd.Next(500, 3000));
-                        cmd.Parameters.AddWithValue("@wv", rnd.Next(50, 200));
-                        cmd.Parameters.AddWithValue("@mv", rnd.Next(300, 900));
-                        cmd.Parameters.AddWithValue("@tv", rnd.Next(1000, 5000));
-                        cmd.Parameters.AddWithValue("@rating", 0); // 預設 0 = 普遍級
-
-                        // 執行寫入
                         conn.Open();
-                        cmd.ExecuteNonQuery();
+
+                        // 檢查是否已存在相同書名與作者（避免重複）
+                        using (SqlCommand checkCmd = new SqlCommand("SELECT COUNT(*) FROM eBookMainTable WHERE ebookName = @name AND author = @auth", conn))
+                        {
+                            checkCmd.Parameters.AddWithValue("@name", ebookName);
+                            checkCmd.Parameters.AddWithValue("@auth", author);
+                            int count = (int)checkCmd.ExecuteScalar();
+                            if (count > 0)
+                            {
+                                // 若已存在，可跳過或更新，這裡選擇跳過
+                                row++;
+                                continue;
+                            }
+                        }
+
+                        // ============ 插入資料庫 ============
+                        using (SqlCommand cmd = new SqlCommand(@"
+                        INSERT INTO eBookMainTable (
+                            ebookName, eBookClass1, eBookClass2, eBookType, author, publisher, publishedDate,
+                            translator, language, ISBN, EISBN, publishedCountry, cEpisode, TotalEpisode,
+                            eBookPosition, eBookDataType, eBookLabel1, eBookLabel2, eBookLabel3, eBookLabel4, eBookLabel5,
+                            cover1, fixedPrice, actualPrice, couponcode, discount, purchaseCountry, bookDescription,
+                            weeksales, monthsales, totalsales, weekviews, monthviews, totalviews, maturityRating
+                        ) VALUES (
+                            @name, @cls1, @cls2, '單本', @auth, @pub, @date,
+                            @trans, @lang, @isbn, @eisbn, @country, @cepi, @tepi,
+                            @pos, @ext, @l1, @l2, @l3, @l4, @l5,
+                            @cover, @fix, @act, NULL, @disc, @purch, @desc,
+                            @ws, @ms, @ts, @wv, @mv, @tv, @rate
+                        )", conn))
+                        {
+                            cmd.Parameters.AddWithValue("@name", ebookName);
+                            cmd.Parameters.AddWithValue("@cls1", class1);
+                            cmd.Parameters.AddWithValue("@cls2", class2);
+                            cmd.Parameters.AddWithValue("@auth", author);
+                            cmd.Parameters.AddWithValue("@pub", publisher);
+                            cmd.Parameters.AddWithValue("@date", publishedDate);
+                            cmd.Parameters.AddWithValue("@trans", translator);
+                            cmd.Parameters.AddWithValue("@lang", language);
+                            cmd.Parameters.AddWithValue("@isbn", isbn);
+                            cmd.Parameters.AddWithValue("@eisbn", eisbn);
+                            cmd.Parameters.AddWithValue("@country", country);
+                            cmd.Parameters.AddWithValue("@cepi", cEpisode);
+                            cmd.Parameters.AddWithValue("@tepi", totalEpisode);
+                            cmd.Parameters.AddWithValue("@pos", relativePath);
+                            cmd.Parameters.AddWithValue("@ext", ext);
+                            cmd.Parameters.AddWithValue("@l1", label1);
+                            cmd.Parameters.AddWithValue("@l2", label2);
+                            cmd.Parameters.AddWithValue("@l3", label3);
+                            cmd.Parameters.AddWithValue("@l4", label4);
+                            cmd.Parameters.AddWithValue("@l5", label5);
+                            cmd.Parameters.AddWithValue("@cover", coverBytes);
+                            cmd.Parameters.AddWithValue("@fix", fixedPrice);
+                            cmd.Parameters.AddWithValue("@act", actualPrice.HasValue ? (object)actualPrice.Value : DBNull.Value);
+                            cmd.Parameters.AddWithValue("@disc", discount.HasValue ? (object)discount.Value : DBNull.Value);
+                            cmd.Parameters.AddWithValue("@purch", purchaseCountry);
+                            cmd.Parameters.AddWithValue("@desc", description);
+                            cmd.Parameters.AddWithValue("@ws", weeksales);
+                            cmd.Parameters.AddWithValue("@ms", monthsales);
+                            cmd.Parameters.AddWithValue("@ts", totalsales);
+                            cmd.Parameters.AddWithValue("@wv", weekviews);
+                            cmd.Parameters.AddWithValue("@mv", monthviews);
+                            cmd.Parameters.AddWithValue("@tv", totalviews);
+                            cmd.Parameters.AddWithValue("@rate", maturityRating);
+
+                            cmd.ExecuteNonQuery();
+                        }
                     }
 
-                    row++; // 處理下一筆資料
+                    row++; // 下一列
                 }
             }
         }
 
-        // 從 PDF 擷取第 1 頁並轉為 byte[]，同時也輸出為實體圖片
+        // 解析 PDF 並擷取第1頁轉為圖檔與 byte[]
         private byte[] ExtractCoverImage(string pdfPath, out string imageFilePath)
         {
             string imageFolder = Path.Combine(Application.StartupPath, "eBookFiles", "Covers");
-            Directory.CreateDirectory(imageFolder); // 建立 Covers 資料夾
+            Directory.CreateDirectory(imageFolder);
+            string fileNameNoExt = Path.GetFileNameWithoutExtension(pdfPath);
+            imageFilePath = Path.Combine(imageFolder, fileNameNoExt + ".jpg");
 
-            string fileNameNoExt = Path.GetFileNameWithoutExtension(pdfPath); // 取檔名不含副檔名
-            imageFilePath = Path.Combine(imageFolder, fileNameNoExt + ".jpg"); // 輸出實體圖檔路徑
-
-            using (var doc = PdfDocument.Load(pdfPath)) // 載入 PDF
-            using (var image = doc.Render(0, 300, 300, true)) // 擷取第 0 頁（第一頁） 解析度 300dpi
+            using (var doc = PdfDocument.Load(pdfPath))
+            using (var image = doc.Render(0, 300, 300, true))
             using (var ms = new MemoryStream())
             {
-                image.Save(imageFilePath, System.Drawing.Imaging.ImageFormat.Jpeg); // 存成 .jpg 實體圖檔
-                image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);             // 同步轉為 byte[] 傳回資料庫欄位
+                image.Save(imageFilePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                 return ms.ToArray();
             }
         }
