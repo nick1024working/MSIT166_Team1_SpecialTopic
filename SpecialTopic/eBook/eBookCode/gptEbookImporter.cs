@@ -172,7 +172,8 @@ namespace SpecialTopic.eBook.eBookCode
                         cmd.Parameters.AddWithValue("@pub", publisher);
                         cmd.Parameters.AddWithValue("@pubDate", publishedDate);
                         cmd.Parameters.AddWithValue("@fixPrice", fixedPrice);
-                        cmd.Parameters.AddWithValue("@actPrice", (object?)actualPrice ?? DBNull.Value);
+                        //cmd.Parameters.AddWithValue("@actPrice", (object?)actualPrice ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@actPrice", actualPrice.HasValue ? (object)actualPrice.Value : DBNull.Value);
                         cmd.Parameters.AddWithValue("@lang", language);
                         cmd.Parameters.AddWithValue("@label1", label1);
                         cmd.Parameters.AddWithValue("@desc", description);
