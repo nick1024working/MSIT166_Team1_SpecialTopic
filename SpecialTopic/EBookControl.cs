@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -45,6 +46,46 @@ namespace SpecialTopic
             catch (Exception ex)
             {
                 MessageBox.Show("匯入失敗：" + ex.Message);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 假設你要開啟 ebookID = 1001 的書，或之後從 DataGridView 選取也可改寫成動態
+                long ebookID = 1;
+
+                string connStr = "Data Source=DESKTOP-I9APTSS;Initial Catalog=TeamA_Project;Integrated Security=True;";
+                string relativePath = null;
+
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+                    string sql = "SELECT eBookPosition FROM eBookMainTable WHERE ebookID = @id";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@id", ebookID);
+
+                    object result = cmd.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        relativePath = result.ToString();
+                    }
+                }
+
+                if (!string.IsNullOrWhiteSpace(relativePath))
+                {
+                    // 開啟電子書
+                    GptExampleClass.OpenEbookFromRelativePath(relativePath);
+                }
+                else
+                {
+                    MessageBox.Show("查無指定電子書的檔案路徑！");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("發生錯誤：" + ex.Message);
             }
         }
     }
