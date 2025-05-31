@@ -33,7 +33,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnOpenSelectedBook = new System.Windows.Forms.Button();
+            this.pictureBoxCover = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -86,10 +88,20 @@
             this.btnOpenSelectedBook.UseVisualStyleBackColor = true;
             this.btnOpenSelectedBook.Click += new System.EventHandler(this.btnOpenSelectedBook_Click);
             // 
+            // pictureBoxCover
+            // 
+            this.pictureBoxCover.Location = new System.Drawing.Point(831, 53);
+            this.pictureBoxCover.Name = "pictureBoxCover";
+            this.pictureBoxCover.Size = new System.Drawing.Size(212, 280);
+            this.pictureBoxCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCover.TabIndex = 5;
+            this.pictureBoxCover.TabStop = false;
+            // 
             // EBookControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pictureBoxCover);
             this.Controls.Add(this.btnOpenSelectedBook);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button2);
@@ -101,6 +113,7 @@
             this.Size = new System.Drawing.Size(2232, 1596);
             this.Load += new System.EventHandler(this.EBookControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -112,5 +125,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnOpenSelectedBook;
+        private System.Windows.Forms.PictureBox pictureBoxCover;
     }
 }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,7 +106,7 @@ namespace SpecialTopic
 
                 // 撈出電子書的基本欄位資料（你也可以加入更多欄位）
                 string sql = @"
-            SELECT ebookID, ebookName, author, eBookClass1, fixedPrice, actualPrice
+            SELECT ebookID, ebookName, author, eBookClass1,eBookLabel1,eBookLabel2,cover1, fixedPrice, actualPrice,monthsales,totalsales,monthviews,totalviews,maturityRating,isAvailable
             FROM eBookMainTable
         ";
 
@@ -147,7 +148,37 @@ namespace SpecialTopic
 
         private void EBookControl_Load(object sender, EventArgs e)
         {
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             loadBook();
+
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            // 確保有選擇列
+            if (dataGridView1.CurrentRow != null)
+            {
+                // 取得目前列的 cover1 欄位值
+                object coverObj = dataGridView1.CurrentRow.Cells["cover1"].Value;
+
+                // 確保不是 null 且不是 DBNull
+                if (coverObj != null && coverObj != DBNull.Value)
+                {
+                    // 轉成 byte[] 圖片資料
+                    byte[] imageData = (byte[])coverObj;
+
+                    // 用 MemoryStream 載入圖片並顯示在 PictureBox
+                    using (MemoryStream ms = new MemoryStream(imageData))
+                    {
+                        pictureBoxCover.Image = Image.FromStream(ms);
+                    }
+                }
+                else
+                {
+                    // 若沒圖片，清除 PictureBox
+                    pictureBoxCover.Image = null;
+                }
+            }
         }
     }
 }
