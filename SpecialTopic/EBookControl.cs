@@ -58,7 +58,7 @@ namespace SpecialTopic
                 // 假設你要開啟 ebookID = 1001 的書，或之後從 DataGridView 選取也可改寫成動態
                 long ebookID = 1;
 
-                string connStr = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True;";
+                string connStr = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True";
                 string relativePath = null;
 
                 using (SqlConnection conn = new SqlConnection(connStr))
@@ -91,13 +91,73 @@ namespace SpecialTopic
             }
         }
 
+        private void LoadBookWithFilter(string keyword)
+        {
+            // 建立一個空的資料表物件，用來裝查詢結果
+            DataTable dt = new DataTable();
+
+            // 從全域設定檔取得資料庫連接字串（你之前已定義 GlobalConfig.ConnStr）
+            string connStr = GlobalConfig.ConnStr;
+
+            // 使用 using 區塊建立與 SQL Server 的連線，連線用完會自動關閉與釋放資源
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                // 開啟資料庫連線
+                conn.Open();
+
+                // 定義 SQL 查詢語法（注意：若 keyword 為空就不要加 WHERE 條件）
+                string sql;
+                SqlCommand cmd;
+
+                if (string.IsNullOrWhiteSpace(keyword))
+                {
+                    // 若 keyword 為空，則撈出所有電子書（不加條件）
+                    sql = @"
+                SELECT ebookID, ebookName, author, fixedPrice, actualPrice, maturityRating, cover1
+                FROM eBookMainTable
+            ";
+
+                    // 建立 SqlCommand 並傳入 SQL 語法與資料庫連線物件
+                    cmd = new SqlCommand(sql, conn);
+                }
+                else
+                {
+                    // 若有關鍵字，則加上 WHERE 書名模糊查詢條件
+                    sql = @"
+                SELECT ebookID, ebookName, author, fixedPrice, actualPrice, maturityRating, cover1
+                FROM eBookMainTable
+                WHERE ebookName LIKE @kw
+            ";
+
+                    // 建立 SqlCommand
+                    cmd = new SqlCommand(sql, conn);
+
+                    // 加入參數並使用模糊查詢 %關鍵字%
+                    cmd.Parameters.AddWithValue("@kw", "%" + keyword + "%");
+                }
+
+                // 建立 SqlDataAdapter 用來執行查詢並填入 DataTable
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                // 執行查詢並把結果填入 dt 資料表
+                adapter.Fill(dt);
+            }
+
+            // 把查詢結果顯示到 DataGridView 控制項上
+            dataGridView1.DataSource = dt;
+
+            // 設定欄位寬度自動調整成最適合寬度（避免資料被截斷）
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
+
+
         private void loadBook()
         {
             // 建立資料表
             DataTable dt = new DataTable();
 
             // 定義資料庫連線字串
-            string connStr = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True;";
+            string connStr = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True";
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
@@ -179,6 +239,34 @@ namespace SpecialTopic
                     pictureBoxCover.Image = null;
                 }
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            // 確保有選擇資料列
+            if (dataGridView1.CurrentRow != null)
+            {
+                // 取得選取列的 ebookID
+                long ebookId = Convert.ToInt64(dataGridView1.CurrentRow.Cells["ebookID"].Value);
+
+                // 開啟編輯表單，傳入 ebookID
+                //FrmEditBook editForm = new FrmEditBook(ebookId);
+                //if (editForm.ShowDialog() == DialogResult.OK)
+                //{
+                //    // 儲存後刷新 DataGridView
+                //    loadBook(); // 你自己原本的讀取函式
+                //}
+            }
+            else
+            {
+                MessageBox.Show("請先選擇要編輯的書籍！");
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string keyword = txtSearch.Text.Trim(); // 從輸入框拿到關鍵字
+            LoadBookWithFilter(keyword);            // 傳入關鍵字查詢
         }
     }
 }

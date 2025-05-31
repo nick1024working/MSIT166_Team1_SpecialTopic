@@ -86,6 +86,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="eBook\eBookCode\FrmEditBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="eBook\eBookCode\FrmEditBook.Designer.cs">
+      <DependentUpon>FrmEditBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="eBook\eBookCode\GlobalConfig.cs" />
     <Compile Include="eBook\eBookCode\gptEbookImporter.cs" />
     <Compile Include="eBook\eBookCode\GptExampleClass.cs" />
     <Compile Include="UsedBookControl.cs">
@@ -126,6 +133,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="eBook\eBookCode\FrmEditBook.resx">
+      <DependentUpon>FrmEditBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsedBookControl.resx">
       <DependentUpon>UsedBookControl.cs</DependentUpon>
     </EmbeddedResource>

@@ -34,6 +34,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnOpenSelectedBook = new System.Windows.Forms.Button();
             this.pictureBoxCover = new System.Windows.Forms.PictureBox();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             this.SuspendLayout();
@@ -97,10 +100,40 @@
             this.pictureBoxCover.TabIndex = 5;
             this.pictureBoxCover.TabStop = false;
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(97, 297);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(92, 36);
+            this.btnEdit.TabIndex = 6;
+            this.btnEdit.Text = "編輯書";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(1129, 56);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(195, 31);
+            this.txtSearch.TabIndex = 7;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(1351, 53);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 34);
+            this.btnSearch.TabIndex = 9;
+            this.btnSearch.Text = "搜書";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // EBookControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.pictureBoxCover);
             this.Controls.Add(this.btnOpenSelectedBook);
             this.Controls.Add(this.dataGridView1);
@@ -115,6 +148,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -126,5 +160,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnOpenSelectedBook;
         private System.Windows.Forms.PictureBox pictureBoxCover;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

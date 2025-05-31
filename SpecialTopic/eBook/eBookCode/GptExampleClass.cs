@@ -102,7 +102,7 @@ namespace SpecialTopic.eBook.eBookCode
             try
             {
                 // 定義連線字串：請確認與你的資料庫伺服器及資料庫名稱一致
-                string connStr = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True;";
+                string connStr = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True";
 
                 // 儲存查到的電子書相對路徑
                 string relativePath = null;
@@ -274,7 +274,7 @@ namespace SpecialTopic.eBook.eBookCode
         {
             try
             {
-                string connStr = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True;";
+                string connStr = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True";
                 string relativePath = null;
 
                 using (SqlConnection conn = new SqlConnection(connStr))
