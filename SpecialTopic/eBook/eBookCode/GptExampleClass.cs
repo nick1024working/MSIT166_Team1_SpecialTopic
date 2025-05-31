@@ -93,6 +93,64 @@ namespace SpecialTopic.eBook.eBookCode
             }
         }
 
+        /// <summary>
+        /// ✅ 根據電子書的 ebookID，查詢資料庫中的檔案位置並自動開啟
+        /// </summary>
+        /// <param name="ebookID">電子書的唯一識別碼</param>
+        public static void OpenEbookByID(long ebookID)
+        {
+            try
+            {
+                // 定義連線字串：請確認與你的資料庫伺服器及資料庫名稱一致
+                string connStr = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True;";
+
+                // 儲存查到的電子書相對路徑
+                string relativePath = null;
+
+                // 使用 using 自動管理 SqlConnection 的資源釋放
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    // 開啟資料庫連線
+                    conn.Open();
+
+                    // SQL 查詢語法：透過 ebookID 抓取 eBookPosition（檔案相對路徑）
+                    string sql = "SELECT eBookPosition FROM eBookMainTable WHERE ebookID = @id";
+
+                    // 建立 SqlCommand 並指派參數值
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        // 傳入參數 @id 為指定的電子書 ID
+                        cmd.Parameters.AddWithValue("@id", ebookID);
+
+                        // 執行查詢，回傳單一值（eBookPosition 欄位內容）
+                        object result = cmd.ExecuteScalar();
+
+                        // 若查詢結果不是 null 也不是 DBNull，則轉成字串儲存
+                        if (result != null && result != DBNull.Value)
+                        {
+                            relativePath = result.ToString();
+                        }
+                    }
+                }
+
+                // 若成功取得相對路徑，就呼叫開啟檔案的函式
+                if (!string.IsNullOrWhiteSpace(relativePath))
+                {
+                    OpenEbookFromRelativePath(relativePath); // 開啟該書檔案
+                }
+                else
+                {
+                    // 若未找到資料，顯示警告
+                    MessageBox.Show("找不到此電子書的檔案路徑（ebookID = " + ebookID + "）", "查無資料", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                // 若程式執行過程發生例外，顯示錯誤訊息
+                MessageBox.Show("開啟電子書失敗：" + ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         // 此函式會將指定圖片讀入為 byte[]，並透過 SQL 指令更新到資料表中的 VARBINARY 欄位
         public static void SaveImageToDatabase(string imagePath, long ebookID, SqlConnection conn)
@@ -206,6 +264,42 @@ namespace SpecialTopic.eBook.eBookCode
 
                 // 執行更新語法
                 cmd.ExecuteNonQuery();
+            }
+        }
+
+        /// <summary>
+        /// ✅ 根據書名查詢資料庫並開啟電子書
+        /// </summary>
+        public static void OpenEbookByName(string ebookName)
+        {
+            try
+            {
+                string connStr = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True;";
+                string relativePath = null;
+
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+
+                    // 模糊比對書名（可用 LIKE），此處用精確比對（你也可以自行改 LIKE）
+                    string sql = "SELECT TOP 1 eBookPosition FROM eBookMainTable WHERE ebookName = @name";
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@name", ebookName);
+                        object result = cmd.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                            relativePath = result.ToString();
+                    }
+                }
+
+                if (!string.IsNullOrWhiteSpace(relativePath))
+                    OpenEbookFromRelativePath(relativePath); // 開書
+                else
+                    MessageBox.Show("查無名為「" + ebookName + "」的電子書。", "查無結果", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("書名查詢錯誤：" + ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

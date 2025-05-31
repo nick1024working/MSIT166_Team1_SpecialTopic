@@ -42,6 +42,7 @@ namespace SpecialTopic
                 // 3. 呼叫匯入函式
                 gEImp.ImportFromExcel(excelPath, pdfSourceFolder);
                 MessageBox.Show("匯入成功！");
+                loadBook();
             }
             catch (Exception ex)
             {
@@ -56,7 +57,7 @@ namespace SpecialTopic
                 // 假設你要開啟 ebookID = 1001 的書，或之後從 DataGridView 選取也可改寫成動態
                 long ebookID = 1;
 
-                string connStr = "Data Source=DESKTOP-I9APTSS;Initial Catalog=TeamA_Project;Integrated Security=True;";
+                string connStr = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True;";
                 string relativePath = null;
 
                 using (SqlConnection conn = new SqlConnection(connStr))
@@ -87,6 +88,66 @@ namespace SpecialTopic
             {
                 MessageBox.Show("發生錯誤：" + ex.Message);
             }
+        }
+
+        private void loadBook()
+        {
+            // 建立資料表
+            DataTable dt = new DataTable();
+
+            // 定義資料庫連線字串
+            string connStr = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True;";
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                // 開啟資料庫連線
+                conn.Open();
+
+                // 撈出電子書的基本欄位資料（你也可以加入更多欄位）
+                string sql = @"
+            SELECT ebookID, ebookName, author, eBookClass1, fixedPrice, actualPrice
+            FROM eBookMainTable
+        ";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                adapter.Fill(dt); // 把資料填入 dt 資料表
+            }
+
+            // 資料繫結到 DataGridView
+            dataGridView1.DataSource = dt;
+
+            // 自動調整欄寬
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
+
+        private void btnOpenSelectedBook_Click(object sender, EventArgs e)
+        {
+            // 確保目前有選取的行
+            if (dataGridView1.CurrentRow != null)
+            {
+                // 取得目前行的 ebookID 欄位資料
+                object idObj = dataGridView1.CurrentRow.Cells["ebookID"].Value;
+
+                // 嘗試轉換為 long 型別
+                if (long.TryParse(idObj.ToString(), out long ebookId))
+                {
+                    // 呼叫你定義的共用函式來開啟電子書
+                    GptExampleClass.OpenEbookByID(ebookId);
+                }
+                else
+                {
+                    MessageBox.Show("選取的電子書 ID 無效！");
+                }
+            }
+            else
+            {
+                MessageBox.Show("請先選取一本電子書！");
+            }
+        }
+
+        private void EBookControl_Load(object sender, EventArgs e)
+        {
+            loadBook();
         }
     }
 }
