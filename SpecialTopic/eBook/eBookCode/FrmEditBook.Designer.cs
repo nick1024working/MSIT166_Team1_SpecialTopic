@@ -473,7 +473,7 @@
             // cover9Label
             // 
             cover9Label.AutoSize = true;
-            cover9Label.Location = new System.Drawing.Point(751, 747);
+            cover9Label.Location = new System.Drawing.Point(733, 737);
             cover9Label.Name = "cover9Label";
             cover9Label.Size = new System.Drawing.Size(87, 23);
             cover9Label.TabIndex = 61;
@@ -536,7 +536,7 @@
             // bookDescriptionLabel
             // 
             bookDescriptionLabel.AutoSize = true;
-            bookDescriptionLabel.Location = new System.Drawing.Point(136, 1121);
+            bookDescriptionLabel.Location = new System.Drawing.Point(39, 1121);
             bookDescriptionLabel.Name = "bookDescriptionLabel";
             bookDescriptionLabel.Size = new System.Drawing.Size(197, 23);
             bookDescriptionLabel.TabIndex = 75;
@@ -545,7 +545,7 @@
             // weeksalesLabel
             // 
             weeksalesLabel.AutoSize = true;
-            weeksalesLabel.Location = new System.Drawing.Point(645, 894);
+            weeksalesLabel.Location = new System.Drawing.Point(634, 879);
             weeksalesLabel.Name = "weeksalesLabel";
             weeksalesLabel.Size = new System.Drawing.Size(120, 23);
             weeksalesLabel.TabIndex = 77;
@@ -554,7 +554,7 @@
             // monthsalesLabel
             // 
             monthsalesLabel.AutoSize = true;
-            monthsalesLabel.Location = new System.Drawing.Point(645, 931);
+            monthsalesLabel.Location = new System.Drawing.Point(634, 928);
             monthsalesLabel.Name = "monthsalesLabel";
             monthsalesLabel.Size = new System.Drawing.Size(131, 23);
             monthsalesLabel.TabIndex = 79;
@@ -563,7 +563,7 @@
             // totalsalesLabel
             // 
             totalsalesLabel.AutoSize = true;
-            totalsalesLabel.Location = new System.Drawing.Point(645, 968);
+            totalsalesLabel.Location = new System.Drawing.Point(634, 960);
             totalsalesLabel.Name = "totalsalesLabel";
             totalsalesLabel.Size = new System.Drawing.Size(131, 23);
             totalsalesLabel.TabIndex = 81;
@@ -572,7 +572,7 @@
             // weekviewsLabel
             // 
             weekviewsLabel.AutoSize = true;
-            weekviewsLabel.Location = new System.Drawing.Point(634, 1032);
+            weekviewsLabel.Location = new System.Drawing.Point(634, 994);
             weekviewsLabel.Name = "weekviewsLabel";
             weekviewsLabel.Size = new System.Drawing.Size(120, 23);
             weekviewsLabel.TabIndex = 83;
@@ -581,7 +581,7 @@
             // monthviewsLabel
             // 
             monthviewsLabel.AutoSize = true;
-            monthviewsLabel.Location = new System.Drawing.Point(634, 1069);
+            monthviewsLabel.Location = new System.Drawing.Point(634, 1031);
             monthviewsLabel.Name = "monthviewsLabel";
             monthviewsLabel.Size = new System.Drawing.Size(131, 23);
             monthviewsLabel.TabIndex = 85;
@@ -590,7 +590,7 @@
             // totalviewsLabel
             // 
             totalviewsLabel.AutoSize = true;
-            totalviewsLabel.Location = new System.Drawing.Point(634, 1106);
+            totalviewsLabel.Location = new System.Drawing.Point(634, 1076);
             totalviewsLabel.Name = "totalviewsLabel";
             totalviewsLabel.Size = new System.Drawing.Size(131, 23);
             totalviewsLabel.TabIndex = 87;
@@ -599,7 +599,7 @@
             // maturityRatingLabel
             // 
             maturityRatingLabel.AutoSize = true;
-            maturityRatingLabel.Location = new System.Drawing.Point(634, 1143);
+            maturityRatingLabel.Location = new System.Drawing.Point(609, 1109);
             maturityRatingLabel.Name = "maturityRatingLabel";
             maturityRatingLabel.Size = new System.Drawing.Size(186, 23);
             maturityRatingLabel.TabIndex = 89;
@@ -608,7 +608,7 @@
             // isAvailableLabel
             // 
             isAvailableLabel.AutoSize = true;
-            isAvailableLabel.Location = new System.Drawing.Point(634, 1182);
+            isAvailableLabel.Location = new System.Drawing.Point(622, 1154);
             isAvailableLabel.Name = "isAvailableLabel";
             isAvailableLabel.Size = new System.Drawing.Size(153, 23);
             isAvailableLabel.TabIndex = 91;
@@ -917,6 +917,7 @@
             this.eBookPositionTextBox.Name = "eBookPositionTextBox";
             this.eBookPositionTextBox.Size = new System.Drawing.Size(200, 31);
             this.eBookPositionTextBox.TabIndex = 32;
+            this.eBookPositionTextBox.DoubleClick += new System.EventHandler(this.eBookPositionTextBox_DoubleClick);
             // 
             // eBookDataTypeTextBox
             // 
@@ -970,7 +971,7 @@
             // 
             this.cover1PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cover1PictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.eBookMainTableBindingSource, "cover1", true));
-            this.cover1PictureBox.Location = new System.Drawing.Point(638, 44);
+            this.cover1PictureBox.Location = new System.Drawing.Point(638, 38);
             this.cover1PictureBox.Name = "cover1PictureBox";
             this.cover1PictureBox.Size = new System.Drawing.Size(164, 144);
             this.cover1PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1018,7 +1019,7 @@
             // 
             this.cover5PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cover5PictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.eBookMainTableBindingSource, "cover5", true));
-            this.cover5PictureBox.Location = new System.Drawing.Point(924, 38);
+            this.cover5PictureBox.Location = new System.Drawing.Point(920, 20);
             this.cover5PictureBox.Name = "cover5PictureBox";
             this.cover5PictureBox.Size = new System.Drawing.Size(185, 162);
             this.cover5PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1066,7 +1067,7 @@
             // 
             this.cover9PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cover9PictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.eBookMainTableBindingSource, "cover9", true));
-            this.cover9PictureBox.Location = new System.Drawing.Point(859, 724);
+            this.cover9PictureBox.Location = new System.Drawing.Point(831, 719);
             this.cover9PictureBox.Name = "cover9PictureBox";
             this.cover9PictureBox.Size = new System.Drawing.Size(170, 147);
             this.cover9PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1125,15 +1126,16 @@
             // bookDescriptionTextBox
             // 
             this.bookDescriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "bookDescription", true));
-            this.bookDescriptionTextBox.Location = new System.Drawing.Point(350, 1118);
+            this.bookDescriptionTextBox.Location = new System.Drawing.Point(242, 1118);
+            this.bookDescriptionTextBox.Multiline = true;
             this.bookDescriptionTextBox.Name = "bookDescriptionTextBox";
-            this.bookDescriptionTextBox.Size = new System.Drawing.Size(200, 31);
+            this.bookDescriptionTextBox.Size = new System.Drawing.Size(326, 249);
             this.bookDescriptionTextBox.TabIndex = 76;
             // 
             // weeksalesTextBox
             // 
             this.weeksalesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "weeksales", true));
-            this.weeksalesTextBox.Location = new System.Drawing.Point(859, 891);
+            this.weeksalesTextBox.Location = new System.Drawing.Point(801, 876);
             this.weeksalesTextBox.Name = "weeksalesTextBox";
             this.weeksalesTextBox.Size = new System.Drawing.Size(200, 31);
             this.weeksalesTextBox.TabIndex = 78;
@@ -1141,7 +1143,7 @@
             // monthsalesTextBox
             // 
             this.monthsalesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "monthsales", true));
-            this.monthsalesTextBox.Location = new System.Drawing.Point(859, 928);
+            this.monthsalesTextBox.Location = new System.Drawing.Point(801, 920);
             this.monthsalesTextBox.Name = "monthsalesTextBox";
             this.monthsalesTextBox.Size = new System.Drawing.Size(200, 31);
             this.monthsalesTextBox.TabIndex = 80;
@@ -1149,7 +1151,7 @@
             // totalsalesTextBox
             // 
             this.totalsalesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "totalsales", true));
-            this.totalsalesTextBox.Location = new System.Drawing.Point(859, 965);
+            this.totalsalesTextBox.Location = new System.Drawing.Point(801, 957);
             this.totalsalesTextBox.Name = "totalsalesTextBox";
             this.totalsalesTextBox.Size = new System.Drawing.Size(200, 31);
             this.totalsalesTextBox.TabIndex = 82;
@@ -1157,7 +1159,7 @@
             // weekviewsTextBox
             // 
             this.weekviewsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "weekviews", true));
-            this.weekviewsTextBox.Location = new System.Drawing.Point(848, 1029);
+            this.weekviewsTextBox.Location = new System.Drawing.Point(801, 994);
             this.weekviewsTextBox.Name = "weekviewsTextBox";
             this.weekviewsTextBox.Size = new System.Drawing.Size(200, 31);
             this.weekviewsTextBox.TabIndex = 84;
@@ -1165,7 +1167,7 @@
             // monthviewsTextBox
             // 
             this.monthviewsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "monthviews", true));
-            this.monthviewsTextBox.Location = new System.Drawing.Point(848, 1066);
+            this.monthviewsTextBox.Location = new System.Drawing.Point(801, 1031);
             this.monthviewsTextBox.Name = "monthviewsTextBox";
             this.monthviewsTextBox.Size = new System.Drawing.Size(200, 31);
             this.monthviewsTextBox.TabIndex = 86;
@@ -1173,7 +1175,7 @@
             // totalviewsTextBox
             // 
             this.totalviewsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "totalviews", true));
-            this.totalviewsTextBox.Location = new System.Drawing.Point(848, 1103);
+            this.totalviewsTextBox.Location = new System.Drawing.Point(801, 1068);
             this.totalviewsTextBox.Name = "totalviewsTextBox";
             this.totalviewsTextBox.Size = new System.Drawing.Size(200, 31);
             this.totalviewsTextBox.TabIndex = 88;
@@ -1181,7 +1183,7 @@
             // maturityRatingTextBox
             // 
             this.maturityRatingTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "maturityRating", true));
-            this.maturityRatingTextBox.Location = new System.Drawing.Point(848, 1140);
+            this.maturityRatingTextBox.Location = new System.Drawing.Point(801, 1106);
             this.maturityRatingTextBox.Name = "maturityRatingTextBox";
             this.maturityRatingTextBox.Size = new System.Drawing.Size(200, 31);
             this.maturityRatingTextBox.TabIndex = 90;
@@ -1189,7 +1191,7 @@
             // isAvailableCheckBox
             // 
             this.isAvailableCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.eBookMainTableBindingSource, "isAvailable", true));
-            this.isAvailableCheckBox.Location = new System.Drawing.Point(848, 1177);
+            this.isAvailableCheckBox.Location = new System.Drawing.Point(831, 1153);
             this.isAvailableCheckBox.Name = "isAvailableCheckBox";
             this.isAvailableCheckBox.Size = new System.Drawing.Size(200, 24);
             this.isAvailableCheckBox.TabIndex = 92;

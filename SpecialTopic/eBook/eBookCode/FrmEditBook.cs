@@ -238,6 +238,45 @@ namespace SpecialTopic.eBook.eBookCode
                 }
             }
         }
+
+        private void eBookPositionTextBox_DoubleClick(object sender, EventArgs e)
+        {
+            // 建立檔案選擇視窗
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            // 設定可接受的檔案類型（只顯示 PDF）
+            ofd.Filter = "PDF 檔案 (*.pdf)|*.pdf";
+
+            // 設定初始資料夾，例如專案根目錄
+            ofd.InitialDirectory = Application.StartupPath;
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // 取得使用者選的絕對檔案路徑
+                string selectedFullPath = ofd.FileName;
+
+                // 目標相對資料夾（專案執行資料夾下的 eBookFiles）
+                string relativeFolder = "eBookFiles";
+                string destFolder = Path.Combine(Application.StartupPath, relativeFolder);
+
+                // 確保目標資料夾存在
+                if (!Directory.Exists(destFolder))
+                {
+                    Directory.CreateDirectory(destFolder);
+                }
+
+                // 檔名部分（ex: book1.pdf）
+                string fileName = Path.GetFileName(selectedFullPath);
+
+                // 複製檔案到目標資料夾
+                string destPath = Path.Combine(destFolder, fileName);
+                File.Copy(selectedFullPath, destPath, true); // 覆蓋已存在的
+
+                // 相對路徑存入 TextBox，例如：eBookFiles\book1.pdf
+                string relativePath = Path.Combine(relativeFolder, fileName);
+                eBookPositionTextBox.Text = relativePath;
+            }
+        }
     }
 
 
