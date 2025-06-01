@@ -209,6 +209,8 @@ namespace SpecialTopic
         private void EBookControl_Load(object sender, EventArgs e)
         {
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
+            // 加上錯誤容錯
+            dataGridView1.DataError += (s, args) => args.ThrowException = false;
             loadBook();
 
         }
@@ -227,16 +229,27 @@ namespace SpecialTopic
                     // 轉成 byte[] 圖片資料
                     byte[] imageData = (byte[])coverObj;
 
-                    // 用 MemoryStream 載入圖片並顯示在 PictureBox
-                    using (MemoryStream ms = new MemoryStream(imageData))
+                    // 進一步檢查 imageData 長度是否大於 0
+                    if (imageData.Length > 0)
                     {
-                        pictureBoxCover.Image = Image.FromStream(ms);
+                        try
+                        {
+                            using (MemoryStream ms = new MemoryStream(imageData))
+                            {
+                                pictureBoxCover.Image = Image.FromStream(ms);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("封面圖片格式錯誤，無法載入。\n" + ex.Message, "圖片錯誤");
+                            pictureBoxCover.Image = null;
+                        }
                     }
-                }
-                else
-                {
-                    // 若沒圖片，清除 PictureBox
-                    pictureBoxCover.Image = null;
+                    else
+                    {
+                        // 若沒圖片，清除 PictureBox
+                        pictureBoxCover.Image = null;
+                    }
                 }
             }
         }
