@@ -102,11 +102,11 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(97, 297);
+            this.btnEdit.Location = new System.Drawing.Point(63, 297);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(92, 36);
+            this.btnEdit.Size = new System.Drawing.Size(166, 36);
             this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "編輯書";
+            this.btnEdit.Text = "新增編輯書";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 

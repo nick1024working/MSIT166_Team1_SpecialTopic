@@ -249,13 +249,13 @@ namespace SpecialTopic
                 // 取得選取列的 ebookID
                 long ebookId = Convert.ToInt64(dataGridView1.CurrentRow.Cells["ebookID"].Value);
 
-                // 開啟編輯表單，傳入 ebookID
-                //FrmEditBook editForm = new FrmEditBook(ebookId);
-                //if (editForm.ShowDialog() == DialogResult.OK)
-                //{
-                //    // 儲存後刷新 DataGridView
-                //    loadBook(); // 你自己原本的讀取函式
-                //}
+               
+                FrmEditBook editForm = new FrmEditBook(ebookId);
+                if (editForm.ShowDialog() == DialogResult.OK)
+                {
+                    // 儲存後刷新 DataGridView
+                    loadBook(); // 你自己原本的讀取函式
+                }
             }
             else
             {
