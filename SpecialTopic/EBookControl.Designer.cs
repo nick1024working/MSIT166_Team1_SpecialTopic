@@ -1,4 +1,8 @@
-﻿namespace SpecialTopic
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace SpecialTopic
 {
     partial class EBookControl
     {
@@ -6,6 +10,11 @@
         /// 設計工具所需的變數。
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+
+       
+
+       
+
 
         /// <summary> 
         /// 清除任何使用中的資源。
@@ -38,6 +47,7 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnViewOrders = new System.Windows.Forms.Button();
+            this.btnPurchasedBooks = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             this.SuspendLayout();
@@ -138,10 +148,20 @@
             this.btnViewOrders.UseVisualStyleBackColor = true;
             this.btnViewOrders.Click += new System.EventHandler(this.btnViewOrders_Click);
             // 
+            // btnPurchasedBooks
+            // 
+            this.btnPurchasedBooks.Location = new System.Drawing.Point(84, 408);
+            this.btnPurchasedBooks.Name = "btnPurchasedBooks";
+            this.btnPurchasedBooks.Size = new System.Drawing.Size(112, 33);
+            this.btnPurchasedBooks.TabIndex = 11;
+            this.btnPurchasedBooks.Text = "button3";
+            this.btnPurchasedBooks.UseVisualStyleBackColor = true;
+            // 
             // EBookControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnPurchasedBooks);
             this.Controls.Add(this.btnViewOrders);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
@@ -176,5 +196,6 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnViewOrders;
+        private Button btnPurchasedBooks;
     }
 }

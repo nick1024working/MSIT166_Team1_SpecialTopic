@@ -18,8 +18,20 @@ namespace SpecialTopic
         public EBookControl()
         {
             InitializeComponent();
+            InitializePurchasedBooksButton();
         }
 
+        //private Button btnPurchasedBooks;
+
+        private void InitializePurchasedBooksButton()
+        {
+            //this.btnPurchasedBooks = new Button();
+            this.btnPurchasedBooks.Text = "已購電子書";
+            this.btnPurchasedBooks.AutoSize = true;
+            //this.btnPurchasedBooks.Location = new Point(20, 20); // 可視需要調整位置
+            this.btnPurchasedBooks.Click += BtnPurchasedBooks_Click;
+            this.Controls.Add(btnPurchasedBooks);
+        }
         private void btnImportExcel_Click(object sender, EventArgs e)
         {
             // 1. 讓使用者選 Excel 檔
@@ -49,6 +61,13 @@ namespace SpecialTopic
             {
                 MessageBox.Show("匯入失敗：" + ex.Message);
             }
+        }
+
+        private void BtnPurchasedBooks_Click(object sender, EventArgs e)
+        {
+            // 建立並顯示已購電子書的表單
+            FormPurchasedBooks form = new FormPurchasedBooks();
+            form.ShowDialog(); // 使用 ShowDialog() 可防止同時開多個
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -211,6 +230,8 @@ namespace SpecialTopic
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 加上錯誤容錯
             dataGridView1.DataError += (s, args) => args.ThrowException = false;
+            //InitializePurchasedBooksButton();
+            //InitializePurchasedBooksButton();
             loadBook();
 
         }

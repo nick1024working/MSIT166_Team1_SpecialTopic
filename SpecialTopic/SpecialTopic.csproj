@@ -92,6 +92,12 @@
     <Compile Include="eBook\eBookCode\FormOrderList.Designer.cs">
       <DependentUpon>FormOrderList.cs</DependentUpon>
     </Compile>
+    <Compile Include="eBook\eBookCode\FormPurchasedBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="eBook\eBookCode\FormPurchasedBooks.Designer.cs">
+      <DependentUpon>FormPurchasedBooks.cs</DependentUpon>
+    </Compile>
     <Compile Include="eBook\eBookCode\FrmEditBook.cs">
       <SubType>Form</SubType>
     </Compile>
