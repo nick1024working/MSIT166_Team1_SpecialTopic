@@ -30,6 +30,9 @@
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.dgvOrderDetails = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lblTotalDetail = new System.Windows.Forms.Label();
+            this.btnSaveChanges = new System.Windows.Forms.Button();
+            this.btnDSOD = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).BeginInit();
             this.SuspendLayout();
@@ -68,11 +71,43 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // lblTotalDetail
+            // 
+            this.lblTotalDetail.AutoSize = true;
+            this.lblTotalDetail.Location = new System.Drawing.Point(29, 342);
+            this.lblTotalDetail.Name = "lblTotalDetail";
+            this.lblTotalDetail.Size = new System.Drawing.Size(86, 15);
+            this.lblTotalDetail.TabIndex = 3;
+            this.lblTotalDetail.Text = "本訂單總計:";
+            // 
+            // btnSaveChanges
+            // 
+            this.btnSaveChanges.Location = new System.Drawing.Point(540, 342);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Size = new System.Drawing.Size(83, 23);
+            this.btnSaveChanges.TabIndex = 4;
+            this.btnSaveChanges.Text = "儲存變更";
+            this.btnSaveChanges.UseVisualStyleBackColor = true;
+            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
+            // 
+            // btnDSOD
+            // 
+            this.btnDSOD.Location = new System.Drawing.Point(407, 342);
+            this.btnDSOD.Name = "btnDSOD";
+            this.btnDSOD.Size = new System.Drawing.Size(114, 23);
+            this.btnDSOD.TabIndex = 5;
+            this.btnDSOD.Text = "刪除選中明細";
+            this.btnDSOD.UseVisualStyleBackColor = true;
+            this.btnDSOD.Click += new System.EventHandler(this.btnDSOD_Click);
+            // 
             // FormOrderList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 376);
+            this.Controls.Add(this.btnDSOD);
+            this.Controls.Add(this.btnSaveChanges);
+            this.Controls.Add(this.lblTotalDetail);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgvOrderDetails);
             this.Controls.Add(this.dgvOrders);
@@ -83,6 +118,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -90,6 +126,8 @@
         private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.DataGridView dgvOrderDetails;
         private System.Windows.Forms.Button btnClose;
-
+        private System.Windows.Forms.Label lblTotalDetail;
+        private System.Windows.Forms.Button btnSaveChanges;
+        private System.Windows.Forms.Button btnDSOD;
     }
 }
