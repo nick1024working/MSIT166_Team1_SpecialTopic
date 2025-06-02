@@ -86,6 +86,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="eBook\eBookCode\FormOrderList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="eBook\eBookCode\FormOrderList.Designer.cs">
+      <DependentUpon>FormOrderList.cs</DependentUpon>
+    </Compile>
     <Compile Include="eBook\eBookCode\FrmEditBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="eBook\eBookCode\FormOrderList.resx">
+      <DependentUpon>FormOrderList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="eBook\eBookCode\FrmEditBook.resx">
       <DependentUpon>FrmEditBook.cs</DependentUpon>
     </EmbeddedResource>

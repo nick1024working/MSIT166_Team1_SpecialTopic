@@ -281,5 +281,13 @@ namespace SpecialTopic
             string keyword = txtSearch.Text.Trim(); // 從輸入框拿到關鍵字
             LoadBookWithFilter(keyword);            // 傳入關鍵字查詢
         }
+
+        private void btnViewOrders_Click(object sender, EventArgs e)
+        {
+            FormOrderList form = new FormOrderList();
+
+            // 設定為子視窗顯示（ShowDialog 可選）
+            form.Show(); // 或改成 form.ShowDialog() 若你希望為模態視窗
+        }
     }
 }
