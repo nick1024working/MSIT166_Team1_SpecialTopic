@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient;
 namespace SpecialTopic
 {
     public partial class Form1 : Form
@@ -17,7 +17,7 @@ namespace SpecialTopic
             InitializeComponent();
 
         }
-        private void ShowControl(UserControl control)
+        public void ShowControl(UserControl control)
         {
             panelMain.Controls.Clear();
             control.Dock = DockStyle.Fill;
@@ -26,7 +26,7 @@ namespace SpecialTopic
 
         private void Member_Click(object sender, EventArgs e)
         {
-            ShowControl(new MemberControl());
+            ShowControl(new MemberUserRegister(this));
         }
 
         private void Forum_Click(object sender, EventArgs e)
@@ -47,6 +47,11 @@ namespace SpecialTopic
         private void Fund_Click(object sender, EventArgs e)
         {
             ShowControl(new FundControl());
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+          
         }
     }
 }

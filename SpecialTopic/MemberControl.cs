@@ -10,11 +10,32 @@ using System.Windows.Forms;
 
 namespace SpecialTopic
 {
-    public partial class MemberControl : UserControl
+    public partial class Member : UserControl
     {
-        public MemberControl()
+        private Form1 _mainForm;
+
+        
+        public Member()
         {
             InitializeComponent();
         }
+
+        public Member(Form1 mainForm) : this()
+        {
+            _mainForm = mainForm;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            _mainForm.ShowControl(new MemberUserRegister(_mainForm));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
+
+

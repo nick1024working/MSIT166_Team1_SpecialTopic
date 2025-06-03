@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.Fund = new System.Windows.Forms.Button();
@@ -36,7 +37,17 @@
             this.Forum = new System.Windows.Forms.Button();
             this.Member = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.usersTableAdapter1 = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.UsersTableAdapter();
+            this.teamA_ProjectDataSet = new SpecialTopic.TeamA_ProjectDataSet();
+            this.donateImagesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.donateImagesTableAdapter = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.donateImagesTableAdapter();
+            this.tableAdapterManager = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.TableAdapterManager();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teamA_ProjectDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donateImagesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -140,6 +151,60 @@
             this.panelMain.Size = new System.Drawing.Size(1384, 961);
             this.panelMain.TabIndex = 1;
             // 
+            // usersTableAdapter1
+            // 
+            this.usersTableAdapter1.ClearBeforeFill = true;
+            // 
+            // teamA_ProjectDataSet
+            // 
+            this.teamA_ProjectDataSet.DataSetName = "TeamA_ProjectDataSet";
+            this.teamA_ProjectDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // donateImagesBindingSource
+            // 
+            this.donateImagesBindingSource.DataMember = "donateImages";
+            this.donateImagesBindingSource.DataSource = this.teamA_ProjectDataSet;
+            // 
+            // donateImagesTableAdapter
+            // 
+            this.donateImagesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.BookTopicsTableAdapter = null;
+            this.tableAdapterManager.donateCategoriesTableAdapter = null;
+            this.tableAdapterManager.donateImagesTableAdapter = this.donateImagesTableAdapter;
+            this.tableAdapterManager.donateOrderItemsTableAdapter = null;
+            this.tableAdapterManager.donateOrdersTableAdapter = null;
+            this.tableAdapterManager.donatePlansTableAdapter = null;
+            this.tableAdapterManager.donateProjectsTableAdapter = null;
+            this.tableAdapterManager.eBookMainTableTableAdapter = null;
+            this.tableAdapterManager.ebookOrderDetailTableAdapter = null;
+            this.tableAdapterManager.ebookOrderMainTableAdapter = null;
+            this.tableAdapterManager.ebookPurchasedTableAdapter = null;
+            this.tableAdapterManager.ebookRecommendTableAdapter = null;
+            this.tableAdapterManager.ForumPostsTableAdapter = null;
+            this.tableAdapterManager.LoginLogsTableAdapter = null;
+            this.tableAdapterManager.OrderFaceToFaceStatusesTableAdapter = null;
+            this.tableAdapterManager.OrderStatusesTableAdapter = null;
+            this.tableAdapterManager.PostBookmarksTableAdapter = null;
+            this.tableAdapterManager.PostCategoryTableAdapter = null;
+            this.tableAdapterManager.PostCommentsTableAdapter = null;
+            this.tableAdapterManager.PostFilterTableAdapter = null;
+            this.tableAdapterManager.PostImagesTableAdapter = null;
+            this.tableAdapterManager.PostLikesTableAdapter = null;
+            this.tableAdapterManager.SaleTagsTableAdapter = null;
+            this.tableAdapterManager.SubscriberTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = SpecialTopic.TeamA_ProjectDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UsedBookImagesTableAdapter = null;
+            this.tableAdapterManager.UsedBookOrdersTableAdapter = null;
+            this.tableAdapterManager.UsedBookSaleTagsTableAdapter = null;
+            this.tableAdapterManager.UsedBooksTableAdapter = null;
+            this.tableAdapterManager.UsedBookTopicsTableAdapter = null;
+            this.tableAdapterManager.UsersTableAdapter = this.usersTableAdapter1;
+            this.tableAdapterManager.UserTrackedUsedBooksTableAdapter = null;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
@@ -151,8 +216,12 @@
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teamA_ProjectDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donateImagesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -167,6 +236,13 @@
         private System.Windows.Forms.Button Member;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelMain;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private TeamA_ProjectDataSetTableAdapters.UsersTableAdapter usersTableAdapter1;
+        private TeamA_ProjectDataSet teamA_ProjectDataSet;
+        private System.Windows.Forms.BindingSource donateImagesBindingSource;
+        private TeamA_ProjectDataSetTableAdapters.donateImagesTableAdapter donateImagesTableAdapter;
+        private TeamA_ProjectDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 
