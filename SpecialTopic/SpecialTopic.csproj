@@ -153,6 +153,9 @@
     <EmbeddedResource Include="eBook\eBookCode\FormOrderList.resx">
       <DependentUpon>FormOrderList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="eBook\eBookCode\FormPurchasedBooks.resx">
+      <DependentUpon>FormPurchasedBooks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="eBook\eBookCode\FrmEditBook.resx">
       <DependentUpon>FrmEditBook.cs</DependentUpon>
     </EmbeddedResource>
