@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSwitchToMain = new System.Windows.Forms.Button();
             this.txbSearch = new System.Windows.Forms.TextBox();
             this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.pnlSidebar = new System.Windows.Forms.Panel();
@@ -37,6 +36,7 @@
             this.lbxTopics = new System.Windows.Forms.ListBox();
             this.lblTopics = new System.Windows.Forms.Label();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.flpMain = new System.Windows.Forms.FlowLayoutPanel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pnlHeader = new System.Windows.Forms.Panel();
@@ -60,39 +60,25 @@
             this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnSwitchToMain
-            // 
-            this.btnSwitchToMain.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSwitchToMain.Location = new System.Drawing.Point(584, 0);
-            this.btnSwitchToMain.Name = "btnSwitchToMain";
-            this.btnSwitchToMain.Size = new System.Drawing.Size(144, 545);
-            this.btnSwitchToMain.TabIndex = 0;
-            this.btnSwitchToMain.Text = "SwitchToMain";
-            this.btnSwitchToMain.UseVisualStyleBackColor = true;
-            this.btnSwitchToMain.Click += new System.EventHandler(this.btnSwitchToMain_Click);
-            // 
             // txbSearch
             // 
-            this.txbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbSearch.Font = new System.Drawing.Font("新細明體", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txbSearch.Location = new System.Drawing.Point(256, 21);
+            this.txbSearch.Location = new System.Drawing.Point(101, 25);
             this.txbSearch.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.txbSearch.Name = "txbSearch";
-            this.txbSearch.Size = new System.Drawing.Size(255, 30);
+            this.txbSearch.Size = new System.Drawing.Size(171, 30);
             this.txbSearch.TabIndex = 1;
             // 
             // pbxLogo
             // 
-            this.pbxLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pbxLogo.BackColor = System.Drawing.SystemColors.Highlight;
-            this.pbxLogo.Location = new System.Drawing.Point(4, 2);
+            this.pbxLogo.Location = new System.Drawing.Point(28, 13);
             this.pbxLogo.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.pbxLogo.Name = "pbxLogo";
-            this.pbxLogo.Size = new System.Drawing.Size(60, 60);
+            this.pbxLogo.Size = new System.Drawing.Size(55, 55);
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxLogo.TabIndex = 0;
             this.pbxLogo.TabStop = false;
+            this.pbxLogo.Click += new System.EventHandler(this.pbxLogo_Click);
             // 
             // pnlSidebar
             // 
@@ -107,7 +93,7 @@
             this.pnlSidebar.MaximumSize = new System.Drawing.Size(300, 0);
             this.pnlSidebar.MinimumSize = new System.Drawing.Size(100, 200);
             this.pnlSidebar.Name = "pnlSidebar";
-            this.pnlSidebar.Size = new System.Drawing.Size(168, 545);
+            this.pnlSidebar.Size = new System.Drawing.Size(100, 531);
             this.pnlSidebar.TabIndex = 1;
             // 
             // lbxSaleTags
@@ -119,8 +105,9 @@
             this.lbxSaleTags.Location = new System.Drawing.Point(0, 293);
             this.lbxSaleTags.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.lbxSaleTags.Name = "lbxSaleTags";
-            this.lbxSaleTags.Size = new System.Drawing.Size(168, 213);
+            this.lbxSaleTags.Size = new System.Drawing.Size(100, 213);
             this.lbxSaleTags.TabIndex = 3;
+            this.lbxSaleTags.SelectedIndexChanged += new System.EventHandler(this.lbxSaleTags_SelectedIndexChanged);
             // 
             // lblSaleTags
             // 
@@ -129,7 +116,7 @@
             this.lblSaleTags.Location = new System.Drawing.Point(0, 253);
             this.lblSaleTags.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblSaleTags.Name = "lblSaleTags";
-            this.lblSaleTags.Size = new System.Drawing.Size(168, 40);
+            this.lblSaleTags.Size = new System.Drawing.Size(100, 40);
             this.lblSaleTags.TabIndex = 2;
             this.lblSaleTags.Text = "促銷標籤";
             this.lblSaleTags.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -143,7 +130,7 @@
             this.lbxTopics.Location = new System.Drawing.Point(0, 40);
             this.lbxTopics.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.lbxTopics.Name = "lbxTopics";
-            this.lbxTopics.Size = new System.Drawing.Size(168, 213);
+            this.lbxTopics.Size = new System.Drawing.Size(100, 213);
             this.lbxTopics.TabIndex = 0;
             // 
             // lblTopics
@@ -153,7 +140,7 @@
             this.lblTopics.Location = new System.Drawing.Point(0, 0);
             this.lblTopics.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblTopics.Name = "lblTopics";
-            this.lblTopics.Size = new System.Drawing.Size(168, 40);
+            this.lblTopics.Size = new System.Drawing.Size(100, 40);
             this.lblTopics.TabIndex = 1;
             this.lblTopics.Text = "主題分類";
             this.lblTopics.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -162,17 +149,28 @@
             // 
             this.pnlMain.AutoSize = true;
             this.pnlMain.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.pnlMain.Controls.Add(this.btnSwitchToMain);
+            this.pnlMain.Controls.Add(this.flpMain);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(728, 545);
+            this.pnlMain.Size = new System.Drawing.Size(794, 531);
             this.pnlMain.TabIndex = 1;
+            // 
+            // flpMain
+            // 
+            this.flpMain.AutoScroll = true;
+            this.flpMain.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.flpMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpMain.Location = new System.Drawing.Point(0, 0);
+            this.flpMain.Name = "flpMain";
+            this.flpMain.Size = new System.Drawing.Size(794, 531);
+            this.flpMain.TabIndex = 0;
             // 
             // mainPanel
             // 
             this.mainPanel.AutoSize = true;
+            this.mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.mainPanel.Controls.Add(this.splitContainer1);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
@@ -182,6 +180,7 @@
             // 
             // splitContainer1
             // 
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
@@ -191,18 +190,18 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.pnlHeader);
-            this.splitContainer1.Panel1MinSize = 70;
+            this.splitContainer1.Panel1MinSize = 80;
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(900, 619);
-            this.splitContainer1.SplitterDistance = 70;
+            this.splitContainer1.Panel2MinSize = 500;
+            this.splitContainer1.Size = new System.Drawing.Size(898, 617);
+            this.splitContainer1.SplitterDistance = 80;
             this.splitContainer1.TabIndex = 0;
             // 
             // pnlHeader
             // 
-            this.pnlHeader.AutoSize = true;
             this.pnlHeader.Controls.Add(this.btnCreateOrder);
             this.pnlHeader.Controls.Add(this.btnUserCenter);
             this.pnlHeader.Controls.Add(this.btnAdminCenter);
@@ -212,59 +211,52 @@
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(900, 70);
+            this.pnlHeader.Size = new System.Drawing.Size(896, 78);
             this.pnlHeader.TabIndex = 3;
             // 
             // btnCreateOrder
             // 
-            this.btnCreateOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreateOrder.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnCreateOrder.Location = new System.Drawing.Point(799, 23);
+            this.btnCreateOrder.Location = new System.Drawing.Point(611, 25);
             this.btnCreateOrder.Name = "btnCreateOrder";
-            this.btnCreateOrder.Size = new System.Drawing.Size(80, 28);
+            this.btnCreateOrder.Size = new System.Drawing.Size(80, 30);
             this.btnCreateOrder.TabIndex = 2;
             this.btnCreateOrder.Text = "新增訂單";
             this.btnCreateOrder.UseVisualStyleBackColor = true;
             // 
             // btnUserCenter
             // 
-            this.btnUserCenter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUserCenter.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnUserCenter.Location = new System.Drawing.Point(716, 22);
+            this.btnUserCenter.Location = new System.Drawing.Point(519, 25);
             this.btnUserCenter.Name = "btnUserCenter";
-            this.btnUserCenter.Size = new System.Drawing.Size(80, 28);
+            this.btnUserCenter.Size = new System.Drawing.Size(80, 30);
             this.btnUserCenter.TabIndex = 2;
             this.btnUserCenter.Text = "會員中心";
             this.btnUserCenter.UseVisualStyleBackColor = true;
             // 
             // btnAdminCenter
             // 
-            this.btnAdminCenter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdminCenter.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnAdminCenter.Location = new System.Drawing.Point(630, 23);
+            this.btnAdminCenter.Location = new System.Drawing.Point(398, 25);
             this.btnAdminCenter.Name = "btnAdminCenter";
-            this.btnAdminCenter.Size = new System.Drawing.Size(80, 28);
+            this.btnAdminCenter.Size = new System.Drawing.Size(109, 30);
             this.btnAdminCenter.TabIndex = 2;
             this.btnAdminCenter.Text = "管理員中心";
             this.btnAdminCenter.UseVisualStyleBackColor = true;
             // 
             // btnSearch
             // 
-            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnSearch.Location = new System.Drawing.Point(515, 22);
+            this.btnSearch.Location = new System.Drawing.Point(293, 25);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(80, 28);
+            this.btnSearch.Size = new System.Drawing.Size(80, 30);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "搜尋";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // splitContainer2
             // 
+            this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
@@ -277,8 +269,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.pnlMain);
-            this.splitContainer2.Size = new System.Drawing.Size(900, 545);
-            this.splitContainer2.SplitterDistance = 168;
+            this.splitContainer2.Size = new System.Drawing.Size(898, 533);
+            this.splitContainer2.SplitterDistance = 98;
             this.splitContainer2.TabIndex = 1;
             // 
             // ProductListingPageView
@@ -294,7 +286,6 @@
             this.pnlMain.ResumeLayout(false);
             this.mainPanel.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -312,8 +303,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnSwitchToMain;
         private System.Windows.Forms.Panel pnlSidebar;
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.ListBox lbxTopics;
@@ -330,5 +319,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.FlowLayoutPanel flpMain;
     }
 }

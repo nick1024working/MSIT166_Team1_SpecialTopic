@@ -11,7 +11,7 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
     /// </summary>
     public class SaleTagRepository
     {
-        public List<SaleTagEntity> GetAllTags(SqlConnection conn, SqlTransaction tran)
+        public List<SaleTagEntity> GetAllSaleTags(SqlConnection conn, SqlTransaction tran)
         {
             string sqlString = @"SELECT TagID, TagName FROM [dbo].[SaleTags]";
             var result = conn.Query<SaleTagEntity>(sqlString, transaction: tran).ToList();

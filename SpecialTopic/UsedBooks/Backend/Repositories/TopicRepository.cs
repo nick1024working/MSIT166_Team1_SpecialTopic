@@ -9,7 +9,7 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
     /// <summary>
     /// 負責從 [UsedBookTopics] 資料表查詢所有書籍主題（TopicID, TopicName）。
     /// </summary>
-    public class BookTopicRepository
+    public class TopicRepository
     {
         public List<BookTopicEntity> GetAllTopics(SqlConnection conn, SqlTransaction tran)
         {

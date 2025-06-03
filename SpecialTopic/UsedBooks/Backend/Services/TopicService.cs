@@ -8,15 +8,15 @@ using System.Linq;
 
 namespace SpecialTopic.UsedBooks.Backend.Services
 {
-    public class BookTopicService
+    public class TopicService
     {
         private string _connString;
-        private BookTopicRepository _bookTopicRepository;
+        private TopicRepository _bookTopicRepository;
 
-        public BookTopicService(string connString)
+        public TopicService(string connString)
         {
             _connString = connString;
-            _bookTopicRepository = new BookTopicRepository();
+            _bookTopicRepository = new TopicRepository();
         }
 
         /// <summary>

@@ -1,6 +1,5 @@
-﻿using SpecialTopic.UsedBooks.Backend.Entities;
+﻿using System.Data.SqlClient;
 using SpecialTopic.UsedBooks.Backend.Repositories;
-using System.Data.SqlClient;
 
 namespace SpecialTopic.Tests.UsedBooks.Repositories
 {
@@ -9,6 +8,7 @@ namespace SpecialTopic.Tests.UsedBooks.Repositories
     {
         private string _connString = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True";
 
+        // NOTE: 此測試僅作為 Repository 冒煙測試用，不屬於核心單元測試
         [TestMethod]
         public void GetAllTopics_ShouldReturnListOfTopics()
         {
@@ -21,14 +21,12 @@ namespace SpecialTopic.Tests.UsedBooks.Repositories
                     var repo = new SaleTagRepository();
 
                     // Act
-                    var result = repo.GetAllTags(conn, tran);
+                    var result = repo.GetAllSaleTags(conn, tran);
 
                     // Assert
                     Assert.IsNotNull(result);
-                    Assert.IsInstanceOfType(result, typeof(List<SaleTagEntity>));
-                    Assert.IsTrue(result.Count >= 0); // 允許空表，但至少能查出結果
 
-                    tran.Commit(); // or tran.Rollback(); 視情況決定
+                    tran.Rollback();
                 }
             }
         }
