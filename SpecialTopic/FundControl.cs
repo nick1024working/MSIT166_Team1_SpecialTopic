@@ -19,6 +19,8 @@ namespace SpecialTopic
         {
             InitializeComponent();
             LoadProjects();
+            LoadProjectsToComboBox();
+            LoadPlans();
         }
 
         //------------------募資分類管理-------------------
@@ -271,6 +273,119 @@ namespace SpecialTopic
                 txtCurrentAmount.Text = row.Cells["current_amount"].Value.ToString();
                 dtpStartDate.Value = Convert.ToDateTime(row.Cells["start_date"].Value);
                 dtpEndDate.Value = Convert.ToDateTime(row.Cells["end_date"].Value);
+            }
+        }
+        //------------------募資方案管理-------------------
+        private void LoadProjectsToComboBox()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT donateProject_id, title FROM donateProjects";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                comboBoxProject.DataSource = dt;
+                comboBoxProject.DisplayMember = "title";
+                comboBoxProject.ValueMember = "donateProject_id";
+            }
+        }
+        private void LoadPlans()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT * FROM donatePlans";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dataGridView3.DataSource = dt;
+                dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+        }
+
+        private void PlCreate_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = @"INSERT INTO donatePlans (donateProject_id, title, price, description)
+                       VALUES (@projectId, @title, @price, @description)";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@projectId", (int)comboBoxProject.SelectedValue);
+                cmd.Parameters.AddWithValue("@title", txtTitle.Text);
+                cmd.Parameters.AddWithValue("@price", decimal.Parse(txtPrice.Text));
+                cmd.Parameters.AddWithValue("@description", txtDescription.Text);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                MessageBox.Show("新增成功！");
+                LoadPlans();
+            }
+        }
+
+        private void PlUpdate_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPlanId.Text))
+            {
+                MessageBox.Show("請選擇要更新的資料");
+                return;
+            }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = @"UPDATE donatePlans
+                       SET donateProject_id = @projectId, title = @title, price = @price, description = @description
+                       WHERE donatePlan_id = @id";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@projectId", (int)comboBoxProject.SelectedValue);
+                cmd.Parameters.AddWithValue("@title", txtTitle.Text);
+                cmd.Parameters.AddWithValue("@price", decimal.Parse(txtPrice.Text));
+                cmd.Parameters.AddWithValue("@description", txtDescription.Text);
+                cmd.Parameters.AddWithValue("@id", int.Parse(txtPlanId.Text));
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                MessageBox.Show("更新成功！");
+                LoadPlans();
+            }
+        }
+
+        private void PlDelete_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPlanId.Text))
+            {
+                MessageBox.Show("請選擇要刪除的資料");
+                return;
+            }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = "DELETE FROM donatePlans WHERE donatePlan_id = @id";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", int.Parse(txtPlanId.Text));
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                MessageBox.Show("刪除成功！");
+                LoadPlans();
+            }
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView3.Rows[e.RowIndex];
+                txtPlanId.Text = row.Cells["donatePlan_id"].Value.ToString();
+                comboBoxProject.SelectedValue = row.Cells["donateProject_id"].Value;
+                txtTitle.Text = row.Cells["title"].Value.ToString();
+                txtPrice.Text = row.Cells["price"].Value.ToString();
+                txtDescription.Text = row.Cells["description"].Value.ToString();
             }
         }
     }

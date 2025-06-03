@@ -39,6 +39,11 @@
             System.Windows.Forms.Label end_dateLabel;
             System.Windows.Forms.Label donateCategories_idLabel1;
             System.Windows.Forms.Label donateProject_idLabel;
+            System.Windows.Forms.Label titleLabel1;
+            System.Windows.Forms.Label priceLabel;
+            System.Windows.Forms.Label descriptionLabel1;
+            System.Windows.Forms.Label donateProject_idLabel2;
+            System.Windows.Forms.Label donatePlan_idLabel;
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnLoad = new System.Windows.Forms.Button();
@@ -52,7 +57,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtProjectId = new System.Windows.Forms.TextBox();
             this.donateProjectsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtCategoryId = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtTargetAmount = new System.Windows.Forms.TextBox();
@@ -65,11 +72,23 @@
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtPlanId = new System.Windows.Forms.TextBox();
+            this.donatePlansBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBoxProject = new System.Windows.Forms.ComboBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.titleTextBox = new System.Windows.Forms.TextBox();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
             this.donateCategoriesTableAdapter = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.donateCategoriesTableAdapter();
             this.tableAdapterManager = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.TableAdapterManager();
             this.donateProjectsTableAdapter = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.donateProjectsTableAdapter();
-            this.txtCategoryId = new System.Windows.Forms.TextBox();
-            this.txtProjectId = new System.Windows.Forms.TextBox();
+            this.donatePlansTableAdapter = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.donatePlansTableAdapter();
             donateCategories_idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             titleLabel = new System.Windows.Forms.Label();
@@ -80,6 +99,11 @@
             end_dateLabel = new System.Windows.Forms.Label();
             donateCategories_idLabel1 = new System.Windows.Forms.Label();
             donateProject_idLabel = new System.Windows.Forms.Label();
+            titleLabel1 = new System.Windows.Forms.Label();
+            priceLabel = new System.Windows.Forms.Label();
+            descriptionLabel1 = new System.Windows.Forms.Label();
+            donateProject_idLabel2 = new System.Windows.Forms.Label();
+            donatePlan_idLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donateCategoriesBindingSource)).BeginInit();
@@ -88,6 +112,9 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donateProjectsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.donatePlansBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // donateCategories_idLabel
@@ -180,10 +207,71 @@
             donateCategories_idLabel1.TabIndex = 28;
             donateCategories_idLabel1.Text = "所屬類別:";
             // 
+            // donateProject_idLabel
+            // 
+            donateProject_idLabel.AutoSize = true;
+            donateProject_idLabel.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            donateProject_idLabel.Location = new System.Drawing.Point(37, 243);
+            donateProject_idLabel.Name = "donateProject_idLabel";
+            donateProject_idLabel.Size = new System.Drawing.Size(126, 32);
+            donateProject_idLabel.TabIndex = 29;
+            donateProject_idLabel.Text = "募資id:";
+            // 
+            // titleLabel1
+            // 
+            titleLabel1.AutoSize = true;
+            titleLabel1.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            titleLabel1.Location = new System.Drawing.Point(565, 605);
+            titleLabel1.Name = "titleLabel1";
+            titleLabel1.Size = new System.Drawing.Size(158, 32);
+            titleLabel1.TabIndex = 3;
+            titleLabel1.Text = "方案名稱:";
+            // 
+            // priceLabel
+            // 
+            priceLabel.AutoSize = true;
+            priceLabel.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            priceLabel.Location = new System.Drawing.Point(565, 728);
+            priceLabel.Name = "priceLabel";
+            priceLabel.Size = new System.Drawing.Size(94, 32);
+            priceLabel.TabIndex = 4;
+            priceLabel.Text = "金額:";
+            // 
+            // descriptionLabel1
+            // 
+            descriptionLabel1.AutoSize = true;
+            descriptionLabel1.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            descriptionLabel1.Location = new System.Drawing.Point(565, 789);
+            descriptionLabel1.Name = "descriptionLabel1";
+            descriptionLabel1.Size = new System.Drawing.Size(94, 32);
+            descriptionLabel1.TabIndex = 6;
+            descriptionLabel1.Text = "說明:";
+            // 
+            // donateProject_idLabel2
+            // 
+            donateProject_idLabel2.AutoSize = true;
+            donateProject_idLabel2.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            donateProject_idLabel2.Location = new System.Drawing.Point(533, 668);
+            donateProject_idLabel2.Name = "donateProject_idLabel2";
+            donateProject_idLabel2.Size = new System.Drawing.Size(190, 32);
+            donateProject_idLabel2.TabIndex = 17;
+            donateProject_idLabel2.Text = "所屬募資id:";
+            // 
+            // donatePlan_idLabel
+            // 
+            donatePlan_idLabel.AutoSize = true;
+            donatePlan_idLabel.Location = new System.Drawing.Point(1358, 50);
+            donatePlan_idLabel.Name = "donatePlan_idLabel";
+            donatePlan_idLabel.Size = new System.Drawing.Size(144, 24);
+            donatePlan_idLabel.TabIndex = 18;
+            donatePlan_idLabel.Text = "donate Plan id:";
+            donatePlan_idLabel.Visible = false;
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -339,10 +427,28 @@
             this.tabPage2.Text = "donateProjects";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // txtProjectId
+            // 
+            this.txtProjectId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateProjectsBindingSource, "donateProject_id", true));
+            this.txtProjectId.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtProjectId.Location = new System.Drawing.Point(206, 243);
+            this.txtProjectId.Name = "txtProjectId";
+            this.txtProjectId.Size = new System.Drawing.Size(295, 39);
+            this.txtProjectId.TabIndex = 30;
+            // 
             // donateProjectsBindingSource
             // 
             this.donateProjectsBindingSource.DataMember = "donateProjects";
             this.donateProjectsBindingSource.DataSource = this.teamA_ProjectDataSet;
+            // 
+            // txtCategoryId
+            // 
+            this.txtCategoryId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateProjectsBindingSource, "donateCategories_id", true));
+            this.txtCategoryId.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtCategoryId.Location = new System.Drawing.Point(206, 327);
+            this.txtCategoryId.Name = "txtCategoryId";
+            this.txtCategoryId.Size = new System.Drawing.Size(295, 39);
+            this.txtCategoryId.TabIndex = 29;
             // 
             // txtTitle
             // 
@@ -466,6 +572,150 @@
             this.label2.Text = "募資項目管理";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.AutoScroll = true;
+            this.tabPage3.Controls.Add(donatePlan_idLabel);
+            this.tabPage3.Controls.Add(this.txtPlanId);
+            this.tabPage3.Controls.Add(donateProject_idLabel2);
+            this.tabPage3.Controls.Add(this.comboBoxProject);
+            this.tabPage3.Controls.Add(this.button5);
+            this.tabPage3.Controls.Add(this.button6);
+            this.tabPage3.Controls.Add(this.button7);
+            this.tabPage3.Controls.Add(this.button8);
+            this.tabPage3.Controls.Add(descriptionLabel1);
+            this.tabPage3.Controls.Add(this.descriptionTextBox);
+            this.tabPage3.Controls.Add(priceLabel);
+            this.tabPage3.Controls.Add(this.txtPrice);
+            this.tabPage3.Controls.Add(titleLabel1);
+            this.tabPage3.Controls.Add(this.titleTextBox);
+            this.tabPage3.Controls.Add(this.dataGridView3);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Location = new System.Drawing.Point(8, 39);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1656, 1049);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "donatePlans";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // txtPlanId
+            // 
+            this.txtPlanId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donatePlansBindingSource, "donatePlan_id", true));
+            this.txtPlanId.Location = new System.Drawing.Point(1508, 47);
+            this.txtPlanId.Name = "txtPlanId";
+            this.txtPlanId.Size = new System.Drawing.Size(100, 36);
+            this.txtPlanId.TabIndex = 19;
+            this.txtPlanId.Visible = false;
+            // 
+            // donatePlansBindingSource
+            // 
+            this.donatePlansBindingSource.DataMember = "donatePlans";
+            this.donatePlansBindingSource.DataSource = this.teamA_ProjectDataSet;
+            // 
+            // comboBoxProject
+            // 
+            this.comboBoxProject.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donatePlansBindingSource, "donateProject_id", true));
+            this.comboBoxProject.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboBoxProject.FormattingEnabled = true;
+            this.comboBoxProject.Location = new System.Drawing.Point(732, 665);
+            this.comboBoxProject.Name = "comboBoxProject";
+            this.comboBoxProject.Size = new System.Drawing.Size(333, 40);
+            this.comboBoxProject.TabIndex = 18;
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button5.Location = new System.Drawing.Point(1221, 849);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(256, 96);
+            this.button5.TabIndex = 17;
+            this.button5.Text = "讀取";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button6.Location = new System.Drawing.Point(878, 849);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(256, 96);
+            this.button6.TabIndex = 16;
+            this.button6.Text = "刪除";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.PlDelete_Click);
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button7.Location = new System.Drawing.Point(533, 849);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(256, 96);
+            this.button7.TabIndex = 15;
+            this.button7.Text = "更新";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.PlUpdate_Click);
+            // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button8.Location = new System.Drawing.Point(194, 849);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(256, 96);
+            this.button8.TabIndex = 14;
+            this.button8.Text = "新增";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.PlCreate_Click);
+            // 
+            // descriptionTextBox
+            // 
+            this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donatePlansBindingSource, "description", true));
+            this.descriptionTextBox.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.descriptionTextBox.Location = new System.Drawing.Point(732, 782);
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(333, 39);
+            this.descriptionTextBox.TabIndex = 7;
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donatePlansBindingSource, "price", true));
+            this.txtPrice.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtPrice.Location = new System.Drawing.Point(732, 725);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(333, 39);
+            this.txtPrice.TabIndex = 5;
+            // 
+            // titleTextBox
+            // 
+            this.titleTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donatePlansBindingSource, "title", true));
+            this.titleTextBox.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.titleTextBox.Location = new System.Drawing.Point(732, 602);
+            this.titleTextBox.Name = "titleTextBox";
+            this.titleTextBox.Size = new System.Drawing.Size(333, 39);
+            this.titleTextBox.TabIndex = 4;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(75, 178);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowHeadersWidth = 82;
+            this.dataGridView3.RowTemplate.Height = 38;
+            this.dataGridView3.Size = new System.Drawing.Size(1502, 398);
+            this.dataGridView3.TabIndex = 3;
+            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("華康新特圓體", 28.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label3.Location = new System.Drawing.Point(577, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(488, 75);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "募資方案管理";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // donateCategoriesTableAdapter
             // 
             this.donateCategoriesTableAdapter.ClearBeforeFill = true;
@@ -510,33 +760,9 @@
             // 
             this.donateProjectsTableAdapter.ClearBeforeFill = true;
             // 
-            // txtCategoryId
+            // donatePlansTableAdapter
             // 
-            this.txtCategoryId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateProjectsBindingSource, "donateCategories_id", true));
-            this.txtCategoryId.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCategoryId.Location = new System.Drawing.Point(206, 327);
-            this.txtCategoryId.Name = "txtCategoryId";
-            this.txtCategoryId.Size = new System.Drawing.Size(295, 39);
-            this.txtCategoryId.TabIndex = 29;
-            // 
-            // donateProject_idLabel
-            // 
-            donateProject_idLabel.AutoSize = true;
-            donateProject_idLabel.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            donateProject_idLabel.Location = new System.Drawing.Point(37, 243);
-            donateProject_idLabel.Name = "donateProject_idLabel";
-            donateProject_idLabel.Size = new System.Drawing.Size(126, 32);
-            donateProject_idLabel.TabIndex = 29;
-            donateProject_idLabel.Text = "募資id:";
-            // 
-            // txtProjectId
-            // 
-            this.txtProjectId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateProjectsBindingSource, "donateProject_id", true));
-            this.txtProjectId.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtProjectId.Location = new System.Drawing.Point(206, 243);
-            this.txtProjectId.Name = "txtProjectId";
-            this.txtProjectId.Size = new System.Drawing.Size(295, 39);
-            this.txtProjectId.TabIndex = 30;
+            this.donatePlansTableAdapter.ClearBeforeFill = true;
             // 
             // FundControl
             // 
@@ -556,6 +782,10 @@
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donateProjectsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.donatePlansBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -593,5 +823,19 @@
         private TeamA_ProjectDataSetTableAdapters.donateProjectsTableAdapter donateProjectsTableAdapter;
         private System.Windows.Forms.TextBox txtCategoryId;
         private System.Windows.Forms.TextBox txtProjectId;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TextBox descriptionTextBox;
+        private System.Windows.Forms.BindingSource donatePlansBindingSource;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.TextBox titleTextBox;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Label label3;
+        private TeamA_ProjectDataSetTableAdapters.donatePlansTableAdapter donatePlansTableAdapter;
+        private System.Windows.Forms.ComboBox comboBoxProject;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TextBox txtPlanId;
     }
 }
