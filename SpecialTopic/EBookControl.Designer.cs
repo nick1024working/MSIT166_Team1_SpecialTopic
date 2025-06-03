@@ -48,6 +48,7 @@ namespace SpecialTopic
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnViewOrders = new System.Windows.Forms.Button();
             this.btnPurchasedBooks = new System.Windows.Forms.Button();
+            this.btnReload = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             this.SuspendLayout();
@@ -117,7 +118,7 @@ namespace SpecialTopic
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(166, 36);
             this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "新增編輯書";
+            this.btnEdit.Text = "新增編輯刪書";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -125,7 +126,7 @@ namespace SpecialTopic
             // 
             this.txtSearch.Location = new System.Drawing.Point(1129, 56);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(195, 31);
+            this.txtSearch.Size = new System.Drawing.Size(195, 26);
             this.txtSearch.TabIndex = 7;
             // 
             // btnSearch
@@ -154,13 +155,24 @@ namespace SpecialTopic
             this.btnPurchasedBooks.Name = "btnPurchasedBooks";
             this.btnPurchasedBooks.Size = new System.Drawing.Size(112, 33);
             this.btnPurchasedBooks.TabIndex = 11;
-            this.btnPurchasedBooks.Text = "button3";
+            this.btnPurchasedBooks.Text = "已購買書籍";
             this.btnPurchasedBooks.UseVisualStyleBackColor = true;
+            // 
+            // btnReload
+            // 
+            this.btnReload.Location = new System.Drawing.Point(94, 260);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(114, 31);
+            this.btnReload.TabIndex = 12;
+            this.btnReload.Text = "重新載入";
+            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // EBookControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnPurchasedBooks);
             this.Controls.Add(this.btnViewOrders);
             this.Controls.Add(this.btnSearch);
@@ -197,5 +209,6 @@ namespace SpecialTopic
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnViewOrders;
         private Button btnPurchasedBooks;
+        private Button btnReload;
     }
 }

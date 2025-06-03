@@ -270,7 +270,18 @@ namespace SpecialTopic.eBook.eBookCode
 
                 // 複製檔案到目標資料夾
                 string destPath = Path.Combine(destFolder, fileName);
-                File.Copy(selectedFullPath, destPath, true); // 覆蓋已存在的
+
+                // ✅ 新增：判斷來源與目標路徑是否相同（避免無謂複製或死循環）
+                bool isSamePath = string.Equals(
+                    Path.GetFullPath(selectedFullPath),
+                    Path.GetFullPath(destPath),
+                    StringComparison.OrdinalIgnoreCase);
+
+                // 如果不是相同路徑，就執行複製（避免複製自己到自己造成異常）
+                if (!isSamePath)
+                {
+                    File.Copy(selectedFullPath, destPath, true); // 覆蓋已存在的
+                }
 
                 // 相對路徑存入 TextBox，例如：eBookFiles\book1.pdf
                 string relativePath = Path.Combine(relativeFolder, fileName);

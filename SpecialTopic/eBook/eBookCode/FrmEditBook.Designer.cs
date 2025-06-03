@@ -205,205 +205,205 @@
             ebookIDLabel.AutoSize = true;
             ebookIDLabel.Location = new System.Drawing.Point(136, 66);
             ebookIDLabel.Name = "ebookIDLabel";
-            ebookIDLabel.Size = new System.Drawing.Size(109, 23);
+            ebookIDLabel.Size = new System.Drawing.Size(117, 19);
             ebookIDLabel.TabIndex = 1;
-            ebookIDLabel.Text = "ebook ID:";
+            ebookIDLabel.Text = "ebook ID(N):";
             // 
             // ebookNameLabel
             // 
             ebookNameLabel.AutoSize = true;
             ebookNameLabel.Location = new System.Drawing.Point(136, 103);
             ebookNameLabel.Name = "ebookNameLabel";
-            ebookNameLabel.Size = new System.Drawing.Size(131, 23);
+            ebookNameLabel.Size = new System.Drawing.Size(135, 19);
             ebookNameLabel.TabIndex = 3;
-            ebookNameLabel.Text = "ebook Name:";
+            ebookNameLabel.Text = "ebook Name(N):";
             // 
             // eBookClass1Label
             // 
             eBookClass1Label.AutoSize = true;
             eBookClass1Label.Location = new System.Drawing.Point(136, 140);
             eBookClass1Label.Name = "eBookClass1Label";
-            eBookClass1Label.Size = new System.Drawing.Size(164, 23);
+            eBookClass1Label.Size = new System.Drawing.Size(162, 19);
             eBookClass1Label.TabIndex = 5;
-            eBookClass1Label.Text = "e Book Class1:";
+            eBookClass1Label.Text = "e Book Class1(N):";
             // 
             // eBookClass2Label
             // 
             eBookClass2Label.AutoSize = true;
             eBookClass2Label.Location = new System.Drawing.Point(136, 177);
             eBookClass2Label.Name = "eBookClass2Label";
-            eBookClass2Label.Size = new System.Drawing.Size(164, 23);
+            eBookClass2Label.Size = new System.Drawing.Size(162, 19);
             eBookClass2Label.TabIndex = 7;
-            eBookClass2Label.Text = "e Book Class2:";
+            eBookClass2Label.Text = "e Book Class2(N):";
             // 
             // eBookTypeLabel
             // 
             eBookTypeLabel.AutoSize = true;
             eBookTypeLabel.Location = new System.Drawing.Point(136, 214);
             eBookTypeLabel.Name = "eBookTypeLabel";
-            eBookTypeLabel.Size = new System.Drawing.Size(142, 23);
+            eBookTypeLabel.Size = new System.Drawing.Size(144, 19);
             eBookTypeLabel.TabIndex = 9;
-            eBookTypeLabel.Text = "e Book Type:";
+            eBookTypeLabel.Text = "e Book Type(Y):";
             // 
             // authorLabel
             // 
             authorLabel.AutoSize = true;
             authorLabel.Location = new System.Drawing.Point(136, 251);
             authorLabel.Name = "authorLabel";
-            authorLabel.Size = new System.Drawing.Size(87, 23);
+            authorLabel.Size = new System.Drawing.Size(99, 19);
             authorLabel.TabIndex = 11;
-            authorLabel.Text = "author:";
+            authorLabel.Text = "author(N):";
             // 
             // publisherLabel
             // 
             publisherLabel.AutoSize = true;
             publisherLabel.Location = new System.Drawing.Point(136, 288);
             publisherLabel.Name = "publisherLabel";
-            publisherLabel.Size = new System.Drawing.Size(120, 23);
+            publisherLabel.Size = new System.Drawing.Size(126, 19);
             publisherLabel.TabIndex = 13;
-            publisherLabel.Text = "publisher:";
+            publisherLabel.Text = "publisher(Y):";
             // 
             // publishedDateLabel
             // 
             publishedDateLabel.AutoSize = true;
             publishedDateLabel.Location = new System.Drawing.Point(136, 326);
             publishedDateLabel.Name = "publishedDateLabel";
-            publishedDateLabel.Size = new System.Drawing.Size(175, 23);
+            publishedDateLabel.Size = new System.Drawing.Size(171, 19);
             publishedDateLabel.TabIndex = 15;
-            publishedDateLabel.Text = "published Date:";
+            publishedDateLabel.Text = "published Date(Y):";
             // 
             // translatorLabel
             // 
             translatorLabel.AutoSize = true;
             translatorLabel.Location = new System.Drawing.Point(136, 362);
             translatorLabel.Name = "translatorLabel";
-            translatorLabel.Size = new System.Drawing.Size(131, 23);
+            translatorLabel.Size = new System.Drawing.Size(135, 19);
             translatorLabel.TabIndex = 17;
-            translatorLabel.Text = "translator:";
+            translatorLabel.Text = "translator(Y):";
             // 
             // languageLabel
             // 
             languageLabel.AutoSize = true;
             languageLabel.Location = new System.Drawing.Point(136, 399);
             languageLabel.Name = "languageLabel";
-            languageLabel.Size = new System.Drawing.Size(109, 23);
+            languageLabel.Size = new System.Drawing.Size(117, 19);
             languageLabel.TabIndex = 19;
-            languageLabel.Text = "language:";
+            languageLabel.Text = "language(Y):";
             // 
             // iSBNLabel
             // 
             iSBNLabel.AutoSize = true;
             iSBNLabel.Location = new System.Drawing.Point(136, 436);
             iSBNLabel.Name = "iSBNLabel";
-            iSBNLabel.Size = new System.Drawing.Size(65, 23);
+            iSBNLabel.Size = new System.Drawing.Size(81, 19);
             iSBNLabel.TabIndex = 21;
-            iSBNLabel.Text = "ISBN:";
+            iSBNLabel.Text = "ISBN(Y):";
             // 
             // eISBNLabel
             // 
             eISBNLabel.AutoSize = true;
             eISBNLabel.Location = new System.Drawing.Point(136, 473);
             eISBNLabel.Name = "eISBNLabel";
-            eISBNLabel.Size = new System.Drawing.Size(76, 23);
+            eISBNLabel.Size = new System.Drawing.Size(90, 19);
             eISBNLabel.TabIndex = 23;
-            eISBNLabel.Text = "EISBN:";
+            eISBNLabel.Text = "EISBN(Y):";
             // 
             // publishedCountryLabel
             // 
             publishedCountryLabel.AutoSize = true;
             publishedCountryLabel.Location = new System.Drawing.Point(136, 510);
             publishedCountryLabel.Name = "publishedCountryLabel";
-            publishedCountryLabel.Size = new System.Drawing.Size(208, 23);
+            publishedCountryLabel.Size = new System.Drawing.Size(198, 19);
             publishedCountryLabel.TabIndex = 25;
-            publishedCountryLabel.Text = "published Country:";
+            publishedCountryLabel.Text = "published Country(Y):";
             // 
             // cEpisodeLabel
             // 
             cEpisodeLabel.AutoSize = true;
             cEpisodeLabel.Location = new System.Drawing.Point(136, 547);
             cEpisodeLabel.Name = "cEpisodeLabel";
-            cEpisodeLabel.Size = new System.Drawing.Size(120, 23);
+            cEpisodeLabel.Size = new System.Drawing.Size(126, 19);
             cEpisodeLabel.TabIndex = 27;
-            cEpisodeLabel.Text = "c Episode:";
+            cEpisodeLabel.Text = "c Episode(N):";
             // 
             // totalEpisodeLabel
             // 
             totalEpisodeLabel.AutoSize = true;
             totalEpisodeLabel.Location = new System.Drawing.Point(136, 584);
             totalEpisodeLabel.Name = "totalEpisodeLabel";
-            totalEpisodeLabel.Size = new System.Drawing.Size(164, 23);
+            totalEpisodeLabel.Size = new System.Drawing.Size(162, 19);
             totalEpisodeLabel.TabIndex = 29;
-            totalEpisodeLabel.Text = "Total Episode:";
+            totalEpisodeLabel.Text = "Total Episode(N):";
             // 
             // eBookPositionLabel
             // 
             eBookPositionLabel.AutoSize = true;
             eBookPositionLabel.Location = new System.Drawing.Point(136, 621);
             eBookPositionLabel.Name = "eBookPositionLabel";
-            eBookPositionLabel.Size = new System.Drawing.Size(186, 23);
+            eBookPositionLabel.Size = new System.Drawing.Size(180, 19);
             eBookPositionLabel.TabIndex = 31;
-            eBookPositionLabel.Text = "e Book Position:";
+            eBookPositionLabel.Text = "e Book Position(N):";
             // 
             // eBookDataTypeLabel
             // 
             eBookDataTypeLabel.AutoSize = true;
             eBookDataTypeLabel.Location = new System.Drawing.Point(136, 658);
             eBookDataTypeLabel.Name = "eBookDataTypeLabel";
-            eBookDataTypeLabel.Size = new System.Drawing.Size(197, 23);
+            eBookDataTypeLabel.Size = new System.Drawing.Size(189, 19);
             eBookDataTypeLabel.TabIndex = 33;
-            eBookDataTypeLabel.Text = "e Book Data Type:";
+            eBookDataTypeLabel.Text = "e Book Data Type(N):";
             // 
             // eBookLabel1Label
             // 
             eBookLabel1Label.AutoSize = true;
             eBookLabel1Label.Location = new System.Drawing.Point(136, 695);
             eBookLabel1Label.Name = "eBookLabel1Label";
-            eBookLabel1Label.Size = new System.Drawing.Size(164, 23);
+            eBookLabel1Label.Size = new System.Drawing.Size(162, 19);
             eBookLabel1Label.TabIndex = 35;
-            eBookLabel1Label.Text = "e Book Label1:";
+            eBookLabel1Label.Text = "e Book Label1(Y):";
             // 
             // eBookLabel2Label
             // 
             eBookLabel2Label.AutoSize = true;
             eBookLabel2Label.Location = new System.Drawing.Point(136, 732);
             eBookLabel2Label.Name = "eBookLabel2Label";
-            eBookLabel2Label.Size = new System.Drawing.Size(164, 23);
+            eBookLabel2Label.Size = new System.Drawing.Size(162, 19);
             eBookLabel2Label.TabIndex = 37;
-            eBookLabel2Label.Text = "e Book Label2:";
+            eBookLabel2Label.Text = "e Book Label2(Y):";
             // 
             // eBookLabel3Label
             // 
             eBookLabel3Label.AutoSize = true;
             eBookLabel3Label.Location = new System.Drawing.Point(136, 769);
             eBookLabel3Label.Name = "eBookLabel3Label";
-            eBookLabel3Label.Size = new System.Drawing.Size(164, 23);
+            eBookLabel3Label.Size = new System.Drawing.Size(162, 19);
             eBookLabel3Label.TabIndex = 39;
-            eBookLabel3Label.Text = "e Book Label3:";
+            eBookLabel3Label.Text = "e Book Label3(Y):";
             // 
             // eBookLabel4Label
             // 
             eBookLabel4Label.AutoSize = true;
             eBookLabel4Label.Location = new System.Drawing.Point(136, 806);
             eBookLabel4Label.Name = "eBookLabel4Label";
-            eBookLabel4Label.Size = new System.Drawing.Size(164, 23);
+            eBookLabel4Label.Size = new System.Drawing.Size(162, 19);
             eBookLabel4Label.TabIndex = 41;
-            eBookLabel4Label.Text = "e Book Label4:";
+            eBookLabel4Label.Text = "e Book Label4(Y):";
             // 
             // eBookLabel5Label
             // 
             eBookLabel5Label.AutoSize = true;
             eBookLabel5Label.Location = new System.Drawing.Point(136, 843);
             eBookLabel5Label.Name = "eBookLabel5Label";
-            eBookLabel5Label.Size = new System.Drawing.Size(164, 23);
+            eBookLabel5Label.Size = new System.Drawing.Size(162, 19);
             eBookLabel5Label.TabIndex = 43;
-            eBookLabel5Label.Text = "e Book Label5:";
+            eBookLabel5Label.Text = "e Book Label5(Y):";
             // 
             // cover1Label
             // 
             cover1Label.AutoSize = true;
             cover1Label.Location = new System.Drawing.Point(545, 66);
             cover1Label.Name = "cover1Label";
-            cover1Label.Size = new System.Drawing.Size(87, 23);
+            cover1Label.Size = new System.Drawing.Size(72, 19);
             cover1Label.TabIndex = 45;
             cover1Label.Text = "cover1:";
             // 
@@ -412,7 +412,7 @@
             cover2Label.AutoSize = true;
             cover2Label.Location = new System.Drawing.Point(545, 266);
             cover2Label.Name = "cover2Label";
-            cover2Label.Size = new System.Drawing.Size(87, 23);
+            cover2Label.Size = new System.Drawing.Size(72, 19);
             cover2Label.TabIndex = 47;
             cover2Label.Text = "cover2:";
             // 
@@ -421,7 +421,7 @@
             cover3Label.AutoSize = true;
             cover3Label.Location = new System.Drawing.Point(556, 436);
             cover3Label.Name = "cover3Label";
-            cover3Label.Size = new System.Drawing.Size(87, 23);
+            cover3Label.Size = new System.Drawing.Size(72, 19);
             cover3Label.TabIndex = 49;
             cover3Label.Text = "cover3:";
             // 
@@ -430,7 +430,7 @@
             cover4Label.AutoSize = true;
             cover4Label.Location = new System.Drawing.Point(556, 600);
             cover4Label.Name = "cover4Label";
-            cover4Label.Size = new System.Drawing.Size(87, 23);
+            cover4Label.Size = new System.Drawing.Size(72, 19);
             cover4Label.TabIndex = 51;
             cover4Label.Text = "cover4:";
             // 
@@ -439,7 +439,7 @@
             cover5Label.AutoSize = true;
             cover5Label.Location = new System.Drawing.Point(827, 71);
             cover5Label.Name = "cover5Label";
-            cover5Label.Size = new System.Drawing.Size(87, 23);
+            cover5Label.Size = new System.Drawing.Size(72, 19);
             cover5Label.TabIndex = 53;
             cover5Label.Text = "cover5:";
             // 
@@ -448,7 +448,7 @@
             cover6Label.AutoSize = true;
             cover6Label.Location = new System.Drawing.Point(827, 306);
             cover6Label.Name = "cover6Label";
-            cover6Label.Size = new System.Drawing.Size(87, 23);
+            cover6Label.Size = new System.Drawing.Size(72, 19);
             cover6Label.TabIndex = 55;
             cover6Label.Text = "cover6:";
             // 
@@ -457,7 +457,7 @@
             cover7Label.AutoSize = true;
             cover7Label.Location = new System.Drawing.Point(827, 470);
             cover7Label.Name = "cover7Label";
-            cover7Label.Size = new System.Drawing.Size(87, 23);
+            cover7Label.Size = new System.Drawing.Size(72, 19);
             cover7Label.TabIndex = 57;
             cover7Label.Text = "cover7:";
             // 
@@ -466,7 +466,7 @@
             cover8Label.AutoSize = true;
             cover8Label.Location = new System.Drawing.Point(827, 626);
             cover8Label.Name = "cover8Label";
-            cover8Label.Size = new System.Drawing.Size(87, 23);
+            cover8Label.Size = new System.Drawing.Size(72, 19);
             cover8Label.TabIndex = 59;
             cover8Label.Text = "cover8:";
             // 
@@ -475,7 +475,7 @@
             cover9Label.AutoSize = true;
             cover9Label.Location = new System.Drawing.Point(733, 737);
             cover9Label.Name = "cover9Label";
-            cover9Label.Size = new System.Drawing.Size(87, 23);
+            cover9Label.Size = new System.Drawing.Size(72, 19);
             cover9Label.TabIndex = 61;
             cover9Label.Text = "cover9:";
             // 
@@ -484,135 +484,135 @@
             fixedPriceLabel.AutoSize = true;
             fixedPriceLabel.Location = new System.Drawing.Point(136, 899);
             fixedPriceLabel.Name = "fixedPriceLabel";
-            fixedPriceLabel.Size = new System.Drawing.Size(142, 23);
+            fixedPriceLabel.Size = new System.Drawing.Size(144, 19);
             fixedPriceLabel.TabIndex = 63;
-            fixedPriceLabel.Text = "fixed Price:";
+            fixedPriceLabel.Text = "fixed Price(N):";
             // 
             // actualPriceLabel
             // 
             actualPriceLabel.AutoSize = true;
             actualPriceLabel.Location = new System.Drawing.Point(136, 936);
             actualPriceLabel.Name = "actualPriceLabel";
-            actualPriceLabel.Size = new System.Drawing.Size(153, 23);
+            actualPriceLabel.Size = new System.Drawing.Size(153, 19);
             actualPriceLabel.TabIndex = 65;
-            actualPriceLabel.Text = "actual Price:";
+            actualPriceLabel.Text = "actual Price(Y):";
             // 
             // couponcodeLabel
             // 
             couponcodeLabel.AutoSize = true;
             couponcodeLabel.Location = new System.Drawing.Point(136, 973);
             couponcodeLabel.Name = "couponcodeLabel";
-            couponcodeLabel.Size = new System.Drawing.Size(131, 23);
+            couponcodeLabel.Size = new System.Drawing.Size(135, 19);
             couponcodeLabel.TabIndex = 67;
-            couponcodeLabel.Text = "couponcode:";
+            couponcodeLabel.Text = "couponcode(Y):";
             // 
             // discountLabel
             // 
             discountLabel.AutoSize = true;
             discountLabel.Location = new System.Drawing.Point(136, 1010);
             discountLabel.Name = "discountLabel";
-            discountLabel.Size = new System.Drawing.Size(109, 23);
+            discountLabel.Size = new System.Drawing.Size(117, 19);
             discountLabel.TabIndex = 69;
-            discountLabel.Text = "discount:";
+            discountLabel.Text = "discount(Y):";
             // 
             // purchaseCountryLabel
             // 
             purchaseCountryLabel.AutoSize = true;
             purchaseCountryLabel.Location = new System.Drawing.Point(136, 1047);
             purchaseCountryLabel.Name = "purchaseCountryLabel";
-            purchaseCountryLabel.Size = new System.Drawing.Size(197, 23);
+            purchaseCountryLabel.Size = new System.Drawing.Size(189, 19);
             purchaseCountryLabel.TabIndex = 71;
-            purchaseCountryLabel.Text = "purchase Country:";
+            purchaseCountryLabel.Text = "purchase Country(Y):";
             // 
             // cumulativesalesLabel
             // 
             cumulativesalesLabel.AutoSize = true;
             cumulativesalesLabel.Location = new System.Drawing.Point(136, 1084);
             cumulativesalesLabel.Name = "cumulativesalesLabel";
-            cumulativesalesLabel.Size = new System.Drawing.Size(186, 23);
+            cumulativesalesLabel.Size = new System.Drawing.Size(180, 19);
             cumulativesalesLabel.TabIndex = 73;
-            cumulativesalesLabel.Text = "cumulativesales:";
+            cumulativesalesLabel.Text = "cumulativesales(Y):";
             // 
             // bookDescriptionLabel
             // 
             bookDescriptionLabel.AutoSize = true;
             bookDescriptionLabel.Location = new System.Drawing.Point(39, 1121);
             bookDescriptionLabel.Name = "bookDescriptionLabel";
-            bookDescriptionLabel.Size = new System.Drawing.Size(197, 23);
+            bookDescriptionLabel.Size = new System.Drawing.Size(189, 19);
             bookDescriptionLabel.TabIndex = 75;
-            bookDescriptionLabel.Text = "book Description:";
+            bookDescriptionLabel.Text = "book Description(Y):";
             // 
             // weeksalesLabel
             // 
             weeksalesLabel.AutoSize = true;
             weeksalesLabel.Location = new System.Drawing.Point(634, 879);
             weeksalesLabel.Name = "weeksalesLabel";
-            weeksalesLabel.Size = new System.Drawing.Size(120, 23);
+            weeksalesLabel.Size = new System.Drawing.Size(126, 19);
             weeksalesLabel.TabIndex = 77;
-            weeksalesLabel.Text = "weeksales:";
+            weeksalesLabel.Text = "weeksales(N):";
             // 
             // monthsalesLabel
             // 
             monthsalesLabel.AutoSize = true;
             monthsalesLabel.Location = new System.Drawing.Point(634, 928);
             monthsalesLabel.Name = "monthsalesLabel";
-            monthsalesLabel.Size = new System.Drawing.Size(131, 23);
+            monthsalesLabel.Size = new System.Drawing.Size(135, 19);
             monthsalesLabel.TabIndex = 79;
-            monthsalesLabel.Text = "monthsales:";
+            monthsalesLabel.Text = "monthsales(N):";
             // 
             // totalsalesLabel
             // 
             totalsalesLabel.AutoSize = true;
             totalsalesLabel.Location = new System.Drawing.Point(634, 960);
             totalsalesLabel.Name = "totalsalesLabel";
-            totalsalesLabel.Size = new System.Drawing.Size(131, 23);
+            totalsalesLabel.Size = new System.Drawing.Size(135, 19);
             totalsalesLabel.TabIndex = 81;
-            totalsalesLabel.Text = "totalsales:";
+            totalsalesLabel.Text = "totalsales(N):";
             // 
             // weekviewsLabel
             // 
             weekviewsLabel.AutoSize = true;
             weekviewsLabel.Location = new System.Drawing.Point(634, 994);
             weekviewsLabel.Name = "weekviewsLabel";
-            weekviewsLabel.Size = new System.Drawing.Size(120, 23);
+            weekviewsLabel.Size = new System.Drawing.Size(126, 19);
             weekviewsLabel.TabIndex = 83;
-            weekviewsLabel.Text = "weekviews:";
+            weekviewsLabel.Text = "weekviews(N):";
             // 
             // monthviewsLabel
             // 
             monthviewsLabel.AutoSize = true;
             monthviewsLabel.Location = new System.Drawing.Point(634, 1031);
             monthviewsLabel.Name = "monthviewsLabel";
-            monthviewsLabel.Size = new System.Drawing.Size(131, 23);
+            monthviewsLabel.Size = new System.Drawing.Size(135, 19);
             monthviewsLabel.TabIndex = 85;
-            monthviewsLabel.Text = "monthviews:";
+            monthviewsLabel.Text = "monthviews(N):";
             // 
             // totalviewsLabel
             // 
             totalviewsLabel.AutoSize = true;
             totalviewsLabel.Location = new System.Drawing.Point(634, 1076);
             totalviewsLabel.Name = "totalviewsLabel";
-            totalviewsLabel.Size = new System.Drawing.Size(131, 23);
+            totalviewsLabel.Size = new System.Drawing.Size(135, 19);
             totalviewsLabel.TabIndex = 87;
-            totalviewsLabel.Text = "totalviews:";
+            totalviewsLabel.Text = "totalviews(N):";
             // 
             // maturityRatingLabel
             // 
             maturityRatingLabel.AutoSize = true;
             maturityRatingLabel.Location = new System.Drawing.Point(609, 1109);
             maturityRatingLabel.Name = "maturityRatingLabel";
-            maturityRatingLabel.Size = new System.Drawing.Size(186, 23);
+            maturityRatingLabel.Size = new System.Drawing.Size(180, 19);
             maturityRatingLabel.TabIndex = 89;
-            maturityRatingLabel.Text = "maturity Rating:";
+            maturityRatingLabel.Text = "maturity Rating(N):";
             // 
             // isAvailableLabel
             // 
             isAvailableLabel.AutoSize = true;
             isAvailableLabel.Location = new System.Drawing.Point(622, 1154);
             isAvailableLabel.Name = "isAvailableLabel";
-            isAvailableLabel.Size = new System.Drawing.Size(153, 23);
+            isAvailableLabel.Size = new System.Drawing.Size(153, 19);
             isAvailableLabel.TabIndex = 91;
-            isAvailableLabel.Text = "is Available:";
+            isAvailableLabel.Text = "is Available(N):";
             // 
             // teamA_ProjectDataSet
             // 
@@ -691,7 +691,7 @@
             this.eBookMainTableBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.eBookMainTableBindingNavigator.Name = "eBookMainTableBindingNavigator";
             this.eBookMainTableBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.eBookMainTableBindingNavigator.Size = new System.Drawing.Size(1121, 35);
+            this.eBookMainTableBindingNavigator.Size = new System.Drawing.Size(1109, 35);
             this.eBookMainTableBindingNavigator.TabIndex = 0;
             this.eBookMainTableBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -701,13 +701,13 @@
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(29, 32);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(24, 32);
             this.bindingNavigatorAddNewItem.Text = "加入新的";
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(50, 32);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(27, 32);
             this.bindingNavigatorCountItem.Text = "/{0}";
             this.bindingNavigatorCountItem.ToolTipText = "項目總數";
             // 
@@ -717,7 +717,7 @@
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(29, 32);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(24, 32);
             this.bindingNavigatorDeleteItem.Text = "刪除";
             // 
             // bindingNavigatorMoveFirstItem
@@ -726,7 +726,7 @@
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 32);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(24, 32);
             this.bindingNavigatorMoveFirstItem.Text = "移到最前面";
             // 
             // bindingNavigatorMovePreviousItem
@@ -735,7 +735,7 @@
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 32);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(24, 32);
             this.bindingNavigatorMovePreviousItem.Text = "移到上一個";
             // 
             // bindingNavigatorSeparator
@@ -764,7 +764,7 @@
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 32);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(24, 32);
             this.bindingNavigatorMoveNextItem.Text = "移到下一個";
             // 
             // bindingNavigatorMoveLastItem
@@ -773,7 +773,7 @@
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 32);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(24, 32);
             this.bindingNavigatorMoveLastItem.Text = "移到最後面";
             // 
             // bindingNavigatorSeparator2
@@ -786,7 +786,7 @@
             this.eBookMainTableBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.eBookMainTableBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("eBookMainTableBindingNavigatorSaveItem.Image")));
             this.eBookMainTableBindingNavigatorSaveItem.Name = "eBookMainTableBindingNavigatorSaveItem";
-            this.eBookMainTableBindingNavigatorSaveItem.Size = new System.Drawing.Size(29, 32);
+            this.eBookMainTableBindingNavigatorSaveItem.Size = new System.Drawing.Size(24, 32);
             this.eBookMainTableBindingNavigatorSaveItem.Text = "儲存資料";
             this.eBookMainTableBindingNavigatorSaveItem.Click += new System.EventHandler(this.eBookMainTableBindingNavigatorSaveItem_Click_1);
             // 
@@ -795,7 +795,7 @@
             this.ebookIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "ebookID", true));
             this.ebookIDTextBox.Location = new System.Drawing.Point(350, 63);
             this.ebookIDTextBox.Name = "ebookIDTextBox";
-            this.ebookIDTextBox.Size = new System.Drawing.Size(200, 31);
+            this.ebookIDTextBox.Size = new System.Drawing.Size(200, 26);
             this.ebookIDTextBox.TabIndex = 2;
             // 
             // ebookNameTextBox
@@ -803,7 +803,7 @@
             this.ebookNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "ebookName", true));
             this.ebookNameTextBox.Location = new System.Drawing.Point(350, 100);
             this.ebookNameTextBox.Name = "ebookNameTextBox";
-            this.ebookNameTextBox.Size = new System.Drawing.Size(200, 31);
+            this.ebookNameTextBox.Size = new System.Drawing.Size(200, 26);
             this.ebookNameTextBox.TabIndex = 4;
             // 
             // eBookClass1TextBox
@@ -811,7 +811,7 @@
             this.eBookClass1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookClass1", true));
             this.eBookClass1TextBox.Location = new System.Drawing.Point(350, 137);
             this.eBookClass1TextBox.Name = "eBookClass1TextBox";
-            this.eBookClass1TextBox.Size = new System.Drawing.Size(200, 31);
+            this.eBookClass1TextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookClass1TextBox.TabIndex = 6;
             // 
             // eBookClass2TextBox
@@ -819,7 +819,7 @@
             this.eBookClass2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookClass2", true));
             this.eBookClass2TextBox.Location = new System.Drawing.Point(350, 174);
             this.eBookClass2TextBox.Name = "eBookClass2TextBox";
-            this.eBookClass2TextBox.Size = new System.Drawing.Size(200, 31);
+            this.eBookClass2TextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookClass2TextBox.TabIndex = 8;
             // 
             // eBookTypeTextBox
@@ -827,7 +827,7 @@
             this.eBookTypeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookType", true));
             this.eBookTypeTextBox.Location = new System.Drawing.Point(350, 211);
             this.eBookTypeTextBox.Name = "eBookTypeTextBox";
-            this.eBookTypeTextBox.Size = new System.Drawing.Size(200, 31);
+            this.eBookTypeTextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookTypeTextBox.TabIndex = 10;
             // 
             // authorTextBox
@@ -835,7 +835,7 @@
             this.authorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "author", true));
             this.authorTextBox.Location = new System.Drawing.Point(350, 248);
             this.authorTextBox.Name = "authorTextBox";
-            this.authorTextBox.Size = new System.Drawing.Size(200, 31);
+            this.authorTextBox.Size = new System.Drawing.Size(200, 26);
             this.authorTextBox.TabIndex = 12;
             // 
             // publisherTextBox
@@ -843,7 +843,7 @@
             this.publisherTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "publisher", true));
             this.publisherTextBox.Location = new System.Drawing.Point(350, 285);
             this.publisherTextBox.Name = "publisherTextBox";
-            this.publisherTextBox.Size = new System.Drawing.Size(200, 31);
+            this.publisherTextBox.Size = new System.Drawing.Size(200, 26);
             this.publisherTextBox.TabIndex = 14;
             // 
             // publishedDateDateTimePicker
@@ -851,7 +851,7 @@
             this.publishedDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.eBookMainTableBindingSource, "publishedDate", true));
             this.publishedDateDateTimePicker.Location = new System.Drawing.Point(350, 322);
             this.publishedDateDateTimePicker.Name = "publishedDateDateTimePicker";
-            this.publishedDateDateTimePicker.Size = new System.Drawing.Size(200, 31);
+            this.publishedDateDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.publishedDateDateTimePicker.TabIndex = 16;
             // 
             // translatorTextBox
@@ -859,7 +859,7 @@
             this.translatorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "translator", true));
             this.translatorTextBox.Location = new System.Drawing.Point(350, 359);
             this.translatorTextBox.Name = "translatorTextBox";
-            this.translatorTextBox.Size = new System.Drawing.Size(200, 31);
+            this.translatorTextBox.Size = new System.Drawing.Size(200, 26);
             this.translatorTextBox.TabIndex = 18;
             // 
             // languageTextBox
@@ -867,7 +867,7 @@
             this.languageTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "language", true));
             this.languageTextBox.Location = new System.Drawing.Point(350, 396);
             this.languageTextBox.Name = "languageTextBox";
-            this.languageTextBox.Size = new System.Drawing.Size(200, 31);
+            this.languageTextBox.Size = new System.Drawing.Size(200, 26);
             this.languageTextBox.TabIndex = 20;
             // 
             // iSBNTextBox
@@ -875,7 +875,7 @@
             this.iSBNTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "ISBN", true));
             this.iSBNTextBox.Location = new System.Drawing.Point(350, 433);
             this.iSBNTextBox.Name = "iSBNTextBox";
-            this.iSBNTextBox.Size = new System.Drawing.Size(200, 31);
+            this.iSBNTextBox.Size = new System.Drawing.Size(200, 26);
             this.iSBNTextBox.TabIndex = 22;
             // 
             // eISBNTextBox
@@ -883,7 +883,7 @@
             this.eISBNTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "EISBN", true));
             this.eISBNTextBox.Location = new System.Drawing.Point(350, 470);
             this.eISBNTextBox.Name = "eISBNTextBox";
-            this.eISBNTextBox.Size = new System.Drawing.Size(200, 31);
+            this.eISBNTextBox.Size = new System.Drawing.Size(200, 26);
             this.eISBNTextBox.TabIndex = 24;
             // 
             // publishedCountryTextBox
@@ -891,7 +891,7 @@
             this.publishedCountryTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "publishedCountry", true));
             this.publishedCountryTextBox.Location = new System.Drawing.Point(350, 507);
             this.publishedCountryTextBox.Name = "publishedCountryTextBox";
-            this.publishedCountryTextBox.Size = new System.Drawing.Size(200, 31);
+            this.publishedCountryTextBox.Size = new System.Drawing.Size(200, 26);
             this.publishedCountryTextBox.TabIndex = 26;
             // 
             // cEpisodeTextBox
@@ -899,7 +899,7 @@
             this.cEpisodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "cEpisode", true));
             this.cEpisodeTextBox.Location = new System.Drawing.Point(350, 544);
             this.cEpisodeTextBox.Name = "cEpisodeTextBox";
-            this.cEpisodeTextBox.Size = new System.Drawing.Size(200, 31);
+            this.cEpisodeTextBox.Size = new System.Drawing.Size(200, 26);
             this.cEpisodeTextBox.TabIndex = 28;
             // 
             // totalEpisodeTextBox
@@ -907,7 +907,7 @@
             this.totalEpisodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "TotalEpisode", true));
             this.totalEpisodeTextBox.Location = new System.Drawing.Point(350, 581);
             this.totalEpisodeTextBox.Name = "totalEpisodeTextBox";
-            this.totalEpisodeTextBox.Size = new System.Drawing.Size(200, 31);
+            this.totalEpisodeTextBox.Size = new System.Drawing.Size(200, 26);
             this.totalEpisodeTextBox.TabIndex = 30;
             // 
             // eBookPositionTextBox
@@ -915,7 +915,7 @@
             this.eBookPositionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookPosition", true));
             this.eBookPositionTextBox.Location = new System.Drawing.Point(350, 618);
             this.eBookPositionTextBox.Name = "eBookPositionTextBox";
-            this.eBookPositionTextBox.Size = new System.Drawing.Size(200, 31);
+            this.eBookPositionTextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookPositionTextBox.TabIndex = 32;
             this.eBookPositionTextBox.DoubleClick += new System.EventHandler(this.eBookPositionTextBox_DoubleClick);
             // 
@@ -924,7 +924,7 @@
             this.eBookDataTypeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookDataType", true));
             this.eBookDataTypeTextBox.Location = new System.Drawing.Point(350, 655);
             this.eBookDataTypeTextBox.Name = "eBookDataTypeTextBox";
-            this.eBookDataTypeTextBox.Size = new System.Drawing.Size(200, 31);
+            this.eBookDataTypeTextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookDataTypeTextBox.TabIndex = 34;
             // 
             // eBookLabel1TextBox
@@ -932,7 +932,7 @@
             this.eBookLabel1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookLabel1", true));
             this.eBookLabel1TextBox.Location = new System.Drawing.Point(350, 692);
             this.eBookLabel1TextBox.Name = "eBookLabel1TextBox";
-            this.eBookLabel1TextBox.Size = new System.Drawing.Size(200, 31);
+            this.eBookLabel1TextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookLabel1TextBox.TabIndex = 36;
             // 
             // eBookLabel2TextBox
@@ -940,7 +940,7 @@
             this.eBookLabel2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookLabel2", true));
             this.eBookLabel2TextBox.Location = new System.Drawing.Point(350, 729);
             this.eBookLabel2TextBox.Name = "eBookLabel2TextBox";
-            this.eBookLabel2TextBox.Size = new System.Drawing.Size(200, 31);
+            this.eBookLabel2TextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookLabel2TextBox.TabIndex = 38;
             // 
             // eBookLabel3TextBox
@@ -948,7 +948,7 @@
             this.eBookLabel3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookLabel3", true));
             this.eBookLabel3TextBox.Location = new System.Drawing.Point(350, 766);
             this.eBookLabel3TextBox.Name = "eBookLabel3TextBox";
-            this.eBookLabel3TextBox.Size = new System.Drawing.Size(200, 31);
+            this.eBookLabel3TextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookLabel3TextBox.TabIndex = 40;
             // 
             // eBookLabel4TextBox
@@ -956,7 +956,7 @@
             this.eBookLabel4TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookLabel4", true));
             this.eBookLabel4TextBox.Location = new System.Drawing.Point(350, 803);
             this.eBookLabel4TextBox.Name = "eBookLabel4TextBox";
-            this.eBookLabel4TextBox.Size = new System.Drawing.Size(200, 31);
+            this.eBookLabel4TextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookLabel4TextBox.TabIndex = 42;
             // 
             // eBookLabel5TextBox
@@ -964,7 +964,7 @@
             this.eBookLabel5TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookLabel5", true));
             this.eBookLabel5TextBox.Location = new System.Drawing.Point(350, 840);
             this.eBookLabel5TextBox.Name = "eBookLabel5TextBox";
-            this.eBookLabel5TextBox.Size = new System.Drawing.Size(200, 31);
+            this.eBookLabel5TextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookLabel5TextBox.TabIndex = 44;
             // 
             // cover1PictureBox
@@ -1080,7 +1080,7 @@
             this.fixedPriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "fixedPrice", true));
             this.fixedPriceTextBox.Location = new System.Drawing.Point(350, 896);
             this.fixedPriceTextBox.Name = "fixedPriceTextBox";
-            this.fixedPriceTextBox.Size = new System.Drawing.Size(200, 31);
+            this.fixedPriceTextBox.Size = new System.Drawing.Size(200, 26);
             this.fixedPriceTextBox.TabIndex = 64;
             // 
             // actualPriceTextBox
@@ -1088,7 +1088,7 @@
             this.actualPriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "actualPrice", true));
             this.actualPriceTextBox.Location = new System.Drawing.Point(350, 933);
             this.actualPriceTextBox.Name = "actualPriceTextBox";
-            this.actualPriceTextBox.Size = new System.Drawing.Size(200, 31);
+            this.actualPriceTextBox.Size = new System.Drawing.Size(200, 26);
             this.actualPriceTextBox.TabIndex = 66;
             // 
             // couponcodeTextBox
@@ -1096,7 +1096,7 @@
             this.couponcodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "couponcode", true));
             this.couponcodeTextBox.Location = new System.Drawing.Point(350, 970);
             this.couponcodeTextBox.Name = "couponcodeTextBox";
-            this.couponcodeTextBox.Size = new System.Drawing.Size(200, 31);
+            this.couponcodeTextBox.Size = new System.Drawing.Size(200, 26);
             this.couponcodeTextBox.TabIndex = 68;
             // 
             // discountTextBox
@@ -1104,7 +1104,7 @@
             this.discountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "discount", true));
             this.discountTextBox.Location = new System.Drawing.Point(350, 1007);
             this.discountTextBox.Name = "discountTextBox";
-            this.discountTextBox.Size = new System.Drawing.Size(200, 31);
+            this.discountTextBox.Size = new System.Drawing.Size(200, 26);
             this.discountTextBox.TabIndex = 70;
             // 
             // purchaseCountryTextBox
@@ -1112,7 +1112,7 @@
             this.purchaseCountryTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "purchaseCountry", true));
             this.purchaseCountryTextBox.Location = new System.Drawing.Point(350, 1044);
             this.purchaseCountryTextBox.Name = "purchaseCountryTextBox";
-            this.purchaseCountryTextBox.Size = new System.Drawing.Size(200, 31);
+            this.purchaseCountryTextBox.Size = new System.Drawing.Size(200, 26);
             this.purchaseCountryTextBox.TabIndex = 72;
             // 
             // cumulativesalesTextBox
@@ -1120,7 +1120,7 @@
             this.cumulativesalesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "cumulativesales", true));
             this.cumulativesalesTextBox.Location = new System.Drawing.Point(350, 1081);
             this.cumulativesalesTextBox.Name = "cumulativesalesTextBox";
-            this.cumulativesalesTextBox.Size = new System.Drawing.Size(200, 31);
+            this.cumulativesalesTextBox.Size = new System.Drawing.Size(200, 26);
             this.cumulativesalesTextBox.TabIndex = 74;
             // 
             // bookDescriptionTextBox
@@ -1137,7 +1137,7 @@
             this.weeksalesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "weeksales", true));
             this.weeksalesTextBox.Location = new System.Drawing.Point(801, 876);
             this.weeksalesTextBox.Name = "weeksalesTextBox";
-            this.weeksalesTextBox.Size = new System.Drawing.Size(200, 31);
+            this.weeksalesTextBox.Size = new System.Drawing.Size(200, 26);
             this.weeksalesTextBox.TabIndex = 78;
             // 
             // monthsalesTextBox
@@ -1145,7 +1145,7 @@
             this.monthsalesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "monthsales", true));
             this.monthsalesTextBox.Location = new System.Drawing.Point(801, 920);
             this.monthsalesTextBox.Name = "monthsalesTextBox";
-            this.monthsalesTextBox.Size = new System.Drawing.Size(200, 31);
+            this.monthsalesTextBox.Size = new System.Drawing.Size(200, 26);
             this.monthsalesTextBox.TabIndex = 80;
             // 
             // totalsalesTextBox
@@ -1153,7 +1153,7 @@
             this.totalsalesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "totalsales", true));
             this.totalsalesTextBox.Location = new System.Drawing.Point(801, 957);
             this.totalsalesTextBox.Name = "totalsalesTextBox";
-            this.totalsalesTextBox.Size = new System.Drawing.Size(200, 31);
+            this.totalsalesTextBox.Size = new System.Drawing.Size(200, 26);
             this.totalsalesTextBox.TabIndex = 82;
             // 
             // weekviewsTextBox
@@ -1161,7 +1161,7 @@
             this.weekviewsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "weekviews", true));
             this.weekviewsTextBox.Location = new System.Drawing.Point(801, 994);
             this.weekviewsTextBox.Name = "weekviewsTextBox";
-            this.weekviewsTextBox.Size = new System.Drawing.Size(200, 31);
+            this.weekviewsTextBox.Size = new System.Drawing.Size(200, 26);
             this.weekviewsTextBox.TabIndex = 84;
             // 
             // monthviewsTextBox
@@ -1169,7 +1169,7 @@
             this.monthviewsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "monthviews", true));
             this.monthviewsTextBox.Location = new System.Drawing.Point(801, 1031);
             this.monthviewsTextBox.Name = "monthviewsTextBox";
-            this.monthviewsTextBox.Size = new System.Drawing.Size(200, 31);
+            this.monthviewsTextBox.Size = new System.Drawing.Size(200, 26);
             this.monthviewsTextBox.TabIndex = 86;
             // 
             // totalviewsTextBox
@@ -1177,7 +1177,7 @@
             this.totalviewsTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "totalviews", true));
             this.totalviewsTextBox.Location = new System.Drawing.Point(801, 1068);
             this.totalviewsTextBox.Name = "totalviewsTextBox";
-            this.totalviewsTextBox.Size = new System.Drawing.Size(200, 31);
+            this.totalviewsTextBox.Size = new System.Drawing.Size(200, 26);
             this.totalviewsTextBox.TabIndex = 88;
             // 
             // maturityRatingTextBox
@@ -1185,7 +1185,7 @@
             this.maturityRatingTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "maturityRating", true));
             this.maturityRatingTextBox.Location = new System.Drawing.Point(801, 1106);
             this.maturityRatingTextBox.Name = "maturityRatingTextBox";
-            this.maturityRatingTextBox.Size = new System.Drawing.Size(200, 31);
+            this.maturityRatingTextBox.Size = new System.Drawing.Size(200, 26);
             this.maturityRatingTextBox.TabIndex = 90;
             // 
             // isAvailableCheckBox
@@ -1200,10 +1200,10 @@
             // 
             // FrmEditBook
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1121, 1413);
+            this.ClientSize = new System.Drawing.Size(1121, 1061);
             this.Controls.Add(ebookIDLabel);
             this.Controls.Add(this.ebookIDTextBox);
             this.Controls.Add(ebookNameLabel);

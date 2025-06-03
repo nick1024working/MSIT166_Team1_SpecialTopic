@@ -310,5 +310,10 @@ namespace SpecialTopic
             // 設定為子視窗顯示（ShowDialog 可選）
             form.Show(); // 或改成 form.ShowDialog() 若你希望為模態視窗
         }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            loadBook();
+        }
     }
 }

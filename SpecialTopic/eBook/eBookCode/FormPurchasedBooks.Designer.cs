@@ -38,13 +38,14 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAddPurchased = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtUID = new System.Windows.Forms.TextBox();
-            this.txtEbookName = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtActualPrice = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtActualPrice = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtEbookName = new System.Windows.Forms.TextBox();
+            this.txtUID = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnAddPurchased = new System.Windows.Forms.Button();
+            this.btnSaveChanges = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPurchased)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +61,7 @@
             this.dgvPurchased.RowTemplate.Height = 24;
             this.dgvPurchased.Size = new System.Drawing.Size(600, 712);
             this.dgvPurchased.TabIndex = 0;
+            this.dgvPurchased.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPurchased_CellDoubleClick);
             // 
             // txtSearch
             // 
@@ -117,6 +119,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnSaveChanges);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtActualPrice);
             this.panel1.Controls.Add(this.label3);
@@ -136,38 +139,21 @@
             this.panel1.Size = new System.Drawing.Size(600, 712);
             this.panel1.TabIndex = 7;
             // 
-            // btnAddPurchased
+            // label4
             // 
-            this.btnAddPurchased.Location = new System.Drawing.Point(266, 225);
-            this.btnAddPurchased.Name = "btnAddPurchased";
-            this.btnAddPurchased.Size = new System.Drawing.Size(148, 27);
-            this.btnAddPurchased.TabIndex = 7;
-            this.btnAddPurchased.Text = "新增已購買書籍";
-            this.btnAddPurchased.UseVisualStyleBackColor = true;
-            this.btnAddPurchased.Click += new System.EventHandler(this.btnAddPurchased_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 279);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 19);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "實售價";
             // 
-            // label2
+            // txtActualPrice
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 179);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 19);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "UID";
-            // 
-            // txtUID
-            // 
-            this.txtUID.Location = new System.Drawing.Point(59, 175);
-            this.txtUID.Name = "txtUID";
-            this.txtUID.Size = new System.Drawing.Size(188, 26);
-            this.txtUID.TabIndex = 9;
-            // 
-            // txtEbookName
-            // 
-            this.txtEbookName.Location = new System.Drawing.Point(59, 225);
-            this.txtEbookName.Name = "txtEbookName";
-            this.txtEbookName.Size = new System.Drawing.Size(187, 26);
-            this.txtEbookName.TabIndex = 10;
+            this.txtActualPrice.Location = new System.Drawing.Point(72, 272);
+            this.txtActualPrice.Name = "txtActualPrice";
+            this.txtActualPrice.Size = new System.Drawing.Size(187, 26);
+            this.txtActualPrice.TabIndex = 12;
             // 
             // label3
             // 
@@ -178,21 +164,48 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "書名";
             // 
-            // txtActualPrice
+            // txtEbookName
             // 
-            this.txtActualPrice.Location = new System.Drawing.Point(72, 272);
-            this.txtActualPrice.Name = "txtActualPrice";
-            this.txtActualPrice.Size = new System.Drawing.Size(187, 26);
-            this.txtActualPrice.TabIndex = 12;
+            this.txtEbookName.Location = new System.Drawing.Point(59, 225);
+            this.txtEbookName.Name = "txtEbookName";
+            this.txtEbookName.Size = new System.Drawing.Size(187, 26);
+            this.txtEbookName.TabIndex = 10;
             // 
-            // label4
+            // txtUID
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 279);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 19);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "實售價";
+            this.txtUID.Location = new System.Drawing.Point(59, 175);
+            this.txtUID.Name = "txtUID";
+            this.txtUID.Size = new System.Drawing.Size(188, 26);
+            this.txtUID.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 179);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 19);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "UID";
+            // 
+            // btnAddPurchased
+            // 
+            this.btnAddPurchased.Location = new System.Drawing.Point(266, 225);
+            this.btnAddPurchased.Name = "btnAddPurchased";
+            this.btnAddPurchased.Size = new System.Drawing.Size(148, 27);
+            this.btnAddPurchased.TabIndex = 7;
+            this.btnAddPurchased.Text = "新增已購買書籍";
+            this.btnAddPurchased.UseVisualStyleBackColor = true;
+            this.btnAddPurchased.Click += new System.EventHandler(this.btnAddPurchased_Click);
+            // 
+            // btnSaveChanges
+            // 
+            this.btnSaveChanges.Location = new System.Drawing.Point(59, 355);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Size = new System.Drawing.Size(121, 32);
+            this.btnSaveChanges.TabIndex = 14;
+            this.btnSaveChanges.Text = "儲存變更";
+            this.btnSaveChanges.UseVisualStyleBackColor = true;
+            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
             // FormPurchasedBooks
             // 
@@ -230,5 +243,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtActualPrice;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSaveChanges;
     }
 }

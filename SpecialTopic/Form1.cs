@@ -17,7 +17,7 @@ namespace SpecialTopic
             InitializeComponent();
 
         }
-        private void ShowControl(UserControl control)
+        public void ShowControl(UserControl control)
         {
             panelMain.Controls.Clear();
             control.Dock = DockStyle.Fill;

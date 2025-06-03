@@ -74,7 +74,14 @@ namespace SpecialTopic.eBook.eBookCode
 
                     // 將查詢結果綁定到畫面上的 DataGridView 顯示
                     dgvPurchased.DataSource = dt;
+
+                    dgvPurchased.ReadOnly = false;
+                    dgvPurchased.Columns["ebookName"].ReadOnly = false;
+                    dgvPurchased.Columns["actualprice"].ReadOnly = false;
+                    dgvPurchased.Columns["eBookPosition"].ReadOnly = false;
+
                 }
+
             }
         }
 
@@ -89,7 +96,7 @@ namespace SpecialTopic.eBook.eBookCode
         private void btnOpenBook_Click(object sender, EventArgs e)
         {
             // 確認是否有選取資料列
-            if (dgvPurchased.SelectedRows.Count == 0)
+            if (dgvPurchased.CurrentRow == null)
             {
                 MessageBox.Show("請先選取一本電子書！");
                 return;
@@ -97,26 +104,28 @@ namespace SpecialTopic.eBook.eBookCode
 
             try
             {
-                // 從選取的列取得相對路徑（eBookPosition 欄位）
-                string relativePath = dgvPurchased.SelectedRows[0].Cells["eBookPosition"].Value.ToString();
+                // 從目前列抓取 eBookPosition 欄位（存放 PDF 相對路徑）
+                string relativePath = dgvPurchased.CurrentRow.Cells["eBookPosition"].Value.ToString();
 
-                // 組合出完整的實體路徑（專案啟動資料夾 + 相對路徑）
+                // 組合完整路徑（相對於執行資料夾）
                 string fullPath = Path.Combine(Application.StartupPath, relativePath);
 
-                // 檢查檔案是否存在
                 if (!File.Exists(fullPath))
                 {
-                    MessageBox.Show($"找不到檔案：\n{fullPath}");
+                    MessageBox.Show("找不到檔案：\n" + fullPath);
                     return;
                 }
 
-                // 開啟 PDF（你可以用系統預設的方式開啟，也可以自己載入 PDF 控制元件）
+                // 使用預設程式開啟 PDF
                 System.Diagnostics.Process.Start(fullPath);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("開啟書籍時發生錯誤：" + ex.Message);
+                MessageBox.Show("開啟書籍失敗：" + ex.Message);
             }
+
+
+           
         }
 
         private void btnAddPurchased_Click(object sender, EventArgs e)
@@ -198,5 +207,174 @@ namespace SpecialTopic.eBook.eBookCode
                 }
             }
         }
+
+        private void dgvPurchased_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 若是點在標題列，忽略
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
+            // 確認是否是點在 eBookPosition 欄
+            if (dgvPurchased.Columns[e.ColumnIndex].Name == "eBookPosition")
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    ofd.Title = "請選擇 PDF 電子書";
+                    ofd.Filter = "PDF 檔案 (*.pdf)|*.pdf";
+
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        string fullPath = ofd.FileName;
+
+                        // 將絕對路徑轉為相對於專案的路徑（以 /eBookFiles 為根）
+                        string basePath = Application.StartupPath;
+                        //string relativePath = Path.GetRelativePath(basePath, fullPath);
+                        // 使用自訂方法轉換相對路徑
+                        string relativePath = ToRelativePath(fullPath, basePath);
+
+                        // 寫入欄位
+                        dgvPurchased.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = relativePath;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 將絕對路徑 fullPath 轉換成以 basePath 為根的相對路徑
+        /// </summary>
+        /// <param name="fullPath">完整檔案路徑，例如 C:\專案\bin\Debug\eBookFiles\mybook.pdf</param>
+        /// <param name="basePath">基準資料夾路徑，例如 Application.StartupPath</param>
+        /// <returns>回傳相對路徑，例如 eBookFiles\mybook.pdf</returns>
+        private string ToRelativePath(string fullPath, string basePath)
+        {
+            // 將完整路徑轉換為 Uri（統一資源識別碼）
+            Uri pathUri = new Uri(fullPath);
+
+            // 為了保證正確處理相對路徑，basePath 必須以斜線結尾，否則 Uri 判斷會錯誤
+            if (!basePath.EndsWith(Path.DirectorySeparatorChar.ToString()))
+            {
+                basePath += Path.DirectorySeparatorChar;
+            }
+
+            // 將 basePath 也轉為 Uri
+            Uri baseUri = new Uri(basePath);
+
+            // 使用 Uri 的 MakeRelativeUri 方法產生相對路徑 URI（用 / 分隔）
+            Uri relativeUri = baseUri.MakeRelativeUri(pathUri);
+
+            // 將 URI 編碼的結果解碼（例如空格變回空格）
+            // 並將 / 改為 Windows 用的 \ 分隔符
+            string relativePath = Uri.UnescapeDataString(relativeUri.ToString())
+                                        .Replace('/', Path.DirectorySeparatorChar);
+
+            return relativePath;
+        }
+
+        private void SavePurchasedBooks()
+        {
+            using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
+            {
+                conn.Open(); // 開啟資料庫連線
+
+                foreach (DataGridViewRow row in dgvPurchased.Rows)
+                {
+                    // 跳過 DataGridView 的空白新增列
+                    if (row.IsNewRow) continue;
+
+                    // 取得書名與價格與相對路徑
+                    string bookName = row.Cells["ebookName"].Value?.ToString() ?? "";
+                    string position = row.Cells["eBookPosition"].Value?.ToString() ?? "";
+                    string uidText = row.Cells["UID"].Value?.ToString() ?? "";
+                    string priceText = row.Cells["actualprice"].Value?.ToString() ?? "";
+
+                    // 資料基本檢查
+                    if (string.IsNullOrWhiteSpace(bookName) || string.IsNullOrWhiteSpace(uidText)) continue;
+
+                    decimal actualPrice = decimal.TryParse(priceText, out decimal ap) ? ap : 0m;
+                    Guid uid = Guid.Parse(uidText);  // 使用者 ID 為 uniqueidentifier 型別
+
+                    // 嘗試查出 ebookID
+                    long ebookID = GetEbookIDByName(bookName);
+                    if (ebookID <= 0) continue; // 找不到對應電子書則略過
+
+                    // 查詢是否已存在
+                    string checkSql = @"SELECT COUNT(*) FROM ebookPurchased WHERE UID = @uid AND ebookID = @eid";
+                    using (SqlCommand checkCmd = new SqlCommand(checkSql, conn))
+                    {
+                        checkCmd.Parameters.AddWithValue("@uid", uid);
+                        checkCmd.Parameters.AddWithValue("@eid", ebookID);
+
+                        int exists = (int)checkCmd.ExecuteScalar();
+
+                        if (exists > 0)
+                        {
+                            // 更新
+                            string updateSql = @"
+                        UPDATE ebookPurchased 
+                        SET ebookName = @name, actualprice = @price, eBookPosition = @path 
+                        WHERE UID = @uid AND ebookID = @eid";
+                            using (SqlCommand updateCmd = new SqlCommand(updateSql, conn))
+                            {
+                                updateCmd.Parameters.AddWithValue("@name", bookName);
+                                updateCmd.Parameters.AddWithValue("@price", actualPrice);
+                                updateCmd.Parameters.AddWithValue("@path", position);
+                                updateCmd.Parameters.AddWithValue("@uid", uid);
+                                updateCmd.Parameters.AddWithValue("@eid", ebookID);
+
+                                updateCmd.ExecuteNonQuery(); // 執行更新
+                            }
+                        }
+                        else
+                        {
+                            // 新增
+                            string insertSql = @"
+                        INSERT INTO ebookPurchased (UID, ebookName, ebookID, actualprice, eBookPosition) 
+                        VALUES (@uid, @name, @eid, @price, @path)";
+                            using (SqlCommand insertCmd = new SqlCommand(insertSql, conn))
+                            {
+                                insertCmd.Parameters.AddWithValue("@uid", uid);
+                                insertCmd.Parameters.AddWithValue("@name", bookName);
+                                insertCmd.Parameters.AddWithValue("@eid", ebookID);
+                                insertCmd.Parameters.AddWithValue("@price", actualPrice);
+                                insertCmd.Parameters.AddWithValue("@path", position);
+
+                                insertCmd.ExecuteNonQuery(); // 執行新增
+                            }
+                        }
+                    }
+                }
+
+                MessageBox.Show("已購買書籍資料已成功儲存！", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        /// <summary>
+        /// 根據書名從 eBookMainTable 中查出對應的 ebookID（若找不到回傳 -1）
+        /// </summary>
+        private long GetEbookIDByName(string bookName)
+        {
+            using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
+            {
+                string sql = "SELECT ebookID FROM eBookMainTable WHERE ebookName = @name";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", bookName);
+                    conn.Open();
+
+                    object result = cmd.ExecuteScalar();
+
+                    // 如果有查到結果，轉型為 long 回傳；否則回傳 -1 表示找不到
+                    return result != null ? Convert.ToInt64(result) : -1;
+                }
+            }
+        }
+
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            SavePurchasedBooks(); // 實際儲存變更
+            MessageBox.Show("變更已儲存！");
+            LoadPurchasedBooks(""); // 重新載入資料，確保畫面更新
+        }
     }
 }
+
