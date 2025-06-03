@@ -697,6 +697,75 @@ SELECT SCOPE_IDENTITY(); -- 回傳新插入的訂單編號";
             }
         }
 
+        private void btnDeleteOrder_Click(object sender, EventArgs e)
+        {
+            // 1️⃣ 確保有選擇一筆主訂單資料
+            if (dgvOrders.CurrentRow == null)
+            {
+                MessageBox.Show("請先選擇要刪除的訂單", "提醒", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            // 2️⃣ 取得目前選中的 OrderID
+            object orderIdObj = dgvOrders.CurrentRow.Cells["OrderID"].Value;
+
+            // 確保不是空值或 DBNull
+            if (orderIdObj == null || orderIdObj == DBNull.Value)
+            {
+                MessageBox.Show("目前選擇的訂單編號無效", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            long orderId = Convert.ToInt64(orderIdObj);
+
+            // 3️⃣ 彈出確認提示
+            DialogResult result = MessageBox.Show($"是否確定要刪除訂單編號 {orderId}？此操作無法復原。",
+                "確認刪除", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result != DialogResult.Yes) return;
+
+            // 4️⃣ 執行刪除資料庫中的訂單主檔與其明細（先刪明細再刪主檔）
+            using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
+            {
+                conn.Open();
+
+                SqlTransaction tx = conn.BeginTransaction(); // 啟動交易
+
+                try
+                {
+                    // ❗️先刪除訂單明細（避免 FK 約束失敗）
+                    string deleteDetails = "DELETE FROM eBookOrderDetail WHERE OrderID = @orderId";
+                    using (SqlCommand cmd = new SqlCommand(deleteDetails, conn, tx))
+                    {
+                        cmd.Parameters.AddWithValue("@orderId", orderId);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // 再刪除訂單主檔
+                    string deleteMain = "DELETE FROM eBookOrderMain WHERE OrderID = @orderId";
+                    using (SqlCommand cmd = new SqlCommand(deleteMain, conn, tx))
+                    {
+                        cmd.Parameters.AddWithValue("@orderId", orderId);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    tx.Commit(); // ✅ 提交交易
+
+                    MessageBox.Show("訂單刪除成功", "成功");
+                    LoadOrders(); // 重新載入訂單清單
+                    dgvOrderDetails.DataSource = null; // 清空明細表格
+                    lblTotalDetail.Text = "本訂單實付總金額：NT$0.00"; // 重置總金額
+                }
+                catch (Exception ex)
+                {
+                    tx.Rollback(); // ❌ 發生錯誤，回復交易
+                    MessageBox.Show("刪除失敗：" + ex.Message, "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+        }
     }
 }
