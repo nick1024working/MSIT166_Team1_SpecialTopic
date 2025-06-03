@@ -29,10 +29,11 @@
         {
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.dgvOrderDetails = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
             this.lblTotalDetail = new System.Windows.Forms.Label();
             this.btnSaveChanges = new System.Windows.Forms.Button();
             this.btnDSOD = new System.Windows.Forms.Button();
+            this.comboBoxUID = new System.Windows.Forms.ComboBox();
+            this.btnAddOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).BeginInit();
             this.SuspendLayout();
@@ -40,51 +41,42 @@
             // dgvOrders
             // 
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrders.Location = new System.Drawing.Point(12, 9);
-            this.dgvOrders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvOrders.Location = new System.Drawing.Point(13, 11);
+            this.dgvOrders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.RowHeadersWidth = 51;
             this.dgvOrders.RowTemplate.Height = 29;
-            this.dgvOrders.Size = new System.Drawing.Size(760, 150);
+            this.dgvOrders.Size = new System.Drawing.Size(570, 120);
             this.dgvOrders.TabIndex = 0;
             this.dgvOrders.SelectionChanged += new System.EventHandler(this.dgvOrders_SelectionChanged);
             // 
             // dgvOrderDetails
             // 
             this.dgvOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrderDetails.Location = new System.Drawing.Point(12, 172);
-            this.dgvOrderDetails.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvOrderDetails.Location = new System.Drawing.Point(13, 168);
+            this.dgvOrderDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvOrderDetails.Name = "dgvOrderDetails";
             this.dgvOrderDetails.RowHeadersWidth = 51;
             this.dgvOrderDetails.RowTemplate.Height = 29;
-            this.dgvOrderDetails.Size = new System.Drawing.Size(760, 150);
+            this.dgvOrderDetails.Size = new System.Drawing.Size(570, 120);
             this.dgvOrderDetails.TabIndex = 1;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(697, 338);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 22);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "關閉";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblTotalDetail
             // 
             this.lblTotalDetail.AutoSize = true;
-            this.lblTotalDetail.Location = new System.Drawing.Point(29, 342);
+            this.lblTotalDetail.Location = new System.Drawing.Point(11, 412);
+            this.lblTotalDetail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalDetail.Name = "lblTotalDetail";
-            this.lblTotalDetail.Size = new System.Drawing.Size(86, 15);
+            this.lblTotalDetail.Size = new System.Drawing.Size(68, 12);
             this.lblTotalDetail.TabIndex = 3;
             this.lblTotalDetail.Text = "本訂單總計:";
             // 
             // btnSaveChanges
             // 
-            this.btnSaveChanges.Location = new System.Drawing.Point(540, 342);
+            this.btnSaveChanges.Location = new System.Drawing.Point(665, 412);
+            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(83, 23);
+            this.btnSaveChanges.Size = new System.Drawing.Size(62, 18);
             this.btnSaveChanges.TabIndex = 4;
             this.btnSaveChanges.Text = "儲存變更";
             this.btnSaveChanges.UseVisualStyleBackColor = true;
@@ -92,26 +84,46 @@
             // 
             // btnDSOD
             // 
-            this.btnDSOD.Location = new System.Drawing.Point(407, 342);
+            this.btnDSOD.Location = new System.Drawing.Point(546, 412);
+            this.btnDSOD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDSOD.Name = "btnDSOD";
-            this.btnDSOD.Size = new System.Drawing.Size(114, 23);
+            this.btnDSOD.Size = new System.Drawing.Size(86, 18);
             this.btnDSOD.TabIndex = 5;
             this.btnDSOD.Text = "刪除選中明細";
             this.btnDSOD.UseVisualStyleBackColor = true;
             this.btnDSOD.Click += new System.EventHandler(this.btnDSOD_Click);
             // 
+            // comboBoxUID
+            // 
+            this.comboBoxUID.FormattingEnabled = true;
+            this.comboBoxUID.Location = new System.Drawing.Point(240, 412);
+            this.comboBoxUID.Name = "comboBoxUID";
+            this.comboBoxUID.Size = new System.Drawing.Size(121, 20);
+            this.comboBoxUID.TabIndex = 6;
+            // 
+            // btnAddOrder
+            // 
+            this.btnAddOrder.Location = new System.Drawing.Point(393, 408);
+            this.btnAddOrder.Name = "btnAddOrder";
+            this.btnAddOrder.Size = new System.Drawing.Size(75, 23);
+            this.btnAddOrder.TabIndex = 7;
+            this.btnAddOrder.Text = "新增主訂單";
+            this.btnAddOrder.UseVisualStyleBackColor = true;
+            this.btnAddOrder.Click += new System.EventHandler(this.btnAddOrder_Click);
+            // 
             // FormOrderList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 376);
+            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.Controls.Add(this.btnAddOrder);
+            this.Controls.Add(this.comboBoxUID);
             this.Controls.Add(this.btnDSOD);
             this.Controls.Add(this.btnSaveChanges);
             this.Controls.Add(this.lblTotalDetail);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgvOrderDetails);
             this.Controls.Add(this.dgvOrders);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormOrderList";
             this.Text = "訂單管理";
             this.Load += new System.EventHandler(this.FormOrderList_Load);
@@ -125,9 +137,10 @@
         #endregion
         private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.DataGridView dgvOrderDetails;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblTotalDetail;
         private System.Windows.Forms.Button btnSaveChanges;
         private System.Windows.Forms.Button btnDSOD;
+        private System.Windows.Forms.ComboBox comboBoxUID;
+        private System.Windows.Forms.Button btnAddOrder;
     }
 }

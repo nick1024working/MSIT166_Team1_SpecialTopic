@@ -26,9 +26,17 @@ namespace SpecialTopic.eBook.eBookCode
         private void dgvOrders_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvOrders.CurrentRow == null) return;
+            // 避免選到空白新增列或無效資料
+            var cellValue = dgvOrders.CurrentRow.Cells["OrderID"].Value;
+            if (cellValue == null || cellValue == DBNull.Value)
+                return;
 
-            long orderId = Convert.ToInt64(dgvOrders.CurrentRow.Cells["OrderID"].Value);
-            LoadOrderDetails(orderId); // 如果還沒寫這函式可以先註解起來
+            // 安全轉型 OrderID 後載入訂單明細
+            long orderId = Convert.ToInt64(cellValue);
+            LoadOrderDetails(orderId);
+
+            //long orderId = Convert.ToInt64(dgvOrders.CurrentRow.Cells["OrderID"].Value);
+            //LoadOrderDetails(orderId); // 如果還沒寫這函式可以先註解起來
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -39,6 +47,7 @@ namespace SpecialTopic.eBook.eBookCode
         private void FormOrderList_Load(object sender, EventArgs e)
         {
             LoadOrders(); // 載入訂單資料
+            LoadUserUIDs(); // 載入會員清單至 cmbUsers
         }
 
         private void LoadOrders()
@@ -243,6 +252,38 @@ namespace SpecialTopic.eBook.eBookCode
             }
         }
 
+
+
+        private void LoadUserUIDs()
+        {
+            using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
+            using (SqlCommand cmd = new SqlCommand("SELECT UID, Name FROM Users", conn))
+            {
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    Dictionary<string, Guid> userDict = new Dictionary<string, Guid>();
+
+                    while (reader.Read())
+                    {
+                        string name = reader.GetString(1);
+                        Guid uid = reader.GetGuid(0);
+                        string display = $"{name} ({uid.ToString().Substring(0, 8)})";
+                        userDict[display] = uid;
+                    }
+
+                    comboBoxUID.DataSource = new BindingSource(userDict, null);
+                    comboBoxUID.DisplayMember = "Key"; // 顯示名稱
+                    comboBoxUID.ValueMember = "Value"; // 實際值為 UID
+                }
+            }
+        }
+
+
+
+
+
+
         /// <summary>
         /// 將畫面上的訂單主檔欄位（總金額、折扣、狀態）儲存回資料庫。
         /// </summary>
@@ -412,7 +453,7 @@ VALUES(@orderId,@ebookID, @name, @qty, @price, @discount, @itemType)";
                     // 重新載入明細並更新金額標籤
                     LoadOrderDetails(GetSelectedOrderID()); // 重新抓取該筆訂單的明細資料
 
-                  //  UpdateTotalSummaryLabel();              // 再次計算總金額與更新底下顯示的紅字label
+                    //  UpdateTotalSummaryLabel();              // 再次計算總金額與更新底下顯示的紅字label
 
                 }
             }
@@ -522,5 +563,140 @@ VALUES(@orderId,@ebookID, @name, @qty, @price, @discount, @itemType)";
             LoadOrderDetails(GetSelectedOrderID());
             MessageBox.Show("刪除成功！");
         }
+
+        private void btnAddOrder_Click(object sender, EventArgs e)
+        {
+            //    // 檢查是否有選擇 UID（會員）
+            //    if (comboBoxUID.SelectedItem == null)
+            //    {
+            //        MessageBox.Show("請先選擇一位會員 (UID)！");
+            //        return;
+            //    }
+
+            //    // 取得選取的 UID
+            //    Guid selectedUID = (Guid)comboBoxUID.SelectedValue;
+
+            //    // 取得狀態欄位的文字（你可以改成從 TextBox、ComboBox 或 DataGridView 中取值）
+            //    string statusText; // = "待付款"; // TODO：你可改成 textboxStatus.Text 或 dgvOrders.CurrentRow.Cells["StatusName"].Value.ToString()
+            //    statusText = dgvOrders.CurrentRow.Cells["StatusName"].Value.ToString();
+
+            //    // 將狀態文字轉換成對應的 OrderStatusID
+            //    int orderStatusId = GetOrderStatusIdByName(statusText);
+            //    if (orderStatusId == -1)
+            //    {
+            //        MessageBox.Show($"❌ 無效的訂單狀態名稱：「{statusText}」。請使用「待付款」「已完成」「已取消」", "錯誤");
+            //        return;
+            //    }
+
+            //    using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
+            //    {
+            //        string sql = @"
+            //INSERT INTO eBookOrderMain
+            //    (UID, OrderDateTime, OrderStatusID, TotalAmount, CurrencyCode, CreatedDate, LastModifiedDate)
+            //VALUES
+            //    (@uid, GETDATE(), @statusId, 0, 'TWD', GETDATE(), GETDATE());
+            //SELECT SCOPE_IDENTITY();";
+
+            //        using (SqlCommand cmd = new SqlCommand(sql, conn))
+            //        {
+            //            cmd.Parameters.AddWithValue("@uid", selectedUID);
+            //            cmd.Parameters.AddWithValue("@statusId", orderStatusId);
+
+            //            conn.Open();
+            //            long newOrderId = Convert.ToInt64(cmd.ExecuteScalar());
+            //            conn.Close();
+
+            //            MessageBox.Show($"✅ 成功新增訂單，編號為 {newOrderId}", "新增成功");
+            //            LoadOrders();
+            //        }
+            //    }
+
+
+            // 1️⃣ 檢查 ComboBox 是否有選擇會員 UID
+            if (comboBoxUID.SelectedItem == null)
+            {
+                MessageBox.Show("請先選擇一位會員 (UID)！", "提醒", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2️⃣ 從 comboBox 取得選中的 UID 值（型別為 Guid）
+            Guid selectedUID = (Guid)comboBoxUID.SelectedValue;
+
+            // 3️⃣ 嘗試從目前 DataGridView 的空白列讀取 TotalAmount 與 TotalDiscountAmount
+            decimal totalAmount = 0;
+            decimal totalDiscount = 0;
+            string statusName = "待付款"; // 預設值，如果你有輸入欄位也可從那邊取
+
+            try
+            {
+                // 🔍 找到目前選取的列
+                var row = dgvOrders.CurrentRow;
+
+                if (row != null)
+                {
+                    // 取得使用者輸入的金額
+                    totalAmount = Convert.ToDecimal(row.Cells["TotalAmount"].Value ?? 0);
+                    totalDiscount = Convert.ToDecimal(row.Cells["TotalDiscountAmount"].Value ?? 0);
+                    statusName = row.Cells["StatusName"].Value?.ToString() ?? "待付款";
+                }
+            }
+            catch
+            {
+                MessageBox.Show("請先選取一列，並填寫金額與狀態！", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // 4️⃣ 將狀態名稱（如：待付款）轉換成狀態 ID（如：1）
+            int orderStatusID = GetOrderStatusIdByName(statusName);
+            if (orderStatusID == -1)
+            {
+                MessageBox.Show("找不到對應的訂單狀態！", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // 5️⃣ 寫入資料庫
+            using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
+            {
+                string sql = @"
+INSERT INTO eBookOrderMain
+(UID, OrderDateTime, OrderStatusID, TotalAmount, TotalDiscountAmount, CurrencyCode, CreatedDate, LastModifiedDate)
+VALUES
+(@uid, GETDATE(), @statusId, @totalAmount, @totalDiscount, 'TWD', GETDATE(), GETDATE());
+SELECT SCOPE_IDENTITY(); -- 回傳新插入的訂單編號";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@uid", selectedUID);
+                    cmd.Parameters.AddWithValue("@statusId", orderStatusID);
+                    cmd.Parameters.AddWithValue("@totalAmount", totalAmount);
+                    cmd.Parameters.AddWithValue("@totalDiscount", totalDiscount);
+
+                    conn.Open();
+                    long newOrderId = Convert.ToInt64(cmd.ExecuteScalar());
+                    conn.Close();
+
+                    MessageBox.Show($"✅ 成功新增訂單，編號為 {newOrderId}", "成功");
+
+                    LoadOrders(); // 重新載入訂單
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// 根據狀態名稱（中文）對應 OrderStatusID
+        /// </summary>
+        private int GetOrderStatusIdByName(string status)
+        {
+            switch (status.Trim())
+            {
+                case "待付款": return 1;
+                case "已完成": return 2;
+                case "已取消": return 3;
+                default: return -1; // 未知狀態
+            }
+        }
+
+
     }
 }
