@@ -35,7 +35,7 @@ namespace SpecialTopic.Tests.UsedBooks.Repositories
                 conn.Open();
                 using (var tran = conn.BeginTransaction())
                 {
-                    var repo = new BookRepository();
+                    var repo = new BookCardRepository();
                     var result = repo.GetAllBookCards(conn, tran);
                     AssertBookCardList(result);
                     tran.Rollback();
@@ -54,7 +54,7 @@ namespace SpecialTopic.Tests.UsedBooks.Repositories
                 conn.Open();
                 using (var tran = conn.BeginTransaction())
                 {
-                    var repo = new BookRepository();
+                    var repo = new BookCardRepository();
                     var result = repo.GetBookCardsByTagId(tagId, conn, tran);
                     AssertBookCardList(result);
                     tran.Rollback();

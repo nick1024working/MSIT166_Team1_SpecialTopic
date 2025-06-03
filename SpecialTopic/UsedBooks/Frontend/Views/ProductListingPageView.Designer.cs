@@ -70,11 +70,13 @@
             this.txbSearch.Name = "txbSearch";
             this.txbSearch.Size = new System.Drawing.Size(171, 33);
             this.txbSearch.TabIndex = 1;
+            this.txbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbSearch_KeyDown);
             // 
             // pbxLogo
             // 
             this.pbxLogo.Location = new System.Drawing.Point(20, 0);
             this.pbxLogo.Margin = new System.Windows.Forms.Padding(20, 0, 20, 0);
+            this.pbxLogo.MaximumSize = new System.Drawing.Size(40, 40);
             this.pbxLogo.Name = "pbxLogo";
             this.pbxLogo.Size = new System.Drawing.Size(35, 35);
             this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -157,7 +159,7 @@
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(796, 531);
+            this.pnlMain.Size = new System.Drawing.Size(797, 531);
             this.pnlMain.TabIndex = 1;
             // 
             // flpMain
@@ -168,7 +170,7 @@
             this.flpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpMain.Location = new System.Drawing.Point(0, 0);
             this.flpMain.Name = "flpMain";
-            this.flpMain.Size = new System.Drawing.Size(796, 531);
+            this.flpMain.Size = new System.Drawing.Size(797, 531);
             this.flpMain.TabIndex = 0;
             // 
             // mainPanel
@@ -239,19 +241,22 @@
             this.btnSearch.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnSearch.Location = new System.Drawing.Point(258, 3);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.btnSearch.MaximumSize = new System.Drawing.Size(90, 30);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(80, 26);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "搜尋";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnAdminCenter
             // 
             this.btnAdminCenter.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnAdminCenter.Location = new System.Drawing.Point(358, 3);
             this.btnAdminCenter.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.btnAdminCenter.MaximumSize = new System.Drawing.Size(90, 30);
             this.btnAdminCenter.Name = "btnAdminCenter";
-            this.btnAdminCenter.Size = new System.Drawing.Size(109, 26);
+            this.btnAdminCenter.Size = new System.Drawing.Size(90, 26);
             this.btnAdminCenter.TabIndex = 2;
             this.btnAdminCenter.Text = "管理員中心";
             this.btnAdminCenter.UseVisualStyleBackColor = true;
@@ -259,8 +264,9 @@
             // btnUserCenter
             // 
             this.btnUserCenter.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnUserCenter.Location = new System.Drawing.Point(487, 3);
+            this.btnUserCenter.Location = new System.Drawing.Point(468, 3);
             this.btnUserCenter.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.btnUserCenter.MaximumSize = new System.Drawing.Size(90, 30);
             this.btnUserCenter.Name = "btnUserCenter";
             this.btnUserCenter.Size = new System.Drawing.Size(80, 26);
             this.btnUserCenter.TabIndex = 2;
@@ -271,8 +277,9 @@
             // 
             this.btnCreateOrder.AutoSize = true;
             this.btnCreateOrder.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnCreateOrder.Location = new System.Drawing.Point(587, 3);
+            this.btnCreateOrder.Location = new System.Drawing.Point(568, 3);
             this.btnCreateOrder.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.btnCreateOrder.MaximumSize = new System.Drawing.Size(90, 30);
             this.btnCreateOrder.Name = "btnCreateOrder";
             this.btnCreateOrder.Size = new System.Drawing.Size(81, 26);
             this.btnCreateOrder.TabIndex = 2;
@@ -296,7 +303,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.pnlMain);
             this.splitContainer2.Size = new System.Drawing.Size(898, 533);
-            this.splitContainer2.SplitterDistance = 96;
+            this.splitContainer2.SplitterDistance = 95;
             this.splitContainer2.TabIndex = 1;
             // 
             // ProductListingPageView

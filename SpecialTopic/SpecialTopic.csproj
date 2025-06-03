@@ -98,18 +98,29 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\BookCardDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\CreateFaceToFaceOrderDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\SaleTagDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\TopicDto.cs" />
     <Compile Include="UsedBooks\Backend\Entities\BookTopicEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\BookCardEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\OrderFaceToFaceStatusEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\SaleTagEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\UsedBookOrderEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Repositories\BookCardRepository.cs" />
     <Compile Include="UsedBooks\Backend\Repositories\BookRepository.cs" />
+    <Compile Include="UsedBooks\Backend\Repositories\OrderRepository.cs" />
     <Compile Include="UsedBooks\Backend\Repositories\TopicRepository.cs" />
     <Compile Include="UsedBooks\Backend\Repositories\SaleTagRepository.cs" />
+    <Compile Include="UsedBooks\Backend\Repositories\UserRepository.cs" />
     <Compile Include="UsedBooks\Backend\Services\BookCardService.cs" />
+    <Compile Include="UsedBooks\Backend\Services\BookService.cs" />
+    <Compile Include="UsedBooks\Backend\Services\OrderService.cs" />
     <Compile Include="UsedBooks\Backend\Services\TopicService.cs" />
     <Compile Include="UsedBooks\Backend\Services\SaleTagService.cs" />
+    <Compile Include="UsedBooks\Backend\Services\UserService.cs" />
     <Compile Include="UsedBooks\Backend\Utilities\ImagePathHelper.cs" />
+    <Compile Include="UsedBooks\Backend\Utilities\OrderStatus.cs" />
+    <Compile Include="UsedBooks\Backend\Utilities\PaymentFlowType.cs" />
     <Compile Include="UsedBooks\Backend\Utilities\Result.cs" />
     <Compile Include="UsedBooks\Backend\Utilities\Unit.cs" />
     <Compile Include="UsedBooks\Frontend\Components\BookCardControl.cs">
@@ -178,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsedBooks\Frontend\Components\MainViewLayout.resx">
       <DependentUpon>MainViewLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\CreateOrderForm.resx">
+      <DependentUpon>CreateOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsedBooks\Frontend\Views\HomeView.resx">
       <DependentUpon>HomeView.cs</DependentUpon>

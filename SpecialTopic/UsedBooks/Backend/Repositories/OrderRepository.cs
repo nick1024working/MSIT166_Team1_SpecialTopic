@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Dapper;
 using SpecialTopic.UsedBooks.Backend.DTOs;
 using SpecialTopic.UsedBooks.Backend.Entities;
@@ -13,7 +9,7 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
 {
     public class OrderRepository
     {
-        private int createOrder(OrderDto dto, SqlConnection conn, SqlTransaction tran)
+        public int CreateOrder(UsedBookOrderEntity entity, SqlConnection conn, SqlTransaction tran)
         {
             string sqlString = @"
                 INSERT INTO [dbo].[UsedBookOrders]
@@ -22,35 +18,12 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
                 VALUES
                     (@BookID, @BuyerID, @CreatedAt, @OrderStatus, @SalePrice, @Discount,
                     @Amount, @PaymentFlowType, @BuyerContactPhone, @SellerContactPhone);
-                SELECT CAST(SCOPE_IDENTITY AS INT);";
-
-            var entity = new UsedBookOrderEntity
-            {
-                BookID = dto.BookID,
-                BuyerID = dto.BuyerID,
-                CreatedAt = DateTime.Now,
-                OrderStatus = (byte)OrderStatus.Pending,
-                SalePrice = dto.SalePrice,
-                Discount = dto.Discount,
-                Amount = dto.Amount,
-                PaymentFlowType = (byte)dto.PaymentFlowType,
-                BuyerContactPhone = dto.BuyerContactPhone,
-                SellerContactPhone = dto.SellerContactPhone
-            };
-
+                SELECT CAST(SCOPE_IDENTITY() AS INT);";
             return conn.QuerySingle<int>(sqlString, entity, transaction: tran);
         }
 
-        private void createFaceToFaceStatus(int orderId, CreateFaceToFaceStatusDto dto, SqlConnection conn, SqlTransaction tran)
+        public void CreateFaceToFaceStatus(OrderFaceToFaceStatusEntity entity, SqlConnection conn, SqlTransaction tran)
         {
-            var entity = new OrderFaceToFaceStatusEntity
-            {
-                OrderID = orderId,
-                BuyerConfirmedAt = dto.BuyerConfirmedAt,
-                SellerConfirmedAt = dto.SellerConfirmedAt,
-                Deadline = dto.Deadline
-            };
-
             string sqlString = @"
                 INSERT INTO [dbo].[OrderFaceToFaceStatuses]
                     ([OrderID], [BuyerConfirmedAt], [SellerConfirmedAt], [Deadline])

@@ -19,12 +19,12 @@ namespace SpecialTopic.UsedBooks.Backend.Services
     public class BookCardService
     {
         private string _connString;
-        private BookRepository _BookRepository;
+        private BookCardRepository _BookRepository;
 
         public BookCardService(string connString)
         {
             _connString = connString;
-            _BookRepository = new BookRepository();
+            _BookRepository = new BookCardRepository();
         }
 
         /// <summary>
@@ -96,6 +96,44 @@ namespace SpecialTopic.UsedBooks.Backend.Services
                 {
                     conn.Open();
                     var entities = _BookRepository.GetBookCardsByTopicId(topicId, conn, null);
+                    var dtos = entities.Select(MappingBookCardEntityToDto).ToList();
+                    return Result<List<BookCardDto>>.Success(dtos);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Result<List<BookCardDto>>.Failure(ex.Message);
+            }
+        }
+
+        // TODO: 未測試
+        public Result<List<BookCardDto>> GetBookCardsByKeyword(string keyword)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connString))
+                {
+                    conn.Open();
+                    var entities = _BookRepository.GetBookCardsByKeyword(keyword, conn, null);
+                    var dtos = entities.Select(MappingBookCardEntityToDto).ToList();
+                    return Result<List<BookCardDto>>.Success(dtos);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Result<List<BookCardDto>>.Failure(ex.Message);
+            }
+        }
+
+        // TODO: 未測試
+        public Result<List<BookCardDto>> GetBookCardsByUserId(Guid userId)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connString))
+                {
+                    conn.Open();
+                    var entities = _BookRepository.GetBookCardsByUserId(userId, conn, null);
                     var dtos = entities.Select(MappingBookCardEntityToDto).ToList();
                     return Result<List<BookCardDto>>.Success(dtos);
                 }

@@ -22,7 +22,7 @@ namespace SpecialTopic.UsedBooks.Views
         // 以下是會使用的 Service
         private TopicService _bookTopicService;
         private SaleTagService _saleTagService;
-        private BookCardService _bookService;
+        private BookCardService _bookCardService;
 
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace SpecialTopic.UsedBooks.Views
             string _connString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
             _bookTopicService = new TopicService(_connString);
             _saleTagService = new SaleTagService(_connString);
-            _bookService = new BookCardService(_connString);
+            _bookCardService = new BookCardService(_connString);
 
             // 建構畫面元件
             InitializeComponent();
@@ -75,7 +75,7 @@ namespace SpecialTopic.UsedBooks.Views
             // HACK: 相對於上面三個方法依賴資料但只有一次，
             // 部分載入!
             // 此處每次查詢都會重用這個方法。
-            var result = _bookService.GetAllBookCards();
+            var result = _bookCardService.GetAllBookCards();
             if (result.IsSuccess)
             {
                 var top10 = result.Value.Take(10).ToList();
@@ -194,7 +194,7 @@ namespace SpecialTopic.UsedBooks.Views
         {
             if (lbxTopics.SelectedItem is TopicDto dto)
             {
-                var result = _bookService.GetBookCardsByTopicId(dto.TopicID);
+                var result = _bookCardService.GetBookCardsByTopicId(dto.TopicID);
                 if (result.IsSuccess)
                 {
                     LoadContentAreaBookCards(result.Value);
@@ -218,7 +218,7 @@ namespace SpecialTopic.UsedBooks.Views
         {
             if (lbxSaleTags.SelectedItem is SaleTagDto dto)
             {
-                var result = _bookService.GetBookCardsByTagId(dto.TagID);
+                var result = _bookCardService.GetBookCardsByTagId(dto.TagID);
                 if (result.IsSuccess)
                 {
                     LoadContentAreaBookCards(result.Value);
@@ -235,11 +235,49 @@ namespace SpecialTopic.UsedBooks.Views
             }
         }
 
+        /// <summary>
+        /// 使用搜尋框中關鍵字查詢
+        /// </summary>
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string keyword = txbSearch.Text;
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                var result = _bookCardService.GetBookCardsByKeyword(keyword);
+                if (result.IsSuccess)
+                {
+                    LoadContentAreaBookCards(result.Value);
+                }
+                else
+                {
+                    MessageBox.Show($"發生錯誤: {result.ErrorMessage}");
+                }
+            }
+        }
+
+        /// <summary>
+        /// 搜尋框按下Enter後使用搜尋框中關鍵字查詢
+        /// </summary>
+        private void txbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // 防止嗶聲或預設行為
+                btnSearch.PerformClick();
+            }
+        }
+
         #endregion
 
+        /// <summary>
+        /// 按下新增訂單按鈕，彈出新增訂單視窗
+        /// </summary>
         private void btnCreateOrder_Click(object sender, EventArgs e)
         {
-            var newForm = new CreateOrderForm();
+            var newForm = new CreateOrderForm
+            {
+                StartPosition = FormStartPosition.CenterScreen
+            };
             newForm.Show();
         }
     }
