@@ -98,6 +98,12 @@
     <Compile Include="eBook\eBookCode\FormPurchasedBooks.Designer.cs">
       <DependentUpon>FormPurchasedBooks.cs</DependentUpon>
     </Compile>
+    <Compile Include="eBook\eBookCode\FormSubscriber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="eBook\eBookCode\FormSubscriber.Designer.cs">
+      <DependentUpon>FormSubscriber.cs</DependentUpon>
+    </Compile>
     <Compile Include="eBook\eBookCode\FrmEditBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="eBook\eBookCode\FormPurchasedBooks.resx">
       <DependentUpon>FormPurchasedBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="eBook\eBookCode\FormSubscriber.resx">
+      <DependentUpon>FormSubscriber.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="eBook\eBookCode\FrmEditBook.resx">
       <DependentUpon>FrmEditBook.cs</DependentUpon>
