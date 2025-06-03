@@ -46,6 +46,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ForumBoardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ForumBoardControl.Designer.cs">
+      <DependentUpon>ForumBoardControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmForumSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmForumSearch.Designer.cs">
+      <DependentUpon>FrmForumSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForumControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ForumControl.Designer.cs">
+      <DependentUpon>ForumControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPostDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPostDetail.Designer.cs">
+      <DependentUpon>FrmPostDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TeamA_ProjectDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UsedBookControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -64,12 +93,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ForumControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ForumControl.Designer.cs">
-      <DependentUpon>ForumControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="FundControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -84,6 +107,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ForumBoardControl.resx">
+      <DependentUpon>ForumBoardControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmForumSearch.resx">
+      <DependentUpon>FrmForumSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForumControl.resx">
+      <DependentUpon>ForumControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPostDetail.resx">
+      <DependentUpon>FrmPostDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsedBookControl.resx">
       <DependentUpon>UsedBookControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,9 +127,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ForumControl.resx">
-      <DependentUpon>ForumControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FundControl.resx">
       <DependentUpon>FundControl.cs</DependentUpon>
@@ -120,6 +152,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TeamA_ProjectDataSet.xsc">
+      <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TeamA_ProjectDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TeamA_ProjectDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TeamA_ProjectDataSet.xss">
+      <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
