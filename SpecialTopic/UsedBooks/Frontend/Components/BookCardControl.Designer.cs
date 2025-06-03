@@ -45,9 +45,10 @@
             // 
             // pbxCover
             // 
+            this.pbxCover.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbxCover.Location = new System.Drawing.Point(0, 0);
             this.pbxCover.Name = "pbxCover";
-            this.pbxCover.Size = new System.Drawing.Size(70, 105);
+            this.pbxCover.Size = new System.Drawing.Size(70, 106);
             this.pbxCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxCover.TabIndex = 0;
             this.pbxCover.TabStop = false;
@@ -112,9 +113,11 @@
             // 
             // pnlLeft
             // 
+            this.pnlLeft.AutoSize = true;
             this.pnlLeft.Controls.Add(this.pbxCover);
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeft.Location = new System.Drawing.Point(0, 0);
+            this.pnlLeft.MinimumSize = new System.Drawing.Size(70, 106);
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(70, 106);
             this.pnlLeft.TabIndex = 1;
@@ -166,7 +169,7 @@
             this.Controls.Add(this.pnlRight);
             this.Controls.Add(this.pnlLeft);
             this.MaximumSize = new System.Drawing.Size(216, 106);
-            this.MinimumSize = new System.Drawing.Size(100, 50);
+            this.MinimumSize = new System.Drawing.Size(150, 75);
             this.Name = "BookCardControl";
             this.Size = new System.Drawing.Size(216, 106);
             ((System.ComponentModel.ISupportInitialize)(this.pbxCover)).EndInit();
@@ -176,6 +179,7 @@
             this.pnlRight.ResumeLayout(false);
             this.pnlRight.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

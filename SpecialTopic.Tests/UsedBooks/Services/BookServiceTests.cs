@@ -36,7 +36,7 @@ namespace SpecialTopic.Tests.UsedBooks.Services
         public void GetAllBookCards()
         {
             // Arrange
-            var service = new BookService(_connString);
+            var service = new BookCardService(_connString);
             var result = service.GetAllBookCards();
 
             // Assert

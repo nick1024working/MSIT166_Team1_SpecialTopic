@@ -38,22 +38,30 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
             return result;
         }
 
-        //public List<BookCardEntity> GetBookCardsByTopicId(int topicId, SqlConnection conn, SqlTransaction tran);
-        //string sqlStringByTopic = @"
-        //SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
-        //FROM [dbo].[UsedBooks] AS b
-        //JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
-        //JOIN [dbo].[UsedBookTopics] AS bt ON b.BookID = bt.BookID
-        //WHERE bt.TopicID = @topicId
-        //ORDER BY b.CreatedAt DESC;";
+        public List<BookCardEntity> GetBookCardsByTopicId(int topicId, SqlConnection conn, SqlTransaction tran)
+        {
+            string sqlString = @"
+                SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
+                FROM [dbo].[UsedBooks] AS b
+                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
+                JOIN [dbo].[UsedBookTopics] AS bt ON b.BookID = bt.BookID
+                WHERE bt.TopicID = @topicId
+                ORDER BY b.CreatedAt DESC;";
+            var result = conn.Query<BookCardEntity>(sqlString, param: new { topicId }, transaction: tran).ToList();
+            return result;
+        }
 
-        //public List<BookCardEntity> GetBookCardsByKeyword(string keyword, SqlConnection conn, SqlTransaction tran);
-        //string sqlStringByKeyword = @"
-        //SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
-        //FROM [dbo].[UsedBooks] AS b
-        //JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
-        //WHERE b.BookName LIKE '%' + @keyword + '%' OR b.Authors LIKE '%' + @keyword + '%'
-        //ORDER BY b.CreatedAt DESC;";
+        public List<BookCardEntity> GetBookCardsByKeyword(string keyword, SqlConnection conn, SqlTransaction tran)
+        {
+            string sqlString = @"
+                SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
+                FROM [dbo].[UsedBooks] AS b
+                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
+                WHERE b.BookName LIKE '%' + @keyword + '%' OR b.Authors LIKE '%' + @keyword + '%'
+                ORDER BY b.CreatedAt DESC;";
+            var result = conn.Query<BookCardEntity>(sqlString, param: new { keyword }, transaction: tran).ToList();
+            return result;
+        }
 
 
         //public List<BookCardEntity> GetBookCardsByUserId(Guid userId, SqlConnection conn, SqlTransaction tran);
