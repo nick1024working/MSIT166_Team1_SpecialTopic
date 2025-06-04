@@ -315,5 +315,11 @@ namespace SpecialTopic
         {
             loadBook();
         }
+
+        private void btnSubscriber_Click(object sender, EventArgs e)
+        {
+            FormSubscriber subfm = new FormSubscriber();
+            subfm.Show();
+        }
     }
 }

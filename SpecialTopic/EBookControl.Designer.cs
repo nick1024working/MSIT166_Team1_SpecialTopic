@@ -49,6 +49,7 @@ namespace SpecialTopic
             this.btnViewOrders = new System.Windows.Forms.Button();
             this.btnPurchasedBooks = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
+            this.btnSubscriber = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             this.SuspendLayout();
@@ -152,7 +153,7 @@ namespace SpecialTopic
             // 
             // btnPurchasedBooks
             // 
-            this.btnPurchasedBooks.Location = new System.Drawing.Point(84, 408);
+            this.btnPurchasedBooks.Location = new System.Drawing.Point(83, 398);
             this.btnPurchasedBooks.Name = "btnPurchasedBooks";
             this.btnPurchasedBooks.Size = new System.Drawing.Size(112, 33);
             this.btnPurchasedBooks.TabIndex = 11;
@@ -169,10 +170,21 @@ namespace SpecialTopic
             this.btnReload.UseVisualStyleBackColor = true;
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
+            // btnSubscriber
+            // 
+            this.btnSubscriber.Location = new System.Drawing.Point(381, 470);
+            this.btnSubscriber.Name = "btnSubscriber";
+            this.btnSubscriber.Size = new System.Drawing.Size(122, 29);
+            this.btnSubscriber.TabIndex = 13;
+            this.btnSubscriber.Text = "訂閱者管理";
+            this.btnSubscriber.UseVisualStyleBackColor = true;
+            this.btnSubscriber.Click += new System.EventHandler(this.btnSubscriber_Click);
+            // 
             // EBookControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSubscriber);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnPurchasedBooks);
             this.Controls.Add(this.btnViewOrders);
@@ -211,5 +223,6 @@ namespace SpecialTopic
         private System.Windows.Forms.Button btnViewOrders;
         private Button btnPurchasedBooks;
         private Button btnReload;
+        private Button btnSubscriber;
     }
 }
