@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace SpecialTopic {
+namespace SpecialTopic.Forum {
     
     
     /// <summary>
@@ -18549,7 +18549,7 @@ namespace SpecialTopic {
         }
     }
 }
-namespace SpecialTopic.TeamA_ProjectDataSetTableAdapters {
+namespace SpecialTopic.Forum.TeamA_ProjectDataSetTableAdapters {
     
     
     /// <summary>
