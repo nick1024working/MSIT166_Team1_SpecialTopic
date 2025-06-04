@@ -22,7 +22,59 @@ namespace SpecialTopic.eBook.eBookCode
 
         private void FormPurchasedBooks_Load(object sender, EventArgs e)
         {
+            InitUIDComboBox(); // 👈 加這行
+            InitBookComboBox();  // 書名初始化 👈 新增這行
             LoadPurchasedBooks(""); // 載入資料
+        }
+
+        private void InitUIDComboBox()
+        {
+            using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
+            using (SqlCommand cmd = new SqlCommand("SELECT UID, Name FROM Users", conn))
+            {
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                Dictionary<string, Guid> userDict = new Dictionary<string, Guid>();
+
+                while (reader.Read())
+                {
+                    Guid uid = reader.GetGuid(0);
+                    string name = reader.GetString(1);
+                    string display = $"{name} ({uid.ToString().Substring(0, 8)})";
+                    userDict[display] = uid;
+                }
+
+                comboUID.DataSource = new BindingSource(userDict, null);
+                comboUID.DisplayMember = "Key";  // 顯示：姓名 (UID)
+                comboUID.ValueMember = "Value";  // 實際取：UID
+            }
+        }
+
+
+        private void InitBookComboBox()
+        {
+            using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
+            using (SqlCommand cmd = new SqlCommand("SELECT ebookID, ebookName, author FROM eBookMainTable", conn))
+            {
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                Dictionary<string, string> bookDict = new Dictionary<string, string>();
+
+                while (reader.Read())
+                {
+                    long id = reader.GetInt64(0);
+                    string name = reader.GetString(1);
+                    string author = reader["author"] != DBNull.Value ? reader.GetString(2) : "";
+                    string display = $"{name} ({author})";
+                    bookDict[display] = name;
+                }
+
+                comboBook.DataSource = new BindingSource(bookDict, null);
+                comboBook.DisplayMember = "Key";  // 顯示書名 (作者)
+                comboBook.ValueMember = "Value";  // 真正的值 → 書名（會帶去查 ID）
+            }
         }
 
         // 此方法根據傳入的關鍵字 keyword，查詢使用者已購買的電子書資料
@@ -125,39 +177,142 @@ namespace SpecialTopic.eBook.eBookCode
             }
 
 
-           
+
         }
 
         private void btnAddPurchased_Click(object sender, EventArgs e)
         {
-            // 1. 讀取使用者輸入的 UID（應該是 GUID 格式）
-            string uidText = txtUID.Text.Trim(); // 輸入框 txtUID
-            if (!Guid.TryParse(uidText, out Guid uid))
+            //    // 1. 讀取使用者輸入的 UID（應該是 GUID 格式）
+            //    string uidText = txtUID.Text.Trim(); // 輸入框 txtUID
+            //    if (!Guid.TryParse(uidText, out Guid uid))
+            //    {
+            //        MessageBox.Show("UID 格式錯誤！");
+            //        return;
+            //    }
+
+            //    // 2. 讀取輸入的書名
+            //    string ebookName = txtEbookName.Text.Trim(); // 書名輸入框 txtEbookName
+            //    if (string.IsNullOrEmpty(ebookName))
+            //    {
+            //        MessageBox.Show("請輸入書名！");
+            //        return;
+            //    }
+
+            //    // 3. 讀取實際售價
+            //    if (!decimal.TryParse(txtActualPrice.Text.Trim(), out decimal actualPrice))
+            //    {
+            //        MessageBox.Show("請輸入正確的實際售價！");
+            //        return;
+            //    }
+
+            //    // 4. 查詢 eBookMainTable 中是否存在該書名
+            //    string sqlSelect = @"
+            //SELECT ebookID, eBookPosition 
+            //FROM eBookMainTable 
+            //WHERE ebookName = @name";
+
+            //    using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
+            //    using (SqlCommand cmdSelect = new SqlCommand(sqlSelect, conn))
+            //    {
+            //        cmdSelect.Parameters.AddWithValue("@name", ebookName);
+            //        conn.Open();
+
+            //        SqlDataReader reader = cmdSelect.ExecuteReader();
+
+            //        if (!reader.Read())
+            //        {
+            //            MessageBox.Show("找不到該書名，請確認書名是否正確！");
+            //            return;
+            //        }
+
+            //        // 5. 抓出對應的 ebookID 和檔案路徑
+            //        long ebookID = Convert.ToInt64(reader["ebookID"]);
+            //        string eBookPosition = reader["eBookPosition"].ToString();
+
+            //        reader.Close(); // 關閉讀取器
+
+            //        // 6. 準備新增 INSERT 指令
+            //        string sqlInsert = @"
+            //    INSERT INTO ebookPurchased (UID, ebookName, ebookID, actualprice, eBookPosition)
+            //    VALUES (@uid, @name, @eid, @price, @pos)";
+
+            //        using (SqlCommand cmdInsert = new SqlCommand(sqlInsert, conn))
+            //        {
+            //            // 加入參數
+            //            cmdInsert.Parameters.AddWithValue("@uid", uid);
+            //            cmdInsert.Parameters.AddWithValue("@name", ebookName);
+            //            cmdInsert.Parameters.AddWithValue("@eid", ebookID);
+            //            cmdInsert.Parameters.AddWithValue("@price", actualPrice);
+            //            cmdInsert.Parameters.AddWithValue("@pos", eBookPosition);
+
+            //            // 7. 執行新增
+            //            int rows = cmdInsert.ExecuteNonQuery();
+            //            if (rows > 0)
+            //            {
+            //                MessageBox.Show("成功新增！");
+            //                LoadPurchasedBooks(""); // 如果你有刷新用的方法
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show("新增失敗！");
+            //            }
+            //        }
+            //    }
+
+
+            // ========== 1. 取得 UID（自動判斷來源） ==========
+            Guid uid;
+
+            string uidText = txtUID.Text.Trim();
+            if (!string.IsNullOrEmpty(uidText))
             {
-                MessageBox.Show("UID 格式錯誤！");
-                return;
+                // 如果使用者有手動輸入 UID → 嘗試解析
+                if (!Guid.TryParse(uidText, out uid))
+                {
+                    MessageBox.Show("❌ 請輸入有效的 UID 格式！");
+                    return;
+                }
+            }
+            else
+            {
+                // 否則使用 ComboBox 選取的 UID
+                if (comboUID.SelectedValue == null)
+                {
+                    MessageBox.Show("❌ 請選擇一位會員！");
+                    return;
+                }
+
+                uid = (Guid)comboUID.SelectedValue;
             }
 
-            // 2. 讀取輸入的書名
-            string ebookName = txtEbookName.Text.Trim(); // 書名輸入框 txtEbookName
+            // ========== 2. 取得書名 ==========
+            // ========== 2. 書名來源邏輯（優先手動輸入） ==========
+            string ebookName = txtEbookName.Text.Trim();
+
+            if (string.IsNullOrEmpty(ebookName) && comboBook.SelectedValue != null)
+            {
+                // 如果沒有輸入書名但選了 ComboBox
+                ebookName = comboBook.Text.Split('(')[0].Trim(); // 取出書名部分（如有格式「xxx (作者)」）
+            }
+
             if (string.IsNullOrEmpty(ebookName))
             {
-                MessageBox.Show("請輸入書名！");
+                MessageBox.Show("❌ 請輸入或選擇書名！");
                 return;
             }
 
-            // 3. 讀取實際售價
+            // ========== 3. 取得實際售價 ==========
             if (!decimal.TryParse(txtActualPrice.Text.Trim(), out decimal actualPrice))
             {
-                MessageBox.Show("請輸入正確的實際售價！");
+                MessageBox.Show("❌ 請輸入有效的價格！");
                 return;
             }
 
-            // 4. 查詢 eBookMainTable 中是否存在該書名
+            // ========== 4. 查詢主電子書資料表以取得 eBookID + 檔案路徑 ==========
             string sqlSelect = @"
-        SELECT ebookID, eBookPosition 
-        FROM eBookMainTable 
-        WHERE ebookName = @name";
+SELECT ebookID, eBookPosition 
+FROM eBookMainTable 
+WHERE ebookName = @name";
 
             using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
             using (SqlCommand cmdSelect = new SqlCommand(sqlSelect, conn))
@@ -169,40 +324,36 @@ namespace SpecialTopic.eBook.eBookCode
 
                 if (!reader.Read())
                 {
-                    MessageBox.Show("找不到該書名，請確認書名是否正確！");
+                    MessageBox.Show("❌ 找不到書名，請確認是否正確！");
                     return;
                 }
 
-                // 5. 抓出對應的 ebookID 和檔案路徑
                 long ebookID = Convert.ToInt64(reader["ebookID"]);
                 string eBookPosition = reader["eBookPosition"].ToString();
+                reader.Close(); // 關閉查詢
 
-                reader.Close(); // 關閉讀取器
-
-                // 6. 準備新增 INSERT 指令
+                // ========== 5. 新增購買紀錄 ==========
                 string sqlInsert = @"
-            INSERT INTO ebookPurchased (UID, ebookName, ebookID, actualprice, eBookPosition)
-            VALUES (@uid, @name, @eid, @price, @pos)";
+INSERT INTO ebookPurchased (UID, ebookName, ebookID, actualprice, eBookPosition)
+VALUES (@uid, @name, @eid, @price, @pos)";
 
                 using (SqlCommand cmdInsert = new SqlCommand(sqlInsert, conn))
                 {
-                    // 加入參數
                     cmdInsert.Parameters.AddWithValue("@uid", uid);
                     cmdInsert.Parameters.AddWithValue("@name", ebookName);
                     cmdInsert.Parameters.AddWithValue("@eid", ebookID);
                     cmdInsert.Parameters.AddWithValue("@price", actualPrice);
                     cmdInsert.Parameters.AddWithValue("@pos", eBookPosition);
 
-                    // 7. 執行新增
                     int rows = cmdInsert.ExecuteNonQuery();
                     if (rows > 0)
                     {
-                        MessageBox.Show("成功新增！");
-                        LoadPurchasedBooks(""); // 如果你有刷新用的方法
+                        MessageBox.Show("✅ 成功新增已購買書籍！");
+                        LoadPurchasedBooks(""); // 重新載入 DataGridView
                     }
                     else
                     {
-                        MessageBox.Show("新增失敗！");
+                        MessageBox.Show("❌ 新增失敗！");
                     }
                 }
             }
@@ -375,6 +526,84 @@ namespace SpecialTopic.eBook.eBookCode
             MessageBox.Show("變更已儲存！");
             LoadPurchasedBooks(""); // 重新載入資料，確保畫面更新
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvPurchased.CurrentRow == null)
+            {
+                MessageBox.Show("請選擇一筆紀錄！");
+                return;
+            }
+
+            var result = MessageBox.Show("確定要刪除此購買紀錄？", "確認", MessageBoxButtons.YesNo);
+            if (result != DialogResult.Yes) return;
+
+            string uid = dgvPurchased.CurrentRow.Cells["UID"].Value.ToString();
+            string bookName = dgvPurchased.CurrentRow.Cells["ebookName"].Value.ToString();
+            long ebookID = GetEbookIDByName(bookName);
+
+            using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM ebookPurchased WHERE UID = @uid AND ebookID = @eid", conn);
+                cmd.Parameters.AddWithValue("@uid", Guid.Parse(uid));
+                cmd.Parameters.AddWithValue("@eid", ebookID);
+                cmd.ExecuteNonQuery();
+            }
+
+            LoadPurchasedBooks(""); // 重新載入
+        }
+
+        private void btnFetchPrice_Click(object sender, EventArgs e)
+        {
+            // ✅ 檢查 comboBook 是否有選取
+            if (comboBook.SelectedValue == null)
+            {
+                MessageBox.Show("請先選擇書名！");
+                return;
+            }
+
+            string selectedBookName = comboBook.SelectedValue.ToString();
+
+            // 🔍 用書名查詢 eBookMainTable 的價格欄位
+            string sql = @"
+SELECT actualPrice, fixedPrice 
+FROM eBookMainTable 
+WHERE ebookName = @name";
+
+            using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@name", selectedBookName);
+                conn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    object actual = reader["actualPrice"];
+                    object fixedP = reader["fixedPrice"];
+
+                    decimal price = 0;
+
+                    if (actual != DBNull.Value)
+                    {
+                        price = Convert.ToDecimal(actual);
+                    }
+                    else if (fixedP != DBNull.Value)
+                    {
+                        price = Convert.ToDecimal(fixedP);
+                    }
+
+                    txtActualPrice.Text = price.ToString("0.##");
+                    MessageBox.Show("已套用價格：" + price);
+                }
+                else
+                {
+                    MessageBox.Show("找不到該書名的價格資訊！");
+                }
+            }
+        }
     }
 }
+
 

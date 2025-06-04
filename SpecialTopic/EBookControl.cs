@@ -26,7 +26,7 @@ namespace SpecialTopic
         private void InitializePurchasedBooksButton()
         {
             //this.btnPurchasedBooks = new Button();
-            this.btnPurchasedBooks.Text = "已購電子書";
+            this.btnPurchasedBooks.Text = "已購電子書管理";
             this.btnPurchasedBooks.AutoSize = true;
             //this.btnPurchasedBooks.Location = new Point(20, 20); // 可視需要調整位置
             this.btnPurchasedBooks.Click += BtnPurchasedBooks_Click;
@@ -76,6 +76,7 @@ namespace SpecialTopic
             {
                 // 假設你要開啟 ebookID = 1001 的書，或之後從 DataGridView 選取也可改寫成動態
                 long ebookID = 1;
+                ebookID=txtBookID.Text.Trim() == "" ? 1 : long.Parse(txtBookID.Text.Trim());
 
                 string connStr = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True";
                 string relativePath = null;

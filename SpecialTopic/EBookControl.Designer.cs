@@ -50,6 +50,7 @@ namespace SpecialTopic
             this.btnPurchasedBooks = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
             this.btnSubscriber = new System.Windows.Forms.Button();
+            this.txtBookID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +67,7 @@ namespace SpecialTopic
             // 
             // btnImportExcel
             // 
-            this.btnImportExcel.Location = new System.Drawing.Point(52, 36);
+            this.btnImportExcel.Location = new System.Drawing.Point(31, 33);
             this.btnImportExcel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnImportExcel.Name = "btnImportExcel";
             this.btnImportExcel.Size = new System.Drawing.Size(177, 54);
@@ -77,7 +78,7 @@ namespace SpecialTopic
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(63, 117);
+            this.button2.Location = new System.Drawing.Point(16, 120);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(145, 38);
             this.button2.TabIndex = 2;
@@ -97,7 +98,7 @@ namespace SpecialTopic
             // 
             // btnOpenSelectedBook
             // 
-            this.btnOpenSelectedBook.Location = new System.Drawing.Point(63, 209);
+            this.btnOpenSelectedBook.Location = new System.Drawing.Point(48, 204);
             this.btnOpenSelectedBook.Name = "btnOpenSelectedBook";
             this.btnOpenSelectedBook.Size = new System.Drawing.Size(181, 32);
             this.btnOpenSelectedBook.TabIndex = 4;
@@ -116,7 +117,7 @@ namespace SpecialTopic
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(63, 297);
+            this.btnEdit.Location = new System.Drawing.Point(63, 315);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(166, 36);
             this.btnEdit.TabIndex = 6;
@@ -126,14 +127,14 @@ namespace SpecialTopic
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(1129, 56);
+            this.txtSearch.Location = new System.Drawing.Point(1081, 53);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(195, 26);
             this.txtSearch.TabIndex = 7;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(1351, 53);
+            this.btnSearch.Location = new System.Drawing.Point(1282, 53);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 34);
             this.btnSearch.TabIndex = 9;
@@ -143,7 +144,7 @@ namespace SpecialTopic
             // 
             // btnViewOrders
             // 
-            this.btnViewOrders.Location = new System.Drawing.Point(1161, 309);
+            this.btnViewOrders.Location = new System.Drawing.Point(1081, 315);
             this.btnViewOrders.Name = "btnViewOrders";
             this.btnViewOrders.Size = new System.Drawing.Size(188, 48);
             this.btnViewOrders.TabIndex = 10;
@@ -153,16 +154,16 @@ namespace SpecialTopic
             // 
             // btnPurchasedBooks
             // 
-            this.btnPurchasedBooks.Location = new System.Drawing.Point(83, 398);
+            this.btnPurchasedBooks.Location = new System.Drawing.Point(63, 396);
             this.btnPurchasedBooks.Name = "btnPurchasedBooks";
-            this.btnPurchasedBooks.Size = new System.Drawing.Size(112, 33);
+            this.btnPurchasedBooks.Size = new System.Drawing.Size(201, 33);
             this.btnPurchasedBooks.TabIndex = 11;
-            this.btnPurchasedBooks.Text = "已購買書籍";
+            this.btnPurchasedBooks.Text = "已購買書籍管理";
             this.btnPurchasedBooks.UseVisualStyleBackColor = true;
             // 
             // btnReload
             // 
-            this.btnReload.Location = new System.Drawing.Point(94, 260);
+            this.btnReload.Location = new System.Drawing.Point(63, 242);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(114, 31);
             this.btnReload.TabIndex = 12;
@@ -180,10 +181,18 @@ namespace SpecialTopic
             this.btnSubscriber.UseVisualStyleBackColor = true;
             this.btnSubscriber.Click += new System.EventHandler(this.btnSubscriber_Click);
             // 
+            // txtBookID
+            // 
+            this.txtBookID.Location = new System.Drawing.Point(177, 127);
+            this.txtBookID.Name = "txtBookID";
+            this.txtBookID.Size = new System.Drawing.Size(112, 26);
+            this.txtBookID.TabIndex = 14;
+            // 
             // EBookControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtBookID);
             this.Controls.Add(this.btnSubscriber);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnPurchasedBooks);
@@ -224,5 +233,6 @@ namespace SpecialTopic
         private Button btnPurchasedBooks;
         private Button btnReload;
         private Button btnSubscriber;
+        private TextBox txtBookID;
     }
 }
