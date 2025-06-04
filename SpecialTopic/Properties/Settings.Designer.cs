@@ -26,8 +26,7 @@ namespace SpecialTopic.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=TeamA_Project;User ID=sa;Password=sa0529;TrustServe" +
-            "rCertificate=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True")]
         public string TeamA_ProjectConnectionString {
             get {
                 return ((string)(this["TeamA_ProjectConnectionString"]));
