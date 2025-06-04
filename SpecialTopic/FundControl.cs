@@ -278,6 +278,7 @@ namespace SpecialTopic
         //------------------募資方案管理-------------------
         private void LoadProjectsToComboBox()
         {
+            int selectedProjectId = Convert.ToInt32(comboBoxProject.SelectedValue);
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string sql = "SELECT donateProject_id, title FROM donateProjects";
@@ -286,20 +287,8 @@ namespace SpecialTopic
                 adapter.Fill(dt);
 
                 comboBoxProject.DataSource = dt;
-                comboBoxProject.DisplayMember = "title";
-                comboBoxProject.ValueMember = "donateProject_id";
-            }
-        }
-        private void LoadPlans()
-        {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                string sql = "SELECT * FROM donatePlans";
-                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                dataGridView3.DataSource = dt;
-                dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                comboBoxProject.DisplayMember = "title"; // 顯示文字
+                comboBoxProject.ValueMember = "donateProject_id"; // 實際傳回的值
             }
         }
 
@@ -310,9 +299,13 @@ namespace SpecialTopic
                 string sql = @"INSERT INTO donatePlans (donateProject_id, title, price, description)
                        VALUES (@projectId, @title, @price, @description)";
                 SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@projectId", (int)comboBoxProject.SelectedValue);
+                //cmd.Parameters.AddWithValue("@projectId", (int)comboBoxProject.SelectedValue);
+                //cmd.Parameters.AddWithValue("@title", txtTitle.Text);
+                //cmd.Parameters.AddWithValue("@price", decimal.Parse(txtPrice.Text));
+                //cmd.Parameters.AddWithValue("@description", txtDescription.Text);
+                cmd.Parameters.AddWithValue("@projectId", comboBoxProject.SelectedValue);
                 cmd.Parameters.AddWithValue("@title", txtTitle.Text);
-                cmd.Parameters.AddWithValue("@price", decimal.Parse(txtPrice.Text));
+                cmd.Parameters.AddWithValue("@price", txtPrice.Text);
                 cmd.Parameters.AddWithValue("@description", txtDescription.Text);
 
                 conn.Open();
@@ -380,13 +373,28 @@ namespace SpecialTopic
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = dataGridView3.Rows[e.RowIndex];
-                txtPlanId.Text = row.Cells["donatePlan_id"].Value.ToString();
-                comboBoxProject.SelectedValue = row.Cells["donateProject_id"].Value;
-                txtTitle.Text = row.Cells["title"].Value.ToString();
-                txtPrice.Text = row.Cells["price"].Value.ToString();
-                txtDescription.Text = row.Cells["description"].Value.ToString();
+                txtPlanId.Text = dataGridView3.Rows[e.RowIndex].Cells["donatePlan_id"].Value.ToString();
+                txtTitle.Text = dataGridView3.Rows[e.RowIndex].Cells["title"].Value.ToString();
+                txtPrice.Text = dataGridView3.Rows[e.RowIndex].Cells["price"].Value.ToString();
+                txtDescription.Text = dataGridView3.Rows[e.RowIndex].Cells["description"].Value.ToString();
+
+                // 如果 comboBox 是以文字顯示項目名稱
+                int projectId = Convert.ToInt32(dataGridView3.Rows[e.RowIndex].Cells["donateProject_id"].Value);
+                comboBoxProject.SelectedValue = projectId;
             }
+        }
+        private void LoadPlans()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT * FROM donatePlans";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dataGridView3.DataSource = dt;
+                dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+            dataGridView3.CellClick += dataGridView3_CellContentClick;
         }
     }
 }
