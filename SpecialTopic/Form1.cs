@@ -15,7 +15,6 @@ namespace SpecialTopic
         public Form1()
         {
             InitializeComponent();
-
         }
         public void ShowControl(UserControl control)
         {
