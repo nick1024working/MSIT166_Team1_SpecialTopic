@@ -135,6 +135,27 @@ namespace SpecialTopic.eBook.eBookCode
                 }
 
             }
+            // === 資料載入後，設定欄位中文標題與格式 ===
+            if (dgvPurchased.Columns.Contains("UID"))
+            {
+                dgvPurchased.Columns["UID"].HeaderText = "會員代號";
+            }
+            if (dgvPurchased.Columns.Contains("ebookName"))
+            {
+                dgvPurchased.Columns["ebookName"].HeaderText = "書名";
+            }
+            if (dgvPurchased.Columns.Contains("actualprice"))
+            {
+                dgvPurchased.Columns["actualprice"].HeaderText = "實售價";
+                dgvPurchased.Columns["actualprice"].DefaultCellStyle.Format = "N0"; // ✅ 金錢無小數
+            }
+            if (dgvPurchased.Columns.Contains("eBookPosition"))
+            {
+                dgvPurchased.Columns["eBookPosition"].HeaderText = "電子書路徑";
+            }
+
+            // ✅ 可選：欄寬自動調整
+            dgvPurchased.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -594,8 +615,8 @@ WHERE ebookName = @name";
                         price = Convert.ToDecimal(fixedP);
                     }
 
-                    txtActualPrice.Text = price.ToString("0.##");
-                    MessageBox.Show("已套用價格：" + price);
+                    txtActualPrice.Text = price.ToString("0");
+                    MessageBox.Show("已套用價格：" + price.ToString("0"));
                 }
                 else
                 {
