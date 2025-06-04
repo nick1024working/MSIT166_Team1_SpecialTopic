@@ -453,5 +453,11 @@ namespace SpecialTopic
             FormSubscriber subfm = new FormSubscriber();
             subfm.Show();
         }
+
+        private void buttonRecommend_Click(object sender, EventArgs e)
+        {
+            FormRecommend rfrm=new FormRecommend();
+            rfrm.Show();
+        }
     }
 }
