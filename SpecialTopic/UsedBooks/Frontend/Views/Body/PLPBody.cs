@@ -24,11 +24,11 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
         private SaleTagService _saleTagService;
         private BookCardService _bookCardService;
 
-        public PLPBody()
+        public PLPBody(string connString)
         {
             // 建構服務
             // HACK:沒有DI，直接讀App.config
-            _connString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
+            _connString = connString;
             _bookTopicService = new TopicService(_connString);
             _saleTagService = new SaleTagService(_connString);
             _bookCardService = new BookCardService(_connString);

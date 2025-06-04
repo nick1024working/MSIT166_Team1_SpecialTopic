@@ -1,6 +1,6 @@
-﻿namespace SpecialTopic.UsedBooks.Views
+﻿namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
 {
-    partial class HomeView
+    partial class AdminOrderManager
     {
         /// <summary> 
         /// 設計工具所需的變數。
@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mainPanel = new System.Windows.Forms.Panel();
+            this.pnlContentArea = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // mainPanel
+            // pnlContentArea
             // 
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(977, 658);
-            this.mainPanel.TabIndex = 1;
+            this.pnlContentArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContentArea.Location = new System.Drawing.Point(0, 0);
+            this.pnlContentArea.Name = "pnlContentArea";
+            this.pnlContentArea.Size = new System.Drawing.Size(798, 531);
+            this.pnlContentArea.TabIndex = 0;
             // 
-            // HomeView
+            // AdminOrderManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.Controls.Add(this.mainPanel);
-            this.Name = "HomeView";
-            this.Size = new System.Drawing.Size(977, 658);
+            this.Controls.Add(this.pnlContentArea);
+            this.Name = "AdminOrderManager";
+            this.Size = new System.Drawing.Size(798, 531);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel mainPanel;
+
+        private System.Windows.Forms.Panel pnlContentArea;
     }
 }

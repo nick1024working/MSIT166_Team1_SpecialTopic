@@ -38,7 +38,7 @@ namespace SpecialTopic.UsedBooks.Backend.Services
             {
                 BookID = e.BookID,
                 BookName = string.IsNullOrWhiteSpace(e.BookName) ? "無書名" : e.BookName,
-                SalePrice = e.SalePrice,
+                SalePrice = (int)e.SalePrice,
                 Authors = string.IsNullOrWhiteSpace(e.Authors) ? "未知作者" : e.Authors,
                 Description = string.IsNullOrWhiteSpace(e.Description) ? "（無描述）" : e.Description,
                 ImagePath = ImagePathHelper.GetSafeImagePath(e.ImagePath)
@@ -106,7 +106,7 @@ namespace SpecialTopic.UsedBooks.Backend.Services
             }
         }
 
-        // TODO: 未測試
+
         public Result<List<BookCardDto>> GetBookCardsByKeyword(string keyword)
         {
             try
@@ -125,7 +125,7 @@ namespace SpecialTopic.UsedBooks.Backend.Services
             }
         }
 
-        // TODO: 未測試
+
         public Result<List<BookCardDto>> GetBookCardsByUserId(Guid userId)
         {
             try

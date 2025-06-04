@@ -16,8 +16,10 @@ namespace SpecialTopic
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
-            Application.Run(new FRMLogin());
+
+            // HACK: 此處強制跳過登入
+            Application.Run(new Form1());
+            //Application.Run(new FRMLogin());
         }
     }
 }

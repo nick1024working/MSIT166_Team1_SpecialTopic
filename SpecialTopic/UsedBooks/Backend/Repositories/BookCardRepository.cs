@@ -50,16 +50,15 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
             return result;
         }
 
-        // TODO: 未測試
         public List<BookCardEntity> GetBookCardsByKeyword(string keyword, SqlConnection conn, SqlTransaction tran)
         {
             string sqlString = @"
                 SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
                 FROM [dbo].[UsedBooks] AS b
                 JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
-                WHERE b.BookName LIKE '%' + @keyword + '%' OR b.Authors LIKE '%' + @keyword + '%'
+                WHERE b.BookName LIKE @keyword OR b.Authors LIKE @keyword
                 ORDER BY b.CreatedAt DESC;";
-            var result = conn.Query<BookCardEntity>(sqlString, param: new { keyword }, transaction: tran).ToList();
+            var result = conn.Query<BookCardEntity>(sqlString, param: new { keyword = $"%{keyword}%" }, transaction: tran).ToList();
             return result;
         }
 

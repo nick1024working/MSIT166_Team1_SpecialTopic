@@ -1,4 +1,4 @@
-﻿namespace SpecialTopic.UsedBooks.Frontend.Views
+﻿namespace SpecialTopic.UsedBooks.Frontend.Views.Forms
 {
     partial class CreateOrderForm
     {

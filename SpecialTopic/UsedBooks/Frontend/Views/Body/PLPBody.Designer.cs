@@ -60,7 +60,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.pnlMain);
             this.splitContainer2.Size = new System.Drawing.Size(898, 533);
-            this.splitContainer2.SplitterDistance = 93;
+            this.splitContainer2.SplitterDistance = 92;
             this.splitContainer2.TabIndex = 3;
             // 
             // pnlSidebar
@@ -93,6 +93,7 @@
             this.lbxSaleTags.Name = "lbxSaleTags";
             this.lbxSaleTags.Size = new System.Drawing.Size(100, 213);
             this.lbxSaleTags.TabIndex = 3;
+            this.lbxSaleTags.SelectedIndexChanged += new System.EventHandler(this.lbxSaleTags_SelectedIndexChanged);
             // 
             // lblSaleTags
             // 
@@ -119,6 +120,7 @@
             this.lbxTopics.Name = "lbxTopics";
             this.lbxTopics.Size = new System.Drawing.Size(100, 213);
             this.lbxTopics.TabIndex = 0;
+            this.lbxTopics.SelectedIndexChanged += new System.EventHandler(this.lbxTopics_SelectedIndexChanged);
             // 
             // lblTopics
             // 
@@ -141,7 +143,7 @@
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(799, 531);
+            this.pnlMain.Size = new System.Drawing.Size(800, 531);
             this.pnlMain.TabIndex = 1;
             // 
             // flpMain
@@ -152,7 +154,7 @@
             this.flpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpMain.Location = new System.Drawing.Point(0, 0);
             this.flpMain.Name = "flpMain";
-            this.flpMain.Size = new System.Drawing.Size(799, 531);
+            this.flpMain.Size = new System.Drawing.Size(800, 531);
             this.flpMain.TabIndex = 0;
             // 
             // PLPBody

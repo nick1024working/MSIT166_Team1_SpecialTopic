@@ -24,6 +24,7 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
 
         public void CreateFaceToFaceStatus(OrderFaceToFaceStatusEntity entity, SqlConnection conn, SqlTransaction tran)
         {
+            // TODO: 改 OUTPUT INSERTED.OrderID 
             string sqlString = @"
                 INSERT INTO [dbo].[OrderFaceToFaceStatuses]
                     ([OrderID], [BuyerConfirmedAt], [SellerConfirmedAt], [Deadline])

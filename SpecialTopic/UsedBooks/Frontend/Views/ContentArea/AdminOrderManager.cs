@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SpecialTopic.UsedBooks.Frontend.Views.Body
+namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
 {
-    public partial class UserCenterBody : UserControl
+    public partial class AdminOrderManager : UserControl
     {
-        public UserCenterBody(string connString)
+        public AdminOrderManager(string connString)
         {
             InitializeComponent();
         }

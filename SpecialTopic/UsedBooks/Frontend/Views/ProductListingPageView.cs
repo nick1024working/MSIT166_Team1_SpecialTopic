@@ -7,6 +7,7 @@ using SpecialTopic.UsedBooks.Backend.Services;
 using SpecialTopic.UsedBooks.Frontend.Shared;
 using SpecialTopic.UsedBooks.Frontend.Views;
 using SpecialTopic.UsedBooks.Frontend.Views.Body;
+using SpecialTopic.UsedBooks.Frontend.Views.Forms;
 
 namespace SpecialTopic.UsedBooks.Views
 {
@@ -24,9 +25,9 @@ namespace SpecialTopic.UsedBooks.Views
         private BookCardService _bookCardService;
 
         // 會在 pnlBody 載入的控制項，將用 header bar 點擊切換
-        private readonly PLPBody _plpBody = new PLPBody();
-        private readonly UserCenterBody _userCenterBody = new UserCenterBody();
-        private readonly AdminCenterBody _adminCenterBody = new AdminCenterBody();
+        private readonly PLPBody _plpBody;
+        private readonly UserCenterBody _userCenterBody;
+        private readonly AdminCenterBody _adminCenterBody;
 
         /// <summary>
         /// 清除並載入 pnlBody
@@ -51,8 +52,12 @@ namespace SpecialTopic.UsedBooks.Views
             _saleTagService = new SaleTagService(_connString);
             _bookCardService = new BookCardService(_connString);
 
-            // 建構畫面元件
-            InitializeComponent();
+            _plpBody = new PLPBody(_connString);
+            _userCenterBody = new UserCenterBody(_connString);
+            _adminCenterBody = new AdminCenterBody(_connString);
+
+        // 建構畫面元件
+        InitializeComponent();
 
             // 初始化資料
             LoadData();
@@ -138,7 +143,7 @@ namespace SpecialTopic.UsedBooks.Views
         /// </summary>
         private void btnAdminCenter_Click(object sender, EventArgs e)
         {
-            ShowControl(new AdminCenterBody());
+            ShowControl(_adminCenterBody);
         }
 
         /// <summary>
@@ -147,7 +152,7 @@ namespace SpecialTopic.UsedBooks.Views
         /// 
         private void btnUserCenter_Click(object sender, EventArgs e)
         {
-            ShowControl(new UserCenterBody());
+            ShowControl(_userCenterBody);
         }
 
         /// <summary>

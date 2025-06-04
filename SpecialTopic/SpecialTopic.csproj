@@ -375,11 +375,19 @@
       <DependentUpon>FrmPostDetail.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="UsedBooks\Backend\DTOs\BookCardDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\BookDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\BookPublicDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\BookWithSaleTagDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\CreateBookDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\CreateFaceToFaceOrderDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\CreateSaleTagDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\SaleTagDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\CreateTopicDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\TopicDto.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\BookEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\BookTopicEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\BookCardEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\BookWithSaleTagEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\OrderFaceToFaceStatusEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\SaleTagEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\UsedBookOrderEntity.cs" />
@@ -414,6 +422,7 @@
     </Compile>
     <Compile Include="UsedBooks\Frontend\Shared\BookCardControlHelper.cs" />
     <Compile Include="UsedBooks\Frontend\Shared\ISwitchableView.cs" />
+    <Compile Include="UsedBooks\Frontend\Shared\SortableBindingList.cs" />
     <Compile Include="UsedBooks\Frontend\Shared\ViewFactory.cs" />
     <Compile Include="UsedBooks\Frontend\Shared\ViewType.cs" />
     <Compile Include="UsedBooks\Frontend\Components\BodyWithSideBarAndContentArea.cs">
@@ -440,10 +449,34 @@
     <Compile Include="UsedBooks\Frontend\Views\Body\UserCenterBody.Designer.cs">
       <DependentUpon>UserCenterBody.cs</DependentUpon>
     </Compile>
-    <Compile Include="UsedBooks\Frontend\Views\CreateOrderForm.cs">
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminBookManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminBookManager.Designer.cs">
+      <DependentUpon>AdminBookManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminOrderManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminOrderManager.Designer.cs">
+      <DependentUpon>AdminOrderManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminTagManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminTagManager.Designer.cs">
+      <DependentUpon>AdminTagManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminTopicManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminTopicManager.Designer.cs">
+      <DependentUpon>AdminTopicManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Forms\CreateOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UsedBooks\Frontend\Views\CreateOrderForm.Designer.cs">
+    <Compile Include="UsedBooks\Frontend\Views\Forms\CreateOrderForm.Designer.cs">
       <DependentUpon>CreateOrderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UsedBooks\Frontend\Views\HomeView.cs">
@@ -513,7 +546,19 @@
     <EmbeddedResource Include="UsedBooks\Frontend\Views\Body\UserCenterBody.resx">
       <DependentUpon>UserCenterBody.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UsedBooks\Frontend\Views\CreateOrderForm.resx">
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\ContentArea\AdminBookManager.resx">
+      <DependentUpon>AdminBookManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\ContentArea\AdminOrderManager.resx">
+      <DependentUpon>AdminOrderManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\ContentArea\AdminTagManager.resx">
+      <DependentUpon>AdminTagManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\ContentArea\AdminTopicManager.resx">
+      <DependentUpon>AdminTopicManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\Forms\CreateOrderForm.resx">
       <DependentUpon>CreateOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsedBooks\Frontend\Views\HomeView.resx">
