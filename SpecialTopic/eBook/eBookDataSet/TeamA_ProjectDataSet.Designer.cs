@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace SpecialTopic {
+namespace SpecialTopic.eBook.eBookDataSet {
     
     
     /// <summary>
@@ -18495,7 +18495,7 @@ namespace SpecialTopic {
         }
     }
 }
-namespace SpecialTopic.TeamA_ProjectDataSetTableAdapters {
+namespace SpecialTopic.eBook.eBookDataSet.TeamA_ProjectDataSetTableAdapters {
     
     
     /// <summary>

@@ -1,4 +1,5 @@
-﻿namespace SpecialTopic.eBook.eBookCode
+﻿
+namespace SpecialTopic.eBook.eBookCode
 {
     partial class FrmEditBook
     {
@@ -76,10 +77,10 @@
             System.Windows.Forms.Label maturityRatingLabel;
             System.Windows.Forms.Label isAvailableLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEditBook));
-            this.teamA_ProjectDataSet = new SpecialTopic.TeamA_ProjectDataSet();
+            this.teamA_ProjectDataSet = new SpecialTopic.eBook.eBookDataSet.TeamA_ProjectDataSet();
             this.eBookMainTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.eBookMainTableTableAdapter = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.eBookMainTableTableAdapter();
-            this.tableAdapterManager = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.TableAdapterManager();
+            this.eBookMainTableTableAdapter = new SpecialTopic.eBook.eBookDataSet.TeamA_ProjectDataSetTableAdapters.eBookMainTableTableAdapter();
+            this.tableAdapterManager = new SpecialTopic.eBook.eBookDataSet.TeamA_ProjectDataSetTableAdapters.TableAdapterManager();
             this.eBookMainTableBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -655,7 +656,7 @@
             this.tableAdapterManager.PostLikesTableAdapter = null;
             this.tableAdapterManager.SaleTagsTableAdapter = null;
             this.tableAdapterManager.SubscriberTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = SpecialTopic.TeamA_ProjectDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = SpecialTopic.eBook.eBookDataSet.TeamA_ProjectDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsedBookImagesTableAdapter = null;
             this.tableAdapterManager.UsedBookOrdersTableAdapter = null;
             this.tableAdapterManager.UsedBookSaleTagsTableAdapter = null;
@@ -1323,10 +1324,10 @@
 
         #endregion
 
-        private TeamA_ProjectDataSet teamA_ProjectDataSet;
+        private SpecialTopic.eBook.eBookDataSet.TeamA_ProjectDataSet teamA_ProjectDataSet;
         private System.Windows.Forms.BindingSource eBookMainTableBindingSource;
-        private TeamA_ProjectDataSetTableAdapters.eBookMainTableTableAdapter eBookMainTableTableAdapter;
-        private TeamA_ProjectDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private SpecialTopic.eBook.eBookDataSet.TeamA_ProjectDataSetTableAdapters.eBookMainTableTableAdapter eBookMainTableTableAdapter;
+        private SpecialTopic.eBook.eBookDataSet.TeamA_ProjectDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.BindingNavigator eBookMainTableBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
