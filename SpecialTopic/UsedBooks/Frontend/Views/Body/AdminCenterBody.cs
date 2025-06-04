@@ -8,18 +8,18 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
     {
 
         // 會在 pnlContentArea 載入的控制項，將用 sidebar 點擊切換
-        private readonly AdminBookManager bookManager;
-        private readonly AdminOrderManager orderManager;
-        private readonly AdminTopicManager topicManager;
-        private readonly AdminTagManager tagManager;
+        private readonly AdminBookManager _adminBookManager;
+        private readonly AdminOrderManager _adminOrderManager;
+        private readonly AdminTopicManager _adminTopicManager;
+        private readonly AdminTagManager _adminTagManager;
 
         public AdminCenterBody(string connString)
         {
             // 幫控制項注入服務
-            bookManager = new AdminBookManager(connString);
-            orderManager = new AdminOrderManager(connString);
-            topicManager = new AdminTopicManager(connString);
-            tagManager = new AdminTagManager(connString);
+            _adminBookManager = new AdminBookManager(connString);
+            _adminOrderManager = new AdminOrderManager(connString);
+            _adminTopicManager = new AdminTopicManager(connString);
+            _adminTagManager = new AdminTagManager(connString);
 
             InitializeComponent();
         }
@@ -42,19 +42,19 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
         {
             if (lbxFunctions.SelectedItem.ToString() == "管理書本")
             {
-                ShowControl(bookManager);
+                ShowControl(_adminBookManager);
             }
             else if (lbxFunctions.SelectedItem.ToString() == "管理訂單")
             {
-                ShowControl(orderManager);
+                ShowControl(_adminOrderManager);
             }
             else if (lbxFunctions.SelectedItem.ToString() == "管理主題")
             {
-                ShowControl(topicManager);
+                ShowControl(_adminTopicManager);
             }
             else if (lbxFunctions.SelectedItem.ToString() == "管理標籤")
             {
-                ShowControl(tagManager);
+                ShowControl(_adminTagManager);
             }
             else
             {

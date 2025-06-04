@@ -155,7 +155,7 @@
             this.btnAdminCenter.MaximumSize = new System.Drawing.Size(90, 30);
             this.btnAdminCenter.Name = "btnAdminCenter";
             this.btnAdminCenter.Size = new System.Drawing.Size(90, 26);
-            this.btnAdminCenter.TabIndex = 2;
+            this.btnAdminCenter.TabIndex = 3;
             this.btnAdminCenter.Text = "管理員中心";
             this.btnAdminCenter.UseVisualStyleBackColor = true;
             this.btnAdminCenter.Click += new System.EventHandler(this.btnAdminCenter_Click);
@@ -167,8 +167,8 @@
             this.btnUserCenter.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.btnUserCenter.MaximumSize = new System.Drawing.Size(90, 30);
             this.btnUserCenter.Name = "btnUserCenter";
-            this.btnUserCenter.Size = new System.Drawing.Size(80, 26);
-            this.btnUserCenter.TabIndex = 2;
+            this.btnUserCenter.Size = new System.Drawing.Size(90, 26);
+            this.btnUserCenter.TabIndex = 4;
             this.btnUserCenter.Text = "會員中心";
             this.btnUserCenter.UseVisualStyleBackColor = true;
             this.btnUserCenter.Click += new System.EventHandler(this.btnUserCenter_Click);
@@ -177,12 +177,12 @@
             // 
             this.btnCreateOrder.AutoSize = true;
             this.btnCreateOrder.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnCreateOrder.Location = new System.Drawing.Point(568, 3);
+            this.btnCreateOrder.Location = new System.Drawing.Point(578, 3);
             this.btnCreateOrder.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.btnCreateOrder.MaximumSize = new System.Drawing.Size(90, 30);
             this.btnCreateOrder.Name = "btnCreateOrder";
-            this.btnCreateOrder.Size = new System.Drawing.Size(90, 30);
-            this.btnCreateOrder.TabIndex = 2;
+            this.btnCreateOrder.Size = new System.Drawing.Size(90, 26);
+            this.btnCreateOrder.TabIndex = 5;
             this.btnCreateOrder.Text = "新增訂單";
             this.btnCreateOrder.UseVisualStyleBackColor = true;
             this.btnCreateOrder.Click += new System.EventHandler(this.btnCreateOrder_Click);

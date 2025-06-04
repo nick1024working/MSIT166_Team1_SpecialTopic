@@ -82,54 +82,60 @@
             // 
             // lbxSaleTags
             // 
-            this.lbxSaleTags.BackColor = System.Drawing.SystemColors.Control;
+            this.lbxSaleTags.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lbxSaleTags.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbxSaleTags.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbxSaleTags.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Underline);
+            this.lbxSaleTags.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lbxSaleTags.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.lbxSaleTags.FormattingEnabled = true;
-            this.lbxSaleTags.ItemHeight = 19;
-            this.lbxSaleTags.Location = new System.Drawing.Point(0, 293);
-            this.lbxSaleTags.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.lbxSaleTags.ItemHeight = 16;
+            this.lbxSaleTags.Location = new System.Drawing.Point(0, 286);
+            this.lbxSaleTags.Margin = new System.Windows.Forms.Padding(0);
             this.lbxSaleTags.Name = "lbxSaleTags";
-            this.lbxSaleTags.Size = new System.Drawing.Size(100, 213);
+            this.lbxSaleTags.Size = new System.Drawing.Size(100, 208);
             this.lbxSaleTags.TabIndex = 3;
             this.lbxSaleTags.SelectedIndexChanged += new System.EventHandler(this.lbxSaleTags_SelectedIndexChanged);
             // 
             // lblSaleTags
             // 
+            this.lblSaleTags.AutoSize = true;
             this.lblSaleTags.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblSaleTags.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblSaleTags.Location = new System.Drawing.Point(0, 253);
-            this.lblSaleTags.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblSaleTags.Location = new System.Drawing.Point(0, 247);
+            this.lblSaleTags.Margin = new System.Windows.Forms.Padding(0);
             this.lblSaleTags.Name = "lblSaleTags";
-            this.lblSaleTags.Size = new System.Drawing.Size(100, 40);
+            this.lblSaleTags.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.lblSaleTags.Size = new System.Drawing.Size(85, 39);
             this.lblSaleTags.TabIndex = 2;
             this.lblSaleTags.Text = "促銷標籤";
             this.lblSaleTags.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbxTopics
             // 
-            this.lbxTopics.BackColor = System.Drawing.SystemColors.Control;
+            this.lbxTopics.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lbxTopics.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbxTopics.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbxTopics.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbxTopics.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lbxTopics.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.lbxTopics.FormattingEnabled = true;
-            this.lbxTopics.ItemHeight = 19;
-            this.lbxTopics.Location = new System.Drawing.Point(0, 40);
-            this.lbxTopics.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.lbxTopics.ItemHeight = 16;
+            this.lbxTopics.Location = new System.Drawing.Point(0, 39);
+            this.lbxTopics.Margin = new System.Windows.Forms.Padding(0);
             this.lbxTopics.Name = "lbxTopics";
-            this.lbxTopics.Size = new System.Drawing.Size(100, 213);
+            this.lbxTopics.Size = new System.Drawing.Size(100, 208);
             this.lbxTopics.TabIndex = 0;
             this.lbxTopics.SelectedIndexChanged += new System.EventHandler(this.lbxTopics_SelectedIndexChanged);
             // 
             // lblTopics
             // 
+            this.lblTopics.AutoSize = true;
             this.lblTopics.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTopics.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblTopics.Location = new System.Drawing.Point(0, 0);
-            this.lblTopics.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTopics.Margin = new System.Windows.Forms.Padding(0);
             this.lblTopics.Name = "lblTopics";
-            this.lblTopics.Size = new System.Drawing.Size(100, 40);
+            this.lblTopics.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.lblTopics.Size = new System.Drawing.Size(85, 39);
             this.lblTopics.TabIndex = 1;
             this.lblTopics.Text = "主題分類";
             this.lblTopics.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -171,6 +177,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.pnlSidebar.ResumeLayout(false);
+            this.pnlSidebar.PerformLayout();
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
             this.ResumeLayout(false);

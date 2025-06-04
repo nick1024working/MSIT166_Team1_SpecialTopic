@@ -473,6 +473,18 @@
     <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminTopicManager.Designer.cs">
       <DependentUpon>AdminTopicManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\UserBookManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\UserBookManager.Designer.cs">
+      <DependentUpon>UserBookManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Forms\CreateBookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Forms\CreateBookForm.Designer.cs">
+      <DependentUpon>CreateBookForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsedBooks\Frontend\Views\Forms\CreateOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -557,6 +569,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsedBooks\Frontend\Views\ContentArea\AdminTopicManager.resx">
       <DependentUpon>AdminTopicManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\ContentArea\UserBookManager.resx">
+      <DependentUpon>UserBookManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\Forms\CreateBookForm.resx">
+      <DependentUpon>CreateBookForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsedBooks\Frontend\Views\Forms\CreateOrderForm.resx">
       <DependentUpon>CreateOrderForm.cs</DependentUpon>

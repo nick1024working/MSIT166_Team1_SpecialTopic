@@ -18,7 +18,7 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
             string sqlString = @"
                 SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
                 FROM [dbo].[UsedBooks] AS b
-                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
+                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0 AND b.IsActive = 1
                 ORDER BY b.CreatedAt DESC;";
             var result = conn.Query<BookCardEntity>(sqlString, transaction: tran).ToList();
             return result;
@@ -29,7 +29,7 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
             string sqlString = @"
                 SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
                 FROM [dbo].[UsedBooks] AS b
-                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
+                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0 AND b.IsActive = 1
                 JOIN [dbo].[UsedBookSaleTags] AS st ON b.BookID = st.BookID
                 WHERE st.TagID = @tagId
                 ORDER BY b.CreatedAt DESC;";
@@ -42,7 +42,7 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
             string sqlString = @"
                 SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
                 FROM [dbo].[UsedBooks] AS b
-                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
+                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0 AND b.IsActive = 1
                 JOIN [dbo].[UsedBookTopics] AS bt ON b.BookID = bt.BookID
                 WHERE bt.TopicID = @topicId
                 ORDER BY b.CreatedAt DESC;";
@@ -55,7 +55,7 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
             string sqlString = @"
                 SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
                 FROM [dbo].[UsedBooks] AS b
-                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
+                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0 AND b.IsActive = 1
                 WHERE b.BookName LIKE @keyword OR b.Authors LIKE @keyword
                 ORDER BY b.CreatedAt DESC;";
             var result = conn.Query<BookCardEntity>(sqlString, param: new { keyword = $"%{keyword}%" }, transaction: tran).ToList();
@@ -68,7 +68,7 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
             string sqlString = @"
                 SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
                 FROM [dbo].[UsedBooks] AS b
-                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
+                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0 AND b.IsActive = 1
                 WHERE b.UID = @uid
                 ORDER BY b.CreatedAt DESC;";
             var result = conn.Query<BookCardEntity>(sqlString, param: new { uid = userId }, transaction: tran).ToList();
