@@ -22,7 +22,7 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
             return conn.QuerySingle<int>(sqlString, entity, transaction: tran);
         }
 
-        public void CreateFaceToFaceStatus(OrderFaceToFaceStatusEntity entity, SqlConnection conn, SqlTransaction tran)
+        public Unit CreateFaceToFaceStatus(OrderFaceToFaceStatusEntity entity, SqlConnection conn, SqlTransaction tran)
         {
             // TODO: 改 OUTPUT INSERTED.OrderID 
             string sqlString = @"
@@ -31,6 +31,7 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
                 VALUES
                     (@OrderID, @BuyerConfirmedAt, @SellerConfirmedAt, @Deadline);";
             conn.Execute(sqlString, entity, transaction: tran);
+            return Unit.Value;
         }
     }
 }

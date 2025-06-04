@@ -4,6 +4,7 @@ namespace SpecialTopic.UsedBooks.Backend.DTOs
 {
     public class CreateBookDto
     {
+        public Guid UID { get; set; }
         public string BookName { get; set; }
         public decimal SalePrice { get; set; }
         public string BookCondition { get; set; }

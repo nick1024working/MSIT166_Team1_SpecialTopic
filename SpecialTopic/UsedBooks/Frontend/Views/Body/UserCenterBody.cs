@@ -20,7 +20,7 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
         public UserCenterBody(string connString)
         {
             // 幫控制項注入服務
-            _userBookManager = new UserBookManager();
+            _userBookManager = new UserBookManager(connString);
 
             InitializeComponent();
         }

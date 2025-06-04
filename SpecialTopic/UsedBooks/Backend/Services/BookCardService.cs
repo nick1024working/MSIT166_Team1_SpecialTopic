@@ -41,7 +41,7 @@ namespace SpecialTopic.UsedBooks.Backend.Services
                 SalePrice = (int)e.SalePrice,
                 Authors = string.IsNullOrWhiteSpace(e.Authors) ? "未知作者" : e.Authors,
                 Description = string.IsNullOrWhiteSpace(e.Description) ? "（無描述）" : e.Description,
-                ImagePath = ImagePathHelper.GetSafeImagePath(e.ImagePath)
+                ImagePath = ImageHelper.GetSafeImagePath(e.ImagePath)
             };
         }
 

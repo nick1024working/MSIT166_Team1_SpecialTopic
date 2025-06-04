@@ -376,15 +376,19 @@
     </EmbeddedResource>
     <Compile Include="UsedBooks\Backend\DTOs\BookCardDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\BookDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\BookIsActiveDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\BookPublicDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\BookWithSaleTagDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\CreateBookDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\CreateBookImageDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\CreateFaceToFaceOrderDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\CreateSaleTagDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\SaleTagDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\CreateTopicDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\TopicDto.cs" />
     <Compile Include="UsedBooks\Backend\Entities\BookEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\BookImageEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\BookIsActiveEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\BookTopicEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\BookCardEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\BookWithSaleTagEntity.cs" />
@@ -392,6 +396,7 @@
     <Compile Include="UsedBooks\Backend\Entities\SaleTagEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\UsedBookOrderEntity.cs" />
     <Compile Include="UsedBooks\Backend\Repositories\BookCardRepository.cs" />
+    <Compile Include="UsedBooks\Backend\Repositories\BookImageRepository.cs" />
     <Compile Include="UsedBooks\Backend\Repositories\BookRepository.cs" />
     <Compile Include="UsedBooks\Backend\Repositories\OrderRepository.cs" />
     <Compile Include="UsedBooks\Backend\Repositories\TopicRepository.cs" />
@@ -403,7 +408,7 @@
     <Compile Include="UsedBooks\Backend\Services\TopicService.cs" />
     <Compile Include="UsedBooks\Backend\Services\SaleTagService.cs" />
     <Compile Include="UsedBooks\Backend\Services\UserService.cs" />
-    <Compile Include="UsedBooks\Backend\Utilities\ImagePathHelper.cs" />
+    <Compile Include="UsedBooks\Backend\Utilities\ImageHelper.cs" />
     <Compile Include="UsedBooks\Backend\Utilities\OrderStatus.cs" />
     <Compile Include="UsedBooks\Backend\Utilities\PaymentFlowType.cs" />
     <Compile Include="UsedBooks\Backend\Utilities\Result.cs" />

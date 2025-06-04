@@ -22,6 +22,9 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
 
             InitializeComponent();
 
+            // 預設上下架狀態
+            cbxIsActiveStatus.SelectedIndex = 0;
+
             // 先不顯示資料 lazy load
         }
 
@@ -100,5 +103,65 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
 
         }
 
+        /// <summary>
+        /// 更改上下架
+        /// </summary>
+        private void btnIsActive_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbIsActiveId.Text))
+            {
+                MessageBox.Show("請輸入正確!");
+                return;
+            }
+
+            if (!int.TryParse(txbIsActiveId.Text.Trim(), out int id))
+            {
+                MessageBox.Show("請輸入有效的整數 ID！", "格式錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var dto = new BookIsActiveDto
+            {
+                BookID = id,
+                IsActive = cbxIsActiveStatus.SelectedText == "上架" ? true : false
+            }; 
+            var result = _bookService.UpdateBookIsActive(dto);
+            if (result.IsSuccess)
+            {
+                MessageBox.Show($"{cbxIsActiveStatus.SelectedText}成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show($"發生錯誤: {result.ErrorMessage}");
+            }
+        }
+
+        /// <summary>
+        /// 刪除
+        /// </summary>
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbDelete.Text))
+            {
+                MessageBox.Show("請輸入正確!");
+                return;
+            }
+
+            if (!int.TryParse(txbDelete.Text.Trim(), out int id))
+            {
+                MessageBox.Show("請輸入有效的整數 ID！", "格式錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var result = _bookService.DeleteBookWithFilesByBookId(id);
+            if (result.IsSuccess)
+            {
+                MessageBox.Show($"刪除成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show($"發生錯誤: {result.ErrorMessage}");
+            }
+        }
     }
 }

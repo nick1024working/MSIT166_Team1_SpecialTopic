@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
 using System.Linq;
 using Dapper;
+using SpecialTopic.UsedBooks.Backend.DTOs;
 using SpecialTopic.UsedBooks.Backend.Entities;
 using SpecialTopic.UsedBooks.Backend.Utilities;
 
@@ -10,8 +10,6 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
 {
     public class BookRepository
     {
-
-        
 
         /// <summary>
         /// 使用促銷標籤 ID 查詢書本 BookWithSaleTagEntity
@@ -61,7 +59,16 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
             return result;
         }
 
-        // TODO: 未測試
+        //public List<BookEntity> GetBookById(int BookID, SqlConnection conn, SqlTransaction tran)
+        //{
+        //    string sqlString = @"
+        //        SELECT *
+        //        FROM [dbo].[UsedBooks]
+        //        WHERE [BookID] = '@BookID';";
+        //    var result = conn.Query<BookEntity>(sqlString, param: new { BookID }, transaction: tran).ToList();
+        //    return result;
+        //}
+
         public List<BookEntity> GetBookByKeyword(string keyword, SqlConnection conn, SqlTransaction tran)
         {
             string sqlString = @"
@@ -70,6 +77,45 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
                 WHERE BookName LIKE @keyword OR Authors LIKE @keyword;";
             var result = conn.Query<BookEntity>(sqlString, param: new { keyword = $"%{keyword}%" }, transaction: tran).ToList();
             return result;
+        }
+
+
+        /// <summary>
+        /// 新增書本文字資料
+        /// </summary>
+        /// <remark> 跟圖片一起新增需搭配 transaction </remark>
+        public int CreateBook(BookEntity entity, SqlConnection conn, SqlTransaction tran)
+        {
+            string sqlString = @"
+                INSERT INTO [dbo].[UsedBooks]
+                    ([UID], [BookName], [SalePrice], [BookCondition], [Description], [CreatedAt], [ISBN], [Language],
+                    [Authors], [Publisher], [PublicationDate], [ViewCount], [IsActive], [IsSold], [Slug])
+                OUTPUT INSERTED.BookID
+                VALUES
+                    (@UID, @BookName, @SalePrice, @BookCondition, @Description, @CreatedAt, @ISBN, @Language,
+                    @Authors, @Publisher, @PublicationDate, @ViewCount, @IsActive, @IsSold, @Slug);";
+            return conn.QuerySingle<int>(sqlString, entity, transaction: tran);
+        }
+
+        public Unit UpdateBookIsActive(BookIsActiveEntity entity, SqlConnection conn, SqlTransaction tran)
+        {
+            string sqlString = @"
+                UPDATE [dbo].[UsedBooks]
+                SET [IsActive] = @IsActive
+                WHERE [BookID] = @BookID;";
+            conn.Execute(sqlString, entity, tran);
+            return Unit.Value;
+        }
+
+        /// <summary>
+        /// 使用書本 ID 刪除書本
+        /// </summary>
+        public Unit DeleteBookByBookId(int BookID, SqlConnection conn, SqlTransaction tran)
+        {
+            string sqlString = @"DELETE [dbo].[UsedBooks]
+                WHERE BookID = @BookID;";
+            conn.Execute(sqlString, new { BookID }, transaction: tran);
+            return Unit.Value;
         }
     }
 }
