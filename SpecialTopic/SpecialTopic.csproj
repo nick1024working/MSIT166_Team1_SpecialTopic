@@ -139,6 +139,30 @@
     <Compile Include="UsedBooks\Frontend\Shared\ISwitchableView.cs" />
     <Compile Include="UsedBooks\Frontend\Shared\ViewFactory.cs" />
     <Compile Include="UsedBooks\Frontend\Shared\ViewType.cs" />
+    <Compile Include="UsedBooks\Frontend\Components\BodyWithSideBarAndContentArea.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Components\BodyWithSideBarAndContentArea.Designer.cs">
+      <DependentUpon>BodyWithSideBarAndContentArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Body\AdminCenterBody.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Body\AdminCenterBody.Designer.cs">
+      <DependentUpon>AdminCenterBody.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Body\PLPBody.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Body\PLPBody.Designer.cs">
+      <DependentUpon>PLPBody.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Body\UserCenterBody.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Body\UserCenterBody.Designer.cs">
+      <DependentUpon>UserCenterBody.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsedBooks\Frontend\Views\CreateOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +213,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsedBooks\Frontend\Components\MainViewLayout.resx">
       <DependentUpon>MainViewLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Components\BodyWithSideBarAndContentArea.resx">
+      <DependentUpon>BodyWithSideBarAndContentArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\Body\AdminCenterBody.resx">
+      <DependentUpon>AdminCenterBody.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\Body\PLPBody.resx">
+      <DependentUpon>PLPBody.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\Body\UserCenterBody.resx">
+      <DependentUpon>UserCenterBody.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsedBooks\Frontend\Views\CreateOrderForm.resx">
       <DependentUpon>CreateOrderForm.cs</DependentUpon>

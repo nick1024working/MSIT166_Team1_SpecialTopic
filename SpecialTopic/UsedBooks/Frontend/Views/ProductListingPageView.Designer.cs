@@ -45,6 +45,7 @@
             this.btnAdminCenter = new System.Windows.Forms.Button();
             this.btnUserCenter = new System.Windows.Forms.Button();
             this.btnCreateOrder = new System.Windows.Forms.Button();
+            this.pnlBody = new System.Windows.Forms.Panel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.pnlSidebar.SuspendLayout();
@@ -56,6 +57,7 @@
             this.splitContainer1.SuspendLayout();
             this.tlpHeader.SuspendLayout();
             this.flpHeader.SuspendLayout();
+            this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -97,7 +99,7 @@
             this.pnlSidebar.MaximumSize = new System.Drawing.Size(300, 0);
             this.pnlSidebar.MinimumSize = new System.Drawing.Size(100, 200);
             this.pnlSidebar.Name = "pnlSidebar";
-            this.pnlSidebar.Size = new System.Drawing.Size(100, 531);
+            this.pnlSidebar.Size = new System.Drawing.Size(100, 529);
             this.pnlSidebar.TabIndex = 1;
             // 
             // lbxSaleTags
@@ -111,7 +113,6 @@
             this.lbxSaleTags.Name = "lbxSaleTags";
             this.lbxSaleTags.Size = new System.Drawing.Size(100, 213);
             this.lbxSaleTags.TabIndex = 3;
-            this.lbxSaleTags.SelectedIndexChanged += new System.EventHandler(this.lbxSaleTags_SelectedIndexChanged);
             // 
             // lblSaleTags
             // 
@@ -136,7 +137,6 @@
             this.lbxTopics.Name = "lbxTopics";
             this.lbxTopics.Size = new System.Drawing.Size(100, 213);
             this.lbxTopics.TabIndex = 0;
-            this.lbxTopics.SelectedIndexChanged += new System.EventHandler(this.lbxTopics_SelectedIndexChanged);
             // 
             // lblTopics
             // 
@@ -159,7 +159,7 @@
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(797, 531);
+            this.pnlMain.Size = new System.Drawing.Size(797, 529);
             this.pnlMain.TabIndex = 1;
             // 
             // flpMain
@@ -170,7 +170,7 @@
             this.flpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpMain.Location = new System.Drawing.Point(0, 0);
             this.flpMain.Name = "flpMain";
-            this.flpMain.Size = new System.Drawing.Size(797, 531);
+            this.flpMain.Size = new System.Drawing.Size(797, 529);
             this.flpMain.TabIndex = 0;
             // 
             // mainPanel
@@ -200,7 +200,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Panel2.Controls.Add(this.pnlBody);
             this.splitContainer1.Panel2MinSize = 500;
             this.splitContainer1.Size = new System.Drawing.Size(898, 617);
             this.splitContainer1.SplitterDistance = 80;
@@ -260,6 +260,7 @@
             this.btnAdminCenter.TabIndex = 2;
             this.btnAdminCenter.Text = "管理員中心";
             this.btnAdminCenter.UseVisualStyleBackColor = true;
+            this.btnAdminCenter.Click += new System.EventHandler(this.btnAdminCenter_Click);
             // 
             // btnUserCenter
             // 
@@ -272,6 +273,7 @@
             this.btnUserCenter.TabIndex = 2;
             this.btnUserCenter.Text = "會員中心";
             this.btnUserCenter.UseVisualStyleBackColor = true;
+            this.btnUserCenter.Click += new System.EventHandler(this.btnUserCenter_Click);
             // 
             // btnCreateOrder
             // 
@@ -286,6 +288,15 @@
             this.btnCreateOrder.Text = "新增訂單";
             this.btnCreateOrder.UseVisualStyleBackColor = true;
             this.btnCreateOrder.Click += new System.EventHandler(this.btnCreateOrder_Click);
+            // 
+            // pnlBody
+            // 
+            this.pnlBody.Controls.Add(this.splitContainer2);
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(0, 0);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Size = new System.Drawing.Size(896, 531);
+            this.pnlBody.TabIndex = 0;
             // 
             // splitContainer2
             // 
@@ -302,8 +313,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.pnlMain);
-            this.splitContainer2.Size = new System.Drawing.Size(898, 533);
-            this.splitContainer2.SplitterDistance = 95;
+            this.splitContainer2.Size = new System.Drawing.Size(896, 531);
+            this.splitContainer2.SplitterDistance = 93;
             this.splitContainer2.TabIndex = 1;
             // 
             // ProductListingPageView
@@ -327,6 +338,7 @@
             this.tlpHeader.PerformLayout();
             this.flpHeader.ResumeLayout(false);
             this.flpHeader.PerformLayout();
+            this.pnlBody.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -357,5 +369,6 @@
         private System.Windows.Forms.FlowLayoutPanel flpMain;
         private System.Windows.Forms.TableLayoutPanel tlpHeader;
         private System.Windows.Forms.FlowLayoutPanel flpHeader;
+        private System.Windows.Forms.Panel pnlBody;
     }
 }
