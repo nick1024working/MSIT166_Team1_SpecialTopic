@@ -59,5 +59,36 @@ namespace SpecialTopic.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap stock_vector_refresh_icon_vector_illustration_reload_sign_and_symbol_update_icon_2293717071 {
+            get {
+                object obj = ResourceManager.GetObject("stock-vector-refresh-icon-vector-illustration-reload-sign-and-symbol-update-icon-" +
+                        "2293717071", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 重整 {
+            get {
+                object obj = ResourceManager.GetObject("重整", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 重整1 {
+            get {
+                object obj = ResourceManager.GetObject("重整1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

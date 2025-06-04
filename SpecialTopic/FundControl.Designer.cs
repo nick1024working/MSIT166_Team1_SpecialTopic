@@ -44,9 +44,8 @@
             System.Windows.Forms.Label descriptionLabel1;
             System.Windows.Forms.Label donateProject_idLabel2;
             System.Windows.Forms.Label donatePlan_idLabel;
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.CategoriesSearch = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnLoad = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -57,6 +56,10 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.txtProjectId = new System.Windows.Forms.TextBox();
             this.donateProjectsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtCategoryId = new System.Windows.Forms.TextBox();
@@ -66,7 +69,6 @@
             this.txtCurrentAmount = new System.Windows.Forms.TextBox();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -76,7 +78,6 @@
             this.txtPlanId = new System.Windows.Forms.TextBox();
             this.donatePlansBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBoxProject = new System.Windows.Forms.ComboBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -85,11 +86,14 @@
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.donateCategoriesTableAdapter = new SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.donateCategoriesTableAdapter();
             this.tableAdapterManager = new SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.TableAdapterManager();
             this.donateProjectsTableAdapter = new SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.donateProjectsTableAdapter();
             this.donatePlansTableAdapter = new SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.donatePlansTableAdapter();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnRead = new System.Windows.Forms.Button();
+            this.btnProject = new System.Windows.Forms.Button();
+            this.btnPlans = new System.Windows.Forms.Button();
             donateCategories_idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             titleLabel = new System.Windows.Forms.Label();
@@ -105,12 +109,13 @@
             descriptionLabel1 = new System.Windows.Forms.Label();
             donateProject_idLabel2 = new System.Windows.Forms.Label();
             donatePlan_idLabel = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
+            this.CategoriesSearch.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donateCategoriesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamA_ProjectDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.donateProjectsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -122,7 +127,8 @@
             // 
             donateCategories_idLabel.AutoSize = true;
             donateCategories_idLabel.Font = new System.Drawing.Font("華康新特圓體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            donateCategories_idLabel.Location = new System.Drawing.Point(593, 688);
+            donateCategories_idLabel.ForeColor = System.Drawing.Color.Red;
+            donateCategories_idLabel.Location = new System.Drawing.Point(472, 826);
             donateCategories_idLabel.Name = "donateCategories_idLabel";
             donateCategories_idLabel.Size = new System.Drawing.Size(173, 43);
             donateCategories_idLabel.TabIndex = 2;
@@ -132,7 +138,7 @@
             // 
             nameLabel.AutoSize = true;
             nameLabel.Font = new System.Drawing.Font("華康新特圓體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            nameLabel.Location = new System.Drawing.Point(549, 613);
+            nameLabel.Location = new System.Drawing.Point(562, 609);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new System.Drawing.Size(217, 43);
             nameLabel.TabIndex = 4;
@@ -142,7 +148,7 @@
             // 
             titleLabel.AutoSize = true;
             titleLabel.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            titleLabel.Location = new System.Drawing.Point(32, 131);
+            titleLabel.Location = new System.Drawing.Point(28, 105);
             titleLabel.Name = "titleLabel";
             titleLabel.Size = new System.Drawing.Size(94, 32);
             titleLabel.TabIndex = 17;
@@ -152,7 +158,7 @@
             // 
             descriptionLabel.AutoSize = true;
             descriptionLabel.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            descriptionLabel.Location = new System.Drawing.Point(32, 214);
+            descriptionLabel.Location = new System.Drawing.Point(28, 188);
             descriptionLabel.Name = "descriptionLabel";
             descriptionLabel.Size = new System.Drawing.Size(94, 32);
             descriptionLabel.TabIndex = 19;
@@ -162,7 +168,7 @@
             // 
             target_amountLabel.AutoSize = true;
             target_amountLabel.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            target_amountLabel.Location = new System.Drawing.Point(32, 560);
+            target_amountLabel.Location = new System.Drawing.Point(28, 455);
             target_amountLabel.Name = "target_amountLabel";
             target_amountLabel.Size = new System.Drawing.Size(158, 32);
             target_amountLabel.TabIndex = 21;
@@ -172,7 +178,7 @@
             // 
             current_amountLabel.AutoSize = true;
             current_amountLabel.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            current_amountLabel.Location = new System.Drawing.Point(32, 471);
+            current_amountLabel.Location = new System.Drawing.Point(28, 366);
             current_amountLabel.Name = "current_amountLabel";
             current_amountLabel.Size = new System.Drawing.Size(158, 32);
             current_amountLabel.TabIndex = 23;
@@ -182,7 +188,7 @@
             // 
             start_dateLabel.AutoSize = true;
             start_dateLabel.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            start_dateLabel.Location = new System.Drawing.Point(32, 658);
+            start_dateLabel.Location = new System.Drawing.Point(28, 553);
             start_dateLabel.Name = "start_dateLabel";
             start_dateLabel.Size = new System.Drawing.Size(158, 32);
             start_dateLabel.TabIndex = 25;
@@ -192,7 +198,7 @@
             // 
             end_dateLabel.AutoSize = true;
             end_dateLabel.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            end_dateLabel.Location = new System.Drawing.Point(32, 754);
+            end_dateLabel.Location = new System.Drawing.Point(28, 649);
             end_dateLabel.Name = "end_dateLabel";
             end_dateLabel.Size = new System.Drawing.Size(158, 32);
             end_dateLabel.TabIndex = 27;
@@ -202,7 +208,7 @@
             // 
             donateCategories_idLabel1.AutoSize = true;
             donateCategories_idLabel1.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            donateCategories_idLabel1.Location = new System.Drawing.Point(32, 381);
+            donateCategories_idLabel1.Location = new System.Drawing.Point(28, 276);
             donateCategories_idLabel1.Name = "donateCategories_idLabel1";
             donateCategories_idLabel1.Size = new System.Drawing.Size(158, 32);
             donateCategories_idLabel1.TabIndex = 28;
@@ -212,7 +218,8 @@
             // 
             donateProject_idLabel.AutoSize = true;
             donateProject_idLabel.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            donateProject_idLabel.Location = new System.Drawing.Point(32, 294);
+            donateProject_idLabel.ForeColor = System.Drawing.Color.Red;
+            donateProject_idLabel.Location = new System.Drawing.Point(1035, 920);
             donateProject_idLabel.Name = "donateProject_idLabel";
             donateProject_idLabel.Size = new System.Drawing.Size(126, 32);
             donateProject_idLabel.TabIndex = 29;
@@ -222,7 +229,7 @@
             // 
             titleLabel1.AutoSize = true;
             titleLabel1.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            titleLabel1.Location = new System.Drawing.Point(565, 605);
+            titleLabel1.Location = new System.Drawing.Point(565, 668);
             titleLabel1.Name = "titleLabel1";
             titleLabel1.Size = new System.Drawing.Size(158, 32);
             titleLabel1.TabIndex = 3;
@@ -252,38 +259,39 @@
             // 
             donateProject_idLabel2.AutoSize = true;
             donateProject_idLabel2.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            donateProject_idLabel2.Location = new System.Drawing.Point(533, 668);
+            donateProject_idLabel2.Location = new System.Drawing.Point(565, 608);
             donateProject_idLabel2.Name = "donateProject_idLabel2";
-            donateProject_idLabel2.Size = new System.Drawing.Size(190, 32);
+            donateProject_idLabel2.Size = new System.Drawing.Size(158, 32);
             donateProject_idLabel2.TabIndex = 17;
-            donateProject_idLabel2.Text = "所屬募資id:";
+            donateProject_idLabel2.Text = "募資項目:";
             // 
             // donatePlan_idLabel
             // 
             donatePlan_idLabel.AutoSize = true;
-            donatePlan_idLabel.Location = new System.Drawing.Point(1358, 50);
+            donatePlan_idLabel.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            donatePlan_idLabel.ForeColor = System.Drawing.Color.Red;
+            donatePlan_idLabel.Location = new System.Drawing.Point(1197, 602);
             donatePlan_idLabel.Name = "donatePlan_idLabel";
-            donatePlan_idLabel.Size = new System.Drawing.Size(144, 24);
+            donatePlan_idLabel.Size = new System.Drawing.Size(206, 32);
             donatePlan_idLabel.TabIndex = 18;
-            donatePlan_idLabel.Text = "donate Plan id:";
-            donatePlan_idLabel.Visible = false;
+            donatePlan_idLabel.Text = "募資方案 id:";
             // 
-            // tabControl1
+            // CategoriesSearch
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1672, 1096);
-            this.tabControl1.TabIndex = 0;
+            this.CategoriesSearch.Controls.Add(this.tabPage1);
+            this.CategoriesSearch.Controls.Add(this.tabPage2);
+            this.CategoriesSearch.Controls.Add(this.tabPage3);
+            this.CategoriesSearch.Controls.Add(this.tabPage4);
+            this.CategoriesSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CategoriesSearch.Location = new System.Drawing.Point(0, 0);
+            this.CategoriesSearch.Name = "CategoriesSearch";
+            this.CategoriesSearch.SelectedIndex = 0;
+            this.CategoriesSearch.Size = new System.Drawing.Size(1672, 1096);
+            this.CategoriesSearch.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.btnLoad);
+            this.tabPage1.Controls.Add(this.btnRead);
             this.tabPage1.Controls.Add(this.btnDelete);
             this.tabPage1.Controls.Add(this.btnUpdate);
             this.tabPage1.Controls.Add(this.btnAdd);
@@ -301,23 +309,13 @@
             this.tabPage1.Text = "donateCategories";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // btnLoad
-            // 
-            this.btnLoad.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnLoad.Location = new System.Drawing.Point(1215, 790);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(256, 96);
-            this.btnLoad.TabIndex = 9;
-            this.btnLoad.Text = "讀取";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnRead_Click);
-            // 
             // btnDelete
             // 
-            this.btnDelete.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnDelete.Location = new System.Drawing.Point(872, 790);
+            this.btnDelete.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnDelete.ForeColor = System.Drawing.Color.Red;
+            this.btnDelete.Location = new System.Drawing.Point(979, 815);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(256, 96);
+            this.btnDelete.Size = new System.Drawing.Size(198, 64);
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "刪除";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -325,10 +323,10 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnUpdate.Location = new System.Drawing.Point(527, 790);
+            this.btnUpdate.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnUpdate.Location = new System.Drawing.Point(860, 695);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(256, 96);
+            this.btnUpdate.Size = new System.Drawing.Size(198, 64);
             this.btnUpdate.TabIndex = 7;
             this.btnUpdate.Text = "更新";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -336,10 +334,10 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnAdd.Location = new System.Drawing.Point(188, 790);
+            this.btnAdd.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnAdd.Location = new System.Drawing.Point(608, 695);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(256, 96);
+            this.btnAdd.Size = new System.Drawing.Size(198, 64);
             this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "新增";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -349,9 +347,8 @@
             // 
             this.txtId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateCategoriesBindingSource, "donateCategories_id", true));
             this.txtId.Font = new System.Drawing.Font("華康新特圓體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtId.Location = new System.Drawing.Point(772, 685);
+            this.txtId.Location = new System.Drawing.Point(651, 823);
             this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(298, 50);
             this.txtId.TabIndex = 3;
             // 
@@ -369,19 +366,20 @@
             // 
             this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateCategoriesBindingSource, "name", true));
             this.txtName.Font = new System.Drawing.Font("華康新特圓體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtName.Location = new System.Drawing.Point(772, 610);
+            this.txtName.Location = new System.Drawing.Point(785, 606);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(298, 50);
             this.txtName.TabIndex = 5;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(625, 157);
+            this.dataGridView1.Location = new System.Drawing.Point(546, 165);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 82;
             this.dataGridView1.RowTemplate.Height = 38;
-            this.dataGridView1.Size = new System.Drawing.Size(410, 398);
+            this.dataGridView1.Size = new System.Drawing.Size(558, 398);
             this.dataGridView1.TabIndex = 1;
             // 
             // label1
@@ -389,7 +387,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("華康新特圓體", 28.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(586, 41);
+            this.label1.Location = new System.Drawing.Point(585, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(488, 75);
             this.label1.TabIndex = 0;
@@ -399,6 +397,11 @@
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
+            this.tabPage2.Controls.Add(this.btnProject);
+            this.tabPage2.Controls.Add(this.dataGridView4);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.comboBoxCategory);
             this.tabPage2.Controls.Add(donateProject_idLabel);
             this.tabPage2.Controls.Add(this.txtProjectId);
             this.tabPage2.Controls.Add(this.txtCategoryId);
@@ -415,7 +418,6 @@
             this.tabPage2.Controls.Add(this.dtpStartDate);
             this.tabPage2.Controls.Add(end_dateLabel);
             this.tabPage2.Controls.Add(this.dtpEndDate);
-            this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.button4);
@@ -429,11 +431,53 @@
             this.tabPage2.Text = "donateProjects";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dataGridView4
+            // 
+            this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Location = new System.Drawing.Point(522, 708);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.RowHeadersWidth = 82;
+            this.dataGridView4.RowTemplate.Height = 38;
+            this.dataGridView4.Size = new System.Drawing.Size(1113, 195);
+            this.dataGridView4.TabIndex = 34;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(1513, 659);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 43);
+            this.button1.TabIndex = 33;
+            this.button1.Text = "搜尋";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.CategoriesSearch_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label4.Location = new System.Drawing.Point(1092, 662);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(190, 32);
+            this.label4.TabIndex = 32;
+            this.label4.Text = "依類別搜尋:";
+            // 
+            // comboBoxCategory
+            // 
+            this.comboBoxCategory.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.Location = new System.Drawing.Point(1288, 659);
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(212, 40);
+            this.comboBoxCategory.TabIndex = 31;
+            // 
             // txtProjectId
             // 
             this.txtProjectId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateProjectsBindingSource, "donateProject_id", true));
             this.txtProjectId.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtProjectId.Location = new System.Drawing.Point(201, 294);
+            this.txtProjectId.Location = new System.Drawing.Point(1167, 917);
             this.txtProjectId.Name = "txtProjectId";
             this.txtProjectId.Size = new System.Drawing.Size(295, 39);
             this.txtProjectId.TabIndex = 30;
@@ -447,7 +491,7 @@
             // 
             this.txtCategoryId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateProjectsBindingSource, "donateCategories_id", true));
             this.txtCategoryId.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCategoryId.Location = new System.Drawing.Point(201, 378);
+            this.txtCategoryId.Location = new System.Drawing.Point(197, 273);
             this.txtCategoryId.Name = "txtCategoryId";
             this.txtCategoryId.Size = new System.Drawing.Size(295, 39);
             this.txtCategoryId.TabIndex = 29;
@@ -456,7 +500,7 @@
             // 
             this.txtTitle.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateProjectsBindingSource, "title", true));
             this.txtTitle.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtTitle.Location = new System.Drawing.Point(201, 128);
+            this.txtTitle.Location = new System.Drawing.Point(197, 102);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(295, 39);
             this.txtTitle.TabIndex = 18;
@@ -465,7 +509,7 @@
             // 
             this.txtDescription.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateProjectsBindingSource, "description", true));
             this.txtDescription.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtDescription.Location = new System.Drawing.Point(201, 211);
+            this.txtDescription.Location = new System.Drawing.Point(197, 185);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(295, 39);
             this.txtDescription.TabIndex = 20;
@@ -474,7 +518,7 @@
             // 
             this.txtTargetAmount.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateProjectsBindingSource, "target_amount", true));
             this.txtTargetAmount.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtTargetAmount.Location = new System.Drawing.Point(201, 557);
+            this.txtTargetAmount.Location = new System.Drawing.Point(197, 452);
             this.txtTargetAmount.Name = "txtTargetAmount";
             this.txtTargetAmount.Size = new System.Drawing.Size(295, 39);
             this.txtTargetAmount.TabIndex = 22;
@@ -483,7 +527,7 @@
             // 
             this.txtCurrentAmount.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateProjectsBindingSource, "current_amount", true));
             this.txtCurrentAmount.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtCurrentAmount.Location = new System.Drawing.Point(201, 468);
+            this.txtCurrentAmount.Location = new System.Drawing.Point(197, 363);
             this.txtCurrentAmount.Name = "txtCurrentAmount";
             this.txtCurrentAmount.Size = new System.Drawing.Size(295, 39);
             this.txtCurrentAmount.TabIndex = 24;
@@ -492,7 +536,7 @@
             // 
             this.dtpStartDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.donateProjectsBindingSource, "start_date", true));
             this.dtpStartDate.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.dtpStartDate.Location = new System.Drawing.Point(201, 654);
+            this.dtpStartDate.Location = new System.Drawing.Point(197, 549);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(295, 39);
             this.dtpStartDate.TabIndex = 26;
@@ -501,28 +545,18 @@
             // 
             this.dtpEndDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.donateProjectsBindingSource, "end_date", true));
             this.dtpEndDate.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.dtpEndDate.Location = new System.Drawing.Point(201, 750);
+            this.dtpEndDate.Location = new System.Drawing.Point(197, 645);
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(295, 39);
             this.dtpEndDate.TabIndex = 28;
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(1196, 855);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(256, 96);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "讀取";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.PjRead_Click);
-            // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.Location = new System.Drawing.Point(853, 855);
+            this.button2.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button2.ForeColor = System.Drawing.Color.Red;
+            this.button2.Location = new System.Drawing.Point(1481, 909);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(256, 96);
+            this.button2.Size = new System.Drawing.Size(154, 54);
             this.button2.TabIndex = 12;
             this.button2.Text = "刪除";
             this.button2.UseVisualStyleBackColor = true;
@@ -530,10 +564,10 @@
             // 
             // button3
             // 
-            this.button3.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button3.Location = new System.Drawing.Point(508, 855);
+            this.button3.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button3.Location = new System.Drawing.Point(272, 716);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(256, 96);
+            this.button3.Size = new System.Drawing.Size(154, 54);
             this.button3.TabIndex = 11;
             this.button3.Text = "更新";
             this.button3.UseVisualStyleBackColor = true;
@@ -541,10 +575,10 @@
             // 
             // button4
             // 
-            this.button4.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button4.Location = new System.Drawing.Point(169, 855);
+            this.button4.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button4.Location = new System.Drawing.Point(89, 716);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(256, 96);
+            this.button4.Size = new System.Drawing.Size(154, 54);
             this.button4.TabIndex = 10;
             this.button4.Text = "新增";
             this.button4.UseVisualStyleBackColor = true;
@@ -554,11 +588,11 @@
             // 
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(522, 180);
+            this.dataGridView2.Location = new System.Drawing.Point(522, 112);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 82;
             this.dataGridView2.RowTemplate.Height = 38;
-            this.dataGridView2.Size = new System.Drawing.Size(1113, 606);
+            this.dataGridView2.Size = new System.Drawing.Size(1113, 519);
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -566,10 +600,10 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("華康新特圓體", 28.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(580, 66);
+            this.label2.Font = new System.Drawing.Font("華康新特圓體", 22.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label2.Location = new System.Drawing.Point(643, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(488, 75);
+            this.label2.Size = new System.Drawing.Size(385, 59);
             this.label2.TabIndex = 2;
             this.label2.Text = "募資項目管理";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -577,11 +611,11 @@
             // tabPage3
             // 
             this.tabPage3.AutoScroll = true;
+            this.tabPage3.Controls.Add(this.btnPlans);
             this.tabPage3.Controls.Add(donatePlan_idLabel);
             this.tabPage3.Controls.Add(this.txtPlanId);
             this.tabPage3.Controls.Add(donateProject_idLabel2);
             this.tabPage3.Controls.Add(this.comboBoxProject);
-            this.tabPage3.Controls.Add(this.button5);
             this.tabPage3.Controls.Add(this.button6);
             this.tabPage3.Controls.Add(this.button7);
             this.tabPage3.Controls.Add(this.button8);
@@ -604,11 +638,11 @@
             // txtPlanId
             // 
             this.txtPlanId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donatePlansBindingSource, "donatePlan_id", true));
-            this.txtPlanId.Location = new System.Drawing.Point(1508, 47);
+            this.txtPlanId.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtPlanId.Location = new System.Drawing.Point(1400, 601);
             this.txtPlanId.Name = "txtPlanId";
-            this.txtPlanId.Size = new System.Drawing.Size(100, 36);
+            this.txtPlanId.Size = new System.Drawing.Size(166, 39);
             this.txtPlanId.TabIndex = 19;
-            this.txtPlanId.Visible = false;
             // 
             // donatePlansBindingSource
             // 
@@ -620,27 +654,18 @@
             this.comboBoxProject.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donatePlansBindingSource, "donateProject_id", true));
             this.comboBoxProject.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.comboBoxProject.FormattingEnabled = true;
-            this.comboBoxProject.Location = new System.Drawing.Point(732, 665);
+            this.comboBoxProject.Location = new System.Drawing.Point(734, 605);
             this.comboBoxProject.Name = "comboBoxProject";
             this.comboBoxProject.Size = new System.Drawing.Size(333, 40);
             this.comboBoxProject.TabIndex = 18;
             // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button5.Location = new System.Drawing.Point(1221, 849);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(256, 96);
-            this.button5.TabIndex = 17;
-            this.button5.Text = "讀取";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // button6
             // 
-            this.button6.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button6.Location = new System.Drawing.Point(878, 849);
+            this.button6.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button6.ForeColor = System.Drawing.Color.Red;
+            this.button6.Location = new System.Drawing.Point(1311, 665);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(256, 96);
+            this.button6.Size = new System.Drawing.Size(151, 54);
             this.button6.TabIndex = 16;
             this.button6.Text = "刪除";
             this.button6.UseVisualStyleBackColor = true;
@@ -648,10 +673,10 @@
             // 
             // button7
             // 
-            this.button7.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button7.Location = new System.Drawing.Point(533, 849);
+            this.button7.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button7.Location = new System.Drawing.Point(851, 847);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(256, 96);
+            this.button7.Size = new System.Drawing.Size(172, 68);
             this.button7.TabIndex = 15;
             this.button7.Text = "更新";
             this.button7.UseVisualStyleBackColor = true;
@@ -659,10 +684,10 @@
             // 
             // button8
             // 
-            this.button8.Font = new System.Drawing.Font("新細明體", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button8.Location = new System.Drawing.Point(194, 849);
+            this.button8.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button8.Location = new System.Drawing.Point(630, 847);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(256, 96);
+            this.button8.Size = new System.Drawing.Size(172, 68);
             this.button8.TabIndex = 14;
             this.button8.Text = "新增";
             this.button8.UseVisualStyleBackColor = true;
@@ -690,7 +715,7 @@
             // 
             this.titleTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donatePlansBindingSource, "title", true));
             this.titleTextBox.Font = new System.Drawing.Font("華康新特圓體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.titleTextBox.Location = new System.Drawing.Point(732, 602);
+            this.titleTextBox.Location = new System.Drawing.Point(732, 665);
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(333, 39);
             this.titleTextBox.TabIndex = 4;
@@ -698,11 +723,11 @@
             // dataGridView3
             // 
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(75, 178);
+            this.dataGridView3.Location = new System.Drawing.Point(76, 143);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 82;
             this.dataGridView3.RowTemplate.Height = 38;
-            this.dataGridView3.Size = new System.Drawing.Size(1502, 398);
+            this.dataGridView3.Size = new System.Drawing.Size(1502, 421);
             this.dataGridView3.TabIndex = 3;
             this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
@@ -710,13 +735,23 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("華康新特圓體", 28.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(577, 48);
+            this.label3.Font = new System.Drawing.Font("華康新特圓體", 22.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label3.Location = new System.Drawing.Point(633, 45);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(488, 75);
+            this.label3.Size = new System.Drawing.Size(385, 59);
             this.label3.TabIndex = 2;
             this.label3.Text = "募資方案管理";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(8, 39);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1656, 1049);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "donateImages";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // donateCategoriesTableAdapter
             // 
@@ -766,25 +801,51 @@
             // 
             this.donatePlansTableAdapter.ClearBeforeFill = true;
             // 
-            // tabPage4
+            // btnRead
             // 
-            this.tabPage4.Location = new System.Drawing.Point(8, 39);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1656, 1049);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "donateImages";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.btnRead.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnRead.Image = global::SpecialTopic.Properties.Resources.重整1;
+            this.btnRead.Location = new System.Drawing.Point(1129, 165);
+            this.btnRead.Name = "btnRead";
+            this.btnRead.Size = new System.Drawing.Size(80, 80);
+            this.btnRead.TabIndex = 9;
+            this.btnRead.Text = "重整";
+            this.btnRead.UseVisualStyleBackColor = true;
+            this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
+            // 
+            // btnProject
+            // 
+            this.btnProject.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnProject.Image = global::SpecialTopic.Properties.Resources.重整1;
+            this.btnProject.Location = new System.Drawing.Point(1555, 26);
+            this.btnProject.Name = "btnProject";
+            this.btnProject.Size = new System.Drawing.Size(80, 80);
+            this.btnProject.TabIndex = 35;
+            this.btnProject.Text = "重整";
+            this.btnProject.UseVisualStyleBackColor = true;
+            this.btnProject.Click += new System.EventHandler(this.btnProject_Click);
+            // 
+            // btnPlans
+            // 
+            this.btnPlans.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnPlans.Image = global::SpecialTopic.Properties.Resources.重整1;
+            this.btnPlans.Location = new System.Drawing.Point(1498, 57);
+            this.btnPlans.Name = "btnPlans";
+            this.btnPlans.Size = new System.Drawing.Size(80, 80);
+            this.btnPlans.TabIndex = 36;
+            this.btnPlans.Text = "重整";
+            this.btnPlans.UseVisualStyleBackColor = true;
+            this.btnPlans.Click += new System.EventHandler(this.btnPlans_Click);
             // 
             // FundControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.CategoriesSearch);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FundControl";
             this.Size = new System.Drawing.Size(1672, 1096);
-            this.tabControl1.ResumeLayout(false);
+            this.CategoriesSearch.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donateCategoriesBindingSource)).EndInit();
@@ -792,6 +853,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.donateProjectsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage3.ResumeLayout(false);
@@ -804,7 +866,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl CategoriesSearch;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
@@ -817,11 +879,9 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
@@ -844,11 +904,17 @@
         private System.Windows.Forms.Label label3;
         private SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.donatePlansTableAdapter donatePlansTableAdapter;
         private System.Windows.Forms.ComboBox comboBoxProject;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.TextBox txtPlanId;
         private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBoxCategory;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.Button btnRead;
+        private System.Windows.Forms.Button btnProject;
+        private System.Windows.Forms.Button btnPlans;
     }
 }
