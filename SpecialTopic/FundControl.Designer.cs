@@ -52,7 +52,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
             this.donateCategoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.teamA_ProjectDataSet = new SpecialTopic.TeamA_ProjectDataSet();
+            this.teamA_ProjectDataSet = new SpecialTopic.Fund.TeamA_ProjectDataSet();
             this.txtName = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -85,10 +85,11 @@
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.donateCategoriesTableAdapter = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.donateCategoriesTableAdapter();
-            this.tableAdapterManager = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.TableAdapterManager();
-            this.donateProjectsTableAdapter = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.donateProjectsTableAdapter();
-            this.donatePlansTableAdapter = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.donatePlansTableAdapter();
+            this.donateCategoriesTableAdapter = new SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.donateCategoriesTableAdapter();
+            this.tableAdapterManager = new SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.TableAdapterManager();
+            this.donateProjectsTableAdapter = new SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.donateProjectsTableAdapter();
+            this.donatePlansTableAdapter = new SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.donatePlansTableAdapter();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             donateCategories_idLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             titleLabel = new System.Windows.Forms.Label();
@@ -272,6 +273,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -747,7 +749,7 @@
             this.tableAdapterManager.PostLikesTableAdapter = null;
             this.tableAdapterManager.SaleTagsTableAdapter = null;
             this.tableAdapterManager.SubscriberTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = SpecialTopic.TeamA_ProjectDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsedBookImagesTableAdapter = null;
             this.tableAdapterManager.UsedBookOrdersTableAdapter = null;
             this.tableAdapterManager.UsedBookSaleTagsTableAdapter = null;
@@ -763,6 +765,16 @@
             // donatePlansTableAdapter
             // 
             this.donatePlansTableAdapter.ClearBeforeFill = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(8, 39);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1656, 1049);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "donateImages";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // FundControl
             // 
@@ -796,10 +808,10 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
-        private TeamA_ProjectDataSet teamA_ProjectDataSet;
+        private SpecialTopic.Fund.TeamA_ProjectDataSet teamA_ProjectDataSet;
         private System.Windows.Forms.BindingSource donateCategoriesBindingSource;
-        private TeamA_ProjectDataSetTableAdapters.donateCategoriesTableAdapter donateCategoriesTableAdapter;
-        private TeamA_ProjectDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.donateCategoriesTableAdapter donateCategoriesTableAdapter;
+        private SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button btnDelete;
@@ -820,7 +832,7 @@
         private System.Windows.Forms.TextBox txtCurrentAmount;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.DateTimePicker dtpEndDate;
-        private TeamA_ProjectDataSetTableAdapters.donateProjectsTableAdapter donateProjectsTableAdapter;
+        private SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.donateProjectsTableAdapter donateProjectsTableAdapter;
         private System.Windows.Forms.TextBox txtCategoryId;
         private System.Windows.Forms.TextBox txtProjectId;
         private System.Windows.Forms.TabPage tabPage3;
@@ -830,12 +842,13 @@
         private System.Windows.Forms.TextBox titleTextBox;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Label label3;
-        private TeamA_ProjectDataSetTableAdapters.donatePlansTableAdapter donatePlansTableAdapter;
+        private SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.donatePlansTableAdapter donatePlansTableAdapter;
         private System.Windows.Forms.ComboBox comboBoxProject;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.TextBox txtPlanId;
+        private System.Windows.Forms.TabPage tabPage4;
     }
 }

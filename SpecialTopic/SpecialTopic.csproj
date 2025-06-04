@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TeamA_ProjectDataSet.Designer.cs">
+    <Compile Include="Fund\TeamA_ProjectDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
@@ -126,15 +126,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="TeamA_ProjectDataSet.xsc">
+    <None Include="Fund\TeamA_ProjectDataSet.xsc">
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TeamA_ProjectDataSet.xsd">
+    <None Include="Fund\TeamA_ProjectDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>TeamA_ProjectDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="TeamA_ProjectDataSet.xss">
+    <None Include="Fund\TeamA_ProjectDataSet.xss">
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
