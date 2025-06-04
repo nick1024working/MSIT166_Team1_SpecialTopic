@@ -123,6 +123,26 @@ namespace SpecialTopic.eBook.eBookCode
                 da.Fill(dt);
                 dgvOrders.DataSource = dt;
             }
+
+            // 主表格 dgvOrders 標題與格式
+            if (dgvOrders.Columns.Contains("OrderID")) dgvOrders.Columns["OrderID"].HeaderText = "訂單編號";
+            if (dgvOrders.Columns.Contains("UserName")) dgvOrders.Columns["UserName"].HeaderText = "會員名稱";
+            if (dgvOrders.Columns.Contains("OrderDateTime")) dgvOrders.Columns["OrderDateTime"].HeaderText = "下單時間";
+            if (dgvOrders.Columns.Contains("StatusName")) dgvOrders.Columns["StatusName"].HeaderText = "訂單狀態";
+            if (dgvOrders.Columns.Contains("TotalAmount"))
+            {
+                dgvOrders.Columns["TotalAmount"].HeaderText = "訂單總金額";
+                dgvOrders.Columns["TotalAmount"].DefaultCellStyle.Format = "N0";
+            }
+            if (dgvOrders.Columns.Contains("TotalDiscountAmount"))
+            {
+                dgvOrders.Columns["TotalDiscountAmount"].HeaderText = "折扣金額";
+                dgvOrders.Columns["TotalDiscountAmount"].DefaultCellStyle.Format = "N0";
+            }
+            if (dgvOrders.Columns.Contains("CurrencyCode")) dgvOrders.Columns["CurrencyCode"].HeaderText = "幣別";
+
+           
+
         }
 
         //private void LoadOrderDetails(long orderId)
@@ -249,6 +269,24 @@ namespace SpecialTopic.eBook.eBookCode
 
 
                 }
+            }
+            // 明細表格 dgvOrderDetails
+            if (dgvOrderDetails.Columns.Contains("商品名稱")) dgvOrderDetails.Columns["商品名稱"].HeaderText = "商品名稱";
+            if (dgvOrderDetails.Columns.Contains("數量")) dgvOrderDetails.Columns["數量"].HeaderText = "數量";
+            if (dgvOrderDetails.Columns.Contains("單價"))
+            {
+                dgvOrderDetails.Columns["單價"].HeaderText = "單價";
+                dgvOrderDetails.Columns["單價"].DefaultCellStyle.Format = "N0";
+            }
+            if (dgvOrderDetails.Columns.Contains("折扣"))
+            {
+                dgvOrderDetails.Columns["折扣"].HeaderText = "折扣";
+                dgvOrderDetails.Columns["折扣"].DefaultCellStyle.Format = "N0";
+            }
+            if (dgvOrderDetails.Columns.Contains("小計"))
+            {
+                dgvOrderDetails.Columns["小計"].HeaderText = "小計";
+                dgvOrderDetails.Columns["小計"].DefaultCellStyle.Format = "N0";
             }
         }
 

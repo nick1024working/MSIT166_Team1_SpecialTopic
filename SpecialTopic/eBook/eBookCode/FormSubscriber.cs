@@ -183,6 +183,15 @@ namespace SpecialTopic.eBook.eBookCode
 
                 conn.Close();
             }
+
+            if (dgvSubscribers.Columns.Contains("UID")) dgvSubscribers.Columns["UID"].HeaderText = "會員代號";
+            if (dgvSubscribers.Columns.Contains("Name")) dgvSubscribers.Columns["Name"].HeaderText = "會員名稱";
+            if (dgvSubscribers.Columns.Contains("subscribeStatus")) dgvSubscribers.Columns["subscribeStatus"].HeaderText = "訂閱代碼";
+            if (dgvSubscribers.Columns.Contains("dueTime")) dgvSubscribers.Columns["dueTime"].HeaderText = "到期時間";
+            if (dgvSubscribers.Columns.Contains("lastPayTime")) dgvSubscribers.Columns["lastPayTime"].HeaderText = "上次繳費";
+            if (dgvSubscribers.Columns.Contains("nextPayTime")) dgvSubscribers.Columns["nextPayTime"].HeaderText = "下次繳費";
+            if (dgvSubscribers.Columns.Contains("訂閱狀態名稱")) dgvSubscribers.Columns["訂閱狀態名稱"].HeaderText = "訂閱狀態";
+
         }
 
 
@@ -307,6 +316,12 @@ namespace SpecialTopic.eBook.eBookCode
                 da.Fill(dt);
                 dgvSubscribers.DataSource = dt;
             }
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            txtSearch.Text = "";        // 🔄 清空搜尋
+            LoadSubscribers(); // ✅ 重新載入訂閱者資料
         }
     }
 }

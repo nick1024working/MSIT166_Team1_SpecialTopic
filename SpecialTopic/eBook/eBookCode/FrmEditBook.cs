@@ -56,6 +56,14 @@ namespace SpecialTopic.eBook.eBookCode
                 }
             }
 
+            decimal price;
+            if (decimal.TryParse(fixedPriceTextBox.Text, out price))
+                fixedPriceTextBox.Text = price.ToString("0");
+            if (decimal.TryParse(actualPriceTextBox.Text, out price))
+                actualPriceTextBox.Text = price.ToString("0");
+            if (decimal.TryParse(discountTextBox.Text, out price))
+                discountTextBox.Text = price.ToString("0");
+
         }
 
         private void cover1PictureBox_DoubleClick(object sender, EventArgs e)

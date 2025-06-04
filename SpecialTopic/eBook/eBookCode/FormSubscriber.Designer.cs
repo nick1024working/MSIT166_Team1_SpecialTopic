@@ -124,6 +124,7 @@
             this.btnReload.TabIndex = 8;
             this.btnReload.Text = "重新載入";
             this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // dtpLastPayTime
             // 
