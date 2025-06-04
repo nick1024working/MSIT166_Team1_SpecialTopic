@@ -11,9 +11,9 @@ using System.Data.SqlClient;
 
 namespace SpecialTopic
 {
-    public partial class ForumBoardControl : UserControl
+    public partial class OldForumBoardControl : UserControl
     {
-        public ForumBoardControl()
+        public OldForumBoardControl()
         {
             InitializeComponent();
             this.Load += ForumBoardControl_Load;

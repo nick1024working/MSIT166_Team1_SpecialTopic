@@ -1,6 +1,6 @@
 ﻿namespace SpecialTopic
 {
-    partial class ForumBoardControl
+    partial class OldForumBoardControl
     {
         private System.ComponentModel.IContainer components = null;
 

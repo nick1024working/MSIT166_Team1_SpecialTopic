@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SpecialTopic.Forum
 {
-    public partial class ForumControl : UserControl
+    public partial class ForumPostControl : UserControl
     {
-        public ForumControl()
+        public ForumPostControl()
         {
             InitializeComponent();
         }

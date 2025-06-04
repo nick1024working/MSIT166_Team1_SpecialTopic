@@ -1,6 +1,6 @@
 ﻿namespace SpecialTopic.Forum
 {
-    partial class ForumControl
+    partial class ForumPostControl
     {
         /// <summary> 
         /// 設計工具所需的變數。
@@ -28,16 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // ForumControl
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "ForumControl";
-            this.Size = new System.Drawing.Size(892, 551);
-            this.ResumeLayout(false);
-
         }
 
         #endregion
