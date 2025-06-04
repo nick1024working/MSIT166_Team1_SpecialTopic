@@ -166,6 +166,71 @@ namespace SpecialTopic
             // 把查詢結果顯示到 DataGridView 控制項上
             dataGridView1.DataSource = dt;
 
+            // ✅ 設定金額欄位格式與繁體中文欄位名稱
+            if (dataGridView1.Columns.Contains("ebookID"))
+            {
+                dataGridView1.Columns["ebookID"].HeaderText = "電子書ID";
+            }
+            if (dataGridView1.Columns.Contains("eBookClass1"))
+            {
+                dataGridView1.Columns["eBookClass1"].HeaderText = "電子書分類1";
+            }
+            if (dataGridView1.Columns.Contains("eBookLabel1"))
+            {
+                dataGridView1.Columns["eBookLabel1"].HeaderText = "電子書標籤1";
+            }
+            if (dataGridView1.Columns.Contains("eBookLabel2"))
+            {
+                dataGridView1.Columns["eBookLabel2"].HeaderText = "電子書標籤2";
+            }
+            if (dataGridView1.Columns.Contains("cover1"))
+            {
+                dataGridView1.Columns["cover1"].HeaderText = "封面1";
+            }
+            if (dataGridView1.Columns.Contains("fixedPrice"))
+            {
+                dataGridView1.Columns["fixedPrice"].HeaderText = "定價";
+                dataGridView1.Columns["fixedPrice"].DefaultCellStyle.Format = "N0";
+            }
+            if (dataGridView1.Columns.Contains("actualPrice"))
+            {
+                dataGridView1.Columns["actualPrice"].HeaderText = "實售價";
+                dataGridView1.Columns["actualPrice"].DefaultCellStyle.Format = "N0";
+            }
+            if (dataGridView1.Columns.Contains("monthsales"))
+            {
+                dataGridView1.Columns["monthsales"].HeaderText = "月銷量";
+            }
+            if (dataGridView1.Columns.Contains("totalsales"))
+            {
+                dataGridView1.Columns["totalsales"].HeaderText = "總銷量";
+            }
+            if (dataGridView1.Columns.Contains("monthviews"))
+            {
+                dataGridView1.Columns["monthviews"].HeaderText = "月閱覽數";
+            }
+            if (dataGridView1.Columns.Contains("totalviews"))
+            {
+                dataGridView1.Columns["totalviews"].HeaderText = "總閱覽數";
+            }
+            if (dataGridView1.Columns.Contains("ebookName"))
+            {
+                dataGridView1.Columns["ebookName"].HeaderText = "書名";
+            }
+            if (dataGridView1.Columns.Contains("author"))
+            {
+                dataGridView1.Columns["author"].HeaderText = "作者";
+            }
+            if (dataGridView1.Columns.Contains("maturityRating"))
+            {
+                dataGridView1.Columns["maturityRating"].HeaderText = "分級";
+            }
+            if (dataGridView1.Columns.Contains("isAvailable"))
+            {
+                dataGridView1.Columns["isAvailable"].HeaderText = "上架狀態";
+            }
+
+
             // 設定欄位寬度自動調整成最適合寬度（避免資料被截斷）
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
@@ -196,6 +261,72 @@ namespace SpecialTopic
 
             // 資料繫結到 DataGridView
             dataGridView1.DataSource = dt;
+
+            // ✅ 設定金額欄位格式與繁體中文欄位名稱
+            if (dataGridView1.Columns.Contains("ebookID"))
+            {
+                dataGridView1.Columns["ebookID"].HeaderText = "電子書ID";
+            }
+            if (dataGridView1.Columns.Contains("eBookClass1"))
+            {
+                dataGridView1.Columns["eBookClass1"].HeaderText = "電子書分類1";
+            }
+            if (dataGridView1.Columns.Contains("eBookLabel1"))
+            {
+                dataGridView1.Columns["eBookLabel1"].HeaderText = "電子書標籤1";
+            }
+            if (dataGridView1.Columns.Contains("eBookLabel2"))
+            {
+                dataGridView1.Columns["eBookLabel2"].HeaderText = "電子書標籤2";
+            }
+            if (dataGridView1.Columns.Contains("cover1"))
+            {
+                dataGridView1.Columns["cover1"].HeaderText = "封面1";
+            }
+            if (dataGridView1.Columns.Contains("fixedPrice"))
+            {
+                dataGridView1.Columns["fixedPrice"].HeaderText = "定價";
+                dataGridView1.Columns["fixedPrice"].DefaultCellStyle.Format = "N0";
+            }
+            if (dataGridView1.Columns.Contains("actualPrice"))
+            {
+                dataGridView1.Columns["actualPrice"].HeaderText = "實售價";
+                dataGridView1.Columns["actualPrice"].DefaultCellStyle.Format = "N0";
+            }
+            if (dataGridView1.Columns.Contains("monthsales"))
+            {
+                dataGridView1.Columns["monthsales"].HeaderText = "月銷量";
+            }
+            if (dataGridView1.Columns.Contains("totalsales"))
+            {
+                dataGridView1.Columns["totalsales"].HeaderText = "總銷量";
+            }
+            if (dataGridView1.Columns.Contains("monthviews"))
+            {
+                dataGridView1.Columns["monthviews"].HeaderText = "月閱覽數";
+            }
+            if (dataGridView1.Columns.Contains("totalviews"))
+            {
+                dataGridView1.Columns["totalviews"].HeaderText = "總閱覽數";
+            }
+            if (dataGridView1.Columns.Contains("ebookName"))
+            {
+                dataGridView1.Columns["ebookName"].HeaderText = "書名";
+            }
+            if (dataGridView1.Columns.Contains("author"))
+            {
+                dataGridView1.Columns["author"].HeaderText = "作者";
+            }
+            if (dataGridView1.Columns.Contains("maturityRating"))
+            {
+                dataGridView1.Columns["maturityRating"].HeaderText = "分級";
+            }
+            if (dataGridView1.Columns.Contains("isAvailable"))
+            {
+                dataGridView1.Columns["isAvailable"].HeaderText = "上架狀態";
+            }
+
+
 
             // 自動調整欄寬
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
