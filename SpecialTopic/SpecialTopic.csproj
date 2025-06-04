@@ -162,30 +162,30 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSet1.Designer.cs">
+    <Compile Include="Member\DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="FRMCreateAccount.cs">
+    <Compile Include="Member\FRMCreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FRMCreateAccount.Designer.cs">
+    <Compile Include="Member\FRMCreateAccount.Designer.cs">
       <DependentUpon>FRMCreateAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="FRMLogin.cs">
+    <Compile Include="Member\FRMLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FRMLogin.Designer.cs">
+    <Compile Include="Member\FRMLogin.Designer.cs">
       <DependentUpon>FRMLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemberUserRegister.cs">
+    <Compile Include="Member\MemberUserRegister.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MemberUserRegister.Designer.cs">
+    <Compile Include="Member\MemberUserRegister.Designer.cs">
       <DependentUpon>MemberUserRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="TeamA_ProjectDataSet.Designer.cs">
+    <Compile Include="Member\TeamA_ProjectDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
@@ -220,21 +220,21 @@
     <Compile Include="FundControl.Designer.cs">
       <DependentUpon>FundControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemberControl.cs">
+    <Compile Include="Member\MemberControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MemberControl.Designer.cs">
+    <Compile Include="Member\MemberControl.Designer.cs">
       <DependentUpon>MemberControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FRMCreateAccount.resx">
+    <EmbeddedResource Include="Member\FRMCreateAccount.resx">
       <DependentUpon>FRMCreateAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FRMLogin.resx">
+    <EmbeddedResource Include="Member\FRMLogin.resx">
       <DependentUpon>FRMLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemberUserRegister.resx">
+    <EmbeddedResource Include="Member\MemberUserRegister.resx">
       <DependentUpon>MemberUserRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsedBookControl.resx">
@@ -252,7 +252,7 @@
     <EmbeddedResource Include="FundControl.resx">
       <DependentUpon>FundControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MemberControl.resx">
+    <EmbeddedResource Include="Member\MemberControl.resx">
       <DependentUpon>MemberControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -264,15 +264,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="DataSet1.xsc">
+    <None Include="Member\DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
-    <None Include="DataSet1.xsd">
+    <None Include="Member\DataSet1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DataSet1.xss">
+    <None Include="Member\DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -285,15 +285,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="TeamA_ProjectDataSet.xsc">
+    <None Include="Member\TeamA_ProjectDataSet.xsc">
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TeamA_ProjectDataSet.xsd">
+    <None Include="Member\TeamA_ProjectDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>TeamA_ProjectDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="TeamA_ProjectDataSet.xss">
+    <None Include="Member\TeamA_ProjectDataSet.xss">
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
