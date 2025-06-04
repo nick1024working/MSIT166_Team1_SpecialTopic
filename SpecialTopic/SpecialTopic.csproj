@@ -216,17 +216,29 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forum\ForumControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forum\ForumControl.Designer.cs">
+      <DependentUpon>ForumControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forum\ForumPostControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forum\ForumPostControl.Designer.cs">
       <DependentUpon>ForumPostControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forum\ForumControl.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Forum\FrmForumPostCategory.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forum\ForumControl.Designer.cs">
-      <DependentUpon>ForumControl.cs</DependentUpon>
+    <Compile Include="Forum\FrmForumPostCategory.Designer.cs">
+      <DependentUpon>FrmForumPostCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\FrmForumPostControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forum\FrmForumPostControl.Designer.cs">
+      <DependentUpon>FrmForumPostControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Member\DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -323,6 +335,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="TeamA_ProjectDataSetTest.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeamA_ProjectDataSetTest.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UsedBookControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -357,6 +374,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forum\ForumControl.resx">
       <DependentUpon>ForumControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forum\ForumPostControl.resx">
+      <DependentUpon>ForumPostControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forum\FrmForumPostControl.resx">
+      <DependentUpon>FrmForumPostControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Member\FRMCreateAccount.resx">
       <DependentUpon>FRMCreateAccount.cs</DependentUpon>
@@ -592,6 +615,17 @@
     </None>
     <None Include="Fund\TeamA_ProjectDataSet.xss">
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TeamA_ProjectDataSetTest.xsc">
+      <DependentUpon>TeamA_ProjectDataSetTest.xsd</DependentUpon>
+    </None>
+    <None Include="TeamA_ProjectDataSetTest.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TeamA_ProjectDataSetTest.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TeamA_ProjectDataSetTest.xss">
+      <DependentUpon>TeamA_ProjectDataSetTest.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

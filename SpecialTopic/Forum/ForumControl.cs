@@ -16,5 +16,14 @@ namespace SpecialTopic.Forum
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+                var board = new ForumPostControl(); // 例如 1 是「聊天室」
+            this.Controls.Clear();
+            this.Controls.Add(board);
+            //FrmForumPostControl frmPost = new FrmForumPostControl();
+            //frmPost.Show(); // 使用 ShowDialog 以模態方式顯示
+        }
     }
 }
