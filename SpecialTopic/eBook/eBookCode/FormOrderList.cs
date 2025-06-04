@@ -18,7 +18,14 @@ namespace SpecialTopic.eBook.eBookCode
     {
         public FormOrderList()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("設計階段錯誤：" + ex.Message);
+            }
         }
 
 
@@ -270,6 +277,17 @@ namespace SpecialTopic.eBook.eBookCode
 
                 }
             }
+
+            // ✅ 確保有 eBookID 欄位（隱藏，方便存取）
+            if (!dgvOrderDetails.Columns.Contains("eBookID"))
+            {
+                DataGridViewTextBoxColumn ebookIdCol = new DataGridViewTextBoxColumn();
+                ebookIdCol.Name = "eBookID";
+                ebookIdCol.HeaderText = "eBookID";
+                ebookIdCol.Visible = false; // ✅ 不顯示出來
+                dgvOrderDetails.Columns.Add(ebookIdCol);
+            }
+
             // 明細表格 dgvOrderDetails
             if (dgvOrderDetails.Columns.Contains("商品名稱")) dgvOrderDetails.Columns["商品名稱"].HeaderText = "商品名稱";
             if (dgvOrderDetails.Columns.Contains("數量")) dgvOrderDetails.Columns["數量"].HeaderText = "數量";
@@ -404,34 +422,121 @@ namespace SpecialTopic.eBook.eBookCode
         /// <summary>
         /// 確保 dgvOrderDetails 有包含 eBookID 欄位，若沒有則動態新增（不顯示）
         /// </summary>
-        private void EnsureEbookIDColumn()
-        {
-            // 如果欄位不存在就加上
-            if (!dgvOrderDetails.Columns.Contains("eBookID"))
-            {
-                var col = new DataGridViewTextBoxColumn();
-                col.Name = "eBookID";             // 內部識別名稱（程式用）
-                col.HeaderText = "eBookID";       // 表頭顯示文字（可隱藏）
-                col.Visible = false;              // 不顯示在畫面上（作為隱藏欄位）
-                dgvOrderDetails.Columns.Add(col); // 加入欄位
-            }
-        }
+        //private void EnsureEbookIDColumn()
+        //{
+        //    // 如果欄位不存在就加上
+        //    if (!dgvOrderDetails.Columns.Contains("eBookID"))
+        //    {
+        //        var col = new DataGridViewTextBoxColumn();
+        //        col.Name = "eBookID";             // 內部識別名稱（程式用）
+        //        col.HeaderText = "eBookID";       // 表頭顯示文字（可隱藏）
+        //        col.Visible = false;              // 不顯示在畫面上（作為隱藏欄位）
+        //        dgvOrderDetails.Columns.Add(col); // 加入欄位
+        //    }
+        //}
+
+        //        private void SaveDetailChanges()
+        //        {
+        //            dgvOrderDetails.EndEdit(); // ✅ 結束正在編輯的格子，讓 row 資料正式 commit
+        //            foreach (DataGridViewRow row in dgvOrderDetails.Rows)
+        //            {
+        //                // 如果是空白新列，直接跳過
+        //                if (row.IsNewRow) continue;
+
+        //                // 判斷這筆是否有 "明細編號"（即是否為資料庫中的舊資料）
+        //                bool isNew = row.Cells["明細編號"].Value == null || row.Cells["明細編號"].Value == DBNull.Value;
+
+        //                // 取得欄位值
+        //                string itemName = row.Cells["商品名稱"].Value?.ToString() ?? "";
+        //                int qty = Convert.ToInt32(row.Cells["數量"].Value);
+        //                decimal price = Convert.ToDecimal(row.Cells["單價"].Value);
+        //                decimal discount = Convert.ToDecimal(row.Cells["折扣"].Value);
+
+        //                using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
+        //                using (SqlCommand cmd = new SqlCommand())
+        //                {
+        //                    cmd.Connection = conn;
+
+        //                    if (isNew)
+        //                    {
+        //                        // INSERT 新資料
+        //                        //INSERT INTO eBookOrderDetail (OrderID, ItemNameSnapshot, Quantity, UnitPriceAtPurchase, DiscountAmount)
+        //                        //VALUES (@orderId, @name, @qty, @price, @discount)";
+        //                        cmd.CommandText = @"                    
+        //                        INSERT INTO eBookOrderDetail(OrderID,eBookID, ItemNameSnapshot, Quantity, UnitPriceAtPurchase, DiscountAmount, ItemTypeID)
+        //VALUES(@orderId,@ebookID, @name, @qty, @price, @discount, @itemType)";
+
+        //                        //string itemName = row.Cells["商品名稱"].Value?.ToString() ?? "";
+
+        //                        // 嘗試自動抓對應的電子書 ID
+        //                        long ebookID ;
+        //                        if (row.Cells["eBookID"].Value == null || row.Cells["eBookID"].Value == DBNull.Value)
+        //                        {
+        //                            ebookID = GetEbookIDByName(itemName); // 自動從書名補上
+        //                        }
+        //                        else
+        //                        {
+        //                            ebookID = Convert.ToInt64(row.Cells["eBookID"].Value); // 使用使用者提供的值
+        //                        }
+
+        //                        cmd.Parameters.AddWithValue("@ebookID", ebookID);
+        //                        cmd.Parameters.AddWithValue("@orderId", GetSelectedOrderID());
+        //                        cmd.Parameters.AddWithValue("@itemType", 3); // 整本電子書
+
+        //                    }
+        //                    else
+        //                    {
+        //                        // UPDATE 原資料
+        //                        cmd.CommandText = @"
+        //                    UPDATE eBookOrderDetail
+        //                    SET ItemNameSnapshot = @name,
+        //                        Quantity = @qty,
+        //                        UnitPriceAtPurchase = @price,
+        //                        DiscountAmount = @discount
+        //                    WHERE OrderItemID = @id";
+
+        //                        cmd.Parameters.AddWithValue("@id", Convert.ToInt64(row.Cells["明細編號"].Value));
+        //                    }
+
+        //                    // 共用參數
+        //                    cmd.Parameters.AddWithValue("@name", itemName);
+        //                    cmd.Parameters.AddWithValue("@qty", qty);
+        //                    cmd.Parameters.AddWithValue("@price", price);
+        //                    cmd.Parameters.AddWithValue("@discount", discount);
+
+        //                    conn.Open();
+        //                    cmd.ExecuteNonQuery();
+        //                    MessageBox.Show("成功寫入訂單明細！");
+
+        //                    // 重新載入明細並更新金額標籤
+
+
+        //                    //  UpdateTotalSummaryLabel();              // 再次計算總金額與更新底下顯示的紅字label
+
+        //                }
+
+        //            }
+        //            LoadOrderDetails(GetSelectedOrderID()); // 重新抓取該筆訂單的明細資料
+        //        }
 
         private void SaveDetailChanges()
         {
+            dgvOrderDetails.EndEdit(); // ✅ 確保正在編輯的格子內容會被儲存進 row
+
             foreach (DataGridViewRow row in dgvOrderDetails.Rows)
             {
-                // 如果是空白新列，直接跳過
-                if (row.IsNewRow) continue;
+                if (row.IsNewRow) continue; // ❌ 忽略空白列
 
-                // 判斷這筆是否有 "明細編號"（即是否為資料庫中的舊資料）
+                // 判斷是否為新資料（明細編號為 null 就是新資料）
                 bool isNew = row.Cells["明細編號"].Value == null || row.Cells["明細編號"].Value == DBNull.Value;
 
-                // 取得欄位值
-                string itemName = row.Cells["商品名稱"].Value?.ToString() ?? "";
-                int qty = Convert.ToInt32(row.Cells["數量"].Value);
-                decimal price = Convert.ToDecimal(row.Cells["單價"].Value);
-                decimal discount = Convert.ToDecimal(row.Cells["折扣"].Value);
+                // 基本欄位資料
+                string itemName = row.Cells["商品名稱"].Value?.ToString()?.Trim() ?? "";
+                if (string.IsNullOrWhiteSpace(itemName)) continue; // ⚠ 避免空白書名造成錯誤
+
+                if (!int.TryParse(row.Cells["數量"].Value?.ToString(), out int qty)) qty = 1;
+                if (!decimal.TryParse(row.Cells["單價"].Value?.ToString(), out decimal price)) price = 0;
+                if (!decimal.TryParse(row.Cells["折扣"].Value?.ToString(), out decimal discount)) discount = 0;
 
                 using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
                 using (SqlCommand cmd = new SqlCommand())
@@ -440,34 +545,34 @@ namespace SpecialTopic.eBook.eBookCode
 
                     if (isNew)
                     {
-                        // INSERT 新資料
-                        //INSERT INTO eBookOrderDetail (OrderID, ItemNameSnapshot, Quantity, UnitPriceAtPurchase, DiscountAmount)
-                        //VALUES (@orderId, @name, @qty, @price, @discount)";
-                        cmd.CommandText = @"                    
-                        INSERT INTO eBookOrderDetail(OrderID,eBookID, ItemNameSnapshot, Quantity, UnitPriceAtPurchase, DiscountAmount, ItemTypeID)
-VALUES(@orderId,@ebookID, @name, @qty, @price, @discount, @itemType)";
-
-                        //string itemName = row.Cells["商品名稱"].Value?.ToString() ?? "";
-
-                        // 嘗試自動抓對應的電子書 ID
-                        long ebookID = 0;
+                        // 🔍 嘗試從書名找對應的 eBookID，或從欄位直接取得
+                        long ebookID;
                         if (row.Cells["eBookID"].Value == null || row.Cells["eBookID"].Value == DBNull.Value)
                         {
-                            ebookID = GetEbookIDByName(itemName); // 自動從書名補上
+                            ebookID = GetEbookIDByName(itemName);
                         }
                         else
                         {
-                            ebookID = Convert.ToInt64(row.Cells["eBookID"].Value); // 使用使用者提供的值
+                            ebookID = Convert.ToInt64(row.Cells["eBookID"].Value);
                         }
 
-                        cmd.Parameters.AddWithValue("@ebookID", ebookID);
-                        cmd.Parameters.AddWithValue("@orderId", GetSelectedOrderID());
-                        cmd.Parameters.AddWithValue("@itemType", 3); // 整本電子書
+                        // ❌ 如果找不到對應 eBookID，跳過並提示
+                        if (ebookID == 0)
+                        {
+                            MessageBox.Show($"⚠ 查無此書名對應的 eBookID：{itemName}", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            continue;
+                        }
 
+                        cmd.CommandText = @"
+                    INSERT INTO eBookOrderDetail(OrderID, eBookID, ItemNameSnapshot, Quantity, UnitPriceAtPurchase, DiscountAmount, ItemTypeID)
+                    VALUES(@orderId, @ebookID, @name, @qty, @price, @discount, @itemType)";
+
+                        cmd.Parameters.AddWithValue("@orderId", GetSelectedOrderID());
+                        cmd.Parameters.AddWithValue("@ebookID", ebookID);
+                        cmd.Parameters.AddWithValue("@itemType", 3); // 單本電子書
                     }
                     else
                     {
-                        // UPDATE 原資料
                         cmd.CommandText = @"
                     UPDATE eBookOrderDetail
                     SET ItemNameSnapshot = @name,
@@ -479,7 +584,7 @@ VALUES(@orderId,@ebookID, @name, @qty, @price, @discount, @itemType)";
                         cmd.Parameters.AddWithValue("@id", Convert.ToInt64(row.Cells["明細編號"].Value));
                     }
 
-                    // 共用參數
+                    // ✅ 共用欄位參數
                     cmd.Parameters.AddWithValue("@name", itemName);
                     cmd.Parameters.AddWithValue("@qty", qty);
                     cmd.Parameters.AddWithValue("@price", price);
@@ -487,15 +592,14 @@ VALUES(@orderId,@ebookID, @name, @qty, @price, @discount, @itemType)";
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
-
-                    // 重新載入明細並更新金額標籤
-                    LoadOrderDetails(GetSelectedOrderID()); // 重新抓取該筆訂單的明細資料
-
-                    //  UpdateTotalSummaryLabel();              // 再次計算總金額與更新底下顯示的紅字label
-
+                    conn.Close();
                 }
             }
+
+            MessageBox.Show("✅ 所有明細成功寫入！");
+            LoadOrderDetails(GetSelectedOrderID()); // ✅ 統一更新畫面
         }
+
 
 
         private long GetSelectedOrderID()
@@ -509,20 +613,55 @@ VALUES(@orderId,@ebookID, @name, @qty, @price, @discount, @itemType)";
         /// </summary>
         /// <param name="bookName">書名（可部分或完整）</param>
         /// <returns>eBookID，若找不到則回傳 0</returns>
+        //private long GetEbookIDByName(string bookName)
+        //{
+        //    string sql = "SELECT TOP 1 ebookID FROM eBookMainTable WHERE ebookName LIKE @name";
+
+        //    using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
+        //    using (SqlCommand cmd = new SqlCommand(sql, conn))
+        //    {
+        //        cmd.Parameters.AddWithValue("@name", "%" + bookName + "%");
+        //        conn.Open();
+
+        //        object result = cmd.ExecuteScalar();
+
+        //        return result != null ? Convert.ToInt64(result) : 0;
+        //    }
+        //}
+
         private long GetEbookIDByName(string bookName)
         {
-            string sql = "SELECT TOP 1 ebookID FROM eBookMainTable WHERE ebookName LIKE @name";
+            if (string.IsNullOrWhiteSpace(bookName)) return 0;
+
+            long ebookID = 0;
 
             using (SqlConnection conn = new SqlConnection(GlobalConfig.ConnStr))
-            using (SqlCommand cmd = new SqlCommand(sql, conn))
             {
-                cmd.Parameters.AddWithValue("@name", "%" + bookName + "%");
-                conn.Open();
+                string sql = @"
+SELECT TOP 1 ebookID
+FROM eBookMainTable
+WHERE ebookName COLLATE Chinese_Taiwan_Stroke_CI_AS LIKE @name
+";
 
-                object result = cmd.ExecuteScalar();
-                return result != null ? Convert.ToInt64(result) : 0;
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    // ➤ 使用模糊比對，確保不受空格、大小寫等干擾
+                    cmd.Parameters.AddWithValue("@name", "%" + bookName.Trim() + "%");
+
+                    conn.Open();
+                    var result = cmd.ExecuteScalar();
+                    conn.Close();
+
+                    if (result != null && long.TryParse(result.ToString(), out long id))
+                    {
+                        ebookID = id;
+                    }
+                }
             }
+
+            return ebookID;
         }
+
 
 
 
@@ -552,7 +691,7 @@ VALUES(@orderId,@ebookID, @name, @qty, @price, @discount, @itemType)";
         {
             try
             {
-                EnsureEbookIDColumn();      // ← 呼叫檢查並補上欄位
+               // EnsureEbookIDColumn();      // ← 呼叫檢查並補上欄位
                 SaveOrderChanges();      // 儲存主檔
                 SaveDetailChanges();     // 儲存明細
                 MessageBox.Show("儲存成功！");
