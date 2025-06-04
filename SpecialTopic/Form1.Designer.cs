@@ -38,11 +38,11 @@
             this.Member = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.usersTableAdapter1 = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.UsersTableAdapter();
-            this.teamA_ProjectDataSet = new SpecialTopic.TeamA_ProjectDataSet();
+            this.usersTableAdapter1 = new SpecialTopic.Member.TeamA_ProjectDataSetTableAdapters.UsersTableAdapter();
+            this.teamA_ProjectDataSet = new SpecialTopic.Member.TeamA_ProjectDataSet();
             this.donateImagesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.donateImagesTableAdapter = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.donateImagesTableAdapter();
-            this.tableAdapterManager = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.TableAdapterManager();
+            this.donateImagesTableAdapter = new SpecialTopic.Member.TeamA_ProjectDataSetTableAdapters.donateImagesTableAdapter();
+            this.tableAdapterManager = new SpecialTopic.Member.TeamA_ProjectDataSetTableAdapters.TableAdapterManager();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teamA_ProjectDataSet)).BeginInit();
@@ -196,7 +196,7 @@
             this.tableAdapterManager.PostLikesTableAdapter = null;
             this.tableAdapterManager.SaleTagsTableAdapter = null;
             this.tableAdapterManager.SubscriberTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = SpecialTopic.TeamA_ProjectDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = SpecialTopic.Member.TeamA_ProjectDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsedBookImagesTableAdapter = null;
             this.tableAdapterManager.UsedBookOrdersTableAdapter = null;
             this.tableAdapterManager.UsedBookSaleTagsTableAdapter = null;
@@ -237,11 +237,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelMain;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private TeamA_ProjectDataSetTableAdapters.UsersTableAdapter usersTableAdapter1;
-        private TeamA_ProjectDataSet teamA_ProjectDataSet;
+        private SpecialTopic.Member.TeamA_ProjectDataSetTableAdapters.UsersTableAdapter usersTableAdapter1;
+        private SpecialTopic.Member.TeamA_ProjectDataSet teamA_ProjectDataSet;
         private System.Windows.Forms.BindingSource donateImagesBindingSource;
-        private TeamA_ProjectDataSetTableAdapters.donateImagesTableAdapter donateImagesTableAdapter;
-        private TeamA_ProjectDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private SpecialTopic.Member.TeamA_ProjectDataSetTableAdapters.donateImagesTableAdapter donateImagesTableAdapter;
+        private SpecialTopic.Member.TeamA_ProjectDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.BindingSource bindingSource1;
     }
 }

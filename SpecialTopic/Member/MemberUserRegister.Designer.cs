@@ -36,10 +36,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.teamA_ProjectDataSet = new SpecialTopic.TeamA_ProjectDataSet();
+            this.teamA_ProjectDataSet = new SpecialTopic.Member.TeamA_ProjectDataSet();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usersTableAdapter = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.UsersTableAdapter();
-            this.tableAdapterManager = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.TableAdapterManager();
+            this.usersTableAdapter = new SpecialTopic.Member.TeamA_ProjectDataSetTableAdapters.UsersTableAdapter();
+            this.tableAdapterManager = new SpecialTopic.Member.TeamA_ProjectDataSetTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.teamA_ProjectDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -148,7 +148,7 @@
             this.tableAdapterManager.PostLikesTableAdapter = null;
             this.tableAdapterManager.SaleTagsTableAdapter = null;
             this.tableAdapterManager.SubscriberTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = SpecialTopic.TeamA_ProjectDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder =  SpecialTopic.Member.TeamA_ProjectDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.UsedBookImagesTableAdapter = null;
             this.tableAdapterManager.UsedBookOrdersTableAdapter = null;
             this.tableAdapterManager.UsedBookSaleTagsTableAdapter = null;
@@ -189,9 +189,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox listBox1;
-        private TeamA_ProjectDataSet teamA_ProjectDataSet;
+        private SpecialTopic.Member.TeamA_ProjectDataSet teamA_ProjectDataSet;
         private System.Windows.Forms.BindingSource usersBindingSource;
-        private TeamA_ProjectDataSetTableAdapters.UsersTableAdapter usersTableAdapter;
-        private TeamA_ProjectDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private SpecialTopic.Member.TeamA_ProjectDataSetTableAdapters.UsersTableAdapter usersTableAdapter;
+        private SpecialTopic.Member.TeamA_ProjectDataSetTableAdapters.TableAdapterManager tableAdapterManager;
     }
 }

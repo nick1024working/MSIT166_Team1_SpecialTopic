@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace SpecialTopic
 {
-    public partial class Member : UserControl
+    public partial class MemberControl : UserControl
     {
         private Form1 _mainForm;
 
         
-        public Member()
+        public MemberControl()
         {
             InitializeComponent();
         }
 
-        public Member(Form1 mainForm) : this()
+        public MemberControl(Form1 mainForm) : this()
         {
             _mainForm = mainForm;
         }

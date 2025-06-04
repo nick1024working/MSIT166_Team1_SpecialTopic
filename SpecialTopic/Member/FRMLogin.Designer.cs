@@ -34,7 +34,7 @@
             this.txtAccount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.usersTableAdapter1 = new SpecialTopic.TeamA_ProjectDataSetTableAdapters.UsersTableAdapter();
+            this.usersTableAdapter1 = new SpecialTopic.Member.TeamA_ProjectDataSetTableAdapters.UsersTableAdapter();
             this.SuspendLayout();
             // 
             // button2
@@ -131,6 +131,6 @@
         private System.Windows.Forms.TextBox txtAccount;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private TeamA_ProjectDataSetTableAdapters.UsersTableAdapter usersTableAdapter1;
+        private SpecialTopic.Member.TeamA_ProjectDataSetTableAdapters.UsersTableAdapter usersTableAdapter1;
     }
 }
