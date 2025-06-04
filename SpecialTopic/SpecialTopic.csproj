@@ -304,6 +304,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Fund\TeamA_ProjectDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UsedBookControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -476,6 +481,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Member\DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
@@ -557,6 +563,17 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Forum\TeamA_ProjectDataSet.xss">
+      <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Fund\TeamA_ProjectDataSet.xsc">
+      <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Fund\TeamA_ProjectDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TeamA_ProjectDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Fund\TeamA_ProjectDataSet.xss">
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
