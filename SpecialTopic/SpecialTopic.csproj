@@ -113,6 +113,12 @@
       <HintPath>..\packages\PdfiumViewer.2.13.0.0\lib\net20\PdfiumViewer.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.1.66\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.1\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -190,6 +196,12 @@
     </Reference>
     <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -357,6 +369,90 @@
     <EmbeddedResource Include="Forum\FrmPostDetail.resx">
       <DependentUpon>FrmPostDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="UsedBooks\Backend\DTOs\BookCardDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\CreateFaceToFaceOrderDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\SaleTagDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\TopicDto.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\BookTopicEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\BookCardEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\OrderFaceToFaceStatusEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\SaleTagEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\UsedBookOrderEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Repositories\BookCardRepository.cs" />
+    <Compile Include="UsedBooks\Backend\Repositories\BookRepository.cs" />
+    <Compile Include="UsedBooks\Backend\Repositories\OrderRepository.cs" />
+    <Compile Include="UsedBooks\Backend\Repositories\TopicRepository.cs" />
+    <Compile Include="UsedBooks\Backend\Repositories\SaleTagRepository.cs" />
+    <Compile Include="UsedBooks\Backend\Repositories\UserRepository.cs" />
+    <Compile Include="UsedBooks\Backend\Services\BookCardService.cs" />
+    <Compile Include="UsedBooks\Backend\Services\BookService.cs" />
+    <Compile Include="UsedBooks\Backend\Services\OrderService.cs" />
+    <Compile Include="UsedBooks\Backend\Services\TopicService.cs" />
+    <Compile Include="UsedBooks\Backend\Services\SaleTagService.cs" />
+    <Compile Include="UsedBooks\Backend\Services\UserService.cs" />
+    <Compile Include="UsedBooks\Backend\Utilities\ImagePathHelper.cs" />
+    <Compile Include="UsedBooks\Backend\Utilities\OrderStatus.cs" />
+    <Compile Include="UsedBooks\Backend\Utilities\PaymentFlowType.cs" />
+    <Compile Include="UsedBooks\Backend\Utilities\Result.cs" />
+    <Compile Include="UsedBooks\Backend\Utilities\Unit.cs" />
+    <Compile Include="UsedBooks\Frontend\Components\BookCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Components\BookCardControl.Designer.cs">
+      <DependentUpon>BookCardControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Components\MainViewLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Components\MainViewLayout.Designer.cs">
+      <DependentUpon>MainViewLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Shared\BookCardControlHelper.cs" />
+    <Compile Include="UsedBooks\Frontend\Shared\ISwitchableView.cs" />
+    <Compile Include="UsedBooks\Frontend\Shared\ViewFactory.cs" />
+    <Compile Include="UsedBooks\Frontend\Shared\ViewType.cs" />
+    <Compile Include="UsedBooks\Frontend\Components\BodyWithSideBarAndContentArea.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Components\BodyWithSideBarAndContentArea.Designer.cs">
+      <DependentUpon>BodyWithSideBarAndContentArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Body\AdminCenterBody.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Body\AdminCenterBody.Designer.cs">
+      <DependentUpon>AdminCenterBody.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Body\PLPBody.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Body\PLPBody.Designer.cs">
+      <DependentUpon>PLPBody.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Body\UserCenterBody.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Body\UserCenterBody.Designer.cs">
+      <DependentUpon>UserCenterBody.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\CreateOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\CreateOrderForm.Designer.cs">
+      <DependentUpon>CreateOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\HomeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\HomeView.Designer.cs">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ProductListingPageView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ProductListingPageView.Designer.cs">
+      <DependentUpon>ProductListingPageView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UsedBookControl.resx">
       <DependentUpon>UsedBookControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -392,6 +488,34 @@
     <None Include="Member\DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
+    <EmbeddedResource Include="UsedBooks\Frontend\Components\BookCardControl.resx">
+      <DependentUpon>BookCardControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Components\MainViewLayout.resx">
+      <DependentUpon>MainViewLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Components\BodyWithSideBarAndContentArea.resx">
+      <DependentUpon>BodyWithSideBarAndContentArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\Body\AdminCenterBody.resx">
+      <DependentUpon>AdminCenterBody.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\Body\PLPBody.resx">
+      <DependentUpon>PLPBody.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\Body\UserCenterBody.resx">
+      <DependentUpon>UserCenterBody.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\CreateOrderForm.resx">
+      <DependentUpon>CreateOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\HomeView.resx">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\ProductListingPageView.resx">
+      <DependentUpon>ProductListingPageView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -439,7 +563,350 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="eBook\eBookFiles\eBookCover\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\2h68lgd_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\35dcl35_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\38acilf_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\5gb7h6b_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\6bg8le9_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\6efgig9_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\6egcicf_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\6lgliba_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\736ci7f_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\745ai3g_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\75cikd7_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\7blhj8e_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\7clljkb_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\7gfhj7f_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\88gjn9j_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\89l8mcj_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\8a7jmng_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\8einmi9_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\8gk9oee_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\8nd9ogk_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\91ebhef_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\9dd2l69_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\9dhgl8c_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\9f85ihd_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\acl7jd5_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\albfj87_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\alddjhd_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\b9ienbd_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\bblgmfe_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\bc13g94_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\c8bfhg9_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\c9hmq9d_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\ca7flcb_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\ceeblb9_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\cfabl23_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\ckanphh_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\ckhbpma_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\d5beia5_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\dcdekb8_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\dchdkfb_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\ddhlzfg_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\default.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\dk8gjg7_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\dklztlq_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\eafhnlc_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\eblcmik_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\ehn9m8g_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\eihmofe_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\f29ag33_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\f8ccha5_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\f8imock_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\fe2dh8e_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\feafh72_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\femjqng_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\fjeepjh_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\g528l69_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\g58hlde_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\gc9lilf_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\gd68k78_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\gdb6k4d_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\gdgfk5c_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\gea4kea_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\gferzgc_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\gibika8_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\giclzjl_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\gkcfj6e_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\gpoitzm_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\grlftqd_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\hhohvzo_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\hmtfurk_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\hqgguin_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\iegprnh_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\ipfjzkd_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\izeitzn_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\izfntip_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\j9m8oak_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\jfkfuvv_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\k6eljcd_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\kc88n8h_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\kgnntez_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\khhknli_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\kif7mjj_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\klhlven_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\l9mcocg_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\lediocc_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\lehhonf_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\ljggqgh_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\lmjipob_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\mikrvlp_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\mlmpthq_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\nfobrcn_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\njrdznp_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\nzihtzi_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\nzkotpm_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\omggqlg_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\oodiqlj_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\plmltdi_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\plojtom_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\popptor_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\pqlzvzr_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\qihoplq_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\qjnqrgh_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\qlqkpnf_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\rfiivhn_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\rgrkugj_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\rhjfuvf_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\rnjkuhi_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\rnjoukj_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\trqivnt_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\vhzqupt_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\vlpzuov_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\BookImages\vlzrurz_210x315.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UsedBooks\Frontend\Assets\Logos\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup />
   <ItemGroup Condition="$(VisualStudioVersion) == '17.0'">
     <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -455,9 +922,7 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="eBook\eBookFiles\eBookCover\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>

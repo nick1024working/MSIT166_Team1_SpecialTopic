@@ -1,6 +1,6 @@
-﻿namespace SpecialTopic
+﻿namespace SpecialTopic.UsedBooks.Views
 {
-    partial class UsedBookControl
+    partial class HomeView
     {
         /// <summary> 
         /// 設計工具所需的變數。
@@ -28,61 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnSwitchToPLP = new System.Windows.Forms.Button();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
+            // btnSwitchToPLP
+            // 
+            this.btnSwitchToPLP.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSwitchToPLP.Location = new System.Drawing.Point(902, 0);
+            this.btnSwitchToPLP.Name = "btnSwitchToPLP";
+            this.btnSwitchToPLP.Size = new System.Drawing.Size(75, 658);
+            this.btnSwitchToPLP.TabIndex = 0;
+            this.btnSwitchToPLP.Text = "SwitchToPLP";
+            this.btnSwitchToPLP.UseVisualStyleBackColor = true;
+            this.btnSwitchToPLP.Click += new System.EventHandler(this.btnSwitchToPLP_Click);
+            // 
             // mainPanel
             // 
-            this.mainPanel.AutoSize = true;
-            this.mainPanel.Controls.Add(this.button1);
-            this.mainPanel.Controls.Add(this.button2);
+            this.mainPanel.Controls.Add(this.btnSwitchToPLP);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1204, 839);
-            this.mainPanel.TabIndex = 0;
+            this.mainPanel.Size = new System.Drawing.Size(977, 658);
+            this.mainPanel.TabIndex = 1;
             // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.Location = new System.Drawing.Point(1129, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 816);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button2.Location = new System.Drawing.Point(0, 816);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(1204, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // UsedBookControl
+            // HomeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.Controls.Add(this.mainPanel);
-            this.Name = "UsedBookControl";
-            this.Size = new System.Drawing.Size(1204, 839);
+            this.Name = "HomeView";
+            this.Size = new System.Drawing.Size(977, 658);
             this.mainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Button btnSwitchToPLP;
         private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
     }
 }
