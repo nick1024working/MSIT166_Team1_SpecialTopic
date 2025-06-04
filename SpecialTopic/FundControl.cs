@@ -14,7 +14,7 @@ namespace SpecialTopic
 {
     public partial class FundControl : UserControl
     {
-        string connectionString = "Data Source=localhost;Initial Catalog=TeamA_Project;User ID=sa;Password=sa0529;";
+        string connectionString = "Data Source=.;Initial Catalog=TeamA_Project;Integrated Security=True;";
         public FundControl()
         {
             InitializeComponent();
@@ -38,9 +38,9 @@ namespace SpecialTopic
             {
                 string sql = "SELECT donateCategories_id, name FROM donateCategories";
                 SqlDataAdapter da = new SqlDataAdapter(sql, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                dataGridView1.DataSource = dt;
+                DataTable CategoriesDt = new DataTable();
+                da.Fill(CategoriesDt);
+                dataGridView1.DataSource = CategoriesDt;
             }
         }
 
@@ -304,9 +304,9 @@ namespace SpecialTopic
                 //cmd.Parameters.AddWithValue("@price", decimal.Parse(txtPrice.Text));
                 //cmd.Parameters.AddWithValue("@description", txtDescription.Text);
                 cmd.Parameters.AddWithValue("@projectId", comboBoxProject.SelectedValue);
-                cmd.Parameters.AddWithValue("@title", txtTitle.Text);
+                cmd.Parameters.AddWithValue("@title", titleTextBox.Text);
                 cmd.Parameters.AddWithValue("@price", txtPrice.Text);
-                cmd.Parameters.AddWithValue("@description", txtDescription.Text);
+                cmd.Parameters.AddWithValue("@description", descriptionTextBox.Text);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -332,9 +332,9 @@ namespace SpecialTopic
                        WHERE donatePlan_id = @id";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@projectId", (int)comboBoxProject.SelectedValue);
-                cmd.Parameters.AddWithValue("@title", txtTitle.Text);
+                cmd.Parameters.AddWithValue("@title", titleTextBox.Text);
                 cmd.Parameters.AddWithValue("@price", decimal.Parse(txtPrice.Text));
-                cmd.Parameters.AddWithValue("@description", txtDescription.Text);
+                cmd.Parameters.AddWithValue("@description", descriptionTextBox.Text);
                 cmd.Parameters.AddWithValue("@id", int.Parse(txtPlanId.Text));
 
                 conn.Open();
@@ -374,9 +374,9 @@ namespace SpecialTopic
             if (e.RowIndex >= 0)
             {
                 txtPlanId.Text = dataGridView3.Rows[e.RowIndex].Cells["donatePlan_id"].Value.ToString();
-                txtTitle.Text = dataGridView3.Rows[e.RowIndex].Cells["title"].Value.ToString();
+                titleTextBox.Text = dataGridView3.Rows[e.RowIndex].Cells["title"].Value.ToString();
                 txtPrice.Text = dataGridView3.Rows[e.RowIndex].Cells["price"].Value.ToString();
-                txtDescription.Text = dataGridView3.Rows[e.RowIndex].Cells["description"].Value.ToString();
+                descriptionTextBox.Text = dataGridView3.Rows[e.RowIndex].Cells["description"].Value.ToString();
 
                 // 如果 comboBox 是以文字顯示項目名稱
                 int projectId = Convert.ToInt32(dataGridView3.Rows[e.RowIndex].Cells["donateProject_id"].Value);
@@ -391,9 +391,14 @@ namespace SpecialTopic
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
+
+                dataGridView3.AutoGenerateColumns = true; // ✅ 確保自動產生欄位
                 dataGridView3.DataSource = dt;
                 dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
+
+            // 避免重複綁定 CellClick 事件（這應該只需綁定一次）
+            dataGridView3.CellClick -= dataGridView3_CellContentClick;
             dataGridView3.CellClick += dataGridView3_CellContentClick;
         }
     }
