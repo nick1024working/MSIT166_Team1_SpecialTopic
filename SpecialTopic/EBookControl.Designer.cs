@@ -52,6 +52,10 @@ namespace SpecialTopic
             this.btnSubscriber = new System.Windows.Forms.Button();
             this.txtBookID = new System.Windows.Forms.TextBox();
             this.buttonRecommend = new System.Windows.Forms.Button();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
+            this.comboBoxSubCategory = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             this.SuspendLayout();
@@ -130,7 +134,7 @@ namespace SpecialTopic
             // 
             this.txtSearch.Location = new System.Drawing.Point(1081, 53);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(195, 31);
+            this.txtSearch.Size = new System.Drawing.Size(195, 26);
             this.txtSearch.TabIndex = 7;
             // 
             // btnSearch
@@ -189,7 +193,7 @@ namespace SpecialTopic
             // 
             this.txtBookID.Location = new System.Drawing.Point(177, 127);
             this.txtBookID.Name = "txtBookID";
-            this.txtBookID.Size = new System.Drawing.Size(112, 31);
+            this.txtBookID.Size = new System.Drawing.Size(112, 26);
             this.txtBookID.TabIndex = 14;
             // 
             // buttonRecommend
@@ -203,10 +207,50 @@ namespace SpecialTopic
             this.buttonRecommend.UseVisualStyleBackColor = true;
             this.buttonRecommend.Click += new System.EventHandler(this.buttonRecommend_Click);
             // 
+            // comboBoxCategory
+            // 
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.Location = new System.Drawing.Point(1081, 126);
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(195, 27);
+            this.comboBoxCategory.TabIndex = 16;
+            this.comboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategory_SelectedIndexChanged);
+            // 
+            // comboBoxSubCategory
+            // 
+            this.comboBoxSubCategory.FormattingEnabled = true;
+            this.comboBoxSubCategory.Location = new System.Drawing.Point(1081, 204);
+            this.comboBoxSubCategory.Name = "comboBoxSubCategory";
+            this.comboBoxSubCategory.Size = new System.Drawing.Size(195, 27);
+            this.comboBoxSubCategory.TabIndex = 17;
+            this.comboBoxSubCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxSubCategory_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1294, 134);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 19);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "主分類搜尋";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1304, 204);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 19);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "次分類搜尋";
+            // 
             // EBookControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBoxSubCategory);
+            this.Controls.Add(this.comboBoxCategory);
             this.Controls.Add(this.buttonRecommend);
             this.Controls.Add(this.txtBookID);
             this.Controls.Add(this.btnSubscriber);
@@ -251,5 +295,9 @@ namespace SpecialTopic
         private Button btnSubscriber;
         private TextBox txtBookID;
         private Button buttonRecommend;
+        private ComboBox comboBoxCategory;
+        private ComboBox comboBoxSubCategory;
+        private Label label1;
+        private Label label2;
     }
 }
