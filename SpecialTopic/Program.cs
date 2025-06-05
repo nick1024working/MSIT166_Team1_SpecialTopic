@@ -16,8 +16,11 @@ namespace SpecialTopic
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-            //Application.Run(new FRMLogin());
+
+            // 執行Login畫面
+            Application.Run(new FRMLogin());
+
+            //Application.Run(new Form1());
             //Application.Run(new Form2());
         }
     }
