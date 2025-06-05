@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SpecialTopic.UsedBooks.Backend.DTOs;
 using SpecialTopic.UsedBooks.Backend.Services;
 using SpecialTopic.UsedBooks.Frontend.Components;
+using SpecialTopic.UsedBooks.Views;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace SpecialTopic.UsedBooks.Frontend.Views.Body
 {
@@ -24,16 +20,19 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
         private SaleTagService _saleTagService;
         private BookCardService _bookCardService;
 
-        public PLPBody()
+        public PLPBody(ProductListingPageView parent, string connString)
         {
             // 建構服務
             // HACK:沒有DI，直接讀App.config
-            _connString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
+            _connString = connString;
             _bookTopicService = new TopicService(_connString);
             _saleTagService = new SaleTagService(_connString);
             _bookCardService = new BookCardService(_connString);
 
             InitializeComponent();
+
+            // 訂閱父 ViewChanging 事件
+            parent.ViewChanging += (s, e) => flpMain.Controls.Clear();
 
             // 初始化資料
             // 資料顯示與UI有關，UI與控件是否生成有關，此處我們用額外OnHandleCreated()控制
@@ -87,6 +86,14 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
             lbxTopics.DataSource = result.Value;
             lbxTopics.DisplayMember = "TopicName";   // UI 層說明用 Name 當顯示文字
             lbxTopics.ValueMember = "TopicID";       // UI 層說明用 Id 當值（例如選擇後取出）
+
+            // 預設取消選取，後綁定事件
+            lbxTopics.SelectedIndex = -1;
+            lbxTopics.SelectedIndexChanged += lbxTopics_SelectedIndexChanged;
+
+            // 根據項目數自動調整 Height
+            int itemHeight = lbxTopics.ItemHeight;
+            lbxTopics.Height = itemHeight * lbxTopics.Items.Count + 4; // +4 是些微邊距
         }
 
         private void LoadSideBarSaleTags()
@@ -110,6 +117,14 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
             lbxSaleTags.DataSource = result.Value;
             lbxSaleTags.DisplayMember = "TagName";   // UI 層說明用 Name 當顯示文字
             lbxSaleTags.ValueMember = "TagID";       // UI 層說明用 Id 當值（例如選擇後取出）
+
+            // 預設取消選取，後綁定事件
+            lbxSaleTags.SelectedIndex = -1;
+            lbxSaleTags.SelectedIndexChanged += lbxSaleTags_SelectedIndexChanged;
+
+            // 根據項目數自動調整 Height
+            int itemHeight = lbxSaleTags.ItemHeight;
+            lbxSaleTags.Height = itemHeight * lbxSaleTags.Items.Count + 4; // +4 是些微邊距
         }
 
         /// <summary>
@@ -229,5 +244,6 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
         }
 
         #endregion
+
     }
 }

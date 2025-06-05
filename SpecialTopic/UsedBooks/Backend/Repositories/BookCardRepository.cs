@@ -18,7 +18,9 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
             string sqlString = @"
                 SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
                 FROM [dbo].[UsedBooks] AS b
-                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
+                LEFT JOIN [dbo].[UsedBookImages] AS i
+	                ON b.BookID = i.BookID AND i.ImageIndex = 0
+                WHERE b.IsActive = 1
                 ORDER BY b.CreatedAt DESC;";
             var result = conn.Query<BookCardEntity>(sqlString, transaction: tran).ToList();
             return result;
@@ -29,9 +31,11 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
             string sqlString = @"
                 SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
                 FROM [dbo].[UsedBooks] AS b
-                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
-                JOIN [dbo].[UsedBookSaleTags] AS st ON b.BookID = st.BookID
-                WHERE st.TagID = @tagId
+                LEFT JOIN [dbo].[UsedBookImages] AS i
+	                ON b.BookID = i.BookID AND i.ImageIndex = 0
+                JOIN [dbo].[UsedBookSaleTags] AS st
+	                ON b.BookID = st.BookID
+                WHERE b.IsActive = 1 AND st.TagID = @tagId
                 ORDER BY b.CreatedAt DESC;";
             var result = conn.Query<BookCardEntity>(sqlString, param: new { tagId }, transaction: tran).ToList();
             return result;
@@ -42,24 +46,23 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
             string sqlString = @"
                 SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
                 FROM [dbo].[UsedBooks] AS b
-                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
+                LEFT JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
                 JOIN [dbo].[UsedBookTopics] AS bt ON b.BookID = bt.BookID
-                WHERE bt.TopicID = @topicId
+                WHERE b.IsActive = 1 AND bt.TopicID = @topicId
                 ORDER BY b.CreatedAt DESC;";
             var result = conn.Query<BookCardEntity>(sqlString, param: new { topicId }, transaction: tran).ToList();
             return result;
         }
 
-        // TODO: 未測試
         public List<BookCardEntity> GetBookCardsByKeyword(string keyword, SqlConnection conn, SqlTransaction tran)
         {
             string sqlString = @"
                 SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
                 FROM [dbo].[UsedBooks] AS b
-                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
-                WHERE b.BookName LIKE '%' + @keyword + '%' OR b.Authors LIKE '%' + @keyword + '%'
+                LEFT JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
+                WHERE b.IsActive = 1 AND b.BookName LIKE @keyword OR b.Authors LIKE @keyword
                 ORDER BY b.CreatedAt DESC;";
-            var result = conn.Query<BookCardEntity>(sqlString, param: new { keyword }, transaction: tran).ToList();
+            var result = conn.Query<BookCardEntity>(sqlString, param: new { keyword = $"%{keyword}%" }, transaction: tran).ToList();
             return result;
         }
 
@@ -69,8 +72,8 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
             string sqlString = @"
                 SELECT b.[BookID], [BookName], [SalePrice], [Authors], [Description], [ImagePath]
                 FROM [dbo].[UsedBooks] AS b
-                JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
-                WHERE b.UID = @uid
+                LEFT JOIN [dbo].[UsedBookImages] AS i ON b.BookID = i.BookID AND i.ImageIndex = 0
+                WHERE b.IsActive = 1 AND b.UID = @uid
                 ORDER BY b.CreatedAt DESC;";
             var result = conn.Query<BookCardEntity>(sqlString, param: new { uid = userId }, transaction: tran).ToList();
             return result;

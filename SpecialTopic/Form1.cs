@@ -13,10 +13,13 @@ namespace SpecialTopic
 {
     public partial class Form1 : Form
     {
+        public string s;
         public Form1()
         {
             InitializeComponent();
         }
+
+
         public void ShowControl(UserControl control)
         {
             panelMain.Controls.Clear();
@@ -26,7 +29,9 @@ namespace SpecialTopic
 
         private void Member_Click(object sender, EventArgs e)
         {
-            ShowControl(new MemberUserRegister(this));
+            MemberUserRegister mur = new MemberUserRegister(this);
+            ShowControl(mur);
+            mur.loadPhoneDefault(s); // 載入會員資料
         }
 
         private void Forum_Click(object sender, EventArgs e)
@@ -51,7 +56,7 @@ namespace SpecialTopic
 
         private void Form1_Load(object sender, EventArgs e)
         {
-          
+
         }
     }
 }

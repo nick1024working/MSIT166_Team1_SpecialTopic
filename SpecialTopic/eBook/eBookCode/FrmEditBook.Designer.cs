@@ -140,6 +140,7 @@ namespace SpecialTopic.eBook.eBookCode
             this.totalviewsTextBox = new System.Windows.Forms.TextBox();
             this.maturityRatingTextBox = new System.Windows.Forms.TextBox();
             this.isAvailableCheckBox = new System.Windows.Forms.CheckBox();
+            this.txtPublishedDateOverride = new System.Windows.Forms.TextBox();
             ebookIDLabel = new System.Windows.Forms.Label();
             ebookNameLabel = new System.Windows.Forms.Label();
             eBookClass1Label = new System.Windows.Forms.Label();
@@ -208,7 +209,7 @@ namespace SpecialTopic.eBook.eBookCode
             ebookIDLabel.Name = "ebookIDLabel";
             ebookIDLabel.Size = new System.Drawing.Size(117, 19);
             ebookIDLabel.TabIndex = 1;
-            ebookIDLabel.Text = "ebook ID(N):";
+            ebookIDLabel.Text = "電子書ID(N):";
             // 
             // ebookNameLabel
             // 
@@ -217,43 +218,43 @@ namespace SpecialTopic.eBook.eBookCode
             ebookNameLabel.Name = "ebookNameLabel";
             ebookNameLabel.Size = new System.Drawing.Size(135, 19);
             ebookNameLabel.TabIndex = 3;
-            ebookNameLabel.Text = "ebook Name(N):";
+            ebookNameLabel.Text = "電子書名稱(N):";
             // 
             // eBookClass1Label
             // 
             eBookClass1Label.AutoSize = true;
             eBookClass1Label.Location = new System.Drawing.Point(136, 140);
             eBookClass1Label.Name = "eBookClass1Label";
-            eBookClass1Label.Size = new System.Drawing.Size(162, 19);
+            eBookClass1Label.Size = new System.Drawing.Size(144, 19);
             eBookClass1Label.TabIndex = 5;
-            eBookClass1Label.Text = "e Book Class1(N):";
+            eBookClass1Label.Text = "電子書分類1(N):";
             // 
             // eBookClass2Label
             // 
             eBookClass2Label.AutoSize = true;
             eBookClass2Label.Location = new System.Drawing.Point(136, 177);
             eBookClass2Label.Name = "eBookClass2Label";
-            eBookClass2Label.Size = new System.Drawing.Size(162, 19);
+            eBookClass2Label.Size = new System.Drawing.Size(144, 19);
             eBookClass2Label.TabIndex = 7;
-            eBookClass2Label.Text = "e Book Class2(N):";
+            eBookClass2Label.Text = "電子書分類2(N):";
             // 
             // eBookTypeLabel
             // 
             eBookTypeLabel.AutoSize = true;
             eBookTypeLabel.Location = new System.Drawing.Point(136, 214);
             eBookTypeLabel.Name = "eBookTypeLabel";
-            eBookTypeLabel.Size = new System.Drawing.Size(144, 19);
+            eBookTypeLabel.Size = new System.Drawing.Size(135, 19);
             eBookTypeLabel.TabIndex = 9;
-            eBookTypeLabel.Text = "e Book Type(Y):";
+            eBookTypeLabel.Text = "電子書連載(Y):";
             // 
             // authorLabel
             // 
             authorLabel.AutoSize = true;
             authorLabel.Location = new System.Drawing.Point(136, 251);
             authorLabel.Name = "authorLabel";
-            authorLabel.Size = new System.Drawing.Size(99, 19);
+            authorLabel.Size = new System.Drawing.Size(81, 19);
             authorLabel.TabIndex = 11;
-            authorLabel.Text = "author(N):";
+            authorLabel.Text = "作者(N):";
             // 
             // publisherLabel
             // 
@@ -262,39 +263,39 @@ namespace SpecialTopic.eBook.eBookCode
             publisherLabel.Name = "publisherLabel";
             publisherLabel.Size = new System.Drawing.Size(126, 19);
             publisherLabel.TabIndex = 13;
-            publisherLabel.Text = "publisher(Y):";
+            publisherLabel.Text = "出版者/社(Y):";
             // 
             // publishedDateLabel
             // 
             publishedDateLabel.AutoSize = true;
             publishedDateLabel.Location = new System.Drawing.Point(136, 326);
             publishedDateLabel.Name = "publishedDateLabel";
-            publishedDateLabel.Size = new System.Drawing.Size(171, 19);
+            publishedDateLabel.Size = new System.Drawing.Size(117, 19);
             publishedDateLabel.TabIndex = 15;
-            publishedDateLabel.Text = "published Date(Y):";
+            publishedDateLabel.Text = "出版日期(Y):";
             // 
             // translatorLabel
             // 
             translatorLabel.AutoSize = true;
-            translatorLabel.Location = new System.Drawing.Point(136, 362);
+            translatorLabel.Location = new System.Drawing.Point(136, 390);
             translatorLabel.Name = "translatorLabel";
-            translatorLabel.Size = new System.Drawing.Size(135, 19);
+            translatorLabel.Size = new System.Drawing.Size(81, 19);
             translatorLabel.TabIndex = 17;
-            translatorLabel.Text = "translator(Y):";
+            translatorLabel.Text = "譯者(Y):";
             // 
             // languageLabel
             // 
             languageLabel.AutoSize = true;
-            languageLabel.Location = new System.Drawing.Point(136, 399);
+            languageLabel.Location = new System.Drawing.Point(136, 417);
             languageLabel.Name = "languageLabel";
-            languageLabel.Size = new System.Drawing.Size(117, 19);
+            languageLabel.Size = new System.Drawing.Size(81, 19);
             languageLabel.TabIndex = 19;
-            languageLabel.Text = "language(Y):";
+            languageLabel.Text = "語言(Y):";
             // 
             // iSBNLabel
             // 
             iSBNLabel.AutoSize = true;
-            iSBNLabel.Location = new System.Drawing.Point(136, 436);
+            iSBNLabel.Location = new System.Drawing.Point(136, 454);
             iSBNLabel.Name = "iSBNLabel";
             iSBNLabel.Size = new System.Drawing.Size(81, 19);
             iSBNLabel.TabIndex = 21;
@@ -303,7 +304,7 @@ namespace SpecialTopic.eBook.eBookCode
             // eISBNLabel
             // 
             eISBNLabel.AutoSize = true;
-            eISBNLabel.Location = new System.Drawing.Point(136, 473);
+            eISBNLabel.Location = new System.Drawing.Point(136, 491);
             eISBNLabel.Name = "eISBNLabel";
             eISBNLabel.Size = new System.Drawing.Size(90, 19);
             eISBNLabel.TabIndex = 23;
@@ -312,308 +313,308 @@ namespace SpecialTopic.eBook.eBookCode
             // publishedCountryLabel
             // 
             publishedCountryLabel.AutoSize = true;
-            publishedCountryLabel.Location = new System.Drawing.Point(136, 510);
+            publishedCountryLabel.Location = new System.Drawing.Point(136, 528);
             publishedCountryLabel.Name = "publishedCountryLabel";
-            publishedCountryLabel.Size = new System.Drawing.Size(198, 19);
+            publishedCountryLabel.Size = new System.Drawing.Size(117, 19);
             publishedCountryLabel.TabIndex = 25;
-            publishedCountryLabel.Text = "published Country(Y):";
+            publishedCountryLabel.Text = "出版國家(Y):";
             // 
             // cEpisodeLabel
             // 
             cEpisodeLabel.AutoSize = true;
-            cEpisodeLabel.Location = new System.Drawing.Point(136, 547);
+            cEpisodeLabel.Location = new System.Drawing.Point(136, 565);
             cEpisodeLabel.Name = "cEpisodeLabel";
-            cEpisodeLabel.Size = new System.Drawing.Size(126, 19);
+            cEpisodeLabel.Size = new System.Drawing.Size(117, 19);
             cEpisodeLabel.TabIndex = 27;
-            cEpisodeLabel.Text = "c Episode(N):";
+            cEpisodeLabel.Text = "目前集數(N):";
             // 
             // totalEpisodeLabel
             // 
             totalEpisodeLabel.AutoSize = true;
-            totalEpisodeLabel.Location = new System.Drawing.Point(136, 584);
+            totalEpisodeLabel.Location = new System.Drawing.Point(136, 602);
             totalEpisodeLabel.Name = "totalEpisodeLabel";
-            totalEpisodeLabel.Size = new System.Drawing.Size(162, 19);
+            totalEpisodeLabel.Size = new System.Drawing.Size(99, 19);
             totalEpisodeLabel.TabIndex = 29;
-            totalEpisodeLabel.Text = "Total Episode(N):";
+            totalEpisodeLabel.Text = "總集數(N):";
             // 
             // eBookPositionLabel
             // 
             eBookPositionLabel.AutoSize = true;
-            eBookPositionLabel.Location = new System.Drawing.Point(136, 621);
+            eBookPositionLabel.Location = new System.Drawing.Point(136, 639);
             eBookPositionLabel.Name = "eBookPositionLabel";
-            eBookPositionLabel.Size = new System.Drawing.Size(180, 19);
+            eBookPositionLabel.Size = new System.Drawing.Size(171, 19);
             eBookPositionLabel.TabIndex = 31;
-            eBookPositionLabel.Text = "e Book Position(N):";
+            eBookPositionLabel.Text = "電子書儲存位置(N):";
             // 
             // eBookDataTypeLabel
             // 
             eBookDataTypeLabel.AutoSize = true;
-            eBookDataTypeLabel.Location = new System.Drawing.Point(136, 658);
+            eBookDataTypeLabel.Location = new System.Drawing.Point(136, 674);
             eBookDataTypeLabel.Name = "eBookDataTypeLabel";
-            eBookDataTypeLabel.Size = new System.Drawing.Size(189, 19);
+            eBookDataTypeLabel.Size = new System.Drawing.Size(144, 19);
             eBookDataTypeLabel.TabIndex = 33;
-            eBookDataTypeLabel.Text = "e Book Data Type(N):";
+            eBookDataTypeLabel.Text = "電子書格式e(N):";
             // 
             // eBookLabel1Label
             // 
             eBookLabel1Label.AutoSize = true;
-            eBookLabel1Label.Location = new System.Drawing.Point(136, 695);
+            eBookLabel1Label.Location = new System.Drawing.Point(136, 711);
             eBookLabel1Label.Name = "eBookLabel1Label";
-            eBookLabel1Label.Size = new System.Drawing.Size(162, 19);
+            eBookLabel1Label.Size = new System.Drawing.Size(153, 19);
             eBookLabel1Label.TabIndex = 35;
-            eBookLabel1Label.Text = "e Book Label1(Y):";
+            eBookLabel1Label.Text = "電子書標籤l1(Y):";
             // 
             // eBookLabel2Label
             // 
             eBookLabel2Label.AutoSize = true;
-            eBookLabel2Label.Location = new System.Drawing.Point(136, 732);
+            eBookLabel2Label.Location = new System.Drawing.Point(136, 748);
             eBookLabel2Label.Name = "eBookLabel2Label";
-            eBookLabel2Label.Size = new System.Drawing.Size(162, 19);
+            eBookLabel2Label.Size = new System.Drawing.Size(153, 19);
             eBookLabel2Label.TabIndex = 37;
-            eBookLabel2Label.Text = "e Book Label2(Y):";
+            eBookLabel2Label.Text = "電子書標籤l2(Y):";
             // 
             // eBookLabel3Label
             // 
             eBookLabel3Label.AutoSize = true;
-            eBookLabel3Label.Location = new System.Drawing.Point(136, 769);
+            eBookLabel3Label.Location = new System.Drawing.Point(136, 785);
             eBookLabel3Label.Name = "eBookLabel3Label";
-            eBookLabel3Label.Size = new System.Drawing.Size(162, 19);
+            eBookLabel3Label.Size = new System.Drawing.Size(144, 19);
             eBookLabel3Label.TabIndex = 39;
-            eBookLabel3Label.Text = "e Book Label3(Y):";
+            eBookLabel3Label.Text = "電子書標籤3(Y):";
             // 
             // eBookLabel4Label
             // 
             eBookLabel4Label.AutoSize = true;
-            eBookLabel4Label.Location = new System.Drawing.Point(136, 806);
+            eBookLabel4Label.Location = new System.Drawing.Point(136, 822);
             eBookLabel4Label.Name = "eBookLabel4Label";
-            eBookLabel4Label.Size = new System.Drawing.Size(162, 19);
+            eBookLabel4Label.Size = new System.Drawing.Size(144, 19);
             eBookLabel4Label.TabIndex = 41;
-            eBookLabel4Label.Text = "e Book Label4(Y):";
+            eBookLabel4Label.Text = "電子書標籤4(Y):";
             // 
             // eBookLabel5Label
             // 
             eBookLabel5Label.AutoSize = true;
-            eBookLabel5Label.Location = new System.Drawing.Point(136, 843);
+            eBookLabel5Label.Location = new System.Drawing.Point(136, 859);
             eBookLabel5Label.Name = "eBookLabel5Label";
-            eBookLabel5Label.Size = new System.Drawing.Size(162, 19);
+            eBookLabel5Label.Size = new System.Drawing.Size(144, 19);
             eBookLabel5Label.TabIndex = 43;
-            eBookLabel5Label.Text = "e Book Label5(Y):";
+            eBookLabel5Label.Text = "電子書標籤5(Y):";
             // 
             // cover1Label
             // 
             cover1Label.AutoSize = true;
             cover1Label.Location = new System.Drawing.Point(545, 66);
             cover1Label.Name = "cover1Label";
-            cover1Label.Size = new System.Drawing.Size(72, 19);
+            cover1Label.Size = new System.Drawing.Size(63, 19);
             cover1Label.TabIndex = 45;
-            cover1Label.Text = "cover1:";
+            cover1Label.Text = "封面1:";
             // 
             // cover2Label
             // 
             cover2Label.AutoSize = true;
             cover2Label.Location = new System.Drawing.Point(545, 266);
             cover2Label.Name = "cover2Label";
-            cover2Label.Size = new System.Drawing.Size(72, 19);
+            cover2Label.Size = new System.Drawing.Size(63, 19);
             cover2Label.TabIndex = 47;
-            cover2Label.Text = "cover2:";
+            cover2Label.Text = "封面2:";
             // 
             // cover3Label
             // 
             cover3Label.AutoSize = true;
             cover3Label.Location = new System.Drawing.Point(556, 436);
             cover3Label.Name = "cover3Label";
-            cover3Label.Size = new System.Drawing.Size(72, 19);
+            cover3Label.Size = new System.Drawing.Size(63, 19);
             cover3Label.TabIndex = 49;
-            cover3Label.Text = "cover3:";
+            cover3Label.Text = "封面3:";
             // 
             // cover4Label
             // 
             cover4Label.AutoSize = true;
             cover4Label.Location = new System.Drawing.Point(556, 600);
             cover4Label.Name = "cover4Label";
-            cover4Label.Size = new System.Drawing.Size(72, 19);
+            cover4Label.Size = new System.Drawing.Size(63, 19);
             cover4Label.TabIndex = 51;
-            cover4Label.Text = "cover4:";
+            cover4Label.Text = "封面4:";
             // 
             // cover5Label
             // 
             cover5Label.AutoSize = true;
             cover5Label.Location = new System.Drawing.Point(827, 71);
             cover5Label.Name = "cover5Label";
-            cover5Label.Size = new System.Drawing.Size(72, 19);
+            cover5Label.Size = new System.Drawing.Size(63, 19);
             cover5Label.TabIndex = 53;
-            cover5Label.Text = "cover5:";
+            cover5Label.Text = "封面5:";
             // 
             // cover6Label
             // 
             cover6Label.AutoSize = true;
             cover6Label.Location = new System.Drawing.Point(827, 306);
             cover6Label.Name = "cover6Label";
-            cover6Label.Size = new System.Drawing.Size(72, 19);
+            cover6Label.Size = new System.Drawing.Size(63, 19);
             cover6Label.TabIndex = 55;
-            cover6Label.Text = "cover6:";
+            cover6Label.Text = "封面6:";
             // 
             // cover7Label
             // 
             cover7Label.AutoSize = true;
             cover7Label.Location = new System.Drawing.Point(827, 470);
             cover7Label.Name = "cover7Label";
-            cover7Label.Size = new System.Drawing.Size(72, 19);
+            cover7Label.Size = new System.Drawing.Size(63, 19);
             cover7Label.TabIndex = 57;
-            cover7Label.Text = "cover7:";
+            cover7Label.Text = "封面7:";
             // 
             // cover8Label
             // 
             cover8Label.AutoSize = true;
             cover8Label.Location = new System.Drawing.Point(827, 626);
             cover8Label.Name = "cover8Label";
-            cover8Label.Size = new System.Drawing.Size(72, 19);
+            cover8Label.Size = new System.Drawing.Size(63, 19);
             cover8Label.TabIndex = 59;
-            cover8Label.Text = "cover8:";
+            cover8Label.Text = "封面8:";
             // 
             // cover9Label
             // 
             cover9Label.AutoSize = true;
             cover9Label.Location = new System.Drawing.Point(733, 737);
             cover9Label.Name = "cover9Label";
-            cover9Label.Size = new System.Drawing.Size(72, 19);
+            cover9Label.Size = new System.Drawing.Size(63, 19);
             cover9Label.TabIndex = 61;
-            cover9Label.Text = "cover9:";
+            cover9Label.Text = "封面9:";
             // 
             // fixedPriceLabel
             // 
             fixedPriceLabel.AutoSize = true;
-            fixedPriceLabel.Location = new System.Drawing.Point(136, 899);
+            fixedPriceLabel.Location = new System.Drawing.Point(136, 893);
             fixedPriceLabel.Name = "fixedPriceLabel";
-            fixedPriceLabel.Size = new System.Drawing.Size(144, 19);
+            fixedPriceLabel.Size = new System.Drawing.Size(81, 19);
             fixedPriceLabel.TabIndex = 63;
-            fixedPriceLabel.Text = "fixed Price(N):";
+            fixedPriceLabel.Text = "定價(N):";
             // 
             // actualPriceLabel
             // 
             actualPriceLabel.AutoSize = true;
-            actualPriceLabel.Location = new System.Drawing.Point(136, 936);
+            actualPriceLabel.Location = new System.Drawing.Point(136, 930);
             actualPriceLabel.Name = "actualPriceLabel";
-            actualPriceLabel.Size = new System.Drawing.Size(153, 19);
+            actualPriceLabel.Size = new System.Drawing.Size(99, 19);
             actualPriceLabel.TabIndex = 65;
-            actualPriceLabel.Text = "actual Price(Y):";
+            actualPriceLabel.Text = "實售價(Y):";
             // 
             // couponcodeLabel
             // 
             couponcodeLabel.AutoSize = true;
-            couponcodeLabel.Location = new System.Drawing.Point(136, 973);
+            couponcodeLabel.Location = new System.Drawing.Point(136, 967);
             couponcodeLabel.Name = "couponcodeLabel";
-            couponcodeLabel.Size = new System.Drawing.Size(135, 19);
+            couponcodeLabel.Size = new System.Drawing.Size(99, 19);
             couponcodeLabel.TabIndex = 67;
-            couponcodeLabel.Text = "couponcode(Y):";
+            couponcodeLabel.Text = "折扣碼(Y):";
             // 
             // discountLabel
             // 
             discountLabel.AutoSize = true;
-            discountLabel.Location = new System.Drawing.Point(136, 1010);
+            discountLabel.Location = new System.Drawing.Point(136, 1004);
             discountLabel.Name = "discountLabel";
-            discountLabel.Size = new System.Drawing.Size(117, 19);
+            discountLabel.Size = new System.Drawing.Size(81, 19);
             discountLabel.TabIndex = 69;
-            discountLabel.Text = "discount(Y):";
+            discountLabel.Text = "折扣(Y):";
             // 
             // purchaseCountryLabel
             // 
             purchaseCountryLabel.AutoSize = true;
-            purchaseCountryLabel.Location = new System.Drawing.Point(136, 1047);
+            purchaseCountryLabel.Location = new System.Drawing.Point(136, 1041);
             purchaseCountryLabel.Name = "purchaseCountryLabel";
-            purchaseCountryLabel.Size = new System.Drawing.Size(189, 19);
+            purchaseCountryLabel.Size = new System.Drawing.Size(117, 19);
             purchaseCountryLabel.TabIndex = 71;
-            purchaseCountryLabel.Text = "purchase Country(Y):";
+            purchaseCountryLabel.Text = "購買國家(Y):";
             // 
             // cumulativesalesLabel
             // 
             cumulativesalesLabel.AutoSize = true;
-            cumulativesalesLabel.Location = new System.Drawing.Point(136, 1084);
+            cumulativesalesLabel.Location = new System.Drawing.Point(136, 1078);
             cumulativesalesLabel.Name = "cumulativesalesLabel";
-            cumulativesalesLabel.Size = new System.Drawing.Size(180, 19);
+            cumulativesalesLabel.Size = new System.Drawing.Size(117, 19);
             cumulativesalesLabel.TabIndex = 73;
-            cumulativesalesLabel.Text = "cumulativesales(Y):";
+            cumulativesalesLabel.Text = "累計銷量(Y):";
             // 
             // bookDescriptionLabel
             // 
             bookDescriptionLabel.AutoSize = true;
-            bookDescriptionLabel.Location = new System.Drawing.Point(39, 1121);
+            bookDescriptionLabel.Location = new System.Drawing.Point(39, 1115);
             bookDescriptionLabel.Name = "bookDescriptionLabel";
-            bookDescriptionLabel.Size = new System.Drawing.Size(189, 19);
+            bookDescriptionLabel.Size = new System.Drawing.Size(81, 19);
             bookDescriptionLabel.TabIndex = 75;
-            bookDescriptionLabel.Text = "book Description(Y):";
+            bookDescriptionLabel.Text = "簡介(Y):";
             // 
             // weeksalesLabel
             // 
             weeksalesLabel.AutoSize = true;
             weeksalesLabel.Location = new System.Drawing.Point(634, 879);
             weeksalesLabel.Name = "weeksalesLabel";
-            weeksalesLabel.Size = new System.Drawing.Size(126, 19);
+            weeksalesLabel.Size = new System.Drawing.Size(99, 19);
             weeksalesLabel.TabIndex = 77;
-            weeksalesLabel.Text = "weeksales(N):";
+            weeksalesLabel.Text = "周銷量(N):";
             // 
             // monthsalesLabel
             // 
             monthsalesLabel.AutoSize = true;
             monthsalesLabel.Location = new System.Drawing.Point(634, 928);
             monthsalesLabel.Name = "monthsalesLabel";
-            monthsalesLabel.Size = new System.Drawing.Size(135, 19);
+            monthsalesLabel.Size = new System.Drawing.Size(99, 19);
             monthsalesLabel.TabIndex = 79;
-            monthsalesLabel.Text = "monthsales(N):";
+            monthsalesLabel.Text = "月銷量(N):";
             // 
             // totalsalesLabel
             // 
             totalsalesLabel.AutoSize = true;
             totalsalesLabel.Location = new System.Drawing.Point(634, 960);
             totalsalesLabel.Name = "totalsalesLabel";
-            totalsalesLabel.Size = new System.Drawing.Size(135, 19);
+            totalsalesLabel.Size = new System.Drawing.Size(99, 19);
             totalsalesLabel.TabIndex = 81;
-            totalsalesLabel.Text = "totalsales(N):";
+            totalsalesLabel.Text = "總銷量(N):";
             // 
             // weekviewsLabel
             // 
             weekviewsLabel.AutoSize = true;
             weekviewsLabel.Location = new System.Drawing.Point(634, 994);
             weekviewsLabel.Name = "weekviewsLabel";
-            weekviewsLabel.Size = new System.Drawing.Size(126, 19);
+            weekviewsLabel.Size = new System.Drawing.Size(117, 19);
             weekviewsLabel.TabIndex = 83;
-            weekviewsLabel.Text = "weekviews(N):";
+            weekviewsLabel.Text = "周瀏覽數(N):";
             // 
             // monthviewsLabel
             // 
             monthviewsLabel.AutoSize = true;
             monthviewsLabel.Location = new System.Drawing.Point(634, 1031);
             monthviewsLabel.Name = "monthviewsLabel";
-            monthviewsLabel.Size = new System.Drawing.Size(135, 19);
+            monthviewsLabel.Size = new System.Drawing.Size(117, 19);
             monthviewsLabel.TabIndex = 85;
-            monthviewsLabel.Text = "monthviews(N):";
+            monthviewsLabel.Text = "月瀏覽數(N):";
             // 
             // totalviewsLabel
             // 
             totalviewsLabel.AutoSize = true;
             totalviewsLabel.Location = new System.Drawing.Point(634, 1076);
             totalviewsLabel.Name = "totalviewsLabel";
-            totalviewsLabel.Size = new System.Drawing.Size(135, 19);
+            totalviewsLabel.Size = new System.Drawing.Size(117, 19);
             totalviewsLabel.TabIndex = 87;
-            totalviewsLabel.Text = "totalviews(N):";
+            totalviewsLabel.Text = "總瀏覽數(N):";
             // 
             // maturityRatingLabel
             // 
             maturityRatingLabel.AutoSize = true;
             maturityRatingLabel.Location = new System.Drawing.Point(609, 1109);
             maturityRatingLabel.Name = "maturityRatingLabel";
-            maturityRatingLabel.Size = new System.Drawing.Size(180, 19);
+            maturityRatingLabel.Size = new System.Drawing.Size(117, 19);
             maturityRatingLabel.TabIndex = 89;
-            maturityRatingLabel.Text = "maturity Rating(N):";
+            maturityRatingLabel.Text = "年齡分級(N):";
             // 
             // isAvailableLabel
             // 
             isAvailableLabel.AutoSize = true;
             isAvailableLabel.Location = new System.Drawing.Point(622, 1154);
             isAvailableLabel.Name = "isAvailableLabel";
-            isAvailableLabel.Size = new System.Drawing.Size(153, 19);
+            isAvailableLabel.Size = new System.Drawing.Size(117, 19);
             isAvailableLabel.TabIndex = 91;
-            isAvailableLabel.Text = "is Available(N):";
+            isAvailableLabel.Text = "上架狀態(N):";
             // 
             // teamA_ProjectDataSet
             // 
@@ -858,7 +859,7 @@ namespace SpecialTopic.eBook.eBookCode
             // translatorTextBox
             // 
             this.translatorTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "translator", true));
-            this.translatorTextBox.Location = new System.Drawing.Point(350, 359);
+            this.translatorTextBox.Location = new System.Drawing.Point(350, 387);
             this.translatorTextBox.Name = "translatorTextBox";
             this.translatorTextBox.Size = new System.Drawing.Size(200, 26);
             this.translatorTextBox.TabIndex = 18;
@@ -866,7 +867,7 @@ namespace SpecialTopic.eBook.eBookCode
             // languageTextBox
             // 
             this.languageTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "language", true));
-            this.languageTextBox.Location = new System.Drawing.Point(350, 396);
+            this.languageTextBox.Location = new System.Drawing.Point(350, 414);
             this.languageTextBox.Name = "languageTextBox";
             this.languageTextBox.Size = new System.Drawing.Size(200, 26);
             this.languageTextBox.TabIndex = 20;
@@ -874,7 +875,7 @@ namespace SpecialTopic.eBook.eBookCode
             // iSBNTextBox
             // 
             this.iSBNTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "ISBN", true));
-            this.iSBNTextBox.Location = new System.Drawing.Point(350, 433);
+            this.iSBNTextBox.Location = new System.Drawing.Point(350, 451);
             this.iSBNTextBox.Name = "iSBNTextBox";
             this.iSBNTextBox.Size = new System.Drawing.Size(200, 26);
             this.iSBNTextBox.TabIndex = 22;
@@ -882,7 +883,7 @@ namespace SpecialTopic.eBook.eBookCode
             // eISBNTextBox
             // 
             this.eISBNTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "EISBN", true));
-            this.eISBNTextBox.Location = new System.Drawing.Point(350, 470);
+            this.eISBNTextBox.Location = new System.Drawing.Point(350, 488);
             this.eISBNTextBox.Name = "eISBNTextBox";
             this.eISBNTextBox.Size = new System.Drawing.Size(200, 26);
             this.eISBNTextBox.TabIndex = 24;
@@ -890,7 +891,7 @@ namespace SpecialTopic.eBook.eBookCode
             // publishedCountryTextBox
             // 
             this.publishedCountryTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "publishedCountry", true));
-            this.publishedCountryTextBox.Location = new System.Drawing.Point(350, 507);
+            this.publishedCountryTextBox.Location = new System.Drawing.Point(350, 525);
             this.publishedCountryTextBox.Name = "publishedCountryTextBox";
             this.publishedCountryTextBox.Size = new System.Drawing.Size(200, 26);
             this.publishedCountryTextBox.TabIndex = 26;
@@ -898,7 +899,7 @@ namespace SpecialTopic.eBook.eBookCode
             // cEpisodeTextBox
             // 
             this.cEpisodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "cEpisode", true));
-            this.cEpisodeTextBox.Location = new System.Drawing.Point(350, 544);
+            this.cEpisodeTextBox.Location = new System.Drawing.Point(350, 562);
             this.cEpisodeTextBox.Name = "cEpisodeTextBox";
             this.cEpisodeTextBox.Size = new System.Drawing.Size(200, 26);
             this.cEpisodeTextBox.TabIndex = 28;
@@ -906,7 +907,7 @@ namespace SpecialTopic.eBook.eBookCode
             // totalEpisodeTextBox
             // 
             this.totalEpisodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "TotalEpisode", true));
-            this.totalEpisodeTextBox.Location = new System.Drawing.Point(350, 581);
+            this.totalEpisodeTextBox.Location = new System.Drawing.Point(350, 599);
             this.totalEpisodeTextBox.Name = "totalEpisodeTextBox";
             this.totalEpisodeTextBox.Size = new System.Drawing.Size(200, 26);
             this.totalEpisodeTextBox.TabIndex = 30;
@@ -914,7 +915,7 @@ namespace SpecialTopic.eBook.eBookCode
             // eBookPositionTextBox
             // 
             this.eBookPositionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookPosition", true));
-            this.eBookPositionTextBox.Location = new System.Drawing.Point(350, 618);
+            this.eBookPositionTextBox.Location = new System.Drawing.Point(350, 636);
             this.eBookPositionTextBox.Name = "eBookPositionTextBox";
             this.eBookPositionTextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookPositionTextBox.TabIndex = 32;
@@ -923,7 +924,7 @@ namespace SpecialTopic.eBook.eBookCode
             // eBookDataTypeTextBox
             // 
             this.eBookDataTypeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookDataType", true));
-            this.eBookDataTypeTextBox.Location = new System.Drawing.Point(350, 655);
+            this.eBookDataTypeTextBox.Location = new System.Drawing.Point(350, 671);
             this.eBookDataTypeTextBox.Name = "eBookDataTypeTextBox";
             this.eBookDataTypeTextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookDataTypeTextBox.TabIndex = 34;
@@ -931,7 +932,7 @@ namespace SpecialTopic.eBook.eBookCode
             // eBookLabel1TextBox
             // 
             this.eBookLabel1TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookLabel1", true));
-            this.eBookLabel1TextBox.Location = new System.Drawing.Point(350, 692);
+            this.eBookLabel1TextBox.Location = new System.Drawing.Point(350, 708);
             this.eBookLabel1TextBox.Name = "eBookLabel1TextBox";
             this.eBookLabel1TextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookLabel1TextBox.TabIndex = 36;
@@ -939,7 +940,7 @@ namespace SpecialTopic.eBook.eBookCode
             // eBookLabel2TextBox
             // 
             this.eBookLabel2TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookLabel2", true));
-            this.eBookLabel2TextBox.Location = new System.Drawing.Point(350, 729);
+            this.eBookLabel2TextBox.Location = new System.Drawing.Point(350, 745);
             this.eBookLabel2TextBox.Name = "eBookLabel2TextBox";
             this.eBookLabel2TextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookLabel2TextBox.TabIndex = 38;
@@ -947,7 +948,7 @@ namespace SpecialTopic.eBook.eBookCode
             // eBookLabel3TextBox
             // 
             this.eBookLabel3TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookLabel3", true));
-            this.eBookLabel3TextBox.Location = new System.Drawing.Point(350, 766);
+            this.eBookLabel3TextBox.Location = new System.Drawing.Point(350, 782);
             this.eBookLabel3TextBox.Name = "eBookLabel3TextBox";
             this.eBookLabel3TextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookLabel3TextBox.TabIndex = 40;
@@ -955,7 +956,7 @@ namespace SpecialTopic.eBook.eBookCode
             // eBookLabel4TextBox
             // 
             this.eBookLabel4TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookLabel4", true));
-            this.eBookLabel4TextBox.Location = new System.Drawing.Point(350, 803);
+            this.eBookLabel4TextBox.Location = new System.Drawing.Point(350, 819);
             this.eBookLabel4TextBox.Name = "eBookLabel4TextBox";
             this.eBookLabel4TextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookLabel4TextBox.TabIndex = 42;
@@ -963,7 +964,7 @@ namespace SpecialTopic.eBook.eBookCode
             // eBookLabel5TextBox
             // 
             this.eBookLabel5TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "eBookLabel5", true));
-            this.eBookLabel5TextBox.Location = new System.Drawing.Point(350, 840);
+            this.eBookLabel5TextBox.Location = new System.Drawing.Point(350, 856);
             this.eBookLabel5TextBox.Name = "eBookLabel5TextBox";
             this.eBookLabel5TextBox.Size = new System.Drawing.Size(200, 26);
             this.eBookLabel5TextBox.TabIndex = 44;
@@ -1079,7 +1080,7 @@ namespace SpecialTopic.eBook.eBookCode
             // fixedPriceTextBox
             // 
             this.fixedPriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "fixedPrice", true));
-            this.fixedPriceTextBox.Location = new System.Drawing.Point(350, 896);
+            this.fixedPriceTextBox.Location = new System.Drawing.Point(350, 890);
             this.fixedPriceTextBox.Name = "fixedPriceTextBox";
             this.fixedPriceTextBox.Size = new System.Drawing.Size(200, 26);
             this.fixedPriceTextBox.TabIndex = 64;
@@ -1087,7 +1088,7 @@ namespace SpecialTopic.eBook.eBookCode
             // actualPriceTextBox
             // 
             this.actualPriceTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "actualPrice", true));
-            this.actualPriceTextBox.Location = new System.Drawing.Point(350, 933);
+            this.actualPriceTextBox.Location = new System.Drawing.Point(350, 927);
             this.actualPriceTextBox.Name = "actualPriceTextBox";
             this.actualPriceTextBox.Size = new System.Drawing.Size(200, 26);
             this.actualPriceTextBox.TabIndex = 66;
@@ -1095,7 +1096,7 @@ namespace SpecialTopic.eBook.eBookCode
             // couponcodeTextBox
             // 
             this.couponcodeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "couponcode", true));
-            this.couponcodeTextBox.Location = new System.Drawing.Point(350, 970);
+            this.couponcodeTextBox.Location = new System.Drawing.Point(350, 964);
             this.couponcodeTextBox.Name = "couponcodeTextBox";
             this.couponcodeTextBox.Size = new System.Drawing.Size(200, 26);
             this.couponcodeTextBox.TabIndex = 68;
@@ -1103,7 +1104,7 @@ namespace SpecialTopic.eBook.eBookCode
             // discountTextBox
             // 
             this.discountTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "discount", true));
-            this.discountTextBox.Location = new System.Drawing.Point(350, 1007);
+            this.discountTextBox.Location = new System.Drawing.Point(350, 1001);
             this.discountTextBox.Name = "discountTextBox";
             this.discountTextBox.Size = new System.Drawing.Size(200, 26);
             this.discountTextBox.TabIndex = 70;
@@ -1111,7 +1112,7 @@ namespace SpecialTopic.eBook.eBookCode
             // purchaseCountryTextBox
             // 
             this.purchaseCountryTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "purchaseCountry", true));
-            this.purchaseCountryTextBox.Location = new System.Drawing.Point(350, 1044);
+            this.purchaseCountryTextBox.Location = new System.Drawing.Point(350, 1038);
             this.purchaseCountryTextBox.Name = "purchaseCountryTextBox";
             this.purchaseCountryTextBox.Size = new System.Drawing.Size(200, 26);
             this.purchaseCountryTextBox.TabIndex = 72;
@@ -1119,7 +1120,7 @@ namespace SpecialTopic.eBook.eBookCode
             // cumulativesalesTextBox
             // 
             this.cumulativesalesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "cumulativesales", true));
-            this.cumulativesalesTextBox.Location = new System.Drawing.Point(350, 1081);
+            this.cumulativesalesTextBox.Location = new System.Drawing.Point(350, 1075);
             this.cumulativesalesTextBox.Name = "cumulativesalesTextBox";
             this.cumulativesalesTextBox.Size = new System.Drawing.Size(200, 26);
             this.cumulativesalesTextBox.TabIndex = 74;
@@ -1127,7 +1128,7 @@ namespace SpecialTopic.eBook.eBookCode
             // bookDescriptionTextBox
             // 
             this.bookDescriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.eBookMainTableBindingSource, "bookDescription", true));
-            this.bookDescriptionTextBox.Location = new System.Drawing.Point(242, 1118);
+            this.bookDescriptionTextBox.Location = new System.Drawing.Point(242, 1112);
             this.bookDescriptionTextBox.Multiline = true;
             this.bookDescriptionTextBox.Name = "bookDescriptionTextBox";
             this.bookDescriptionTextBox.Size = new System.Drawing.Size(326, 249);
@@ -1199,12 +1200,20 @@ namespace SpecialTopic.eBook.eBookCode
             this.isAvailableCheckBox.Text = "checkBox1";
             this.isAvailableCheckBox.UseVisualStyleBackColor = true;
             // 
+            // txtPublishedDateOverride
+            // 
+            this.txtPublishedDateOverride.Location = new System.Drawing.Point(350, 355);
+            this.txtPublishedDateOverride.Name = "txtPublishedDateOverride";
+            this.txtPublishedDateOverride.Size = new System.Drawing.Size(200, 26);
+            this.txtPublishedDateOverride.TabIndex = 93;
+            // 
             // FrmEditBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1121, 1061);
+            this.Controls.Add(this.txtPublishedDateOverride);
             this.Controls.Add(ebookIDLabel);
             this.Controls.Add(this.ebookIDTextBox);
             this.Controls.Add(ebookNameLabel);
@@ -1387,5 +1396,6 @@ namespace SpecialTopic.eBook.eBookCode
         private System.Windows.Forms.TextBox totalviewsTextBox;
         private System.Windows.Forms.TextBox maturityRatingTextBox;
         private System.Windows.Forms.CheckBox isAvailableCheckBox;
+        private System.Windows.Forms.TextBox txtPublishedDateOverride;
     }
 }

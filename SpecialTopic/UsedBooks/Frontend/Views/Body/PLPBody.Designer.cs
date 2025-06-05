@@ -50,6 +50,7 @@
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(6);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -59,8 +60,9 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.pnlMain);
-            this.splitContainer2.Size = new System.Drawing.Size(898, 533);
-            this.splitContainer2.SplitterDistance = 93;
+            this.splitContainer2.Size = new System.Drawing.Size(1946, 1066);
+            this.splitContainer2.SplitterDistance = 199;
+            this.splitContainer2.SplitterWidth = 9;
             this.splitContainer2.TabIndex = 3;
             // 
             // pnlSidebar
@@ -73,61 +75,67 @@
             this.pnlSidebar.Controls.Add(this.lblTopics);
             this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
-            this.pnlSidebar.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-            this.pnlSidebar.MaximumSize = new System.Drawing.Size(300, 0);
-            this.pnlSidebar.MinimumSize = new System.Drawing.Size(100, 200);
+            this.pnlSidebar.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.pnlSidebar.MaximumSize = new System.Drawing.Size(650, 0);
+            this.pnlSidebar.MinimumSize = new System.Drawing.Size(217, 400);
             this.pnlSidebar.Name = "pnlSidebar";
-            this.pnlSidebar.Size = new System.Drawing.Size(100, 531);
+            this.pnlSidebar.Size = new System.Drawing.Size(217, 1064);
             this.pnlSidebar.TabIndex = 1;
             // 
             // lbxSaleTags
             // 
-            this.lbxSaleTags.BackColor = System.Drawing.SystemColors.Control;
+            this.lbxSaleTags.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lbxSaleTags.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbxSaleTags.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbxSaleTags.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Underline);
+            this.lbxSaleTags.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lbxSaleTags.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.lbxSaleTags.FormattingEnabled = true;
-            this.lbxSaleTags.ItemHeight = 19;
-            this.lbxSaleTags.Location = new System.Drawing.Point(0, 293);
-            this.lbxSaleTags.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.lbxSaleTags.ItemHeight = 32;
+            this.lbxSaleTags.Location = new System.Drawing.Point(0, 572);
+            this.lbxSaleTags.Margin = new System.Windows.Forms.Padding(0);
             this.lbxSaleTags.Name = "lbxSaleTags";
-            this.lbxSaleTags.Size = new System.Drawing.Size(100, 213);
+            this.lbxSaleTags.Size = new System.Drawing.Size(217, 416);
             this.lbxSaleTags.TabIndex = 3;
             // 
             // lblSaleTags
             // 
+            this.lblSaleTags.AutoSize = true;
             this.lblSaleTags.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblSaleTags.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblSaleTags.Location = new System.Drawing.Point(0, 253);
-            this.lblSaleTags.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblSaleTags.Location = new System.Drawing.Point(0, 494);
+            this.lblSaleTags.Margin = new System.Windows.Forms.Padding(0);
             this.lblSaleTags.Name = "lblSaleTags";
-            this.lblSaleTags.Size = new System.Drawing.Size(100, 40);
+            this.lblSaleTags.Padding = new System.Windows.Forms.Padding(0, 20, 0, 20);
+            this.lblSaleTags.Size = new System.Drawing.Size(169, 78);
             this.lblSaleTags.TabIndex = 2;
             this.lblSaleTags.Text = "促銷標籤";
             this.lblSaleTags.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbxTopics
             // 
-            this.lbxTopics.BackColor = System.Drawing.SystemColors.Control;
+            this.lbxTopics.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lbxTopics.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbxTopics.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbxTopics.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbxTopics.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lbxTopics.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.lbxTopics.FormattingEnabled = true;
-            this.lbxTopics.ItemHeight = 19;
-            this.lbxTopics.Location = new System.Drawing.Point(0, 40);
-            this.lbxTopics.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.lbxTopics.ItemHeight = 32;
+            this.lbxTopics.Location = new System.Drawing.Point(0, 78);
+            this.lbxTopics.Margin = new System.Windows.Forms.Padding(0);
             this.lbxTopics.Name = "lbxTopics";
-            this.lbxTopics.Size = new System.Drawing.Size(100, 213);
+            this.lbxTopics.Size = new System.Drawing.Size(217, 416);
             this.lbxTopics.TabIndex = 0;
             // 
             // lblTopics
             // 
+            this.lblTopics.AutoSize = true;
             this.lblTopics.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblTopics.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblTopics.Location = new System.Drawing.Point(0, 0);
-            this.lblTopics.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTopics.Margin = new System.Windows.Forms.Padding(0);
             this.lblTopics.Name = "lblTopics";
-            this.lblTopics.Size = new System.Drawing.Size(100, 40);
+            this.lblTopics.Padding = new System.Windows.Forms.Padding(0, 20, 0, 20);
+            this.lblTopics.Size = new System.Drawing.Size(169, 78);
             this.lblTopics.TabIndex = 1;
             this.lblTopics.Text = "主題分類";
             this.lblTopics.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -139,9 +147,9 @@
             this.pnlMain.Controls.Add(this.flpMain);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
-            this.pnlMain.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(799, 531);
+            this.pnlMain.Size = new System.Drawing.Size(1736, 1064);
             this.pnlMain.TabIndex = 1;
             // 
             // flpMain
@@ -151,17 +159,19 @@
             this.flpMain.BackColor = System.Drawing.SystemColors.ControlLight;
             this.flpMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpMain.Location = new System.Drawing.Point(0, 0);
+            this.flpMain.Margin = new System.Windows.Forms.Padding(6);
             this.flpMain.Name = "flpMain";
-            this.flpMain.Size = new System.Drawing.Size(799, 531);
+            this.flpMain.Size = new System.Drawing.Size(1736, 1064);
             this.flpMain.TabIndex = 0;
             // 
             // PLPBody
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer2);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "PLPBody";
-            this.Size = new System.Drawing.Size(898, 533);
+            this.Size = new System.Drawing.Size(1946, 1066);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -169,6 +179,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.pnlSidebar.ResumeLayout(false);
+            this.pnlSidebar.PerformLayout();
             this.pnlMain.ResumeLayout(false);
             this.pnlMain.PerformLayout();
             this.ResumeLayout(false);

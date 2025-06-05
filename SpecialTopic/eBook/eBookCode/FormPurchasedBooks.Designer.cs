@@ -38,6 +38,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSaveChanges = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtActualPrice = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,7 +46,9 @@
             this.txtUID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddPurchased = new System.Windows.Forms.Button();
-            this.btnSaveChanges = new System.Windows.Forms.Button();
+            this.comboUID = new System.Windows.Forms.ComboBox();
+            this.comboBook = new System.Windows.Forms.ComboBox();
+            this.btnFetchPrice = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPurchased)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -107,6 +110,7 @@
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "刪除此筆";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClose
             // 
@@ -119,6 +123,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnFetchPrice);
+            this.panel1.Controls.Add(this.comboBook);
+            this.panel1.Controls.Add(this.comboUID);
             this.panel1.Controls.Add(this.btnSaveChanges);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtActualPrice);
@@ -138,6 +145,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(600, 712);
             this.panel1.TabIndex = 7;
+            // 
+            // btnSaveChanges
+            // 
+            this.btnSaveChanges.Location = new System.Drawing.Point(59, 514);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Size = new System.Drawing.Size(121, 32);
+            this.btnSaveChanges.TabIndex = 14;
+            this.btnSaveChanges.Text = "儲存變更";
+            this.btnSaveChanges.UseVisualStyleBackColor = true;
+            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
             // label4
             // 
@@ -166,14 +183,14 @@
             // 
             // txtEbookName
             // 
-            this.txtEbookName.Location = new System.Drawing.Point(59, 225);
+            this.txtEbookName.Location = new System.Drawing.Point(323, 226);
             this.txtEbookName.Name = "txtEbookName";
             this.txtEbookName.Size = new System.Drawing.Size(187, 26);
             this.txtEbookName.TabIndex = 10;
             // 
             // txtUID
             // 
-            this.txtUID.Location = new System.Drawing.Point(59, 175);
+            this.txtUID.Location = new System.Drawing.Point(323, 176);
             this.txtUID.Name = "txtUID";
             this.txtUID.Size = new System.Drawing.Size(188, 26);
             this.txtUID.TabIndex = 9;
@@ -189,7 +206,7 @@
             // 
             // btnAddPurchased
             // 
-            this.btnAddPurchased.Location = new System.Drawing.Point(266, 225);
+            this.btnAddPurchased.Location = new System.Drawing.Point(398, 346);
             this.btnAddPurchased.Name = "btnAddPurchased";
             this.btnAddPurchased.Size = new System.Drawing.Size(148, 27);
             this.btnAddPurchased.TabIndex = 7;
@@ -197,15 +214,31 @@
             this.btnAddPurchased.UseVisualStyleBackColor = true;
             this.btnAddPurchased.Click += new System.EventHandler(this.btnAddPurchased_Click);
             // 
-            // btnSaveChanges
+            // comboUID
             // 
-            this.btnSaveChanges.Location = new System.Drawing.Point(59, 355);
-            this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Size = new System.Drawing.Size(121, 32);
-            this.btnSaveChanges.TabIndex = 14;
-            this.btnSaveChanges.Text = "儲存變更";
-            this.btnSaveChanges.UseVisualStyleBackColor = true;
-            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
+            this.comboUID.FormattingEnabled = true;
+            this.comboUID.Location = new System.Drawing.Point(72, 176);
+            this.comboUID.Name = "comboUID";
+            this.comboUID.Size = new System.Drawing.Size(187, 27);
+            this.comboUID.TabIndex = 15;
+            // 
+            // comboBook
+            // 
+            this.comboBook.FormattingEnabled = true;
+            this.comboBook.Location = new System.Drawing.Point(72, 229);
+            this.comboBook.Name = "comboBook";
+            this.comboBook.Size = new System.Drawing.Size(187, 27);
+            this.comboBook.TabIndex = 16;
+            // 
+            // btnFetchPrice
+            // 
+            this.btnFetchPrice.Location = new System.Drawing.Point(323, 272);
+            this.btnFetchPrice.Name = "btnFetchPrice";
+            this.btnFetchPrice.Size = new System.Drawing.Size(122, 37);
+            this.btnFetchPrice.TabIndex = 17;
+            this.btnFetchPrice.Text = "自動套售價";
+            this.btnFetchPrice.UseVisualStyleBackColor = true;
+            this.btnFetchPrice.Click += new System.EventHandler(this.btnFetchPrice_Click);
             // 
             // FormPurchasedBooks
             // 
@@ -244,5 +277,8 @@
         private System.Windows.Forms.TextBox txtActualPrice;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSaveChanges;
+        private System.Windows.Forms.ComboBox comboUID;
+        private System.Windows.Forms.ComboBox comboBook;
+        private System.Windows.Forms.Button btnFetchPrice;
     }
 }

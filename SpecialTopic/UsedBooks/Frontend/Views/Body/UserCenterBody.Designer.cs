@@ -31,7 +31,7 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.pnlSidebar = new System.Windows.Forms.Panel();
             this.lbxFunctions = new System.Windows.Forms.ListBox();
-            this.pnlMain = new System.Windows.Forms.Panel();
+            this.pnlContentArea = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -53,9 +53,9 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.pnlMain);
+            this.splitContainer2.Panel2.Controls.Add(this.pnlContentArea);
             this.splitContainer2.Size = new System.Drawing.Size(898, 533);
-            this.splitContainer2.SplitterDistance = 94;
+            this.splitContainer2.SplitterDistance = 93;
             this.splitContainer2.TabIndex = 5;
             // 
             // pnlSidebar
@@ -74,13 +74,14 @@
             // 
             // lbxFunctions
             // 
-            this.lbxFunctions.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lbxFunctions.BackColor = System.Drawing.SystemColors.Control;
             this.lbxFunctions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbxFunctions.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lbxFunctions.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.lbxFunctions.FormattingEnabled = true;
             this.lbxFunctions.ItemHeight = 19;
             this.lbxFunctions.Items.AddRange(new object[] {
+            "管理書本",
             "管理訂單",
             "追蹤清單"});
             this.lbxFunctions.Location = new System.Drawing.Point(0, 0);
@@ -88,17 +89,18 @@
             this.lbxFunctions.Name = "lbxFunctions";
             this.lbxFunctions.Size = new System.Drawing.Size(100, 531);
             this.lbxFunctions.TabIndex = 3;
+            this.lbxFunctions.SelectedIndexChanged += new System.EventHandler(this.lbxFunctions_SelectedIndexChanged);
             // 
-            // pnlMain
+            // pnlContentArea
             // 
-            this.pnlMain.AutoSize = true;
-            this.pnlMain.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(0, 0);
-            this.pnlMain.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(798, 531);
-            this.pnlMain.TabIndex = 1;
+            this.pnlContentArea.AutoSize = true;
+            this.pnlContentArea.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pnlContentArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContentArea.Location = new System.Drawing.Point(0, 0);
+            this.pnlContentArea.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.pnlContentArea.Name = "pnlContentArea";
+            this.pnlContentArea.Size = new System.Drawing.Size(799, 531);
+            this.pnlContentArea.TabIndex = 1;
             // 
             // UserCenterBody
             // 
@@ -123,6 +125,6 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Panel pnlSidebar;
         private System.Windows.Forms.ListBox lbxFunctions;
-        private System.Windows.Forms.Panel pnlMain;
+        private System.Windows.Forms.Panel pnlContentArea;
     }
 }

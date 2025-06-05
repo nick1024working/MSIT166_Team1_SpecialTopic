@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using SpecialTopic.UsedBooks.Backend.DTOs;
 using SpecialTopic.UsedBooks.Backend.Services;
 using SpecialTopic.UsedBooks.Backend.Utilities;
 
-namespace SpecialTopic.UsedBooks.Frontend.Views
+namespace SpecialTopic.UsedBooks.Frontend.Views.Forms
 {
     public partial class CreateOrderForm : Form
     {
