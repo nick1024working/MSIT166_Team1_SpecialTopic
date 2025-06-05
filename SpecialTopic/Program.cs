@@ -17,9 +17,15 @@ namespace SpecialTopic
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // 執行Login畫面
-            Application.Run(new FRMLogin());
 
+            // 安全執行 Login 畫面並自動 Dispose
+            using (var loginForm = new FRMLogin())
+            {
+                Application.Run(loginForm);
+            }
+
+            // 執行Login畫面
+            //Application.Run(new FRMLogin());
             //Application.Run(new Form1());
             //Application.Run(new Form2());
         }

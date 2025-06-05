@@ -567,6 +567,7 @@
     <Compile Include="UsedBooks\Frontend\Components\MainViewLayout.Designer.cs">
       <DependentUpon>MainViewLayout.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsedBooks\Frontend\Shared\AppSession.cs" />
     <Compile Include="UsedBooks\Frontend\Shared\BookCardControlHelper.cs" />
     <Compile Include="UsedBooks\Frontend\Shared\ISwitchableView.cs" />
     <Compile Include="UsedBooks\Frontend\Shared\SortableBindingList.cs" />
@@ -626,6 +627,12 @@
     <Compile Include="UsedBooks\Frontend\Views\ContentArea\UserBookManager.Designer.cs">
       <DependentUpon>UserBookManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\UserCreateBook.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\UserCreateBook.Designer.cs">
+      <DependentUpon>UserCreateBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsedBooks\Frontend\Views\Forms\CreateBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -637,6 +644,12 @@
     </Compile>
     <Compile Include="UsedBooks\Frontend\Views\Forms\CreateOrderForm.Designer.cs">
       <DependentUpon>CreateOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Forms\UserUpdateBookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Forms\UserUpdateBookForm.Designer.cs">
+      <DependentUpon>UserUpdateBookForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UsedBooks\Frontend\Views\HomeView.cs">
       <SubType>UserControl</SubType>
@@ -719,11 +732,17 @@
     <EmbeddedResource Include="UsedBooks\Frontend\Views\ContentArea\UserBookManager.resx">
       <DependentUpon>UserBookManager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\ContentArea\UserCreateBook.resx">
+      <DependentUpon>UserCreateBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsedBooks\Frontend\Views\Forms\CreateBookForm.resx">
       <DependentUpon>CreateBookForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsedBooks\Frontend\Views\Forms\CreateOrderForm.resx">
       <DependentUpon>CreateOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\Forms\UserUpdateBookForm.resx">
+      <DependentUpon>UserUpdateBookForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsedBooks\Frontend\Views\HomeView.resx">
       <DependentUpon>HomeView.cs</DependentUpon>

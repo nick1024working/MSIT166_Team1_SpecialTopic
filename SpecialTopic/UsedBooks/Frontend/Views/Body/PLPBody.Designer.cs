@@ -91,10 +91,10 @@
             this.lbxSaleTags.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.lbxSaleTags.FormattingEnabled = true;
             this.lbxSaleTags.ItemHeight = 32;
-            this.lbxSaleTags.Location = new System.Drawing.Point(0, 572);
+            this.lbxSaleTags.Location = new System.Drawing.Point(0, 220);
             this.lbxSaleTags.Margin = new System.Windows.Forms.Padding(0);
             this.lbxSaleTags.Name = "lbxSaleTags";
-            this.lbxSaleTags.Size = new System.Drawing.Size(217, 416);
+            this.lbxSaleTags.Size = new System.Drawing.Size(217, 64);
             this.lbxSaleTags.TabIndex = 3;
             // 
             // lblSaleTags
@@ -102,7 +102,7 @@
             this.lblSaleTags.AutoSize = true;
             this.lblSaleTags.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblSaleTags.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblSaleTags.Location = new System.Drawing.Point(0, 494);
+            this.lblSaleTags.Location = new System.Drawing.Point(0, 142);
             this.lblSaleTags.Margin = new System.Windows.Forms.Padding(0);
             this.lblSaleTags.Name = "lblSaleTags";
             this.lblSaleTags.Padding = new System.Windows.Forms.Padding(0, 20, 0, 20);
@@ -123,7 +123,7 @@
             this.lbxTopics.Location = new System.Drawing.Point(0, 78);
             this.lbxTopics.Margin = new System.Windows.Forms.Padding(0);
             this.lbxTopics.Name = "lbxTopics";
-            this.lbxTopics.Size = new System.Drawing.Size(217, 416);
+            this.lbxTopics.Size = new System.Drawing.Size(217, 64);
             this.lbxTopics.TabIndex = 0;
             // 
             // lblTopics

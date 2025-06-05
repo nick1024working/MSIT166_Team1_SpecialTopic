@@ -40,7 +40,11 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
         /// </summary>
         private void lbxFunctions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbxFunctions.SelectedItem.ToString() == "管理書本")
+            if (lbxFunctions.SelectedItem.ToString() == "新增書本")
+            {
+                ShowControl(new UserCreateBook(_connString));
+            }
+            else if (lbxFunctions.SelectedItem.ToString() == "管理書本")
             {
                 ShowControl(new UserBookManager(_connString));
             }

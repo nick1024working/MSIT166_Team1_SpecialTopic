@@ -1,305 +1,130 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System;
 using System.Windows.Forms;
 using SpecialTopic.UsedBooks.Backend.DTOs;
 using SpecialTopic.UsedBooks.Backend.Services;
+using SpecialTopic.UsedBooks.Frontend.Shared;
 using SpecialTopic.UsedBooks.Backend.Utilities;
+using SpecialTopic.UsedBooks.Frontend.Views.Forms;
+using System.DirectoryServices.ActiveDirectory;
 
 namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
 {
     public partial class UserBookManager : UserControl
     {
-        // 會使用的 Service
-        private UserService _userService;
-        private BookService _bookService;
-        private TopicService _bookTopicService;
+        // HACK: 避開DI
+        private string _connString;
 
-        // 在 flpDropZone 內拖曳排序用
-        private PictureBox _draggedPictureBox;
-        // 在 flpDropZone 內限制數量
-        private const int MaxImageCount = 6;
+        // 會使用的 Service
+        private BookService _bookService;
+
+        private Guid _userId;
+
+        private SortableBindingList<BookDto> _sortableList;
+
+        /// <summary>
+        /// 給該使用者書籍 ComboBox 做的類別
+        /// </summary>
+        internal class ComboBoxItem<T>
+        {
+            public T Value { get; set; }
+            public string Text { get; set; }
+        }
 
         public UserBookManager(string connString)
         {
+            // HACK: 避開DI
+            _connString = connString;
 
             // 建構服務
-            _userService = new UserService(connString);
             _bookService = new BookService(connString);
-            _bookTopicService = new TopicService(connString);
 
             InitializeComponent();
 
             LoadData();
-
-            InitDropZone();
         }
 
-        private void LoadData()
+        void LoadData()
         {
-            // 獲取資料
-            var result = _bookTopicService.GetAllTopics();
-            if (!result.IsSuccess)
+            // 取得 UID
+            if (AppSession.Current.UID.HasValue)
             {
-                MessageBox.Show($"主題列表讀取失敗: {result.ErrorMessage}", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (result.Value == null)
-            {
-                MessageBox.Show("主題列表為空!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // 更新資料
-            cbxTopic.Items.Clear();
-            cbxTopic.DataSource = result.Value;
-            cbxTopic.DisplayMember = "TopicName";   // UI 層說明用 Name 當顯示文字
-            cbxTopic.ValueMember = "TopicID";       // UI 層說明用 Id 當值（例如選擇後取出）
-        }
-
-        /// <summary>
-        /// 釋放資源
-        /// </summary>
-        protected override void OnHandleDestroyed(EventArgs e)
-        {
-            base.OnHandleDestroyed(e);
-            ClearFlpDropZone();
-        }
-
-        private void ClearFlpDropZone()
-        {
-            foreach (Control ctrl in flpDropZone.Controls)
-            {
-                if (ctrl is PictureBox pb)
-                {
-                    pb.Image?.Dispose();
-                    pb.Image = null;
-                }
-            }
-            flpDropZone.Controls.Clear(); // 可選：清空容器
-        }
-
-
-        #region DropZone代碼
-
-        private void InitDropZone()
-        {
-            flpDropZone.AllowDrop = true;
-            flpDropZone.DragEnter += flpDropZone_DragEnter;
-            flpDropZone.DragDrop += flpDropZone_DragDrop;
-        }
-
-        private void flpDropZone_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy;
-        }
-
-        private void flpDropZone_DragDrop(object sender, DragEventArgs e)
-        {
-            var files = (string[])e.Data.GetData(DataFormats.FileDrop);
-
-            int currentCount = flpDropZone.Controls.Count;
-
-            foreach (var file in files)
-            {
-                if (currentCount >= MaxImageCount)
-                {
-                    MessageBox.Show($"最多只能上傳 {MaxImageCount} 張圖片！");
-                    break;
-                }
-
-                var ext = Path.GetExtension(file).ToLower();
-                if (ext == ".jpg" || ext == ".jpeg" || ext == ".png" || ext == ".bmp" || ext == ".gif")
-                {
-                    CreatePictureBox(file);
-                }
-            }
-        }
-
-
-        private void CreatePictureBox(string imagePath)
-        {
-            var pb = new PictureBox
-            {
-                Image = ImageHelper.LoadImageToMemoryWithResize(imagePath, 210, 315),   // HACK: 呼叫後端方法
-                SizeMode = PictureBoxSizeMode.Zoom,
-                Width = 210,
-                Height = 315,
-                Margin = new Padding(5), 
-                Tag = Path.GetExtension(imagePath).ToLower() // 取得副檔名
-            };
-
-            // 拖曳起點
-            pb.MouseDown += (s, e) =>
-            {
-                _draggedPictureBox = (PictureBox)s;
-                DoDragDrop(_draggedPictureBox, DragDropEffects.Move);
-            };
-
-            // 接受拖曳進來
-            pb.AllowDrop = true;
-
-            pb.DragEnter += (s, e) =>
-            {
-                if (e.Data.GetDataPresent(typeof(PictureBox)))
-                    e.Effect = DragDropEffects.Move;
-            };
-
-            pb.DragDrop += (s, e) =>
-            {
-                var target = (PictureBox)s;
-                if (_draggedPictureBox != null && target != _draggedPictureBox)
-                {
-                    int targetIndex = flpDropZone.Controls.GetChildIndex(target);
-                    flpDropZone.Controls.SetChildIndex(_draggedPictureBox, targetIndex);
-                    flpDropZone.Invalidate();
-                }
-            };
-
-            flpDropZone.Controls.Add(pb);
-        }
-
-        /// <summary>
-        /// 取得flpDropZone中有序圖片 List<CreateBookImageDto>
-        /// </summary>
-        private List<CreateBookImageDto> GetCurrentImageList()
-        {
-            var result = new List<CreateBookImageDto>();
-            for (int i = 0; i < flpDropZone.Controls.Count; ++i)
-            {
-                if (flpDropZone.Controls[i] is PictureBox pb && pb.Image != null)
-                {
-                    result.Add(new CreateBookImageDto
-                    {
-                        BookImage = pb.Image,
-                        Ext = pb.Tag as string ?? ".jpg", // 預設副檔名
-                        ImageIndex = i
-                    });
-                }
-            }
-            return result;
-        }
-
-        #endregion
-
-
-
-        private bool ValidateBookForm()
-        {
-            // 要有圖
-            if (flpDropZone.Controls.Count <= 0)
-            {
-                MessageBox.Show("至少要有一張圖！");
-                return false;
-            }
-
-            // 書名不得為空
-            if (string.IsNullOrWhiteSpace(txtBookName.Text))
-            {
-                MessageBox.Show("請輸入書名！");
-                return false;
-            }
-
-            // 價格必須大於 0（假設最小值不能是 0）
-            if (numSalePrice.Value <= 0)
-            {
-                MessageBox.Show("價格必須大於 0！");
-                return false;
-            }
-
-            // 出版日不得為未來
-            if (dtpPublicationDate.Value.Date > DateTime.Today)
-            {
-                MessageBox.Show("出版日不能是未來！");
-                return false;
-            }
-
-            // 主題必選
-            var topic = cbxTopic.SelectedItem as TopicDto;
-            if (topic == null || topic.TopicID <= 0)
-            {
-                MessageBox.Show("請選擇有效主題！");
-                return false;
-            }
-
-            // 若都通過
-            return true;
-        }
-
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            if (!ValidateBookForm())
-            {
-                return;
-            }
-
-            // 組裝 bookDto
-            var bookDto = new CreateBookDto
-            {
-                BookName = txtBookName.Text.Trim(),
-                SalePrice = numSalePrice.Value,
-                BookCondition = cboBookCondition.SelectedItem?.ToString() ?? string.Empty,
-                Description = txtDescription.Text.Trim(),
-                ISBN = txtISBN.Text.Trim(),
-                Language = cboLanguage.SelectedItem?.ToString() ?? string.Empty,
-                Authors = txtAuthors.Text.Trim(),
-                Publisher = txtPublisher.Text.Trim(),
-                PublicationDate = dtpPublicationDate.Value,
-                IsActive = chkIsActive.Checked
-            };
-            try
-            {
-                bookDto.UID = _userService.GetRandomUserId().Value;     // HACK: 隨機
-                MessageBox.Show("目前使用隨機UID");
-            }
-            catch
-            {
-                MessageBox.Show("無法使用隨機UID");
-                return;
-            }
-
-            // 組裝 topicDto
-            var topicDto = cbxTopic.SelectedItem as TopicDto;
-            if (topicDto == null)
-            {
-                MessageBox.Show("主題無效!");
-                return;
-            }
-
-
-            var result = _bookService.CreateBookWithTopic(bookDto, topicDto, GetCurrentImageList());
-
-            if (result.IsSuccess)
-            {
-                MessageBox.Show($"書籍新增成功！\nBookId = {result.Value}");
-
-                // 清空圖片
-                ClearFlpDropZone();
-
-                // 清空輸入欄位
-                txtBookName.Clear();
-                numSalePrice.Value = numSalePrice.Minimum;
-                cboBookCondition.SelectedIndex = -1;
-                txtDescription.Clear();
-                txtISBN.Clear();
-                cboLanguage.SelectedIndex = -1;
-                txtAuthors.Clear();
-                txtPublisher.Clear();
-                dtpPublicationDate.Value = DateTime.Today;
-                chkIsActive.Checked = true;
+                _userId = AppSession.Current.UID.Value;
             }
             else
             {
-                MessageBox.Show($"發生錯誤：{result.ErrorMessage}");
+                MessageBox.Show("尚未登入，無法執行此操作。");
+                return;
+            }
+
+            // 查詢書籍列表
+            var result = _bookService.GetBooksByUserId(_userId);
+            if (result.IsSuccess)
+            {
+                // 載入 dgv
+                RenewDgvMainDataSource(result.Value);
+            }
+            else
+            {
+                MessageBox.Show("提取資料失敗");
+            }
+
+        }
+
+
+        /// <summary>
+        /// 將指定清單重新綁定至 dgvMain，並套用格式設定
+        /// </summary>
+        private void RenewDgvMainDataSource(List<BookDto> books)
+        {
+            _sortableList = new SortableBindingList<BookDto>(books);
+            dgvMain.DataSource = _sortableList;
+
+            dgvMain.AutoGenerateColumns = true;
+            dgvMain.AllowUserToAddRows = false;
+            dgvMain.ReadOnly = true;
+            dgvMain.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMain.MultiSelect = false;
+            dgvMain.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
+
+        /// <summary>
+        /// 點擊欄位排序
+        /// </summary>
+        private void dgvMain_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string columnName = dgvMain.Columns[e.ColumnIndex].DataPropertyName;
+            PropertyDescriptor prop = TypeDescriptor.GetProperties(typeof(BookDto))[columnName];
+
+            var direction = ListSortDirection.Ascending;
+            if (dgvMain.Tag is Tuple<string, ListSortDirection> lastSort &&
+                lastSort.Item1 == columnName && lastSort.Item2 == ListSortDirection.Ascending)
+            {
+                direction = ListSortDirection.Descending;
+            }
+
+            _sortableList.ApplySort(prop, direction);
+            dgvMain.Tag = Tuple.Create(columnName, direction);
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            var dto = dgvMain.CurrentRow?.DataBoundItem as BookDto;
+            if (dto != null)
+            {
+                var updateBookForm = new UserUpdateBookForm(dto, _connString);
+                updateBookForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("無法取得資料！");
             }
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void dgvMain_SelectionChanged(object sender, EventArgs e)
         {
-            // 清空圖片
-            ClearFlpDropZone();
+            lblBookName.Text = dgvMain.CurrentRow.Cells["BookName"].Value?.ToString();
         }
     }
 }
