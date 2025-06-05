@@ -237,6 +237,9 @@
     <Compile Include="Member\MemberUserRegister.Designer.cs">
       <DependentUpon>MemberUserRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Member\TeamA_ProjectDataSet.cs">
+      <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Member\TeamA_ProjectDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

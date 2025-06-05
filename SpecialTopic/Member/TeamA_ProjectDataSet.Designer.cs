@@ -12205,14 +12205,7 @@ namespace SpecialTopic.Member {
                 this.columnBirthday.AllowDBNull = false;
                 this.columnAddress.AllowDBNull = false;
                 this.columnAddress.MaxLength = 200;
-                this.columnRegisterDate.AllowDBNull = false;
-                this.columnLastLoginDate.AllowDBNull = false;
-                this.columnStatus.AllowDBNull = false;
-                this.columnLevel.AllowDBNull = false;
-                this.columnAvatarUrl.AllowDBNull = false;
                 this.columnAvatarUrl.MaxLength = 200;
-                this.columnIsAuthor.AllowDBNull = false;
-                this.columnAuthorStatus.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17218,7 +17211,12 @@ namespace SpecialTopic.Member {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public System.DateTime RegisterDate {
                 get {
-                    return ((global::System.DateTime)(this[this.tableUsers.RegisterDateColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableUsers.RegisterDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Users\' 中資料行 \'RegisterDate\' 的值是 DBNull。", e);
+                    }
                 }
                 set {
                     this[this.tableUsers.RegisterDateColumn] = value;
@@ -17229,7 +17227,12 @@ namespace SpecialTopic.Member {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public System.DateTime LastLoginDate {
                 get {
-                    return ((global::System.DateTime)(this[this.tableUsers.LastLoginDateColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tableUsers.LastLoginDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Users\' 中資料行 \'LastLoginDate\' 的值是 DBNull。", e);
+                    }
                 }
                 set {
                     this[this.tableUsers.LastLoginDateColumn] = value;
@@ -17240,7 +17243,12 @@ namespace SpecialTopic.Member {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public byte Status {
                 get {
-                    return ((byte)(this[this.tableUsers.StatusColumn]));
+                    try {
+                        return ((byte)(this[this.tableUsers.StatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Users\' 中資料行 \'Status\' 的值是 DBNull。", e);
+                    }
                 }
                 set {
                     this[this.tableUsers.StatusColumn] = value;
@@ -17251,7 +17259,12 @@ namespace SpecialTopic.Member {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public byte Level {
                 get {
-                    return ((byte)(this[this.tableUsers.LevelColumn]));
+                    try {
+                        return ((byte)(this[this.tableUsers.LevelColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Users\' 中資料行 \'Level\' 的值是 DBNull。", e);
+                    }
                 }
                 set {
                     this[this.tableUsers.LevelColumn] = value;
@@ -17262,7 +17275,12 @@ namespace SpecialTopic.Member {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string AvatarUrl {
                 get {
-                    return ((string)(this[this.tableUsers.AvatarUrlColumn]));
+                    try {
+                        return ((string)(this[this.tableUsers.AvatarUrlColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Users\' 中資料行 \'AvatarUrl\' 的值是 DBNull。", e);
+                    }
                 }
                 set {
                     this[this.tableUsers.AvatarUrlColumn] = value;
@@ -17273,7 +17291,12 @@ namespace SpecialTopic.Member {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsAuthor {
                 get {
-                    return ((bool)(this[this.tableUsers.IsAuthorColumn]));
+                    try {
+                        return ((bool)(this[this.tableUsers.IsAuthorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Users\' 中資料行 \'IsAuthor\' 的值是 DBNull。", e);
+                    }
                 }
                 set {
                     this[this.tableUsers.IsAuthorColumn] = value;
@@ -17284,11 +17307,100 @@ namespace SpecialTopic.Member {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public byte AuthorStatus {
                 get {
-                    return ((byte)(this[this.tableUsers.AuthorStatusColumn]));
+                    try {
+                        return ((byte)(this[this.tableUsers.AuthorStatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("資料表 \'Users\' 中資料行 \'AuthorStatus\' 的值是 DBNull。", e);
+                    }
                 }
                 set {
                     this[this.tableUsers.AuthorStatusColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsRegisterDateNull() {
+                return this.IsNull(this.tableUsers.RegisterDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetRegisterDateNull() {
+                this[this.tableUsers.RegisterDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsLastLoginDateNull() {
+                return this.IsNull(this.tableUsers.LastLoginDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetLastLoginDateNull() {
+                this[this.tableUsers.LastLoginDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsStatusNull() {
+                return this.IsNull(this.tableUsers.StatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetStatusNull() {
+                this[this.tableUsers.StatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsLevelNull() {
+                return this.IsNull(this.tableUsers.LevelColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetLevelNull() {
+                this[this.tableUsers.LevelColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAvatarUrlNull() {
+                return this.IsNull(this.tableUsers.AvatarUrlColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAvatarUrlNull() {
+                this[this.tableUsers.AvatarUrlColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIsAuthorNull() {
+                return this.IsNull(this.tableUsers.IsAuthorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIsAuthorNull() {
+                this[this.tableUsers.IsAuthorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAuthorStatusNull() {
+                return this.IsNull(this.tableUsers.AuthorStatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAuthorStatusNull() {
+                this[this.tableUsers.AuthorStatusColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -30873,7 +30985,7 @@ SELECT BookID, UID, BookName, SalePrice, BookCondition, Description, CreatedAt, 
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Users] WHERE (([UID] = @Original_UID) AND ([Phone] = @Original_Phone) AND ([Name] = @Original_Name) AND ([Email] = @Original_Email) AND ([Gender] = @Original_Gender) AND ([Birthday] = @Original_Birthday) AND ([Address] = @Original_Address) AND ([RegisterDate] = @Original_RegisterDate) AND ([LastLoginDate] = @Original_LastLoginDate) AND ([Status] = @Original_Status) AND ([Level] = @Original_Level) AND ([AvatarUrl] = @Original_AvatarUrl) AND ([IsAuthor] = @Original_IsAuthor) AND ([AuthorStatus] = @Original_AuthorStatus))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Users] WHERE (([UID] = @Original_UID) AND ([Phone] = @Original_Phone) AND ([Name] = @Original_Name) AND ([Email] = @Original_Email) AND ([Gender] = @Original_Gender) AND ([Birthday] = @Original_Birthday) AND ([Address] = @Original_Address) AND ((@IsNull_RegisterDate = 1 AND [RegisterDate] IS NULL) OR ([RegisterDate] = @Original_RegisterDate)) AND ((@IsNull_LastLoginDate = 1 AND [LastLoginDate] IS NULL) OR ([LastLoginDate] = @Original_LastLoginDate)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR ([Status] = @Original_Status)) AND ((@IsNull_Level = 1 AND [Level] IS NULL) OR ([Level] = @Original_Level)) AND ((@IsNull_AvatarUrl = 1 AND [AvatarUrl] IS NULL) OR ([AvatarUrl] = @Original_AvatarUrl)) AND ((@IsNull_IsAuthor = 1 AND [IsAuthor] IS NULL) OR ([IsAuthor] = @Original_IsAuthor)) AND ((@IsNull_AuthorStatus = 1 AND [AuthorStatus] IS NULL) OR ([AuthorStatus] = @Original_AuthorStatus)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Phone", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -30882,12 +30994,19 @@ SELECT BookID, UID, BookName, SalePrice, BookCondition, Description, CreatedAt, 
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Gender", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gender", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Birthday", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthday", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Address", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Address", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RegisterDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegisterDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RegisterDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegisterDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LastLoginDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastLoginDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LastLoginDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastLoginDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Status", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Status", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Level", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Level", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Level", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Level", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AvatarUrl", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AvatarUrl", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AvatarUrl", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AvatarUrl", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IsAuthor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsAuthor", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsAuthor", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsAuthor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AuthorStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AuthorStatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AuthorStatus", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AuthorStatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
@@ -30911,7 +31030,7 @@ SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDat
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AuthorStatus", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AuthorStatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Users] SET [UID] = @UID, [Phone] = @Phone, [Password] = @Password, [Name] = @Name, [Email] = @Email, [Gender] = @Gender, [Birthday] = @Birthday, [Address] = @Address, [RegisterDate] = @RegisterDate, [LastLoginDate] = @LastLoginDate, [Status] = @Status, [Level] = @Level, [AvatarUrl] = @AvatarUrl, [IsAuthor] = @IsAuthor, [AuthorStatus] = @AuthorStatus WHERE (([UID] = @Original_UID) AND ([Phone] = @Original_Phone) AND ([Name] = @Original_Name) AND ([Email] = @Original_Email) AND ([Gender] = @Original_Gender) AND ([Birthday] = @Original_Birthday) AND ([Address] = @Original_Address) AND ([RegisterDate] = @Original_RegisterDate) AND ([LastLoginDate] = @Original_LastLoginDate) AND ([Status] = @Original_Status) AND ([Level] = @Original_Level) AND ([AvatarUrl] = @Original_AvatarUrl) AND ([IsAuthor] = @Original_IsAuthor) AND ([AuthorStatus] = @Original_AuthorStatus));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Users] SET [UID] = @UID, [Phone] = @Phone, [Password] = @Password, [Name] = @Name, [Email] = @Email, [Gender] = @Gender, [Birthday] = @Birthday, [Address] = @Address, [RegisterDate] = @RegisterDate, [LastLoginDate] = @LastLoginDate, [Status] = @Status, [Level] = @Level, [AvatarUrl] = @AvatarUrl, [IsAuthor] = @IsAuthor, [AuthorStatus] = @AuthorStatus WHERE (([UID] = @Original_UID) AND ([Phone] = @Original_Phone) AND ([Name] = @Original_Name) AND ([Email] = @Original_Email) AND ([Gender] = @Original_Gender) AND ([Birthday] = @Original_Birthday) AND ([Address] = @Original_Address) AND ((@IsNull_RegisterDate = 1 AND [RegisterDate] IS NULL) OR ([RegisterDate] = @Original_RegisterDate)) AND ((@IsNull_LastLoginDate = 1 AND [LastLoginDate] IS NULL) OR ([LastLoginDate] = @Original_LastLoginDate)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR ([Status] = @Original_Status)) AND ((@IsNull_Level = 1 AND [Level] IS NULL) OR ([Level] = @Original_Level)) AND ((@IsNull_AvatarUrl = 1 AND [AvatarUrl] IS NULL) OR ([AvatarUrl] = @Original_AvatarUrl)) AND ((@IsNull_IsAuthor = 1 AND [IsAuthor] IS NULL) OR ([IsAuthor] = @Original_IsAuthor)) AND ((@IsNull_AuthorStatus = 1 AND [AuthorStatus] IS NULL) OR ([AuthorStatus] = @Original_AuthorStatus)));
 SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDate, LastLoginDate, Status, Level, AvatarUrl, IsAuthor, AuthorStatus FROM Users WHERE (UID = @UID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -30936,12 +31055,19 @@ SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDat
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Gender", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gender", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Birthday", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthday", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Address", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Address", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RegisterDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegisterDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RegisterDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegisterDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_LastLoginDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastLoginDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LastLoginDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastLoginDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Status", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Status", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Level", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Level", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Level", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Level", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AvatarUrl", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AvatarUrl", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AvatarUrl", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AvatarUrl", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IsAuthor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsAuthor", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsAuthor", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsAuthor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_AuthorStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AuthorStatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AuthorStatus", global::System.Data.SqlDbType.TinyInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AuthorStatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -30955,21 +31081,35 @@ SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDat
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDate" +
-                ", LastLoginDate, Status, [Level], AvatarUrl, IsAuthor, AuthorStatus FROM dbo.Use" +
-                "rs";
+                ", LastLoginDate, Status, [Level], AvatarUrl, IsAuthor, AuthorStatus\r\nFROM dbo.Us" +
+                "ers\r\nWHERE Phone = @Phone";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Phone", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDate" +
+                ", LastLoginDate, Status, [Level], AvatarUrl, IsAuthor, AuthorStatus\r\nFROM dbo.Us" +
+                "ers\r\nWHERE Phone = @Phone";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Phone", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(TeamA_ProjectDataSet.UsersDataTable dataTable) {
+        public virtual int FillByPhone(TeamA_ProjectDataSet.UsersDataTable dataTable, string Phone) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((Phone == null)) {
+                throw new global::System.ArgumentNullException("Phone");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Phone));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -30981,8 +31121,50 @@ SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDat
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual TeamA_ProjectDataSet.UsersDataTable GetData() {
+        public virtual TeamA_ProjectDataSet.UsersDataTable GetDataByPhone(string Phone) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((Phone == null)) {
+                throw new global::System.ArgumentNullException("Phone");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Phone));
+            }
+            TeamA_ProjectDataSet.UsersDataTable dataTable = new TeamA_ProjectDataSet.UsersDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(TeamA_ProjectDataSet.UsersDataTable dataTable, string Phone) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((Phone == null)) {
+                throw new global::System.ArgumentNullException("Phone");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Phone));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual TeamA_ProjectDataSet.UsersDataTable GetDataBy(string Phone) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((Phone == null)) {
+                throw new global::System.ArgumentNullException("Phone");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Phone));
+            }
             TeamA_ProjectDataSet.UsersDataTable dataTable = new TeamA_ProjectDataSet.UsersDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -31021,7 +31203,7 @@ SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDat
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(System.Guid Original_UID, string Original_Phone, string Original_Name, string Original_Email, bool Original_Gender, System.DateTime Original_Birthday, string Original_Address, System.DateTime Original_RegisterDate, System.DateTime Original_LastLoginDate, byte Original_Status, byte Original_Level, string Original_AvatarUrl, bool Original_IsAuthor, byte Original_AuthorStatus) {
+        public virtual int Delete(System.Guid Original_UID, string Original_Phone, string Original_Name, string Original_Email, bool Original_Gender, System.DateTime Original_Birthday, string Original_Address, global::System.Nullable<global::System.DateTime> Original_RegisterDate, global::System.Nullable<global::System.DateTime> Original_LastLoginDate, global::System.Nullable<byte> Original_Status, global::System.Nullable<byte> Original_Level, string Original_AvatarUrl, global::System.Nullable<bool> Original_IsAuthor, global::System.Nullable<byte> Original_AuthorStatus) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((System.Guid)(Original_UID));
             if ((Original_Phone == null)) {
                 throw new global::System.ArgumentNullException("Original_Phone");
@@ -31049,18 +31231,62 @@ SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDat
             else {
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Address));
             }
-            this.Adapter.DeleteCommand.Parameters[7].Value = ((System.DateTime)(Original_RegisterDate));
-            this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_LastLoginDate));
-            this.Adapter.DeleteCommand.Parameters[9].Value = ((byte)(Original_Status));
-            this.Adapter.DeleteCommand.Parameters[10].Value = ((byte)(Original_Level));
-            if ((Original_AvatarUrl == null)) {
-                throw new global::System.ArgumentNullException("Original_AvatarUrl");
+            if ((Original_RegisterDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_RegisterDate.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_AvatarUrl));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            this.Adapter.DeleteCommand.Parameters[12].Value = ((bool)(Original_IsAuthor));
-            this.Adapter.DeleteCommand.Parameters[13].Value = ((byte)(Original_AuthorStatus));
+            if ((Original_LastLoginDate.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((System.DateTime)(Original_LastLoginDate.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Status.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((byte)(Original_Status.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Level.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((byte)(Original_Level.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AvatarUrl == null)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_AvatarUrl));
+            }
+            if ((Original_IsAuthor.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((bool)(Original_IsAuthor.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AuthorStatus.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((byte)(Original_AuthorStatus.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -31081,7 +31307,7 @@ SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDat
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.Guid UID, string Phone, string Password, string Name, string Email, bool Gender, System.DateTime Birthday, string Address, System.DateTime RegisterDate, System.DateTime LastLoginDate, byte Status, byte Level, string AvatarUrl, bool IsAuthor, byte AuthorStatus) {
+        public virtual int Insert(System.Guid UID, string Phone, string Password, string Name, string Email, bool Gender, System.DateTime Birthday, string Address, global::System.Nullable<global::System.DateTime> RegisterDate, global::System.Nullable<global::System.DateTime> LastLoginDate, global::System.Nullable<byte> Status, global::System.Nullable<byte> Level, string AvatarUrl, global::System.Nullable<bool> IsAuthor, global::System.Nullable<byte> AuthorStatus) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((System.Guid)(UID));
             if ((Phone == null)) {
                 throw new global::System.ArgumentNullException("Phone");
@@ -31115,18 +31341,48 @@ SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDat
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Address));
             }
-            this.Adapter.InsertCommand.Parameters[8].Value = ((System.DateTime)(RegisterDate));
-            this.Adapter.InsertCommand.Parameters[9].Value = ((System.DateTime)(LastLoginDate));
-            this.Adapter.InsertCommand.Parameters[10].Value = ((byte)(Status));
-            this.Adapter.InsertCommand.Parameters[11].Value = ((byte)(Level));
+            if ((RegisterDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((System.DateTime)(RegisterDate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((LastLoginDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((System.DateTime)(LastLoginDate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((Status.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((byte)(Status.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((Level.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((byte)(Level.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
             if ((AvatarUrl == null)) {
-                throw new global::System.ArgumentNullException("AvatarUrl");
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[12].Value = ((string)(AvatarUrl));
             }
-            this.Adapter.InsertCommand.Parameters[13].Value = ((bool)(IsAuthor));
-            this.Adapter.InsertCommand.Parameters[14].Value = ((byte)(AuthorStatus));
+            if ((IsAuthor.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((bool)(IsAuthor.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((AuthorStatus.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((byte)(AuthorStatus.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -31156,13 +31412,13 @@ SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDat
                     bool Gender, 
                     System.DateTime Birthday, 
                     string Address, 
-                    System.DateTime RegisterDate, 
-                    System.DateTime LastLoginDate, 
-                    byte Status, 
-                    byte Level, 
+                    global::System.Nullable<global::System.DateTime> RegisterDate, 
+                    global::System.Nullable<global::System.DateTime> LastLoginDate, 
+                    global::System.Nullable<byte> Status, 
+                    global::System.Nullable<byte> Level, 
                     string AvatarUrl, 
-                    bool IsAuthor, 
-                    byte AuthorStatus, 
+                    global::System.Nullable<bool> IsAuthor, 
+                    global::System.Nullable<byte> AuthorStatus, 
                     System.Guid Original_UID, 
                     string Original_Phone, 
                     string Original_Name, 
@@ -31170,13 +31426,13 @@ SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDat
                     bool Original_Gender, 
                     System.DateTime Original_Birthday, 
                     string Original_Address, 
-                    System.DateTime Original_RegisterDate, 
-                    System.DateTime Original_LastLoginDate, 
-                    byte Original_Status, 
-                    byte Original_Level, 
+                    global::System.Nullable<global::System.DateTime> Original_RegisterDate, 
+                    global::System.Nullable<global::System.DateTime> Original_LastLoginDate, 
+                    global::System.Nullable<byte> Original_Status, 
+                    global::System.Nullable<byte> Original_Level, 
                     string Original_AvatarUrl, 
-                    bool Original_IsAuthor, 
-                    byte Original_AuthorStatus) {
+                    global::System.Nullable<bool> Original_IsAuthor, 
+                    global::System.Nullable<byte> Original_AuthorStatus) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(UID));
             if ((Phone == null)) {
                 throw new global::System.ArgumentNullException("Phone");
@@ -31210,18 +31466,48 @@ SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDat
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Address));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(RegisterDate));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(LastLoginDate));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((byte)(Status));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((byte)(Level));
+            if ((RegisterDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(RegisterDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((LastLoginDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(LastLoginDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((Status.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((byte)(Status.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((Level.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((byte)(Level.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
             if ((AvatarUrl == null)) {
-                throw new global::System.ArgumentNullException("AvatarUrl");
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(AvatarUrl));
             }
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(IsAuthor));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((byte)(AuthorStatus));
+            if ((IsAuthor.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(IsAuthor.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((AuthorStatus.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((byte)(AuthorStatus.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
             this.Adapter.UpdateCommand.Parameters[15].Value = ((System.Guid)(Original_UID));
             if ((Original_Phone == null)) {
                 throw new global::System.ArgumentNullException("Original_Phone");
@@ -31249,18 +31535,62 @@ SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDat
             else {
                 this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_Address));
             }
-            this.Adapter.UpdateCommand.Parameters[22].Value = ((System.DateTime)(Original_RegisterDate));
-            this.Adapter.UpdateCommand.Parameters[23].Value = ((System.DateTime)(Original_LastLoginDate));
-            this.Adapter.UpdateCommand.Parameters[24].Value = ((byte)(Original_Status));
-            this.Adapter.UpdateCommand.Parameters[25].Value = ((byte)(Original_Level));
-            if ((Original_AvatarUrl == null)) {
-                throw new global::System.ArgumentNullException("Original_AvatarUrl");
+            if ((Original_RegisterDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((System.DateTime)(Original_RegisterDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_AvatarUrl));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[27].Value = ((bool)(Original_IsAuthor));
-            this.Adapter.UpdateCommand.Parameters[28].Value = ((byte)(Original_AuthorStatus));
+            if ((Original_LastLoginDate.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((System.DateTime)(Original_LastLoginDate.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Status.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((byte)(Original_Status.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Level.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((byte)(Original_Level.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AvatarUrl == null)) {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_AvatarUrl));
+            }
+            if ((Original_IsAuthor.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((bool)(Original_IsAuthor.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AuthorStatus.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((byte)(Original_AuthorStatus.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -31289,13 +31619,13 @@ SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDat
                     bool Gender, 
                     System.DateTime Birthday, 
                     string Address, 
-                    System.DateTime RegisterDate, 
-                    System.DateTime LastLoginDate, 
-                    byte Status, 
-                    byte Level, 
+                    global::System.Nullable<global::System.DateTime> RegisterDate, 
+                    global::System.Nullable<global::System.DateTime> LastLoginDate, 
+                    global::System.Nullable<byte> Status, 
+                    global::System.Nullable<byte> Level, 
                     string AvatarUrl, 
-                    bool IsAuthor, 
-                    byte AuthorStatus, 
+                    global::System.Nullable<bool> IsAuthor, 
+                    global::System.Nullable<byte> AuthorStatus, 
                     System.Guid Original_UID, 
                     string Original_Phone, 
                     string Original_Name, 
@@ -31303,13 +31633,13 @@ SELECT UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDat
                     bool Original_Gender, 
                     System.DateTime Original_Birthday, 
                     string Original_Address, 
-                    System.DateTime Original_RegisterDate, 
-                    System.DateTime Original_LastLoginDate, 
-                    byte Original_Status, 
-                    byte Original_Level, 
+                    global::System.Nullable<global::System.DateTime> Original_RegisterDate, 
+                    global::System.Nullable<global::System.DateTime> Original_LastLoginDate, 
+                    global::System.Nullable<byte> Original_Status, 
+                    global::System.Nullable<byte> Original_Level, 
                     string Original_AvatarUrl, 
-                    bool Original_IsAuthor, 
-                    byte Original_AuthorStatus) {
+                    global::System.Nullable<bool> Original_IsAuthor, 
+                    global::System.Nullable<byte> Original_AuthorStatus) {
             return this.Update(Original_UID, Phone, Password, Name, Email, Gender, Birthday, Address, RegisterDate, LastLoginDate, Status, Level, AvatarUrl, IsAuthor, AuthorStatus, Original_UID, Original_Phone, Original_Name, Original_Email, Original_Gender, Original_Birthday, Original_Address, Original_RegisterDate, Original_LastLoginDate, Original_Status, Original_Level, Original_AvatarUrl, Original_IsAuthor, Original_AuthorStatus);
         }
     }

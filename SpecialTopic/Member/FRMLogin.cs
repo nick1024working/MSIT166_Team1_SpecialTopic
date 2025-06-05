@@ -38,6 +38,7 @@ namespace SpecialTopic
                         MessageBox.Show("登入成功");
                         this.Hide();
                         Form1 frm = new Form1();
+                        frm.s = account; // 傳遞帳號到主窗體
                         frm.ShowDialog();
                     }
                     else
@@ -53,7 +54,6 @@ namespace SpecialTopic
         {
             FRMCreateAccount create = new FRMCreateAccount();
             create.Show();
-
         }
     }
 }

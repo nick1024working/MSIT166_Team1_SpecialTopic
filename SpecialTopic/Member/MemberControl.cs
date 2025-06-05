@@ -31,10 +31,7 @@ namespace SpecialTopic
             _mainForm.ShowControl(new MemberUserRegister(_mainForm));
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
+     
     }
 }
 
