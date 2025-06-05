@@ -3,10 +3,10 @@
     public class BookCardEntity
     {
         public int BookID { get; set; }
-        public string BookName { get; set; } = string.Empty;
+        public string BookName { get; set; }
         public decimal SalePrice { get; set; }
-        public string Authors { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public string ImagePath { get; set; } = string.Empty;
+        public string Authors { get; set; }
+        public string Description { get; set; }
+        public string ImagePath { get; set; }
     }
 }

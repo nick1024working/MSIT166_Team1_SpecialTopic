@@ -7,6 +7,7 @@ using SpecialTopic.UsedBooks.Backend.Services;
 using SpecialTopic.UsedBooks.Frontend.Shared;
 using SpecialTopic.UsedBooks.Frontend.Views;
 using SpecialTopic.UsedBooks.Frontend.Views.Body;
+using SpecialTopic.UsedBooks.Frontend.Views.Forms;
 
 namespace SpecialTopic.UsedBooks.Views
 {
@@ -14,6 +15,10 @@ namespace SpecialTopic.UsedBooks.Views
     {
         // 給 父View(在此服務內稱作UsedBookControl) 訂閱的切換事件
         public event EventHandler<ViewType> RequestSwitchView;
+
+        // 給 子Body 訂閱的切換事件
+        public event EventHandler ViewChanging;
+
 
         // 會使用的 連線字串
         private string _connString;
@@ -24,9 +29,9 @@ namespace SpecialTopic.UsedBooks.Views
         private BookCardService _bookCardService;
 
         // 會在 pnlBody 載入的控制項，將用 header bar 點擊切換
-        private readonly PLPBody _plpBody = new PLPBody();
-        private readonly UserCenterBody _userCenterBody = new UserCenterBody();
-        private readonly AdminCenterBody _adminCenterBody = new AdminCenterBody();
+        private readonly PLPBody _plpBody;
+        private readonly UserCenterBody _userCenterBody;
+        private readonly AdminCenterBody _adminCenterBody;
 
         /// <summary>
         /// 清除並載入 pnlBody
@@ -51,8 +56,13 @@ namespace SpecialTopic.UsedBooks.Views
             _saleTagService = new SaleTagService(_connString);
             _bookCardService = new BookCardService(_connString);
 
-            // 建構畫面元件
-            InitializeComponent();
+            // 建構 body
+            _plpBody = new PLPBody(this, _connString);      // 建立子控制項時，注入父參考
+            _userCenterBody = new UserCenterBody(_connString);
+            _adminCenterBody = new AdminCenterBody(_connString);
+
+        // 建構畫面元件
+        InitializeComponent();
 
             // 初始化資料
             LoadData();
@@ -138,7 +148,8 @@ namespace SpecialTopic.UsedBooks.Views
         /// </summary>
         private void btnAdminCenter_Click(object sender, EventArgs e)
         {
-            ShowControl(new AdminCenterBody());
+            ViewChanging?.Invoke(this, EventArgs.Empty); // 通知子控制項清理
+            ShowControl(_adminCenterBody);
         }
 
         /// <summary>
@@ -147,7 +158,8 @@ namespace SpecialTopic.UsedBooks.Views
         /// 
         private void btnUserCenter_Click(object sender, EventArgs e)
         {
-            ShowControl(new UserCenterBody());
+            ViewChanging?.Invoke(this, EventArgs.Empty); // 通知子控制項清理
+            ShowControl(_userCenterBody);
         }
 
         /// <summary>

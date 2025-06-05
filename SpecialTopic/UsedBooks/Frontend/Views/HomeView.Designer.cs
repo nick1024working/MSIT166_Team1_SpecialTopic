@@ -28,25 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSwitchToPLP = new System.Windows.Forms.Button();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.mainPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnSwitchToPLP
-            // 
-            this.btnSwitchToPLP.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSwitchToPLP.Location = new System.Drawing.Point(902, 0);
-            this.btnSwitchToPLP.Name = "btnSwitchToPLP";
-            this.btnSwitchToPLP.Size = new System.Drawing.Size(75, 658);
-            this.btnSwitchToPLP.TabIndex = 0;
-            this.btnSwitchToPLP.Text = "SwitchToPLP";
-            this.btnSwitchToPLP.UseVisualStyleBackColor = true;
-            this.btnSwitchToPLP.Click += new System.EventHandler(this.btnSwitchToPLP_Click);
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.btnSwitchToPLP);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
@@ -61,14 +47,11 @@
             this.Controls.Add(this.mainPanel);
             this.Name = "HomeView";
             this.Size = new System.Drawing.Size(977, 658);
-            this.mainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnSwitchToPLP;
         private System.Windows.Forms.Panel mainPanel;
     }
 }

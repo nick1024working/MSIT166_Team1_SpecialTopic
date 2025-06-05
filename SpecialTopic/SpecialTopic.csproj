@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props" Condition="Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props')" />
   <PropertyGroup>
     <SSDTUnitTestPath Condition="'$(SSDTUnitTestPath)' == ''">$(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB</SSDTUnitTestPath>
     <NuGetPackageImportStamp>
@@ -11,7 +12,6 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
   </PropertyGroup>
-  <Import Project="..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props" Condition="Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -73,11 +73,39 @@
     <Reference Include="Azure.Identity, Version=1.11.4.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
       <HintPath>..\packages\Azure.Identity.1.11.4\lib\netstandard2.0\Azure.Identity.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.1.66\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=5.8.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.8.0\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.1\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Build.16.0.461\lib\net472\Microsoft.Build.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build.Framework, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Build.Framework.16.0.461\lib\net472\Microsoft.Build.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.SqlClient, Version=5.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Data.SqlClient.5.1.6\lib\net462\Microsoft.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Components, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Tools.Msbuild.16.0.62004.28040\lib\net46\Microsoft.Data.Tools.Components.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Contracts, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Tools.Msbuild.16.0.62004.28040\lib\net46\Microsoft.Data.Tools.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Tasks.Sql, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Tools.Msbuild.16.0.62004.28040\lib\net46\Microsoft.Data.Tools.Schema.Tasks.Sql.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Utilities.Sql, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Tools.Msbuild.16.0.62004.28040\lib\net46\Microsoft.Data.Tools.Schema.Utilities.Sql.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Utilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.DacFx.150.4769.1\lib\net46\Microsoft.Data.Tools.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Identity.Client, Version=4.61.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Identity.Client.4.61.3\lib\net462\Microsoft.Identity.Client.dll</HintPath>
@@ -103,21 +131,37 @@
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.35.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
-    <Reference Include="EPPlus, Version=5.8.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPPlus.5.8.0\lib\net45\EPPlus.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=15.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Tools.Msbuild.16.0.62004.28040\lib\net46\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dac, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.DacFx.150.4769.1\lib\net46\Microsoft.SqlServer.Dac.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dac.Extensions, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.DacFx.150.4769.1\lib\net46\Microsoft.SqlServer.Dac.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SqlClrProvider, Version=15.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Tools.Msbuild.16.0.62004.28040\lib\net46\Microsoft.SqlServer.SqlClrProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.TransactSql.ScriptDom, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.DacFx.150.4769.1\lib\net46\Microsoft.SqlServer.TransactSql.ScriptDom.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.DacFx.150.4769.1\lib\net46\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Setup.Configuration.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Setup.Configuration.Interop.1.16.30\lib\net35\Microsoft.VisualStudio.Setup.Configuration.Interop.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="PdfiumViewer, Version=2.13.0.0, Culture=neutral, PublicKeyToken=91e4789cfb0609e0, processorArchitecture=MSIL">
       <HintPath>..\packages\PdfiumViewer.2.13.0.0\lib\net20\PdfiumViewer.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
-    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.2.1.66\lib\net461\Dapper.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.1\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    <Reference Include="SqlPackage, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Tools.Msbuild.16.0.62004.28040\lib\net46\SqlPackage.exe</HintPath>
     </Reference>
     <Reference Include="System">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
@@ -128,15 +172,18 @@
     <Reference Include="System.ClientModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ClientModel.1.0.0\lib\netstandard2.0\System.ClientModel.dll</HintPath>
     </Reference>
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Configuration.ConfigurationManager, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Configuration.ConfigurationManager.6.0.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.6.0.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -147,6 +194,7 @@
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.35.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.FileSystem.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.FileSystem.AccessControl.5.0.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
     </Reference>
@@ -189,21 +237,19 @@
     <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.5.24.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Dataflow.4.5.24\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
+    </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
-    <Reference Include="System.Security" />
-    <Reference Include="System.Threading.Tasks" />
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -445,15 +491,36 @@
       <DependentUpon>FrmPostDetail.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="UsedBooks\Backend\DTOs\BookCardDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\BookDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\BookIsActiveDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\BookPublicDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\BookWithSaleTagDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\CreateBookDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\CreateBookImageDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\CreateBookSaleTagDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\CreateBookTopicDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\CreateFaceToFaceOrderDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\CreateSaleTagDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\FaceToFaceOrderDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\OrderStatusDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\SaleTagDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\CreateTopicDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\TopicDto.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\BookEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\BookImageEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\BookIsActiveEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\BookTopicEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\BookCardEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\BookWithSaleTagEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\CreateBookSaleTagEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\CreateBookTopicEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\FaceToFaceOrderEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\OrderFaceToFaceStatusEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\OrderStatusEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\SaleTagEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\UsedBookOrderEntity.cs" />
     <Compile Include="UsedBooks\Backend\Repositories\BookCardRepository.cs" />
+    <Compile Include="UsedBooks\Backend\Repositories\BookImageRepository.cs" />
     <Compile Include="UsedBooks\Backend\Repositories\BookRepository.cs" />
     <Compile Include="UsedBooks\Backend\Repositories\OrderRepository.cs" />
     <Compile Include="UsedBooks\Backend\Repositories\TopicRepository.cs" />
@@ -465,7 +532,7 @@
     <Compile Include="UsedBooks\Backend\Services\TopicService.cs" />
     <Compile Include="UsedBooks\Backend\Services\SaleTagService.cs" />
     <Compile Include="UsedBooks\Backend\Services\UserService.cs" />
-    <Compile Include="UsedBooks\Backend\Utilities\ImagePathHelper.cs" />
+    <Compile Include="UsedBooks\Backend\Utilities\ImageHelper.cs" />
     <Compile Include="UsedBooks\Backend\Utilities\OrderStatus.cs" />
     <Compile Include="UsedBooks\Backend\Utilities\PaymentFlowType.cs" />
     <Compile Include="UsedBooks\Backend\Utilities\Result.cs" />
@@ -484,6 +551,7 @@
     </Compile>
     <Compile Include="UsedBooks\Frontend\Shared\BookCardControlHelper.cs" />
     <Compile Include="UsedBooks\Frontend\Shared\ISwitchableView.cs" />
+    <Compile Include="UsedBooks\Frontend\Shared\SortableBindingList.cs" />
     <Compile Include="UsedBooks\Frontend\Shared\ViewFactory.cs" />
     <Compile Include="UsedBooks\Frontend\Shared\ViewType.cs" />
     <Compile Include="UsedBooks\Frontend\Components\BodyWithSideBarAndContentArea.cs">
@@ -510,10 +578,46 @@
     <Compile Include="UsedBooks\Frontend\Views\Body\UserCenterBody.Designer.cs">
       <DependentUpon>UserCenterBody.cs</DependentUpon>
     </Compile>
-    <Compile Include="UsedBooks\Frontend\Views\CreateOrderForm.cs">
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminBookManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminBookManager.Designer.cs">
+      <DependentUpon>AdminBookManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminOrderManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminOrderManager.Designer.cs">
+      <DependentUpon>AdminOrderManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminTagManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminTagManager.Designer.cs">
+      <DependentUpon>AdminTagManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminTopicManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\AdminTopicManager.Designer.cs">
+      <DependentUpon>AdminTopicManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\UserBookManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\ContentArea\UserBookManager.Designer.cs">
+      <DependentUpon>UserBookManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Forms\CreateBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UsedBooks\Frontend\Views\CreateOrderForm.Designer.cs">
+    <Compile Include="UsedBooks\Frontend\Views\Forms\CreateBookForm.Designer.cs">
+      <DependentUpon>CreateBookForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Forms\CreateOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsedBooks\Frontend\Views\Forms\CreateOrderForm.Designer.cs">
       <DependentUpon>CreateOrderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UsedBooks\Frontend\Views\HomeView.cs">
@@ -564,7 +668,6 @@
     <None Include="Member\DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
-    <None Include="packages.config" />
     <EmbeddedResource Include="UsedBooks\Frontend\Components\BookCardControl.resx">
       <DependentUpon>BookCardControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -583,7 +686,25 @@
     <EmbeddedResource Include="UsedBooks\Frontend\Views\Body\UserCenterBody.resx">
       <DependentUpon>UserCenterBody.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UsedBooks\Frontend\Views\CreateOrderForm.resx">
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\ContentArea\AdminBookManager.resx">
+      <DependentUpon>AdminBookManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\ContentArea\AdminOrderManager.resx">
+      <DependentUpon>AdminOrderManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\ContentArea\AdminTagManager.resx">
+      <DependentUpon>AdminTagManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\ContentArea\AdminTopicManager.resx">
+      <DependentUpon>AdminTopicManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\ContentArea\UserBookManager.resx">
+      <DependentUpon>UserBookManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\Forms\CreateBookForm.resx">
+      <DependentUpon>CreateBookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsedBooks\Frontend\Views\Forms\CreateOrderForm.resx">
       <DependentUpon>CreateOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsedBooks\Frontend\Views\HomeView.resx">
@@ -1008,7 +1129,7 @@
   <ItemGroup />
   <ItemGroup Condition="$(VisualStudioVersion) == '17.0'">
     <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>$(SSDTPath)\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
+      <HintPath>..\packages\Microsoft.SqlServer.DacFx.150.4769.1\lib\net46\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTesting, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -1027,17 +1148,13 @@
   </PropertyGroup>
   <Import Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="$(VisualStudioVersion) != '15.0' And '$(SQLDBExtensionsRefPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="$(VisualStudioVersion) != '15.0' And '$(SQLDBExtensionsRefPath)' == ''" />
-  <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>此專案參考這部電腦上所缺少的 NuGet 套件。請啟用 NuGet 套件還原，以下載該套件。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案是 {0}。</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
-  </Target>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>此專案參考這部電腦上所缺少的 NuGet 套件。請啟用 NuGet 套件還原，以下載該套件。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案是 {0}。</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
+    <Error Condition="!Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
 </Project>
