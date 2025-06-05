@@ -25,6 +25,9 @@ namespace SpecialTopic
             LoadCategoryToComboBox();
             LoadCategoriesToComboBox();
             LoadProjectsToComboBoxForSearch();
+            LoadProjectsToComboBoxbyImage();
+            LoadImages();
+            LoadProjectToSearchComboBox();
         }
 
         //======================募資分類管理======================
@@ -161,7 +164,7 @@ namespace SpecialTopic
                     dataGridView2.Columns["donateProject_id"].Visible = false;
                 }
             }
-        }        
+        }
         private void PjCreate_Click(object sender, EventArgs e)
         {
             int categoryId;
@@ -200,6 +203,7 @@ namespace SpecialTopic
                     MessageBox.Show("新增成功！");
                     LoadProjects();            // 重新載入 DataGridView
                     LoadProjectsToComboBox();  // 如果其他頁面要更新 ComboBox
+                    ReloadProjectComboBoxes();
                 }
             }
             catch (Exception ex)
@@ -250,6 +254,7 @@ namespace SpecialTopic
                 MessageBox.Show("更新成功！");
                 LoadProjects();
                 LoadProjectsToComboBox();
+                ReloadProjectComboBoxes();
             }
         }
 
@@ -275,6 +280,7 @@ namespace SpecialTopic
                 MessageBox.Show("刪除成功！");
                 LoadProjects();
                 LoadProjectsToComboBox();
+                ReloadProjectComboBoxes();
             }
         }
         private void LoadCategoriesToComboBox()
@@ -512,6 +518,191 @@ namespace SpecialTopic
             }
         }
 
+
+
+        //======================募資圖片管理======================
+        private void LoadProjectsToComboBoxbyImage()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT donateProject_id, title FROM donateProjects";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                donateProject_idComboBox.DataSource = dt;
+                donateProject_idComboBox.DisplayMember = "title";
+                donateProject_idComboBox.ValueMember = "donateProject_id";
+            }
+        }
+        private void LoadImages()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT * FROM donateImages";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dataGridView6.DataSource = dt;
+                dataGridView6.CellClick += dataGridView6_CellContentClick;
+                //linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+                dataGridView6.Columns["donateProject_id"].Visible = false;
+            }
+        }
+        private void btnCreateImage_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = @"INSERT INTO donateImages (donateProject_id, donateImage_url, is_main)
+                       VALUES (@projectId, @url, @isMain)";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@projectId", donateProject_idComboBox.SelectedValue);
+                cmd.Parameters.AddWithValue("@url", donateImage_urlTextBox.Text);
+                cmd.Parameters.AddWithValue("@isMain", is_mainCheckBox.Checked);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                MessageBox.Show("新增成功！");
+                LoadImages();
+            }
+        }
+        private void btnUpdateImage_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(image_idTextBox.Text)) return;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = @"UPDATE donateImages 
+               SET donateProject_id = @projectId, donateImage_url = @url, is_main = @isMain
+               WHERE image_id = @imageId";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@projectId", donateProject_idComboBox.SelectedValue);
+                cmd.Parameters.AddWithValue("@url", donateImage_urlTextBox.Text);
+                cmd.Parameters.AddWithValue("@isMain", is_mainCheckBox.Checked);
+                cmd.Parameters.AddWithValue("@imageId", int.Parse(image_idTextBox.Text));
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                MessageBox.Show("更新成功！");
+                LoadImages();
+            }
+        }
+        private void btnDeleteImage_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(image_idTextBox.Text)) return;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = "DELETE FROM donateImages WHERE image_id = @imageId;";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@imageId", int.Parse(image_idTextBox.Text));
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                MessageBox.Show("刪除成功！");
+                LoadImages();
+            }
+        }
+        private void dataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView6.Rows[e.RowIndex];
+                image_idTextBox.Text = row.Cells["donateImage_id"].Value.ToString();
+                donateProject_idComboBox.SelectedValue = row.Cells["donateProject_id"].Value;
+                donateImage_urlTextBox.Text = row.Cells["donateImage_url"].Value.ToString();
+                is_mainCheckBox.Checked = (bool)row.Cells["is_main"].Value;
+            }
+        }
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "選擇圖片";
+            openFileDialog.Filter = "圖片檔 (*.jpg;*.jpeg;*.png;*.gif)|*.jpg;*.jpeg;*.png;*.gif";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                donateImage_urlTextBox.Text = openFileDialog.FileName;
+                pictureBox1.ImageLocation = openFileDialog.FileName;
+            }
+        }
+        private void LoadProjectToSearchComboBox()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT donateProject_id, title FROM donateProjects";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                donateProject_idComboBox1.DataSource = dt;
+                donateProject_idComboBox1.DisplayMember = "title";
+                donateProject_idComboBox1.ValueMember = "donateProject_id";
+            }
+        }
+        private void btnSearchByProjectImg_Click(object sender, EventArgs e)
+        {
+            if (donateProject_idComboBox1.SelectedIndex == -1)
+            {
+                MessageBox.Show("請選擇一個募款項目！");
+                return;
+            }
+
+            int projectId = Convert.ToInt32(donateProject_idComboBox1.SelectedValue);
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT * FROM donateImages WHERE donateProject_id = @projectId";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                adapter.SelectCommand.Parameters.AddWithValue("@projectId", projectId);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dataGridView7.DataSource = dt;
+            }
+        }
+        public void ReloadProjectComboBoxes()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT donateProject_id, title FROM donateProjects";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                donateProject_idComboBox.DataSource = dt.Copy();
+                donateProject_idComboBox.DisplayMember = "title";
+                donateProject_idComboBox.ValueMember = "donateProject_id";
+
+                donateProject_idComboBox1.DataSource = dt.Copy();
+                donateProject_idComboBox1.DisplayMember = "title";
+                donateProject_idComboBox1.ValueMember = "donateProject_id";
+            }
+        }
+        private void dataGridView7_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                string imageUrl = dataGridView6.Rows[e.RowIndex].Cells["donateImage_url"].Value.ToString();
+
+                try
+                {
+                    pictureBox2.Load(imageUrl); // 可載入 URL 或檔案路徑
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("載入圖片失敗：" + ex.Message);
+                    pictureBox2.Image = null;
+                }
+            }
+        }
+
         //======================切換頁面即時更新ComboBox======================
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -530,6 +721,13 @@ namespace SpecialTopic
                 LoadProjectsToComboBox(); // 重新載入募資項目下拉選單
                 LoadProjectsToComboBoxForSearch();
             }
+            else if (tabControl1.SelectedTab == tabPage4) // 募資項目頁
+            {
+                LoadProjects(); // 重新載入募資項目資料表
+                LoadProjectToSearchComboBox();
+            }
         }
+
+
     }
 }
