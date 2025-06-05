@@ -36,12 +36,13 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblLoadAll = new System.Windows.Forms.Label();
             this.btnLoadAll = new System.Windows.Forms.Button();
-            this.txbDelete = new System.Windows.Forms.TextBox();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.lblDelete = new System.Windows.Forms.Label();
-            this.dgvMain = new System.Windows.Forms.DataGridView();
-            this.txbCreate = new System.Windows.Forms.Label();
+            this.txbChangeStatusId = new System.Windows.Forms.TextBox();
+            this.lblChangeStatus = new System.Windows.Forms.Label();
             this.btnCreate = new System.Windows.Forms.Button();
+            this.txbCreate = new System.Windows.Forms.Label();
+            this.cbxOrderStatus = new System.Windows.Forms.ComboBox();
+            this.btnChangeStatus = new System.Windows.Forms.Button();
+            this.dgvMain = new System.Windows.Forms.DataGridView();
             this.pnlContentArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -62,6 +63,7 @@
             // 
             // splitContainer1
             // 
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
@@ -74,7 +76,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvMain);
             this.splitContainer1.Size = new System.Drawing.Size(798, 531);
-            this.splitContainer1.SplitterDistance = 237;
+            this.splitContainer1.SplitterDistance = 236;
             this.splitContainer1.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -88,15 +90,16 @@
             this.tableLayoutPanel1.Controls.Add(this.btnSearch, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblLoadAll, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnLoadAll, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txbDelete, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.lblDelete, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.btnDelete, 2, 8);
+            this.tableLayoutPanel1.Controls.Add(this.txbChangeStatusId, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.lblChangeStatus, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.btnCreate, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.txbCreate, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.cbxOrderStatus, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.btnChangeStatus, 2, 10);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 12;
+            this.tableLayoutPanel1.RowCount = 13;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -107,9 +110,10 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(237, 531);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(234, 529);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // txbSearch
@@ -132,7 +136,7 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnSearch.Location = new System.Drawing.Point(174, 88);
+            this.btnSearch.Location = new System.Drawing.Point(171, 88);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(60, 23);
             this.btnSearch.TabIndex = 5;
@@ -152,50 +156,40 @@
             // btnLoadAll
             // 
             this.btnLoadAll.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnLoadAll.Location = new System.Drawing.Point(174, 23);
+            this.btnLoadAll.Location = new System.Drawing.Point(171, 23);
             this.btnLoadAll.Name = "btnLoadAll";
             this.btnLoadAll.Size = new System.Drawing.Size(60, 23);
             this.btnLoadAll.TabIndex = 8;
             this.btnLoadAll.Text = "載入";
             this.btnLoadAll.UseVisualStyleBackColor = true;
+            this.btnLoadAll.Click += new System.EventHandler(this.btnLoadAll_Click);
             // 
-            // txbDelete
+            // txbChangeStatusId
             // 
-            this.txbDelete.Location = new System.Drawing.Point(23, 213);
-            this.txbDelete.Name = "txbDelete";
-            this.txbDelete.Size = new System.Drawing.Size(127, 22);
-            this.txbDelete.TabIndex = 4;
+            this.txbChangeStatusId.Location = new System.Drawing.Point(23, 217);
+            this.txbChangeStatusId.Name = "txbChangeStatusId";
+            this.txbChangeStatusId.Size = new System.Drawing.Size(127, 22);
+            this.txbChangeStatusId.TabIndex = 4;
             // 
-            // btnDelete
+            // lblChangeStatus
             // 
-            this.btnDelete.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnDelete.Location = new System.Drawing.Point(174, 185);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(60, 22);
-            this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "刪除";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.lblChangeStatus.AutoSize = true;
+            this.lblChangeStatus.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblChangeStatus.Location = new System.Drawing.Point(23, 182);
+            this.lblChangeStatus.Name = "lblChangeStatus";
+            this.lblChangeStatus.Size = new System.Drawing.Size(127, 32);
+            this.lblChangeStatus.TabIndex = 2;
+            this.lblChangeStatus.Text = "更改訂單狀態 by ID:";
             // 
-            // lblDelete
+            // btnCreate
             // 
-            this.lblDelete.AutoSize = true;
-            this.lblDelete.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblDelete.Location = new System.Drawing.Point(23, 182);
-            this.lblDelete.Name = "lblDelete";
-            this.lblDelete.Size = new System.Drawing.Size(115, 16);
-            this.lblDelete.TabIndex = 2;
-            this.lblDelete.Text = "刪除訂單 by ID:";
-            // 
-            // dgvMain
-            // 
-            this.dgvMain.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMain.Location = new System.Drawing.Point(0, 0);
-            this.dgvMain.Name = "dgvMain";
-            this.dgvMain.RowTemplate.Height = 24;
-            this.dgvMain.Size = new System.Drawing.Size(557, 531);
-            this.dgvMain.TabIndex = 0;
+            this.btnCreate.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnCreate.Location = new System.Drawing.Point(171, 137);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(60, 22);
+            this.btnCreate.TabIndex = 10;
+            this.btnCreate.Text = "執行";
+            this.btnCreate.UseVisualStyleBackColor = true;
             // 
             // txbCreate
             // 
@@ -207,15 +201,40 @@
             this.txbCreate.TabIndex = 9;
             this.txbCreate.Text = "新增與修改訂單:";
             // 
-            // btnCreate
+            // cbxOrderStatus
             // 
-            this.btnCreate.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnCreate.Location = new System.Drawing.Point(174, 137);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(60, 22);
-            this.btnCreate.TabIndex = 10;
-            this.btnCreate.Text = "執行";
-            this.btnCreate.UseVisualStyleBackColor = true;
+            this.cbxOrderStatus.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cbxOrderStatus.FormattingEnabled = true;
+            this.cbxOrderStatus.Items.AddRange(new object[] {
+            "上架",
+            "下架"});
+            this.cbxOrderStatus.Location = new System.Drawing.Point(23, 245);
+            this.cbxOrderStatus.Name = "cbxOrderStatus";
+            this.cbxOrderStatus.Size = new System.Drawing.Size(121, 24);
+            this.cbxOrderStatus.TabIndex = 13;
+            // 
+            // btnChangeStatus
+            // 
+            this.btnChangeStatus.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnChangeStatus.Location = new System.Drawing.Point(171, 245);
+            this.btnChangeStatus.Name = "btnChangeStatus";
+            this.btnChangeStatus.Size = new System.Drawing.Size(60, 22);
+            this.btnChangeStatus.TabIndex = 3;
+            this.btnChangeStatus.Text = "更改";
+            this.btnChangeStatus.UseVisualStyleBackColor = true;
+            this.btnChangeStatus.Click += new System.EventHandler(this.btnChangeStatus_Click);
+            // 
+            // dgvMain
+            // 
+            this.dgvMain.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMain.Location = new System.Drawing.Point(0, 0);
+            this.dgvMain.Name = "dgvMain";
+            this.dgvMain.RowHeadersWidth = 82;
+            this.dgvMain.RowTemplate.Height = 24;
+            this.dgvMain.Size = new System.Drawing.Size(556, 529);
+            this.dgvMain.TabIndex = 0;
             // 
             // AdminOrderManager
             // 
@@ -246,11 +265,12 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblLoadAll;
         private System.Windows.Forms.Button btnLoadAll;
-        private System.Windows.Forms.TextBox txbDelete;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Label lblDelete;
+        private System.Windows.Forms.TextBox txbChangeStatusId;
+        private System.Windows.Forms.Button btnChangeStatus;
+        private System.Windows.Forms.Label lblChangeStatus;
         private System.Windows.Forms.DataGridView dgvMain;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Label txbCreate;
+        private System.Windows.Forms.ComboBox cbxOrderStatus;
     }
 }

@@ -431,6 +431,8 @@
     <Compile Include="UsedBooks\Backend\DTOs\CreateBookTopicDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\CreateFaceToFaceOrderDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\CreateSaleTagDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\FaceToFaceOrderDto.cs" />
+    <Compile Include="UsedBooks\Backend\DTOs\OrderStatusDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\SaleTagDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\CreateTopicDto.cs" />
     <Compile Include="UsedBooks\Backend\DTOs\TopicDto.cs" />
@@ -442,7 +444,9 @@
     <Compile Include="UsedBooks\Backend\Entities\BookWithSaleTagEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\CreateBookSaleTagEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\CreateBookTopicEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\FaceToFaceOrderEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\OrderFaceToFaceStatusEntity.cs" />
+    <Compile Include="UsedBooks\Backend\Entities\OrderStatusEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\SaleTagEntity.cs" />
     <Compile Include="UsedBooks\Backend\Entities\UsedBookOrderEntity.cs" />
     <Compile Include="UsedBooks\Backend\Repositories\BookCardRepository.cs" />

@@ -75,6 +75,7 @@
             // 
             // splitContainer1
             // 
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
@@ -87,7 +88,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer1.Size = new System.Drawing.Size(798, 531);
-            this.splitContainer1.SplitterDistance = 251;
+            this.splitContainer1.SplitterDistance = 230;
             this.splitContainer1.TabIndex = 2;
             // 
             // tableLayoutPanel3
@@ -102,7 +103,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(251, 531);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(228, 529);
             this.tableLayoutPanel3.TabIndex = 14;
             // 
             // tableLayoutPanel1
@@ -141,13 +142,13 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(245, 259);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(222, 258);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // txbDelete
             // 
             this.txbDelete.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txbDelete.Location = new System.Drawing.Point(23, 78);
+            this.txbDelete.Location = new System.Drawing.Point(23, 110);
             this.txbDelete.Name = "txbDelete";
             this.txbDelete.Size = new System.Drawing.Size(127, 27);
             this.txbDelete.TabIndex = 4;
@@ -155,7 +156,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnDelete.Location = new System.Drawing.Point(182, 78);
+            this.btnDelete.Location = new System.Drawing.Point(159, 110);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(60, 26);
             this.btnDelete.TabIndex = 3;
@@ -167,16 +168,16 @@
             // 
             this.lblDelete.AutoSize = true;
             this.lblDelete.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblDelete.Location = new System.Drawing.Point(23, 59);
+            this.lblDelete.Location = new System.Drawing.Point(23, 75);
             this.lblDelete.Name = "lblDelete";
-            this.lblDelete.Size = new System.Drawing.Size(147, 16);
+            this.lblDelete.Size = new System.Drawing.Size(127, 32);
             this.lblDelete.TabIndex = 2;
             this.lblDelete.Text = "刪除促銷標籤 by ID:";
             // 
             // txbCreate
             // 
             this.txbCreate.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txbCreate.Location = new System.Drawing.Point(23, 29);
+            this.txbCreate.Location = new System.Drawing.Point(23, 45);
             this.txbCreate.Name = "txbCreate";
             this.txbCreate.Size = new System.Drawing.Size(127, 27);
             this.txbCreate.TabIndex = 6;
@@ -184,7 +185,7 @@
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnCreate.Location = new System.Drawing.Point(182, 29);
+            this.btnCreate.Location = new System.Drawing.Point(159, 45);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(60, 27);
             this.btnCreate.TabIndex = 5;
@@ -198,7 +199,7 @@
             this.lblCreate.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblCreate.Location = new System.Drawing.Point(23, 10);
             this.lblCreate.Name = "lblCreate";
-            this.lblCreate.Size = new System.Drawing.Size(139, 16);
+            this.lblCreate.Size = new System.Drawing.Size(119, 32);
             this.lblCreate.TabIndex = 2;
             this.lblCreate.Text = "新增促銷標籤名稱:";
             // 
@@ -206,9 +207,9 @@
             // 
             this.lblBindTagToBook.AutoSize = true;
             this.lblBindTagToBook.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblBindTagToBook.Location = new System.Drawing.Point(23, 108);
+            this.lblBindTagToBook.Location = new System.Drawing.Point(23, 140);
             this.lblBindTagToBook.Name = "lblBindTagToBook";
-            this.lblBindTagToBook.Size = new System.Drawing.Size(135, 16);
+            this.lblBindTagToBook.Size = new System.Drawing.Size(119, 32);
             this.lblBindTagToBook.TabIndex = 7;
             this.lblBindTagToBook.Text = "為書設定促銷標籤";
             // 
@@ -216,7 +217,7 @@
             // 
             this.lblBookId.AutoSize = true;
             this.lblBookId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblBookId.Location = new System.Drawing.Point(23, 124);
+            this.lblBookId.Location = new System.Drawing.Point(23, 172);
             this.lblBookId.Name = "lblBookId";
             this.lblBookId.Size = new System.Drawing.Size(59, 16);
             this.lblBookId.TabIndex = 10;
@@ -226,7 +227,7 @@
             // 
             this.lblTagId.AutoSize = true;
             this.lblTagId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblTagId.Location = new System.Drawing.Point(23, 173);
+            this.lblTagId.Location = new System.Drawing.Point(23, 221);
             this.lblTagId.Name = "lblTagId";
             this.lblTagId.Size = new System.Drawing.Size(91, 16);
             this.lblTagId.TabIndex = 11;
@@ -235,15 +236,15 @@
             // txbSetTagId
             // 
             this.txbSetTagId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txbSetTagId.Location = new System.Drawing.Point(23, 192);
+            this.txbSetTagId.Location = new System.Drawing.Point(23, 240);
             this.txbSetTagId.Name = "txbSetTagId";
-            this.txbSetTagId.Size = new System.Drawing.Size(147, 27);
+            this.txbSetTagId.Size = new System.Drawing.Size(130, 27);
             this.txbSetTagId.TabIndex = 12;
             // 
             // btnSetTagToBook
             // 
             this.btnSetTagToBook.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnSetTagToBook.Location = new System.Drawing.Point(182, 192);
+            this.btnSetTagToBook.Location = new System.Drawing.Point(159, 240);
             this.btnSetTagToBook.Name = "btnSetTagToBook";
             this.btnSetTagToBook.Size = new System.Drawing.Size(60, 26);
             this.btnSetTagToBook.TabIndex = 13;
@@ -254,7 +255,7 @@
             // txbSetBookId
             // 
             this.txbSetBookId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txbSetBookId.Location = new System.Drawing.Point(23, 143);
+            this.txbSetBookId.Location = new System.Drawing.Point(23, 191);
             this.txbSetBookId.Name = "txbSetBookId";
             this.txbSetBookId.Size = new System.Drawing.Size(100, 27);
             this.txbSetBookId.TabIndex = 9;
@@ -269,7 +270,7 @@
             this.tableLayoutPanel4.Controls.Add(this.lblSearch, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.btnSearch, 2, 3);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 268);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 267);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 14;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
@@ -286,7 +287,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(245, 260);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(222, 259);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // txbSearch
@@ -294,7 +295,7 @@
             this.txbSearch.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.txbSearch.Location = new System.Drawing.Point(23, 29);
             this.txbSearch.Name = "txbSearch";
-            this.txbSearch.Size = new System.Drawing.Size(147, 27);
+            this.txbSearch.Size = new System.Drawing.Size(130, 27);
             this.txbSearch.TabIndex = 6;
             // 
             // lblSearch
@@ -310,7 +311,7 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnSearch.Location = new System.Drawing.Point(182, 29);
+            this.btnSearch.Location = new System.Drawing.Point(159, 29);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(60, 27);
             this.btnSearch.TabIndex = 5;
@@ -330,7 +331,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(543, 531);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(562, 529);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // dgvTags
@@ -340,8 +341,9 @@
             this.dgvTags.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTags.Location = new System.Drawing.Point(3, 3);
             this.dgvTags.Name = "dgvTags";
+            this.dgvTags.RowHeadersWidth = 82;
             this.dgvTags.RowTemplate.Height = 24;
-            this.dgvTags.Size = new System.Drawing.Size(537, 259);
+            this.dgvTags.Size = new System.Drawing.Size(556, 258);
             this.dgvTags.TabIndex = 0;
             this.dgvTags.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTags_ColumnHeaderMouseClick);
             // 
@@ -350,10 +352,11 @@
             this.dgvBookTags.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dgvBookTags.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBookTags.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvBookTags.Location = new System.Drawing.Point(3, 268);
+            this.dgvBookTags.Location = new System.Drawing.Point(3, 267);
             this.dgvBookTags.Name = "dgvBookTags";
+            this.dgvBookTags.RowHeadersWidth = 82;
             this.dgvBookTags.RowTemplate.Height = 24;
-            this.dgvBookTags.Size = new System.Drawing.Size(537, 260);
+            this.dgvBookTags.Size = new System.Drawing.Size(556, 259);
             this.dgvBookTags.TabIndex = 1;
             // 
             // AdminTagManager

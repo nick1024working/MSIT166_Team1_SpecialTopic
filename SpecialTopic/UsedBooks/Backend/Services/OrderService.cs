@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using SpecialTopic.UsedBooks.Backend.DTOs;
 using SpecialTopic.UsedBooks.Backend.Entities;
 using SpecialTopic.UsedBooks.Backend.Repositories;
@@ -72,6 +74,75 @@ namespace SpecialTopic.UsedBooks.Backend.Services
                         return Result<int>.Failure(ex.Message);
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// 把 entity 轉完整 dto（給後台或編輯用途）
+        /// </summary>
+        /// <remarks>價格、時間已轉成 string</remarks>
+        private FaceToFaceOrderDto MapFaceToFaceOrderEntityToDto(FaceToFaceOrderEntity entity)
+        {
+            return new FaceToFaceOrderDto
+            {
+                OrderID = entity.OrderID,
+                OrderStatus = ((OrderStatus)entity.OrderStatus).ToString(),
+                BookID = entity.BookID,
+                SalePrice = (int)entity.SalePrice,
+
+                BuyerID = entity.BuyerID,
+                BuyerName = entity.BuyerName,
+                BuyerContactPhone = entity.BuyerContactPhone,
+
+                SellerID = entity.SellerID,
+                SellerName = entity.SellerName,
+                SellerContactPhone = entity.SellerContactPhone,
+
+                CreatedAt = entity.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss"),
+
+                BuyerConfirmedAt = entity.BuyerConfirmedAt?.ToString("yyyy-MM-dd HH:mm:ss") ?? "",
+                SellerConfirmedAt = entity.SellerConfirmedAt?.ToString("yyyy-MM-dd HH:mm:ss") ?? "",
+                Deadline = entity.Deadline.ToString("yyyy-MM-dd HH:mm:ss")
+            };
+        }
+
+        public Result<List<FaceToFaceOrderDto>> GetAllFaceToFaceOrders()
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connString))
+                {
+                    conn.Open();
+                    var entity = _orderRepository.GetAllFaceToFaceOrders(conn, null);
+                    var dtos = entity.Select(MapFaceToFaceOrderEntityToDto).ToList();
+                    return Result<List<FaceToFaceOrderDto>>.Success(dtos);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Result<List<FaceToFaceOrderDto>>.Failure(ex.Message);
+            }
+        }
+
+        public Result<Unit> UpdateOrderStatus(OrderStatusDto dto)
+        {
+            var entity = new OrderStatusEntity
+            {
+                OrderID = dto.OrderID,
+                OrderStatus = (byte)dto.OrderStatus  // 明確轉為 byte
+            };
+            try
+            {
+                using (var conn = new SqlConnection(_connString))
+                {
+                    conn.Open();
+                    var result = _orderRepository.UpdateOrderStatus(entity, conn, null);
+                    return Result<Unit>.Success(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Result<Unit>.Failure(ex.Message);
             }
         }
     }
