@@ -408,11 +408,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="TeamA_ProjectDataSetTest.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TeamA_ProjectDataSetTest.xsd</DependentUpon>
-    </Compile>
     <Compile Include="UsedBookControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -775,17 +770,6 @@
     </None>
     <None Include="Fund\TeamA_ProjectDataSet.xss">
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="TeamA_ProjectDataSetTest.xsc">
-      <DependentUpon>TeamA_ProjectDataSetTest.xsd</DependentUpon>
-    </None>
-    <None Include="TeamA_ProjectDataSetTest.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TeamA_ProjectDataSetTest.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="TeamA_ProjectDataSetTest.xss">
-      <DependentUpon>TeamA_ProjectDataSetTest.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
