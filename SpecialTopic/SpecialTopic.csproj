@@ -119,7 +119,9 @@
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.1\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
@@ -214,6 +216,48 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forum\ForumControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forum\ForumControl.Designer.cs">
+      <DependentUpon>ForumControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\ForumPostCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forum\ForumPostCategory.Designer.cs">
+      <DependentUpon>ForumPostCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\ForumPostComment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forum\ForumPostComment.Designer.cs">
+      <DependentUpon>ForumPostComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\ForumPostControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forum\ForumPostControl.Designer.cs">
+      <DependentUpon>ForumPostControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\ForumPostFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forum\ForumPostFilter.Designer.cs">
+      <DependentUpon>ForumPostFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\FrmCommentDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forum\FrmCommentDetail.Designer.cs">
+      <DependentUpon>FrmCommentDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\FrmForumPostControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forum\FrmForumPostControl.Designer.cs">
+      <DependentUpon>FrmForumPostControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Member\DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -278,11 +322,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Forum\ForumBoardControl.cs">
+    <Compile Include="Forum\OldForumBoardControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forum\ForumBoardControl.Designer.cs">
-      <DependentUpon>ForumBoardControl.cs</DependentUpon>
+    <Compile Include="Forum\OldForumBoardControl.Designer.cs">
+      <DependentUpon>OldForumBoardControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forum\FrmForumSearch.cs">
       <SubType>Form</SubType>
@@ -290,11 +334,11 @@
     <Compile Include="Forum\FrmForumSearch.Designer.cs">
       <DependentUpon>FrmForumSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forum\ForumControl.cs">
+    <Compile Include="Forum\OldForumControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forum\ForumControl.Designer.cs">
-      <DependentUpon>ForumControl.cs</DependentUpon>
+    <Compile Include="Forum\OldForumControl.Designer.cs">
+      <DependentUpon>OldForumControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forum\FrmPostDetail.cs">
       <SubType>Form</SubType>
@@ -311,6 +355,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TeamA_ProjectDataSetTest.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TeamA_ProjectDataSetTest.xsd</DependentUpon>
     </Compile>
     <Compile Include="UsedBookControl.cs">
       <SubType>UserControl</SubType>
@@ -344,6 +393,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forum\ForumControl.resx">
+      <DependentUpon>ForumControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forum\ForumPostCategory.resx">
+      <DependentUpon>ForumPostCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forum\ForumPostComment.resx">
+      <DependentUpon>ForumPostComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forum\ForumPostControl.resx">
+      <DependentUpon>ForumPostControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forum\ForumPostFilter.resx">
+      <DependentUpon>ForumPostFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forum\FrmForumPostControl.resx">
+      <DependentUpon>FrmForumPostControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Member\FRMCreateAccount.resx">
       <DependentUpon>FRMCreateAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -365,14 +432,14 @@
     <EmbeddedResource Include="eBook\eBookCode\FrmEditBook.resx">
       <DependentUpon>FrmEditBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forum\ForumBoardControl.resx">
-      <DependentUpon>ForumBoardControl.cs</DependentUpon>
+    <EmbeddedResource Include="Forum\OldForumBoardControl.resx">
+      <DependentUpon>OldForumBoardControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forum\FrmForumSearch.resx">
       <DependentUpon>FrmForumSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forum\ForumControl.resx">
-      <DependentUpon>ForumControl.cs</DependentUpon>
+    <EmbeddedResource Include="Forum\OldForumControl.resx">
+      <DependentUpon>OldForumControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forum\FrmPostDetail.resx">
       <DependentUpon>FrmPostDetail.cs</DependentUpon>
@@ -578,6 +645,17 @@
     </None>
     <None Include="Fund\TeamA_ProjectDataSet.xss">
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TeamA_ProjectDataSetTest.xsc">
+      <DependentUpon>TeamA_ProjectDataSetTest.xsd</DependentUpon>
+    </None>
+    <None Include="TeamA_ProjectDataSetTest.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TeamA_ProjectDataSetTest.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TeamA_ProjectDataSetTest.xss">
+      <DependentUpon>TeamA_ProjectDataSetTest.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿namespace SpecialTopic
 {
-    partial class ForumBoardControl
+    partial class OldForumBoardControl
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -114,7 +114,7 @@
             this.labelPagination.TabIndex = 8;
             this.labelPagination.Text = "1 2 3 4 5 6 ...";
             // 
-            // ForumBoardControl
+            // OldForumBoardControl
             // 
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.labelTitle);
@@ -126,8 +126,8 @@
             this.Controls.Add(this.btnPost);
             this.Controls.Add(this.flowPosts);
             this.Controls.Add(this.labelPagination);
-            this.Name = "ForumBoardControl";
-            this.Size = new System.Drawing.Size(1058, 608);
+            this.Name = "OldForumBoardControl";
+            this.Size = new System.Drawing.Size(884, 647);
             this.panelNotice.ResumeLayout(false);
             this.ResumeLayout(false);
 
