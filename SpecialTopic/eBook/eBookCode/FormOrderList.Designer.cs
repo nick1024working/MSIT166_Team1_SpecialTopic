@@ -43,7 +43,7 @@
             // 
             this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrders.Location = new System.Drawing.Point(26, 26);
-            this.dgvOrders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvOrders.Margin = new System.Windows.Forms.Padding(2);
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.RowHeadersWidth = 51;
             this.dgvOrders.RowTemplate.Height = 29;
@@ -55,12 +55,13 @@
             // 
             this.dgvOrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrderDetails.Location = new System.Drawing.Point(26, 230);
-            this.dgvOrderDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvOrderDetails.Margin = new System.Windows.Forms.Padding(2);
             this.dgvOrderDetails.Name = "dgvOrderDetails";
             this.dgvOrderDetails.RowHeadersWidth = 51;
             this.dgvOrderDetails.RowTemplate.Height = 29;
             this.dgvOrderDetails.Size = new System.Drawing.Size(638, 142);
             this.dgvOrderDetails.TabIndex = 1;
+            this.dgvOrderDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrderDetails_CellMouseClick);
             this.dgvOrderDetails.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvOrderDetails_CellMouseClick);
             // 
             // lblTotalDetail
@@ -76,7 +77,7 @@
             // btnSaveChanges
             // 
             this.btnSaveChanges.Location = new System.Drawing.Point(701, 421);
-            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSaveChanges.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(70, 23);
             this.btnSaveChanges.TabIndex = 4;
@@ -87,7 +88,7 @@
             // btnDSOD
             // 
             this.btnDSOD.Location = new System.Drawing.Point(590, 421);
-            this.btnDSOD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDSOD.Margin = new System.Windows.Forms.Padding(2);
             this.btnDSOD.Name = "btnDSOD";
             this.btnDSOD.Size = new System.Drawing.Size(92, 23);
             this.btnDSOD.TabIndex = 5;
@@ -116,7 +117,7 @@
             // btnDeleteOrder
             // 
             this.btnDeleteOrder.Location = new System.Drawing.Point(485, 423);
-            this.btnDeleteOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeleteOrder.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteOrder.Name = "btnDeleteOrder";
             this.btnDeleteOrder.Size = new System.Drawing.Size(86, 21);
             this.btnDeleteOrder.TabIndex = 8;
@@ -137,7 +138,7 @@
             this.Controls.Add(this.lblTotalDetail);
             this.Controls.Add(this.dgvOrderDetails);
             this.Controls.Add(this.dgvOrders);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormOrderList";
             this.Text = "訂單管理";
             this.Load += new System.EventHandler(this.FormOrderList_Load);
