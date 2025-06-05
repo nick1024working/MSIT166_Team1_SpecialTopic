@@ -41,9 +41,9 @@
             this.lblBindTagToBook = new System.Windows.Forms.Label();
             this.lblBookId = new System.Windows.Forms.Label();
             this.lblTagId = new System.Windows.Forms.Label();
-            this.txbTagId = new System.Windows.Forms.TextBox();
+            this.txbSetTagId = new System.Windows.Forms.TextBox();
             this.btnSetTagToBook = new System.Windows.Forms.Button();
-            this.txbBookId = new System.Windows.Forms.TextBox();
+            this.txbSetBookId = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txbSearch = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
@@ -120,9 +120,9 @@
             this.tableLayoutPanel1.Controls.Add(this.lblBindTagToBook, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.lblBookId, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.lblTagId, 1, 11);
-            this.tableLayoutPanel1.Controls.Add(this.txbTagId, 1, 12);
+            this.tableLayoutPanel1.Controls.Add(this.txbSetTagId, 1, 12);
             this.tableLayoutPanel1.Controls.Add(this.btnSetTagToBook, 2, 12);
-            this.tableLayoutPanel1.Controls.Add(this.txbBookId, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.txbSetBookId, 1, 9);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 15;
@@ -232,13 +232,13 @@
             this.lblTagId.TabIndex = 11;
             this.lblTagId.Text = "促銷標籤ID:";
             // 
-            // txbTagId
+            // txbSetTagId
             // 
-            this.txbTagId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txbTagId.Location = new System.Drawing.Point(23, 192);
-            this.txbTagId.Name = "txbTagId";
-            this.txbTagId.Size = new System.Drawing.Size(147, 27);
-            this.txbTagId.TabIndex = 12;
+            this.txbSetTagId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txbSetTagId.Location = new System.Drawing.Point(23, 192);
+            this.txbSetTagId.Name = "txbSetTagId";
+            this.txbSetTagId.Size = new System.Drawing.Size(147, 27);
+            this.txbSetTagId.TabIndex = 12;
             // 
             // btnSetTagToBook
             // 
@@ -251,13 +251,13 @@
             this.btnSetTagToBook.UseVisualStyleBackColor = true;
             this.btnSetTagToBook.Click += new System.EventHandler(this.btnSetTagToBook_Click);
             // 
-            // txbBookId
+            // txbSetBookId
             // 
-            this.txbBookId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txbBookId.Location = new System.Drawing.Point(23, 143);
-            this.txbBookId.Name = "txbBookId";
-            this.txbBookId.Size = new System.Drawing.Size(100, 27);
-            this.txbBookId.TabIndex = 9;
+            this.txbSetBookId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txbSetBookId.Location = new System.Drawing.Point(23, 143);
+            this.txbSetBookId.Name = "txbSetBookId";
+            this.txbSetBookId.Size = new System.Drawing.Size(100, 27);
+            this.txbSetBookId.TabIndex = 9;
             // 
             // tableLayoutPanel4
             // 
@@ -393,10 +393,10 @@
         private System.Windows.Forms.Label lblCreate;
         private System.Windows.Forms.DataGridView dgvTags;
         private System.Windows.Forms.Label lblBindTagToBook;
-        private System.Windows.Forms.TextBox txbBookId;
+        private System.Windows.Forms.TextBox txbSetBookId;
         private System.Windows.Forms.Label lblBookId;
         private System.Windows.Forms.Label lblTagId;
-        private System.Windows.Forms.TextBox txbTagId;
+        private System.Windows.Forms.TextBox txbSetTagId;
         private System.Windows.Forms.Button btnSetTagToBook;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.DataGridView dgvBookTags;

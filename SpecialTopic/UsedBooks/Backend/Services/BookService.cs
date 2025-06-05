@@ -229,14 +229,14 @@ namespace SpecialTopic.UsedBooks.Backend.Services
         /// <returns>
         /// 包裝於 Result 物件中的 BookDto 清單；如發生例外，Result 物件將包含錯誤訊息。
         /// </returns>
-        public Result<List<BookDto>> GetBookByKeyword(string keyword)
+        public Result<List<BookDto>> GetBookByIdAndNameKeyword(string keyword)
         {
             try
             {
                 using (var conn = new SqlConnection(_connString))
                 {
                     conn.Open();
-                    var entities = _bookRepository.GetBookByKeyword(keyword, conn, null);
+                    var entities = _bookRepository.GetBookByIdAndNameKeyword(keyword, conn, null);
                     var dtos = entities.Select(MappingBookEntityToDto).ToList();
                     return Result<List<BookDto>>.Success(dtos);
                 }
@@ -247,10 +247,124 @@ namespace SpecialTopic.UsedBooks.Backend.Services
             }
         }
 
+        /// <summary>
+        /// 建立書本與銷售標籤關係
+        /// </summary>
+        public Result<Unit> CreateBookSaleTagRelation(CreateBookSaleTagDto dto)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connString))
+                {
+                    conn.Open();
+                    var entities = new CreateBookSaleTagEntity
+                    {
+                        BookID = dto.BookID,
+                        TagID = dto.TagID,
+                    };
+                    var result = _bookRepository.CreateBookSaleTagRelation(entities, conn, null);
+                    return Result<Unit>.Success(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Result<Unit>.Failure(ex.Message);
+            }
+        }
 
         /// <summary>
-        /// 新增完整書本(文字+圖片清單)至 DB。
+        /// 建立書本與主題關係
         /// </summary>
+        public Result<Unit> CreateBookTopicRelation(CreateBookTopicDto dto)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connString))
+                {
+                    conn.Open();
+                    var entities = new CreateBookTopicEntity
+                    {
+                        BookID = dto.BookID,
+                        TopicID = dto.TopicID,
+                    };
+                    var result = _bookRepository.CreateBookTopicRelation(entities, conn, null);
+                    return Result<Unit>.Success(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Result<Unit>.Failure(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 新增完整書本(文字+圖片清單) + 綁主題至 DB。
+        /// </summary>
+        public Result<int> CreateBookWithTopic(CreateBookDto bookDto, TopicDto topicDto, List<CreateBookImageDto> bookImageDtos)
+        {
+            var bookEntity = MappingBookDtoToEntity(bookDto);
+
+            // 開始查詢與交易
+            // HACK: 不分別對查詢做錯誤處理
+            using (var conn = new SqlConnection(_connString))
+            {
+                conn.Open();
+                using (var tran = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        // 儲存書本資料
+                        int newBookId = _bookRepository.CreateBook(bookEntity, conn, tran);
+
+                        // 確保位置存在
+                        Directory.CreateDirectory(ImageHelper.DefaultAbsluteBookImageFolderPath);
+
+                        // 處理 bookImage table
+                        foreach (var bookImageDto in bookImageDtos)
+                        {
+                            // 每張圖產生唯一檔名
+                            string fileName = $"{Guid.NewGuid():N}{bookImageDto.Ext}";
+                            string absolutePath = Path.Combine(ImageHelper.DefaultAbsluteBookImageFolderPath, fileName);
+                            string relativePath = Path.Combine(ImageHelper.DefaultRelativeBookImageFolderPath, fileName);
+
+                            // 副檔名對應格式
+                            var format = GetImageFormatFromExtension(bookImageDto.Ext);
+                            bookImageDto.BookImage.Save(absolutePath, format);
+
+                            var bookImageEntity = new BookImageEntity
+                            {
+                                BookID = newBookId, // 建立主從關聯
+                                ImagePath = relativePath,
+                                ImageIndex = bookImageDto.ImageIndex,
+                                UploadedAt = DateTime.Now
+                            };
+                            _bookImageRepository.CreateBookImage(bookImageEntity, conn, tran);
+                        }
+
+                        // 處理中介 table
+                        var bookTopicEntity = new CreateBookTopicEntity { BookID = newBookId, TopicID = topicDto.TopicID };
+                        _bookRepository.CreateBookTopicRelation(bookTopicEntity, conn, tran);
+
+                        tran.Commit();
+                        return Result<int>.Success(newBookId);
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        // HACK: 如果是內部錯誤或資料庫錯誤，這可能包含敏感訊息。
+                        return Result<int>.Failure(ex.Message);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 新增完整書本（文字＋圖片）至資料庫。
+        /// </summary>
+        /// <remarks>
+        /// 此方法將被棄用，請改用 <see cref="CreateBookWithTopic"/>。
+        /// </remarks>
+        [Obsolete("請改用 CreateBookWithTopic() 取代此方法。")]
         public Result<int> CreateBook(CreateBookDto bookDto, List<CreateBookImageDto> bookImageDtos)
         {
             var bookEntity = MappingBookDtoToEntity(bookDto);
@@ -411,5 +525,6 @@ namespace SpecialTopic.UsedBooks.Backend.Services
             }
             return Result<Unit>.Success(Unit.Value);
         }
+
     }
 }

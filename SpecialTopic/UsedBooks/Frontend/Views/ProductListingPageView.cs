@@ -16,6 +16,10 @@ namespace SpecialTopic.UsedBooks.Views
         // 給 父View(在此服務內稱作UsedBookControl) 訂閱的切換事件
         public event EventHandler<ViewType> RequestSwitchView;
 
+        // 給 子Body 訂閱的切換事件
+        public event EventHandler ViewChanging;
+
+
         // 會使用的 連線字串
         private string _connString;
 
@@ -52,7 +56,8 @@ namespace SpecialTopic.UsedBooks.Views
             _saleTagService = new SaleTagService(_connString);
             _bookCardService = new BookCardService(_connString);
 
-            _plpBody = new PLPBody(_connString);
+            // 建構 body
+            _plpBody = new PLPBody(this, _connString);      // 建立子控制項時，注入父參考
             _userCenterBody = new UserCenterBody(_connString);
             _adminCenterBody = new AdminCenterBody(_connString);
 
@@ -143,6 +148,7 @@ namespace SpecialTopic.UsedBooks.Views
         /// </summary>
         private void btnAdminCenter_Click(object sender, EventArgs e)
         {
+            ViewChanging?.Invoke(this, EventArgs.Empty); // 通知子控制項清理
             ShowControl(_adminCenterBody);
         }
 
@@ -152,6 +158,7 @@ namespace SpecialTopic.UsedBooks.Views
         /// 
         private void btnUserCenter_Click(object sender, EventArgs e)
         {
+            ViewChanging?.Invoke(this, EventArgs.Empty); // 通知子控制項清理
             ShowControl(_userCenterBody);
         }
 

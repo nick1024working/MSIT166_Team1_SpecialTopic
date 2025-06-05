@@ -13,6 +13,7 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
         // 會使用的 Service
         private UserService _userService;
         private BookService _bookService;
+        private TopicService _bookTopicService;
 
         // 在 flpDropZone 內拖曳排序用
         private PictureBox _draggedPictureBox;
@@ -25,9 +26,36 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
             // 建構服務
             _userService = new UserService(connString);
             _bookService = new BookService(connString);
+            _bookTopicService = new TopicService(connString);
 
             InitializeComponent();
+
+            LoadData();
+
             InitDropZone();
+        }
+
+        private void LoadData()
+        {
+            // 獲取資料
+            var result = _bookTopicService.GetAllTopics();
+            if (!result.IsSuccess)
+            {
+                MessageBox.Show($"主題列表讀取失敗: {result.ErrorMessage}", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (result.Value == null)
+            {
+                MessageBox.Show("主題列表為空!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 更新資料
+            cbxTopic.Items.Clear();
+            cbxTopic.DataSource = result.Value;
+            cbxTopic.DisplayMember = "TopicName";   // UI 層說明用 Name 當顯示文字
+            cbxTopic.ValueMember = "TopicID";       // UI 層說明用 Id 當值（例如選擇後取出）
         }
 
         /// <summary>
@@ -160,6 +188,13 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
 
         private bool ValidateBookForm()
         {
+            // 要有圖
+            if (flpDropZone.Controls.Count <= 0)
+            {
+                MessageBox.Show("至少要有一張圖！");
+                return false;
+            }
+
             // 書名不得為空
             if (string.IsNullOrWhiteSpace(txtBookName.Text))
             {
@@ -181,6 +216,14 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
                 return false;
             }
 
+            // 主題必選
+            var topic = cbxTopic.SelectedItem as TopicDto;
+            if (topic == null || topic.TopicID <= 0)
+            {
+                MessageBox.Show("請選擇有效主題！");
+                return false;
+            }
+
             // 若都通過
             return true;
         }
@@ -192,6 +235,7 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
                 return;
             }
 
+            // 組裝 bookDto
             var bookDto = new CreateBookDto
             {
                 BookName = txtBookName.Text.Trim(),
@@ -205,10 +249,10 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
                 PublicationDate = dtpPublicationDate.Value,
                 IsActive = chkIsActive.Checked
             };
-
             try
             {
                 bookDto.UID = _userService.GetRandomUserId().Value;     // HACK: 隨機
+                MessageBox.Show("目前使用隨機UID");
             }
             catch
             {
@@ -216,7 +260,16 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
                 return;
             }
 
-            var result = _bookService.CreateBook(bookDto, GetCurrentImageList());
+            // 組裝 topicDto
+            var topicDto = cbxTopic.SelectedItem as TopicDto;
+            if (topicDto == null)
+            {
+                MessageBox.Show("主題無效!");
+                return;
+            }
+
+
+            var result = _bookService.CreateBookWithTopic(bookDto, topicDto, GetCurrentImageList());
 
             if (result.IsSuccess)
             {

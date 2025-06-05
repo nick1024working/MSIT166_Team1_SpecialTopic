@@ -14,6 +14,7 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
 
         // 會使用的 Service
         private TopicService _bookTopicService;
+        private BookService _bookService;
 
         private SortableBindingList<TopicDto> _sortableList;
 
@@ -21,14 +22,15 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
         {
             // 建構服務
             _bookTopicService = new TopicService(connString);
+            _bookService = new BookService(connString);
 
             InitializeComponent();
 
             // 顯示資料
-            GetTopicsToDgv();
+            LoadDgvTopics();
         }
 
-        private void GetTopicsToDgv()
+        private void LoadDgvTopics()
         {
             var result = _bookTopicService.GetAllTopics();
             if (result.IsSuccess)
@@ -78,7 +80,7 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
                 if (result.IsSuccess)
                 {
                     MessageBox.Show($"新增成功!\n名稱 = {txbCreate.Text}\nID = {result.Value}");
-                    GetTopicsToDgv();
+                    LoadDgvTopics();
                 }
                 else
                 {
@@ -109,7 +111,51 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
             if (result.IsSuccess)
             {
                 MessageBox.Show("刪除成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                GetTopicsToDgv();
+                LoadDgvTopics();
+            }
+            else
+            {
+                MessageBox.Show($"發生錯誤: {result.ErrorMessage}");
+            }
+        }
+
+        private void btnSetTagToBook_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txbSetBookId.Text))
+            {
+                MessageBox.Show("請輸入正確書本 ID !");
+                return;
+            }
+
+            if (!int.TryParse(txbSetBookId.Text.Trim(), out int bookId))
+            {
+                MessageBox.Show("請輸入有效的整數書本 ID ！", "格式錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txbSetTagId.Text))
+            {
+                MessageBox.Show("請輸入正確主題 ID !");
+                return;
+            }
+
+            if (!int.TryParse(txbSetTagId.Text.Trim(), out int tagId))
+            {
+                MessageBox.Show("請輸入有效的整數主題 ID！", "格式錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            var dto = new CreateBookTopicDto
+            {
+                BookID = bookId,
+                TopicID = tagId
+            };
+            var result = _bookService.CreateBookTopicRelation(dto);
+            if (result.IsSuccess)
+            {
+                MessageBox.Show($"書本ID{bookId}設定主題{tagId}成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadDgvTopics();
             }
             else
             {

@@ -30,8 +30,6 @@ namespace SpecialTopic.UsedBooks.Backend.Services
         /// <summary>
         /// 轉換 BookCardEntity 至 BookCardDto。
         /// </summary>
-        /// <param name="e">BookCardEntity</param>
-        /// <returns>BookCardDto</returns>
         private BookCardDto MappingBookCardEntityToDto(BookCardEntity e)
         {
             return new BookCardDto

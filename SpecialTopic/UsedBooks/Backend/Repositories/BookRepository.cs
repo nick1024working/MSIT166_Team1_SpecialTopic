@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using Dapper;
 using SpecialTopic.UsedBooks.Backend.DTOs;
 using SpecialTopic.UsedBooks.Backend.Entities;
@@ -69,12 +70,13 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
         //    return result;
         //}
 
-        public List<BookEntity> GetBookByKeyword(string keyword, SqlConnection conn, SqlTransaction tran)
+        public List<BookEntity> GetBookByIdAndNameKeyword(string keyword, SqlConnection conn, SqlTransaction tran)
         {
             string sqlString = @"
                 SELECT *
                 FROM [dbo].[UsedBooks]
-                WHERE BookName LIKE @keyword OR Authors LIKE @keyword;";
+                WHERE CAST(BookID AS VARCHAR) LIKE @keyword
+                   OR BookName LIKE @keyword;";
             var result = conn.Query<BookEntity>(sqlString, param: new { keyword = $"%{keyword}%" }, transaction: tran).ToList();
             return result;
         }
@@ -95,6 +97,37 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
                     (@UID, @BookName, @SalePrice, @BookCondition, @Description, @CreatedAt, @ISBN, @Language,
                     @Authors, @Publisher, @PublicationDate, @ViewCount, @IsActive, @IsSold, @Slug);";
             return conn.QuerySingle<int>(sqlString, entity, transaction: tran);
+        }
+
+
+        public Unit CreateBookTopicRelation(CreateBookTopicEntity entity, SqlConnection conn, SqlTransaction tran)
+        {
+            string sqlString = @"
+                IF NOT EXISTS (
+                    SELECT 1 FROM [dbo].[UsedBookTopics] 
+                    WHERE BookID = @BookID AND TopicID = @TopicID
+                )
+                BEGIN
+                    INSERT INTO [dbo].[UsedBookTopics] ([BookID], [TopicID])
+                    VALUES (@BookID, @TopicID);
+                END";
+            conn.Execute(sqlString, entity, transaction: tran);
+            return Unit.Value;
+        }
+
+        public Unit CreateBookSaleTagRelation(CreateBookSaleTagEntity entity, SqlConnection conn, SqlTransaction tran)
+        {
+            string sqlString = @"
+                IF NOT EXISTS (
+                    SELECT 1 FROM [dbo].[UsedBookSaleTags] 
+                    WHERE BookID = @BookID AND TagID = @TagID
+                )
+                BEGIN
+                    INSERT INTO [dbo].[UsedBookSaleTags] ([BookID], [TagID])
+                    VALUES (@BookID, @TagID);
+                END";
+            conn.Execute(sqlString, entity, transaction: tran);
+            return Unit.Value;
         }
 
         public Unit UpdateBookIsActive(BookIsActiveEntity entity, SqlConnection conn, SqlTransaction tran)

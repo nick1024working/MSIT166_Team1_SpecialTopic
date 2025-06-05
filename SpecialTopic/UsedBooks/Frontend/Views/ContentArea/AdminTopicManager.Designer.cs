@@ -38,6 +38,12 @@
             this.btnCreate = new System.Windows.Forms.Button();
             this.lblCreate = new System.Windows.Forms.Label();
             this.dgvMain = new System.Windows.Forms.DataGridView();
+            this.lblBindTagToBook = new System.Windows.Forms.Label();
+            this.lblBookId = new System.Windows.Forms.Label();
+            this.txbSetBookId = new System.Windows.Forms.TextBox();
+            this.lblTagId = new System.Windows.Forms.Label();
+            this.txbSetTagId = new System.Windows.Forms.TextBox();
+            this.btnSetTagToBook = new System.Windows.Forms.Button();
             this.pnlContentArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -79,29 +85,42 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.lblCreate, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txbCreate, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnCreate, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblDelete, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.txbDelete, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnDelete, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.lblDelete, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.txbCreate, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnCreate, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.lblCreate, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblBindTagToBook, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.lblBookId, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.txbSetBookId, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.lblTagId, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.txbSetTagId, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.btnSetTagToBook, 2, 11);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowCount = 14;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(251, 531);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // txbDelete
             // 
-            this.txbDelete.Location = new System.Drawing.Point(23, 84);
+            this.txbDelete.Location = new System.Drawing.Point(23, 104);
             this.txbDelete.Name = "txbDelete";
             this.txbDelete.Size = new System.Drawing.Size(127, 22);
             this.txbDelete.TabIndex = 4;
@@ -110,7 +129,7 @@
             // 
             this.btnDelete.AutoSize = true;
             this.btnDelete.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnDelete.Location = new System.Drawing.Point(188, 84);
+            this.btnDelete.Location = new System.Drawing.Point(188, 104);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(60, 23);
             this.btnDelete.TabIndex = 3;
@@ -122,7 +141,7 @@
             // 
             this.lblDelete.AutoSize = true;
             this.lblDelete.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblDelete.Location = new System.Drawing.Point(23, 65);
+            this.lblDelete.Location = new System.Drawing.Point(23, 85);
             this.lblDelete.Name = "lblDelete";
             this.lblDelete.Size = new System.Drawing.Size(115, 16);
             this.lblDelete.TabIndex = 2;
@@ -169,6 +188,63 @@
             this.dgvMain.TabIndex = 0;
             this.dgvMain.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMain_ColumnHeaderMouseClick);
             // 
+            // lblBindTagToBook
+            // 
+            this.lblBindTagToBook.AutoSize = true;
+            this.lblBindTagToBook.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblBindTagToBook.Location = new System.Drawing.Point(23, 150);
+            this.lblBindTagToBook.Name = "lblBindTagToBook";
+            this.lblBindTagToBook.Size = new System.Drawing.Size(103, 16);
+            this.lblBindTagToBook.TabIndex = 8;
+            this.lblBindTagToBook.Text = "為書設定主題";
+            // 
+            // lblBookId
+            // 
+            this.lblBookId.AutoSize = true;
+            this.lblBookId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblBookId.Location = new System.Drawing.Point(23, 166);
+            this.lblBookId.Name = "lblBookId";
+            this.lblBookId.Size = new System.Drawing.Size(59, 16);
+            this.lblBookId.TabIndex = 11;
+            this.lblBookId.Text = "書本ID:";
+            // 
+            // txbSetBookId
+            // 
+            this.txbSetBookId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txbSetBookId.Location = new System.Drawing.Point(23, 185);
+            this.txbSetBookId.Name = "txbSetBookId";
+            this.txbSetBookId.Size = new System.Drawing.Size(100, 27);
+            this.txbSetBookId.TabIndex = 12;
+            // 
+            // lblTagId
+            // 
+            this.lblTagId.AutoSize = true;
+            this.lblTagId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblTagId.Location = new System.Drawing.Point(23, 215);
+            this.lblTagId.Name = "lblTagId";
+            this.lblTagId.Size = new System.Drawing.Size(59, 16);
+            this.lblTagId.TabIndex = 13;
+            this.lblTagId.Text = "主題ID:";
+            // 
+            // txbSetTagId
+            // 
+            this.txbSetTagId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txbSetTagId.Location = new System.Drawing.Point(23, 234);
+            this.txbSetTagId.Name = "txbSetTagId";
+            this.txbSetTagId.Size = new System.Drawing.Size(147, 27);
+            this.txbSetTagId.TabIndex = 14;
+            // 
+            // btnSetTagToBook
+            // 
+            this.btnSetTagToBook.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnSetTagToBook.Location = new System.Drawing.Point(188, 234);
+            this.btnSetTagToBook.Name = "btnSetTagToBook";
+            this.btnSetTagToBook.Size = new System.Drawing.Size(60, 26);
+            this.btnSetTagToBook.TabIndex = 15;
+            this.btnSetTagToBook.Text = "設定";
+            this.btnSetTagToBook.UseVisualStyleBackColor = true;
+            this.btnSetTagToBook.Click += new System.EventHandler(this.btnSetTagToBook_Click);
+            // 
             // AdminTopicManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -200,5 +276,11 @@
         private System.Windows.Forms.Label lblDelete;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.TextBox txbCreate;
+        private System.Windows.Forms.Label lblBindTagToBook;
+        private System.Windows.Forms.Label lblBookId;
+        private System.Windows.Forms.TextBox txbSetBookId;
+        private System.Windows.Forms.Label lblTagId;
+        private System.Windows.Forms.TextBox txbSetTagId;
+        private System.Windows.Forms.Button btnSetTagToBook;
     }
 }

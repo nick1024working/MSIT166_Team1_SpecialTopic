@@ -91,7 +91,7 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
                 return;
             }
 
-            var result = _bookService.GetBookByKeyword(txbSearch.Text);
+            var result = _bookService.GetBookByIdAndNameKeyword(txbSearch.Text);
             if (result.IsSuccess)
             {
                 RenewDgvMainDataSource(result.Value);

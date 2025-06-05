@@ -13,14 +13,12 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
 {
     public partial class UserCenterBody : UserControl
     {
-        // 會在 pnlContentArea 載入的控制項，將用 sidebar 點擊切換
-        private readonly UserBookManager _userBookManager;
-
+        // HACK: 耦合過深，停止住注入
+        private string _connString;
 
         public UserCenterBody(string connString)
         {
-            // 幫控制項注入服務
-            _userBookManager = new UserBookManager(connString);
+            _connString = connString;
 
             InitializeComponent();
         }
@@ -44,7 +42,7 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
         {
             if (lbxFunctions.SelectedItem.ToString() == "管理書本")
             {
-                ShowControl(_userBookManager);
+                ShowControl(new UserBookManager(_connString));
             }
             else if (lbxFunctions.SelectedItem.ToString() == "管理訂單")
             {

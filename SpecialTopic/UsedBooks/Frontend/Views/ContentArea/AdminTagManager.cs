@@ -18,7 +18,7 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
     {
         // 會使用的 Service
         private SaleTagService _saleTagService;
-        private BookService bookService;
+        private BookService _bookService;
 
         private SortableBindingList<SaleTagDto> _sortableList1;
         private SortableBindingList<BookWithSaleTagDto> _sortableList2;
@@ -27,7 +27,7 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
         {
             // 建構服務
             _saleTagService = new SaleTagService(connString);
-            bookService = new BookService(connString);
+            _bookService = new BookService(connString);
 
             InitializeComponent();
 
@@ -64,7 +64,7 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
         /// </summary>
         private void LoadDgvBookTagsByTagId(int tagId)
         {
-            var result = bookService.GetBookBySaleTagId(tagId);
+            var result = _bookService.GetBookBySaleTagId(tagId);
             if (result.IsSuccess)
             {
                 _sortableList2 = new SortableBindingList<BookWithSaleTagDto>(result.Value);
@@ -173,7 +173,46 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
 
         private void btnSetTagToBook_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"還沒做好!");
+            if (string.IsNullOrWhiteSpace(txbSetBookId.Text))
+            {
+                MessageBox.Show("請輸入正確書本 ID !");
+                return;
+            }
+
+            if (!int.TryParse(txbSetBookId.Text.Trim(), out int bookId))
+            {
+                MessageBox.Show("請輸入有效的整數書本 ID ！", "格式錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txbSetTagId.Text))
+            {
+                MessageBox.Show("請輸入正確促銷標籤 ID !");
+                return;
+            }
+
+            if (!int.TryParse(txbSetTagId.Text.Trim(), out int tagId))
+            {
+                MessageBox.Show("請輸入有效的整數促銷標籤 ID！", "格式錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            var dto = new CreateBookSaleTagDto
+            {
+                BookID = bookId,
+                TagID = tagId
+            };
+            var result = _bookService.CreateBookSaleTagRelation(dto);
+            if (result.IsSuccess)
+            {
+                MessageBox.Show($"書本ID{bookId}設定促銷標籤{tagId}成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadDgvTags();
+            }
+            else
+            {
+                MessageBox.Show($"發生錯誤: {result.ErrorMessage}");
+            }
         }
 
         /// <summary>
