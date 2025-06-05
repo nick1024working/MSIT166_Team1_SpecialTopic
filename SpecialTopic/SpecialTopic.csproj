@@ -801,6 +801,8 @@
     <None Include="TeamA_ProjectDataSetTest.xss">
       <DependentUpon>TeamA_ProjectDataSetTest.xsd</DependentUpon>
     </None>
+    <None Include="x64\.gitkeep" />
+    <None Include="x86\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
