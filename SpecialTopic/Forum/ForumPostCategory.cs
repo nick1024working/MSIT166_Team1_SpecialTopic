@@ -17,6 +17,7 @@ namespace SpecialTopic.Forum
             this.btnAdd.Click += BtnAdd_Click;
             this.btnUpdate.Click += BtnUpdate_Click;
             this.btnDelete.Click += BtnDelete_Click;
+            this.dgvCategories.CellClick += DgvCategories_CellClick; // 綁定 CellClick 事件
         }
 
         private void ForumPostCategory_Load(object sender, EventArgs e)
@@ -40,6 +41,17 @@ namespace SpecialTopic.Forum
 
                 // 可選：啟用自動調整模式
                 // dgvCategories.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            }
+        }
+
+        private void DgvCategories_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 確保點擊的行有效（排除標題行）
+            if (e.RowIndex >= 0)
+            {
+                // 獲取當前行的 PostCategoryName
+                string categoryName = dgvCategories.Rows[e.RowIndex].Cells["PostCategoryName"].Value?.ToString();
+                txtName.Text = categoryName ?? string.Empty; // 如果值為 null，則設置為空字串
             }
         }
 
