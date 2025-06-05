@@ -22,8 +22,9 @@ namespace SpecialTopic
             LoadPlans();
             LoadCategories();
             LoadProjectsToComboBox();
-            LoadProjects1();
-            CategoriesSearch.SelectedIndexChanged += CategoriesSearch_SelectedIndexChanged;
+            LoadCategoryToComboBox();
+            LoadCategoriesToComboBox();
+            LoadProjectsToComboBoxForSearch();
         }
 
         //======================募資分類管理======================
@@ -68,6 +69,8 @@ namespace SpecialTopic
 
                 MessageBox.Show("新增成功！");
                 LoadCategories();
+                LoadCategoryToComboBox();   // 重新載入下拉式選單 <== 關鍵
+                LoadCategoriesToComboBox();
             }
         }
 
@@ -93,6 +96,8 @@ namespace SpecialTopic
 
                 MessageBox.Show("更新成功！");
                 LoadCategories();
+                LoadCategoryToComboBox();
+                LoadCategoriesToComboBox();
             }
         }
 
@@ -121,6 +126,8 @@ namespace SpecialTopic
 
                 MessageBox.Show("刪除成功！");
                 LoadCategories();
+                LoadCategoryToComboBox();
+                LoadCategoriesToComboBox();
             }
         }
         private void btnRead_Click(object sender, EventArgs e)
@@ -148,58 +155,56 @@ namespace SpecialTopic
                 SqlDataAdapter da = new SqlDataAdapter(sql, conn);
                 DataTable ProjectDt = new DataTable();
                 da.Fill(ProjectDt);
-
                 dataGridView2.DataSource = ProjectDt;
+                if (dataGridView2.Columns.Contains("donateProject_id"))
+                {
+                    dataGridView2.Columns["donateProject_id"].Visible = false;
+                }
             }
-        }
-        private void LoadProjects1()
-        {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                string sql = "SELECT DISTINCT donateCategories_id FROM donateProjects";
-                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
-                DataTable ProjectDt = new DataTable();
-                adapter.Fill(ProjectDt);
-
-                comboBoxCategory.DataSource = ProjectDt;
-                comboBoxCategory.DisplayMember = "donateCategories_id";
-                comboBoxCategory.ValueMember = "donateCategories_id";
-            }
-        }
-
+        }        
         private void PjCreate_Click(object sender, EventArgs e)
         {
             int categoryId;
             decimal targetAmount, currentAmount;
 
-            if (!int.TryParse(txtCategoryId.Text, out categoryId) ||
-                !decimal.TryParse(txtTargetAmount.Text, out targetAmount) ||
+            // 嘗試轉換金額
+            if (!decimal.TryParse(txtTargetAmount.Text, out targetAmount) ||
                 !decimal.TryParse(txtCurrentAmount.Text, out currentAmount))
             {
-                MessageBox.Show("請輸入正確的分類 ID、目標金額、目前金額！");
+                MessageBox.Show("請輸入正確的金額！");
                 return;
             }
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                string sql = @"INSERT INTO donateProjects 
-                       (donateCategories_id, title, description, target_amount, current_amount, start_date, end_date)
-                       VALUES (@categoryId, @title, @description, @targetAmount, @currentAmount, @startDate, @endDate)";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@categoryId", categoryId);
-                cmd.Parameters.AddWithValue("@title", txtTitle.Text);
-                cmd.Parameters.AddWithValue("@description", txtDescription.Text);
-                cmd.Parameters.AddWithValue("@targetAmount", targetAmount);
-                cmd.Parameters.AddWithValue("@currentAmount", currentAmount);
-                cmd.Parameters.AddWithValue("@startDate", dtpStartDate.Value);
-                cmd.Parameters.AddWithValue("@endDate", dtpEndDate.Value);
+                categoryId = Convert.ToInt32(dnCtComboBoxforPj.SelectedValue);
 
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string sql = @"INSERT INTO donateProjects 
+                    (donateCategories_id, title, description, target_amount, current_amount, start_date, end_date)
+                    VALUES (@categoryId, @title, @description, @targetAmount, @currentAmount, @startDate, @endDate)";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@categoryId", categoryId);
+                    cmd.Parameters.AddWithValue("@title", txtTitle.Text);
+                    cmd.Parameters.AddWithValue("@description", txtDescription.Text);
+                    cmd.Parameters.AddWithValue("@targetAmount", targetAmount);
+                    cmd.Parameters.AddWithValue("@currentAmount", currentAmount);
+                    cmd.Parameters.AddWithValue("@startDate", dtpStartDate.Value);
+                    cmd.Parameters.AddWithValue("@endDate", dtpEndDate.Value);
 
-                MessageBox.Show("新增成功！");
-                LoadProjects();
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    MessageBox.Show("新增成功！");
+                    LoadProjects();            // 重新載入 DataGridView
+                    LoadProjectsToComboBox();  // 如果其他頁面要更新 ComboBox
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("新增失敗：" + ex.Message);
             }
         }
 
@@ -209,7 +214,7 @@ namespace SpecialTopic
             decimal targetAmount, currentAmount;
 
             if (!int.TryParse(txtProjectId.Text, out projectId) ||
-                !int.TryParse(txtCategoryId.Text, out categoryId) ||
+                !int.TryParse(dnCtComboBoxforPj.Text, out categoryId) ||
                 !decimal.TryParse(txtTargetAmount.Text, out targetAmount) ||
                 !decimal.TryParse(txtCurrentAmount.Text, out currentAmount))
             {
@@ -244,6 +249,7 @@ namespace SpecialTopic
 
                 MessageBox.Show("更新成功！");
                 LoadProjects();
+                LoadProjectsToComboBox();
             }
         }
 
@@ -268,27 +274,56 @@ namespace SpecialTopic
 
                 MessageBox.Show("刪除成功！");
                 LoadProjects();
+                LoadProjectsToComboBox();
+            }
+        }
+        private void LoadCategoriesToComboBox()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT donateCategories_id, name FROM donateCategories";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dnCtComboBoxforPj.DataSource = dt;
+                dnCtComboBoxforPj.DisplayMember = "name";  // 顯示名稱
+                dnCtComboBoxforPj.ValueMember = "donateCategories_id"; // 實際使用的值
+            }
+        }
+        private void LoadCategoryToComboBox()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT DISTINCT donateCategories_id, name FROM donateCategories";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                comboBoxCategory.DataSource = dt;
+                comboBoxCategory.DisplayMember = "name";
+                comboBoxCategory.ValueMember = "donateCategories_id";
             }
         }
         private void CategoriesSearch_Click(object sender, EventArgs e)
         {
-            int selectedCategoryId = Convert.ToInt32(comboBoxCategory.SelectedValue);
+            if (comboBoxCategory.SelectedIndex == -1)
+            {
+                MessageBox.Show("請選擇分類！");
+                return;
+            }
+
+            int categoryId = Convert.ToInt32(comboBoxCategory.SelectedValue);
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string sql = @"SELECT donateProject_id, title, description, target_amount, 
-                              current_amount, start_date, end_date
-                       FROM donateProjects
-                       WHERE donateCategories_id = @categoryId";
+                string sql = "SELECT * FROM donateProjects WHERE donateCategories_id = @categoryId";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                adapter.SelectCommand.Parameters.AddWithValue("@categoryId", categoryId);
 
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@categoryId", selectedCategoryId);
-
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable ProjectDt = new DataTable();
-                adapter.Fill(ProjectDt);
-
-                dataGridView4.DataSource = ProjectDt;
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dataGridView4.DataSource = dt;
             }
         }
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -297,7 +332,7 @@ namespace SpecialTopic
             {
                 DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
                 txtProjectId.Text = row.Cells["donateProject_id"].Value.ToString();
-                txtCategoryId.Text = row.Cells["donateCategories_id"].Value.ToString();
+                dnCtComboBoxforPj.Text = row.Cells["donateCategories_id"].Value.ToString();
                 txtTitle.Text = row.Cells["title"].Value.ToString();
                 txtDescription.Text = row.Cells["description"].Value.ToString();
                 txtTargetAmount.Text = row.Cells["target_amount"].Value.ToString();
@@ -313,17 +348,16 @@ namespace SpecialTopic
         //======================募資方案管理======================
         private void LoadProjectsToComboBox()
         {
-            int selectedProjectId = Convert.ToInt32(comboBoxProject.SelectedValue);
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string sql = "SELECT donateProject_id, title FROM donateProjects";
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
-                DataTable PlansDt = new DataTable();
-                adapter.Fill(PlansDt);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
 
-                comboBoxProject.DataSource = PlansDt;
-                comboBoxProject.DisplayMember = "title"; // 顯示文字
-                comboBoxProject.ValueMember = "donateProject_id"; // 實際傳回的值
+                comboBoxProject.DataSource = dt;
+                comboBoxProject.DisplayMember = "title";
+                comboBoxProject.ValueMember = "donateProject_id";
             }
         }
         private void PlCreate_Click(object sender, EventArgs e)
@@ -344,6 +378,7 @@ namespace SpecialTopic
 
                 MessageBox.Show("新增成功！");
                 LoadPlans();
+                LoadProjectsToComboBoxForSearch();
             }
         }
 
@@ -373,6 +408,7 @@ namespace SpecialTopic
 
                 MessageBox.Show("更新成功！");
                 LoadPlans();
+                LoadProjectsToComboBoxForSearch();
             }
         }
 
@@ -396,6 +432,7 @@ namespace SpecialTopic
 
                 MessageBox.Show("刪除成功！");
                 LoadPlans();
+                LoadProjectsToComboBoxForSearch();
             }
         }
 
@@ -417,14 +454,17 @@ namespace SpecialTopic
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string sql = "SELECT * FROM donatePlans";
+                string sql = "SELECT * FROM donatePlans ORDER BY donateProject_id";
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
 
                 dataGridView3.AutoGenerateColumns = true; // ✅ 確保自動產生欄位
                 dataGridView3.DataSource = dt;
-                dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                if (dataGridView3.Columns.Contains("donatePlan_id"))
+                {
+                    dataGridView3.Columns["donatePlan_id"].Visible = false;
+                }
             }
 
             // 避免重複綁定 CellClick 事件（這應該只需綁定一次）
@@ -436,19 +476,59 @@ namespace SpecialTopic
             LoadPlans();
         }
 
-        private void CategoriesSearch_SelectedIndexChanged(object sender, EventArgs e)
+        private void LoadProjectsToComboBoxForSearch()
         {
-            switch (CategoriesSearch.SelectedIndex)
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                case 1: // 募資方案管理頁
-                    LoadProjectsToComboBox(); // 更新 comboBoxProject 資料來源
-                    break;
+                string sql = "SELECT donateProject_id, title FROM donateProjects";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
 
-                //case 2: // 圖片管理頁
-                    //LoadProjectsForImageComboBox(); // 假設你還有這個方法
-                    break;
+                CBSearchProject.DataSource = dt;
+                CBSearchProject.DisplayMember = "title";
+                CBSearchProject.ValueMember = "donateProject_id";
+            }
+        }
+        private void btnSearchByProject_Click(object sender, EventArgs e)
+        {
+            if (CBSearchProject.SelectedIndex == -1)
+            {
+                MessageBox.Show("請選擇募資項目！");
+                return;
+            }
 
-                    // 其他頁數也可以依需求延伸
+            int projectId = Convert.ToInt32(CBSearchProject.SelectedValue);
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT * FROM donatePlans WHERE donateProject_id = @projectId";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                adapter.SelectCommand.Parameters.AddWithValue("@projectId", projectId);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dataGridView5.DataSource = dt;
+            }
+        }
+
+        //======================切換頁面即時更新ComboBox======================
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabPage1) // 募資分類頁
+            {
+                LoadCategories(); // 重新載入分類
+            }
+            else if (tabControl1.SelectedTab == tabPage2) // 募資項目頁
+            {
+                LoadProjects(); // 重新載入募資項目資料表
+                LoadCategoryToComboBox(); // 重新載入分類的下拉選單
+            }
+            else if (tabControl1.SelectedTab == tabPage3) // 募資方案頁
+            {
+                LoadPlans(); // 重新載入方案資料表
+                LoadProjectsToComboBox(); // 重新載入募資項目下拉選單
+                LoadProjectsToComboBoxForSearch();
             }
         }
     }
