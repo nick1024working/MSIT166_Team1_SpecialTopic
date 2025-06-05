@@ -91,21 +91,29 @@ namespace SpecialTopic.Forum
                 MessageBox.Show($"搜尋失敗：{ex.Message}", "錯誤");
             }
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
                 MessageBox.Show("已進入 btnAdd_Click 方法", "調試");
-                FrmPostDetail frm = new FrmPostDetail();
-                if (frm.ShowDialog() == DialogResult.OK)
+                // 獲取 Form1 實例
+                Form1 mainForm = this.FindForm() as Form1;
+                if (mainForm != null && !string.IsNullOrEmpty(mainForm.s))
                 {
-                    LoadPosts();
-                    MessageBox.Show("已重新載入文章列表", "調試");
+                    FrmPostDetail frm = new FrmPostDetail(null, null, mainForm.s); // 傳遞手機號碼
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        LoadPosts();
+                        MessageBox.Show("已重新載入文章列表", "調試");
+                    }
+                    else
+                    {
+                        MessageBox.Show("未儲存任何更改", "調試");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("未儲存任何更改", "調試");
+                    MessageBox.Show("錯誤：請先登入", "錯誤");
                 }
             }
             catch (Exception ex)
