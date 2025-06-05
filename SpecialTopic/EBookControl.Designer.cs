@@ -49,6 +49,13 @@ namespace SpecialTopic
             this.btnViewOrders = new System.Windows.Forms.Button();
             this.btnPurchasedBooks = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
+            this.btnSubscriber = new System.Windows.Forms.Button();
+            this.txtBookID = new System.Windows.Forms.TextBox();
+            this.buttonRecommend = new System.Windows.Forms.Button();
+            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
+            this.comboBoxSubCategory = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCover)).BeginInit();
             this.SuspendLayout();
@@ -65,22 +72,22 @@ namespace SpecialTopic
             // 
             // btnImportExcel
             // 
-            this.btnImportExcel.Location = new System.Drawing.Point(52, 36);
+            this.btnImportExcel.Location = new System.Drawing.Point(31, 33);
             this.btnImportExcel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnImportExcel.Name = "btnImportExcel";
             this.btnImportExcel.Size = new System.Drawing.Size(177, 54);
             this.btnImportExcel.TabIndex = 1;
-            this.btnImportExcel.Text = "importexcelbutton";
+            this.btnImportExcel.Text = "根據excel匯入";
             this.btnImportExcel.UseVisualStyleBackColor = true;
             this.btnImportExcel.Click += new System.EventHandler(this.btnImportExcel_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(63, 117);
+            this.button2.Location = new System.Drawing.Point(3, 120);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 38);
+            this.button2.Size = new System.Drawing.Size(158, 38);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Openebookid";
+            this.button2.Text = "開指定ID電子書";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -96,7 +103,7 @@ namespace SpecialTopic
             // 
             // btnOpenSelectedBook
             // 
-            this.btnOpenSelectedBook.Location = new System.Drawing.Point(63, 209);
+            this.btnOpenSelectedBook.Location = new System.Drawing.Point(48, 204);
             this.btnOpenSelectedBook.Name = "btnOpenSelectedBook";
             this.btnOpenSelectedBook.Size = new System.Drawing.Size(181, 32);
             this.btnOpenSelectedBook.TabIndex = 4;
@@ -115,7 +122,7 @@ namespace SpecialTopic
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(63, 297);
+            this.btnEdit.Location = new System.Drawing.Point(63, 315);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(166, 36);
             this.btnEdit.TabIndex = 6;
@@ -125,14 +132,14 @@ namespace SpecialTopic
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(1129, 56);
+            this.txtSearch.Location = new System.Drawing.Point(1081, 53);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(195, 26);
             this.txtSearch.TabIndex = 7;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(1351, 53);
+            this.btnSearch.Location = new System.Drawing.Point(1282, 53);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 34);
             this.btnSearch.TabIndex = 9;
@@ -142,9 +149,10 @@ namespace SpecialTopic
             // 
             // btnViewOrders
             // 
-            this.btnViewOrders.Location = new System.Drawing.Point(1161, 309);
+            this.btnViewOrders.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewOrders.Location = new System.Drawing.Point(987, 479);
             this.btnViewOrders.Name = "btnViewOrders";
-            this.btnViewOrders.Size = new System.Drawing.Size(188, 48);
+            this.btnViewOrders.Size = new System.Drawing.Size(222, 87);
             this.btnViewOrders.TabIndex = 10;
             this.btnViewOrders.Text = "訂單管理";
             this.btnViewOrders.UseVisualStyleBackColor = true;
@@ -152,16 +160,17 @@ namespace SpecialTopic
             // 
             // btnPurchasedBooks
             // 
-            this.btnPurchasedBooks.Location = new System.Drawing.Point(84, 408);
+            this.btnPurchasedBooks.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPurchasedBooks.Location = new System.Drawing.Point(97, 479);
             this.btnPurchasedBooks.Name = "btnPurchasedBooks";
-            this.btnPurchasedBooks.Size = new System.Drawing.Size(112, 33);
+            this.btnPurchasedBooks.Size = new System.Drawing.Size(239, 87);
             this.btnPurchasedBooks.TabIndex = 11;
-            this.btnPurchasedBooks.Text = "已購買書籍";
+            this.btnPurchasedBooks.Text = "已購買書籍管理";
             this.btnPurchasedBooks.UseVisualStyleBackColor = true;
             // 
             // btnReload
             // 
-            this.btnReload.Location = new System.Drawing.Point(94, 260);
+            this.btnReload.Location = new System.Drawing.Point(73, 256);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(114, 31);
             this.btnReload.TabIndex = 12;
@@ -169,10 +178,82 @@ namespace SpecialTopic
             this.btnReload.UseVisualStyleBackColor = true;
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
+            // btnSubscriber
+            // 
+            this.btnSubscriber.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubscriber.Location = new System.Drawing.Point(389, 479);
+            this.btnSubscriber.Name = "btnSubscriber";
+            this.btnSubscriber.Size = new System.Drawing.Size(233, 87);
+            this.btnSubscriber.TabIndex = 13;
+            this.btnSubscriber.Text = "訂閱者管理";
+            this.btnSubscriber.UseVisualStyleBackColor = true;
+            this.btnSubscriber.Click += new System.EventHandler(this.btnSubscriber_Click);
+            // 
+            // txtBookID
+            // 
+            this.txtBookID.Location = new System.Drawing.Point(177, 127);
+            this.txtBookID.Name = "txtBookID";
+            this.txtBookID.Size = new System.Drawing.Size(112, 26);
+            this.txtBookID.TabIndex = 14;
+            // 
+            // buttonRecommend
+            // 
+            this.buttonRecommend.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRecommend.Location = new System.Drawing.Point(703, 479);
+            this.buttonRecommend.Name = "buttonRecommend";
+            this.buttonRecommend.Size = new System.Drawing.Size(218, 87);
+            this.buttonRecommend.TabIndex = 15;
+            this.buttonRecommend.Text = "推薦區管理";
+            this.buttonRecommend.UseVisualStyleBackColor = true;
+            this.buttonRecommend.Click += new System.EventHandler(this.buttonRecommend_Click);
+            // 
+            // comboBoxCategory
+            // 
+            this.comboBoxCategory.FormattingEnabled = true;
+            this.comboBoxCategory.Location = new System.Drawing.Point(1081, 126);
+            this.comboBoxCategory.Name = "comboBoxCategory";
+            this.comboBoxCategory.Size = new System.Drawing.Size(195, 27);
+            this.comboBoxCategory.TabIndex = 16;
+            this.comboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategory_SelectedIndexChanged);
+            // 
+            // comboBoxSubCategory
+            // 
+            this.comboBoxSubCategory.FormattingEnabled = true;
+            this.comboBoxSubCategory.Location = new System.Drawing.Point(1081, 204);
+            this.comboBoxSubCategory.Name = "comboBoxSubCategory";
+            this.comboBoxSubCategory.Size = new System.Drawing.Size(195, 27);
+            this.comboBoxSubCategory.TabIndex = 17;
+            this.comboBoxSubCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxSubCategory_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1294, 134);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 19);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "主分類搜尋";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1304, 204);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 19);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "次分類搜尋";
+            // 
             // EBookControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBoxSubCategory);
+            this.Controls.Add(this.comboBoxCategory);
+            this.Controls.Add(this.buttonRecommend);
+            this.Controls.Add(this.txtBookID);
+            this.Controls.Add(this.btnSubscriber);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnPurchasedBooks);
             this.Controls.Add(this.btnViewOrders);
@@ -211,5 +292,12 @@ namespace SpecialTopic
         private System.Windows.Forms.Button btnViewOrders;
         private Button btnPurchasedBooks;
         private Button btnReload;
+        private Button btnSubscriber;
+        private TextBox txtBookID;
+        private Button buttonRecommend;
+        private ComboBox comboBoxCategory;
+        private ComboBox comboBoxSubCategory;
+        private Label label1;
+        private Label label2;
     }
 }

@@ -304,6 +304,18 @@
     <Compile Include="Forum\FrmForumPostControl.Designer.cs">
       <DependentUpon>FrmForumPostControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="eBook\eBookCode\FormChooseBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="eBook\eBookCode\FormChooseBook.Designer.cs">
+      <DependentUpon>FormChooseBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="eBook\eBookCode\FormRecommend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="eBook\eBookCode\FormRecommend.Designer.cs">
+      <DependentUpon>FormRecommend.cs</DependentUpon>
+    </Compile>
     <Compile Include="Member\DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -456,6 +468,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forum\FrmForumPostControl.resx">
       <DependentUpon>FrmForumPostControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="eBook\eBookCode\FormChooseBook.resx">
+      <DependentUpon>FormChooseBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="eBook\eBookCode\FormRecommend.resx">
+      <DependentUpon>FormRecommend.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Member\FRMCreateAccount.resx">
       <DependentUpon>FRMCreateAccount.cs</DependentUpon>
