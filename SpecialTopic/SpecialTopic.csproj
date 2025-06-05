@@ -222,17 +222,35 @@
     <Compile Include="Forum\ForumControl.Designer.cs">
       <DependentUpon>ForumControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forum\ForumPostCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forum\ForumPostCategory.Designer.cs">
+      <DependentUpon>ForumPostCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\ForumPostComment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forum\ForumPostComment.Designer.cs">
+      <DependentUpon>ForumPostComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forum\ForumPostControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forum\ForumPostControl.Designer.cs">
       <DependentUpon>ForumPostControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forum\FrmForumPostCategory.cs">
+    <Compile Include="Forum\ForumPostFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forum\ForumPostFilter.Designer.cs">
+      <DependentUpon>ForumPostFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forum\FrmCommentDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forum\FrmForumPostCategory.Designer.cs">
-      <DependentUpon>FrmForumPostCategory.cs</DependentUpon>
+    <Compile Include="Forum\FrmCommentDetail.Designer.cs">
+      <DependentUpon>FrmCommentDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Forum\FrmForumPostControl.cs">
       <SubType>Form</SubType>
@@ -375,8 +393,17 @@
     <EmbeddedResource Include="Forum\ForumControl.resx">
       <DependentUpon>ForumControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forum\ForumPostCategory.resx">
+      <DependentUpon>ForumPostCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forum\ForumPostComment.resx">
+      <DependentUpon>ForumPostComment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forum\ForumPostControl.resx">
       <DependentUpon>ForumPostControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forum\ForumPostFilter.resx">
+      <DependentUpon>ForumPostFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forum\FrmForumPostControl.resx">
       <DependentUpon>FrmForumPostControl.cs</DependentUpon>
