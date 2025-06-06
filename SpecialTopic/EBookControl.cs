@@ -10,6 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SpecialTopic.eBook.eBookCode; // 頂部需引用此命名空間
+using SpecialTopic.eBook.eBookCode.PdfiumViewer;
+
 
 namespace SpecialTopic
 {
@@ -362,6 +365,19 @@ namespace SpecialTopic
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 加上錯誤容錯
             dataGridView1.DataError += (s, args) => args.ThrowException = false;
+
+            try
+            {
+                // PdfiumLoader.LoadCorrectPdfium(); // ✅ 自動依平台載入對應 pdfium.dll
+                // 呼叫這個方法即可自動依平台載入 pdfium.dll
+                //MyNativeMethods.LoadPdfium();
+
+                PdfiumLoader.LoadCorrectPdfium();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "載入 PDFium 失敗", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             //InitializePurchasedBooksButton();
             //InitializePurchasedBooksButton();
             loadBook();

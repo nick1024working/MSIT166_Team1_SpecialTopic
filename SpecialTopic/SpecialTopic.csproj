@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PDFium.x64.4648.0.0\build\pdfium.x64.props" Condition="Exists('..\packages\PDFium.x64.4648.0.0\build\pdfium.x64.props')" />
+  <Import Project="..\packages\PDFium.x86.4648.0.0\build\pdfium.x86.props" Condition="Exists('..\packages\PDFium.x86.4648.0.0\build\pdfium.x86.props')" />
   <Import Project="..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props" Condition="Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props')" />
   <PropertyGroup>
     <SSDTUnitTestPath Condition="'$(SSDTUnitTestPath)' == ''">$(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB</SSDTUnitTestPath>
@@ -36,6 +38,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -262,6 +265,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="eBook\eBookCode\PdfiumLoader.cs" />
+    <Compile Include="eBook\eBookCode\PdfiumViewer\MyNativeMethods.cs" />
     <Compile Include="Forum\ForumControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -790,6 +795,19 @@
     <None Include="Fund\TeamA_ProjectDataSet.xss">
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
     </None>
+    <None Include="TeamA_ProjectDataSetTest.xsc">
+      <DependentUpon>TeamA_ProjectDataSetTest.xsd</DependentUpon>
+    </None>
+    <None Include="TeamA_ProjectDataSetTest.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TeamA_ProjectDataSetTest.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TeamA_ProjectDataSetTest.xss">
+      <DependentUpon>TeamA_ProjectDataSetTest.xsd</DependentUpon>
+    </None>
+    <None Include="x64\.gitkeep" />
+    <None Include="x86\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -798,6 +816,12 @@
     <Folder Include="eBook\eBookFiles\eBookCover\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="x64\pdfium.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\pdfium.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\stock-vector-refresh-icon-vector-illustration-reload-sign-and-symbol-update-icon-2293717071.png" />
     <None Include="Resources\重整.png" />
     <None Include="Resources\重整1.png" />
@@ -1413,6 +1437,8 @@
     <Error Condition="!Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
     <Error Condition="!Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props'))" />
+    <Error Condition="!Exists('..\packages\PDFium.x86.4648.0.0\build\pdfium.x86.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PDFium.x86.4648.0.0\build\pdfium.x86.props'))" />
+    <Error Condition="!Exists('..\packages\PDFium.x64.4648.0.0\build\pdfium.x64.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PDFium.x64.4648.0.0\build\pdfium.x64.props'))" />
   </Target>
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
 </Project>

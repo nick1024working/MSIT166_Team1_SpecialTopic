@@ -21,6 +21,7 @@ namespace SpecialTopic.eBook.eBookCode
             try
             {
                 InitializeComponent();
+               // this.dgvOrderDetails.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvOrderDetails_CellMouseClick);
             }
             catch (Exception ex)
             {
@@ -1165,6 +1166,11 @@ SELECT SCOPE_IDENTITY(); -- 回傳新插入的訂單編號";
                     }
                 }
             }
+        }
+
+        private void dgvOrderDetails_CellMouseClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
