@@ -48,7 +48,7 @@
             this.dgvPosts.ReadOnly = true;
             this.dgvPosts.RowTemplate.Height = 24;
             this.dgvPosts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPosts.Size = new System.Drawing.Size(1081, 361);
+            this.dgvPosts.Size = new System.Drawing.Size(856, 361);
             this.dgvPosts.TabIndex = 0;
             // 
             // btnRefresh
