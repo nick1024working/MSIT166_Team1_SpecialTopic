@@ -41,7 +41,7 @@ namespace SpecialTopic
 
         private void Book_Click(object sender, EventArgs e)
         {
-            ShowControl(new UsedBookControl());
+            ShowControl(new UsedBookControl(s));
         }
 
         private void Ebook_Click(object sender, EventArgs e)

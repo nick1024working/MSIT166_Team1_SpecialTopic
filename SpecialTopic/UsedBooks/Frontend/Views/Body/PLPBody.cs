@@ -46,14 +46,14 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
-            LoadData();
+            RefreshData();
         }
 
 
 
         #region UI Data Loaders
 
-        private void LoadData()
+        public void RefreshData()
         {
             // 載入左側欄的主題列表
             LoadSideBarTopics();
@@ -202,6 +202,9 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
         {
             if (lbxTopics.SelectedItem is TopicDto dto)
             {
+                // 取消另一個lbx選取
+                lbxSaleTags.SelectedIndex = -1;
+
                 var result = _bookCardService.GetBookCardsByTopicId(dto.TopicID);
                 if (result.IsSuccess)
                 {
@@ -213,10 +216,6 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
                 }
 
             }
-            else
-            {
-                MessageBox.Show("請先選擇有效的主題！");
-            }
         }
 
         /// <summary>
@@ -226,6 +225,9 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
         {
             if (lbxSaleTags.SelectedItem is SaleTagDto dto)
             {
+                // 取消另一個lbx選取
+                lbxTopics.SelectedIndex = -1;
+
                 var result = _bookCardService.GetBookCardsByTagId(dto.TagID);
                 if (result.IsSuccess)
                 {
@@ -236,10 +238,6 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Body
                     MessageBox.Show($"發生錯誤: {result.ErrorMessage}");
                 }
 
-            }
-            else
-            {
-                MessageBox.Show("請先選擇有效的促銷標籤！");
             }
         }
 

@@ -40,5 +40,22 @@ namespace SpecialTopic.UsedBooks.Backend.Services
                 return Result<Guid>.Failure(ex.Message);
             }
         }
+
+        public Result<Guid> GetUserIdByPhone(string phone)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connString))
+                {
+                    conn.Open();
+                    var result = _userRepository.GetUserIdByPhone(phone, conn, null);
+                    return Result<Guid>.Success(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Result<Guid>.Failure(ex.Message);
+            }
+        }
     }
 }

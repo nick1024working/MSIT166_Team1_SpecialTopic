@@ -123,7 +123,7 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.ContentArea
             var dto = new BookIsActiveDto
             {
                 BookID = id,
-                IsActive = cbxIsActiveStatus.SelectedText == "上架" ? true : false
+                IsActive = cbxIsActiveStatus.SelectedItem.ToString() == "上架" ? true : false
             }; 
             var result = _bookService.UpdateBookIsActive(dto);
             if (result.IsSuccess)

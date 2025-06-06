@@ -5,7 +5,6 @@ using System.IO;
 using System.Windows.Forms;
 using SpecialTopic.UsedBooks.Backend.Services;
 using SpecialTopic.UsedBooks.Frontend.Shared;
-using SpecialTopic.UsedBooks.Frontend.Views;
 using SpecialTopic.UsedBooks.Frontend.Views.Body;
 using SpecialTopic.UsedBooks.Frontend.Views.Forms;
 
@@ -61,8 +60,8 @@ namespace SpecialTopic.UsedBooks.Views
             _userCenterBody = new UserCenterBody(_connString);
             _adminCenterBody = new AdminCenterBody(_connString);
 
-        // 建構畫面元件
-        InitializeComponent();
+            // 建構畫面元件
+            InitializeComponent();
 
             // 初始化資料
             LoadData();
@@ -109,11 +108,16 @@ namespace SpecialTopic.UsedBooks.Views
         #region Header Events
 
         /// <summary>
-        /// 點擊logo，回到服務 HomeView。
+        /// 點擊logo
         /// </summary>
         private void pbxLogo_Click(object sender, EventArgs e)
         {
-            RequestSwitchView?.Invoke(this, ViewType.HomeView);
+            // 回到服務 HomeView，但 HomeView沒做
+            //RequestSwitchView?.Invoke(this, ViewType.HomeView);
+
+            // 此處切換pnlBody
+            ShowControl(_plpBody);
+            _plpBody.LoadContentAreaBookCardsDefaultWithTopCount(15);
         }
 
         /// <summary>

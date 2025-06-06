@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using SpecialTopic.UsedBooks.Backend.DTOs;
 using SpecialTopic.UsedBooks.Backend.Services;
 using SpecialTopic.UsedBooks.Backend.Utilities;
+using SpecialTopic.UsedBooks.Frontend.Shared;
 
 namespace SpecialTopic.UsedBooks.Frontend.Views.Forms
 {
@@ -35,8 +36,8 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Forms
 
             InitializeComponent();
 
-            // 載入隨機買家ID
-            LoadRandomUserId();
+            // 載入買家ID
+            LoadUserId();
 
             // 載入隨機書本ID
             LoadRandomBookId();
@@ -48,16 +49,24 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Forms
             LoadPaymentFlowOptions();
         }
 
-        private void LoadRandomUserId()
+        private void LoadUserId()
         {
-            var result = _userService.GetRandomUserId();
-            if (result.IsSuccess)
+            if (AppSession.Current.UID.HasValue)
             {
-                lblBuyerId.Text = result.Value.ToString();
+                lblBuyerId.Text = AppSession.Current.UID.ToString();
             }
             else
             {
-                MessageBox.Show($"發生錯誤: {result.ErrorMessage}");
+                MessageBox.Show("尚未登入，使用隨機UID。");
+                var result = _userService.GetRandomUserId();
+                if (result.IsSuccess)
+                {
+                    lblBuyerId.Text = result.Value.ToString();
+                }
+                else
+                {
+                    MessageBox.Show($"發生錯誤: {result.ErrorMessage}");
+                }
             }
         }
 
@@ -130,23 +139,21 @@ namespace SpecialTopic.UsedBooks.Frontend.Views.Forms
                 return;
             }
 
-            try
+            var dto = new CreateFaceToFaceOrderDto
             {
-                var dto = new CreateFaceToFaceOrderDto
-                {
-                    BookID = int.Parse(lblBookId.Text),
-                    BuyerID = Guid.Parse(lblBuyerId.Text),
-                    PaymentFlowType = selectedItem.Value,
-                    BuyerContactPhone = txbBuyerPhone.Text
-                };
+                BookID = int.Parse(lblBookId.Text),
+                BuyerID = Guid.Parse(lblBuyerId.Text),
+                PaymentFlowType = selectedItem.Value,
+                BuyerContactPhone = txbBuyerPhone.Text
+            };
 
-                _orderService.CreateFaceToFaceOrder(dto);
-
-                MessageBox.Show("訂單已建立成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var result = _orderService.CreateFaceToFaceOrder(dto);
+            if (result.IsSuccess) {
+                MessageBox.Show($"訂單{result.Value}已建立成功！", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($"建立訂單時發生錯誤：{ex.Message}", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"建立訂單時發生錯誤", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

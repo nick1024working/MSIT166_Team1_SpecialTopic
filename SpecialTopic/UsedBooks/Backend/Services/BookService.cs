@@ -199,6 +199,25 @@ namespace SpecialTopic.UsedBooks.Backend.Services
             }
         }
 
+
+        public Result<List<BookDto>> GetBooksByUserId(Guid userId)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(_connString))
+                {
+                    conn.Open();
+                    var entities = _bookRepository.GetBooksByUserId(userId, conn, null);
+                    var dtos = entities.Select(MappingBookEntityToDto).ToList();
+                    return Result<List<BookDto>>.Success(dtos);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Result<List<BookDto>>.Failure(ex.Message);
+            }
+        }
+
         /// /// <summary>
         /// 從資料庫取得所有書籍主要資料，轉公開 dto（只有公開資訊）。
         /// </summary>

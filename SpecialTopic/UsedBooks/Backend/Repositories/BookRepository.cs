@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
@@ -149,6 +150,19 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
                 WHERE BookID = @BookID;";
             conn.Execute(sqlString, new { BookID }, transaction: tran);
             return Unit.Value;
+        }
+
+        public List<BookEntity> GetBooksByUserId(Guid userId, SqlConnection conn, SqlTransaction tran)
+        {
+            const string sqlString = @"
+                SELECT [BookID], [UID], [BookName], [SalePrice], [BookCondition],
+                       [Description], [CreatedAt], [ISBN], [Language], [Authors],
+                       [Publisher], [PublicationDate], [ViewCount], [IsActive],
+                       [IsSold], [Slug]
+                FROM [dbo].[UsedBooks]
+                WHERE [UID] = @userId";
+            var result = conn.Query<BookEntity>(sqlString, new { userId }, transaction: tran).ToList();
+            return result;
         }
     }
 }

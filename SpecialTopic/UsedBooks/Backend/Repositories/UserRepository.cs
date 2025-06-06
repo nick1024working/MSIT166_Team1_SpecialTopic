@@ -6,6 +6,14 @@ namespace SpecialTopic.UsedBooks.Backend.Repositories
 {
     public class UserRepository
     {
+        public Guid GetUserIdByPhone(string phone, SqlConnection conn, SqlTransaction tran)
+        {
+            string sqlString = @"SELECT [UID]
+                FROM [dbo].[Users]
+                WHERE [Phone] = @phone;";
+            return conn.QuerySingle<Guid>(sqlString, new { phone }, transaction: tran);
+        }
+
         public string GetOwnerPhoneByBookId(int bookId, SqlConnection conn, SqlTransaction tran)
         {
             string sqlString = @"SELECT Phone

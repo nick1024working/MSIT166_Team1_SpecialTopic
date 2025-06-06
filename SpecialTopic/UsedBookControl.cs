@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System.Configuration;
 using System.Windows.Forms;
-using SpecialTopic.UsedBooks.Views;
+using SpecialTopic.UsedBooks.Backend.Services;
 using SpecialTopic.UsedBooks.Frontend.Shared;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SpecialTopic
 {
@@ -15,10 +15,27 @@ namespace SpecialTopic
     /// </remarks>
     public partial class UsedBookControl : UserControl
     {
-        public UsedBookControl()
+
+        public UsedBookControl(string userPhone)
         {
+            Login(userPhone);
+
             InitializeComponent();
             SwitchTo(ViewType.HomeView);
+        }
+
+        /// <summary>
+        /// 登入會員至 AppSession
+        /// </summary>
+        private void Login(string userPhone)
+        {
+            AppSession.Current.Phone = userPhone;
+            string connString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
+            var result = (new UserService(connString)).GetUserIdByPhone(userPhone);
+            if (result.IsSuccess)
+            {
+                AppSession.Current.UID = result.Value;
+            }
         }
 
         private void SwitchTo(ViewType viewType)
