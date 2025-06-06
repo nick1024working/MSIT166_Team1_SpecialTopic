@@ -795,17 +795,6 @@
     <None Include="Fund\TeamA_ProjectDataSet.xss">
       <DependentUpon>TeamA_ProjectDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TeamA_ProjectDataSetTest.xsc">
-      <DependentUpon>TeamA_ProjectDataSetTest.xsd</DependentUpon>
-    </None>
-    <None Include="TeamA_ProjectDataSetTest.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TeamA_ProjectDataSetTest.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="TeamA_ProjectDataSetTest.xss">
-      <DependentUpon>TeamA_ProjectDataSetTest.xsd</DependentUpon>
-    </None>
     <None Include="x64\.gitkeep" />
     <None Include="x86\.gitkeep" />
   </ItemGroup>
