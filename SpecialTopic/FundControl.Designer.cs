@@ -439,7 +439,7 @@
             this.txtId.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateCategoriesBindingSource, "donateCategories_id", true));
             this.txtId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtId.ForeColor = System.Drawing.Color.Silver;
+            this.txtId.ForeColor = System.Drawing.Color.Black;
             this.txtId.Location = new System.Drawing.Point(57, 108);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(324, 46);
@@ -630,7 +630,7 @@
             // 
             this.txtProjectId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateProjectsBindingSource, "donateProject_id", true));
             this.txtProjectId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtProjectId.ForeColor = System.Drawing.Color.Silver;
+            this.txtProjectId.ForeColor = System.Drawing.Color.Black;
             this.txtProjectId.Location = new System.Drawing.Point(644, 276);
             this.txtProjectId.Name = "txtProjectId";
             this.txtProjectId.Size = new System.Drawing.Size(312, 46);
@@ -895,7 +895,7 @@
             // 
             this.txtPlanId.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donatePlansBindingSource, "donatePlan_id", true));
             this.txtPlanId.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtPlanId.ForeColor = System.Drawing.Color.Silver;
+            this.txtPlanId.ForeColor = System.Drawing.Color.Black;
             this.txtPlanId.Location = new System.Drawing.Point(596, 375);
             this.txtPlanId.Name = "txtPlanId";
             this.txtPlanId.Size = new System.Drawing.Size(339, 46);
@@ -1259,7 +1259,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(419, 37);
             this.label13.TabIndex = 47;
-            this.label13.Text = "輸入預修改、刪除方案id";
+            this.label13.Text = "輸入預修改、刪除圖片id";
             // 
             // panel4
             // 

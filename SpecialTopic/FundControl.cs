@@ -113,19 +113,35 @@ namespace SpecialTopic
                 return;
             }
 
-            var confirm = MessageBox.Show("確定要刪除這筆資料嗎？", "確認刪除", MessageBoxButtons.YesNo);
-            if (confirm != DialogResult.Yes)
-                return;
+            int categoryId = int.Parse(txtId.Text);
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                conn.Open();
+
+                // 檢查此分類是否有被募資項目使用
+                string checkSql = "SELECT COUNT(*) FROM donateProjects WHERE donateCategories_id = @id";
+                SqlCommand checkCmd = new SqlCommand(checkSql, conn);
+                checkCmd.Parameters.AddWithValue("@id", categoryId);
+                int count = (int)checkCmd.ExecuteScalar();
+
+                if (count > 0)
+                {
+                    MessageBox.Show("此分類尚有募資項目使用，請先刪除相關募資項目！");
+                    return;
+                }
+
+                // 確認刪除
+                var confirm = MessageBox.Show("確定要刪除這筆資料嗎？", "確認刪除", MessageBoxButtons.YesNo);
+                if (confirm != DialogResult.Yes)
+                    return;
+
+                // 執行刪除
                 string sql = "DELETE FROM donateCategories WHERE donateCategories_id = @id";
                 SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
+                cmd.Parameters.AddWithValue("@id", categoryId);
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
-                conn.Close();
 
                 MessageBox.Show("刪除成功！");
                 LoadCategories();
@@ -204,6 +220,7 @@ namespace SpecialTopic
                     LoadProjects();            // 重新載入 DataGridView
                     LoadProjectsToComboBox();  // 如果其他頁面要更新 ComboBox
                     ReloadProjectComboBoxes();
+                    CategoriesSearch_Click(null, null);
                 }
             }
             catch (Exception ex)
@@ -255,6 +272,7 @@ namespace SpecialTopic
                 LoadProjects();
                 LoadProjectsToComboBox();
                 ReloadProjectComboBoxes();
+                CategoriesSearch_Click(null, null);
             }
         }
 
@@ -267,13 +285,27 @@ namespace SpecialTopic
                 return;
             }
 
+            // 1. 檢查圖片表中是否有此專案正在被使用
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                conn.Open();
+
+                string checkSql = "SELECT COUNT(*) FROM donateImages WHERE donateProject_id = @projectId";
+                SqlCommand checkCmd = new SqlCommand(checkSql, conn);
+                checkCmd.Parameters.AddWithValue("@projectId", projectId);
+                int count = (int)checkCmd.ExecuteScalar();
+
+                if (count > 0)
+                {
+                    MessageBox.Show("此募資項目仍有圖片資料，請先刪除相關圖片！");
+                    return;
+                }
+
+                // 2. 若沒有才執行刪除
                 string sql = "DELETE FROM donateProjects WHERE donateProject_id = @projectId";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@projectId", projectId);
 
-                conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
@@ -281,6 +313,7 @@ namespace SpecialTopic
                 LoadProjects();
                 LoadProjectsToComboBox();
                 ReloadProjectComboBoxes();
+                CategoriesSearch_Click(null, null);
             }
         }
         private void LoadCategoriesToComboBox()
@@ -385,6 +418,7 @@ namespace SpecialTopic
                 MessageBox.Show("新增成功！");
                 LoadPlans();
                 LoadProjectsToComboBoxForSearch();
+                btnSearchByProject.PerformClick();
             }
         }
 
@@ -415,6 +449,7 @@ namespace SpecialTopic
                 MessageBox.Show("更新成功！");
                 LoadPlans();
                 LoadProjectsToComboBoxForSearch();
+                btnSearchByProject.PerformClick();
             }
         }
 
@@ -439,6 +474,7 @@ namespace SpecialTopic
                 MessageBox.Show("刪除成功！");
                 LoadPlans();
                 LoadProjectsToComboBoxForSearch();
+                btnSearchByProject.PerformClick();
             }
         }
 
@@ -517,8 +553,6 @@ namespace SpecialTopic
                 dataGridView5.DataSource = dt;
             }
         }
-
-
 
         //======================募資圖片管理======================
         private void LoadProjectsToComboBoxbyImage()
@@ -607,6 +641,12 @@ namespace SpecialTopic
 
                 MessageBox.Show("刪除成功！");
                 LoadImages();
+
+                // ✅ 重跑下方依募資項目搜尋，刷新 dataGridView7
+                if (donateProject_idComboBox1.SelectedIndex != -1)
+                {
+                    btnSearchByProjectImg_Click(null, null);  // 直接呼叫搜尋按鈕的事件方法
+                }
             }
         }
         private void dataGridView6_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -665,6 +705,7 @@ namespace SpecialTopic
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
                 dataGridView7.DataSource = dt;
+                dataGridView7.Columns["donateProject_id"].Visible = false;
             }
         }
         public void ReloadProjectComboBoxes()
