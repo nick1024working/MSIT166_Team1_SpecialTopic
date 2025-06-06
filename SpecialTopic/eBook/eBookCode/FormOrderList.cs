@@ -201,6 +201,7 @@ namespace SpecialTopic.eBook.eBookCode
                 string sql = @"
             SELECT 
                 od.OrderItemID AS [明細編號],                           -- 訂單明細識別碼
+                od.eBookID AS [eBookID],                                 -- 電子書 ID（隱藏欄位）
                 od.ItemNameSnapshot AS [商品名稱],                      -- 購買當下的商品名稱快照
                 od.Quantity AS [數量],                                   -- 購買數量
                 od.UnitPriceAtPurchase AS [單價],                        -- 當時購買價格
@@ -307,6 +308,7 @@ namespace SpecialTopic.eBook.eBookCode
                 dgvOrderDetails.Columns["小計"].HeaderText = "小計";
                 dgvOrderDetails.Columns["小計"].DefaultCellStyle.Format = "N0";
             }
+            dgvOrderDetails.AllowUserToAddRows = true; // 確保底部顯示新增行
         }
 
 
@@ -1134,29 +1136,45 @@ SELECT SCOPE_IDENTITY(); -- 回傳新插入的訂單編號";
                     {
                         if (dialog.ShowDialog() == DialogResult.OK)
                         {
-                            var row = dgvOrderDetails.Rows[e.RowIndex];
+                            // ✅ 嘗試取得綁定的 DataTable
+                            DataTable dt = dgvOrderDetails.DataSource as DataTable;
+                            if (dt == null)
+                            {
+                                MessageBox.Show("❌ 找不到綁定的資料表 (DataSource)！", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
 
-                            // ✅ 自動填入書名、eBookID（隱藏欄位）、單價（若未輸入）
-                            row.Cells["商品名稱"].Value = dialog.SelectedBookName;
-                            row.Cells["eBookID"].Value = dialog.SelectedBookID;
+                            // ✅ 建立新資料列並填入欄位
+                            DataRow newRow = dt.NewRow();
+                            newRow["商品名稱"] = dialog.SelectedBookName;
+                            newRow["eBookID"] = dialog.SelectedBookID;
+                            newRow["單價"] = dialog.SelectedPrice;
+                            newRow["數量"] = 1;
+                            newRow["折扣"] = 0;
+                            newRow["小計"] = dialog.SelectedPrice * 1;
 
-                            if (string.IsNullOrWhiteSpace(row.Cells["單價"].Value?.ToString()))
-                                row.Cells["單價"].Value = dialog.SelectedPrice;
+                            // ✅ 加入資料表
+                            dt.Rows.Add(newRow);
 
-                            // ✅ 預設填入數量為 1
-                            if (string.IsNullOrWhiteSpace(row.Cells["數量"].Value?.ToString()))
-                                row.Cells["數量"].Value = 1;
-
+                            // ✅ 更新畫面（保險用）
+                            dgvOrderDetails.Refresh();
 
 
-                            // ✅ 重要：通知這一列有改變（這一行讓 DataGridView 真正當成有效資料行）
-                            dgvOrderDetails.NotifyCurrentCellDirty(true);
-                            dgvOrderDetails.CommitEdit(DataGridViewDataErrorContexts.Commit);
-                            dgvOrderDetails.EndEdit();  // 可保留
 
-                            // ✅ 強制切換到新的一列（觸發 DGV 建立新空白列）
-                            int nextRow = dgvOrderDetails.Rows.Count - 1;
-                            dgvOrderDetails.CurrentCell = dgvOrderDetails.Rows[nextRow].Cells["商品名稱"];
+                            //// ✅ 重要：通知這一列有改變（這一行讓 DataGridView 真正當成有效資料行）
+                            //dgvOrderDetails.NotifyCurrentCellDirty(true);
+                            //dgvOrderDetails.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                            //dgvOrderDetails.EndEdit();  // 可保留
+
+                            // ✅ 解決 bug：右鍵選書後自動補一筆新空列
+                            //dgvOrderDetails.CurrentCell = null;
+                            //dgvOrderDetails.Rows.Add();
+                            //int newRowIdx = dgvOrderDetails.Rows.Count - 1;
+                            //dgvOrderDetails.CurrentCell = dgvOrderDetails.Rows[newRowIdx].Cells["商品名稱"];
+
+                            //// ✅ 強制切換到新的一列（觸發 DGV 建立新空白列）
+                            //int nextRow = dgvOrderDetails.Rows.Count - 1;
+                            //dgvOrderDetails.CurrentCell = dgvOrderDetails.Rows[nextRow].Cells["商品名稱"];
                         }
                         else
                         {
@@ -1168,9 +1186,6 @@ SELECT SCOPE_IDENTITY(); -- 回傳新插入的訂單編號";
             }
         }
 
-        private void dgvOrderDetails_CellMouseClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
     }
 }

@@ -61,7 +61,7 @@
             this.dgvOrderDetails.RowTemplate.Height = 29;
             this.dgvOrderDetails.Size = new System.Drawing.Size(638, 142);
             this.dgvOrderDetails.TabIndex = 1;
-            this.dgvOrderDetails.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrderDetails_CellMouseClick);
+            
             this.dgvOrderDetails.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvOrderDetails_CellMouseClick);
             // 
             // lblTotalDetail
