@@ -113,11 +113,11 @@ namespace SpecialTopic.UsedBooks.Views
         private void pbxLogo_Click(object sender, EventArgs e)
         {
             // 回到服務 HomeView，但 HomeView沒做
-            //RequestSwitchView?.Invoke(this, ViewType.HomeView);
+            RequestSwitchView?.Invoke(this, ViewType.HomeView);
 
             // 此處切換pnlBody
-            ShowControl(_plpBody);
-            _plpBody.LoadContentAreaBookCardsDefaultWithTopCount(15);
+            //ShowControl(_plpBody);
+            //_plpBody.RefreshData();
         }
 
         /// <summary>
