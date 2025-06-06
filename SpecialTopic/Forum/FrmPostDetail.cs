@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace SpecialTopic.Forum
@@ -108,7 +111,7 @@ namespace SpecialTopic.Forum
                     cmd.Parameters.AddWithValue("@PostID", _postID);
                     conn.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
-
+                    LoadPostImages(_postID.Value);
                     if (reader.Read())
                     {
                         txtTitle.Text = reader["Title"].ToString();
@@ -236,7 +239,171 @@ namespace SpecialTopic.Forum
                 MessageBox.Show($"儲存失敗：{ex.Message}", "錯誤");
             }
         }
+        private void LoadPostImages(int postID)
+        {
+            flpImages.Controls.Clear();
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                string sql = "SELECT ImageID, PostImage, IsMainPic FROM PostImages WHERE PostID = @PostID ORDER BY IsMainPic DESC";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@PostID", postID);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
 
+                while (reader.Read())
+                {
+                    int imageID = (int)reader["ImageID"];
+                    byte[] imageBytes = (byte[])reader["PostImage"];
+                    bool isMain = (bool)reader["IsMainPic"];
+
+                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    {
+                        PictureBox pb = new PictureBox();
+                        pb.Image = Image.FromStream(ms);
+                        pb.SizeMode = PictureBoxSizeMode.Zoom;
+                        pb.Width = 150;
+                        pb.Height = 150;
+                        pb.Margin = new Padding(5);
+                        pb.Tag = imageID; // 綁定 ImageID
+                        pb.ContextMenuStrip = CreateImageContextMenu(imageID);
+
+                        if (isMain)
+                        {
+                            pb.BorderStyle = BorderStyle.Fixed3D;
+                            pb.BackColor = Color.Gold;
+                        }
+                        flpImages.Controls.Add(pb);
+                    }
+                }
+            }
+        }
+
+        private ContextMenuStrip CreateImageContextMenu(int imageID)
+        {
+            var menu = new ContextMenuStrip();
+            var deleteItem = new ToolStripMenuItem("刪除圖片");
+            deleteItem.Click += (s, e) => DeleteImage(imageID);
+            menu.Items.Add(deleteItem);
+            return menu;
+        }
+
+        private void DeleteImage(int imageID)
+        {
+            var confirm = MessageBox.Show("確定要刪除這張圖片嗎？", "確認", MessageBoxButtons.YesNo);
+            if (confirm != DialogResult.Yes) return;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+                    string sql = "DELETE FROM PostImages WHERE ImageID = @ImageID";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@ImageID", imageID);
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("圖片已刪除！");
+                LoadPostImages(_postID.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"刪除失敗：{ex.Message}", "錯誤");
+            }
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Multiselect = true;
+            openFileDialog1.Filter = "圖片檔案 (*.jpg;*.png)|*.jpg;*.png";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                foreach (string file in openFileDialog1.FileNames)
+                {
+                    byte[] imageBytes = File.ReadAllBytes(file); // ✅ 正確名稱
+                    uploadedImages.Add((imageBytes, false)); // 預設不是主圖
+
+                    int imageIndex = uploadedImages.Count - 1;
+
+                    using (MemoryStream ms = new MemoryStream(imageBytes)) // ✅ 使用 imageBytes
+                    {
+                        PictureBox pb = new PictureBox();
+                        pb.Image = Image.FromStream(ms);
+                        pb.SizeMode = PictureBoxSizeMode.Zoom;
+                        pb.Width = 150;
+                        pb.Height = 150;
+                        pb.Margin = new Padding(5);
+                        pb.Tag = imageIndex; // 記住第幾張圖
+                        pb.Click += Pb_Click; // 點擊可選主圖
+
+                        flpImages.Controls.Add(pb);
+                    }
+                }
+            }
+        }
+
+        private void Pb_Click(object sender, EventArgs e)
+        {
+            if (sender is PictureBox clickedPb && clickedPb.Tag is int clickedIndex)
+            {
+                // 將所有圖片都設為 IsMainPic = false，只有被點的設 true
+                for (int i = 0; i < uploadedImages.Count; i++)
+                {
+                    uploadedImages[i] = (uploadedImages[i].ImageData, false);
+                }
+                uploadedImages[clickedIndex] = (uploadedImages[clickedIndex].ImageData, true);
+
+                // UI：只有主圖加上金色背景和邊框
+                foreach (Control ctrl in flpImages.Controls)
+                {
+                    if (ctrl is PictureBox pb && pb.Tag is int idx)
+                    {
+                        bool isMain = (idx == clickedIndex);
+                        pb.BorderStyle = isMain ? BorderStyle.Fixed3D : BorderStyle.None;
+                        pb.BackColor = isMain ? Color.Gold : SystemColors.Control;
+                    }
+                }
+            }
+        }
+        private void btnSaveImages_Click(object sender, EventArgs e)
+        {
+            if (!_postID.HasValue)
+            {
+                MessageBox.Show("請先儲存文章，才能上傳圖片！");
+                return;
+            }
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+                    // 確保這篇文章只會有一張主圖
+                    string clearMainPicSql = "UPDATE PostImages SET IsMainPic = 0 WHERE PostID = @PostID AND IsMainPic = 1";
+                    SqlCommand clearCmd = new SqlCommand(clearMainPicSql, conn);
+                    clearCmd.Parameters.AddWithValue("@PostID", _postID.Value);
+                    clearCmd.ExecuteNonQuery();
+                    foreach (var item in uploadedImages)
+                    {
+                        string sql = "INSERT INTO PostImages (PostID, PostImage, IsMainPic) VALUES (@PostID, @PostImage, @IsMainPic)";
+                        SqlCommand cmd = new SqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@PostID", _postID.Value);
+                        cmd.Parameters.AddWithValue("@PostImage", item.ImageData);
+                        cmd.Parameters.AddWithValue("@IsMainPic", item.IsMainPic);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"圖片儲存失敗：{ex.Message}", "錯誤");
+                return;
+            }
+            MessageBox.Show("圖片儲存成功！");
+            uploadedImages.Clear();
+            LoadPostImages(_postID.Value);
+        }
+        private List<(byte[] ImageData, bool IsMainPic)> uploadedImages = new List<(byte[], bool)>();
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
