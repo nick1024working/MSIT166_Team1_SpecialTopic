@@ -474,6 +474,8 @@ namespace SpecialTopic
 
             // ✅ 重新載入書籍
             loadBook();
+            LoadCategories(); // ← 加這行
+            LoadSubCategories();    // 加入：次分類下拉載入
         }
 
         private void btnSubscriber_Click(object sender, EventArgs e)
