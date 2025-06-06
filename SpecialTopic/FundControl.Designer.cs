@@ -105,31 +105,31 @@
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.label9 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnSearchByProjectImg = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.donateProject_idComboBox1 = new System.Windows.Forms.ComboBox();
             this.donateImagesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label13 = new System.Windows.Forms.Label();
+            this.image_idTextBox = new System.Windows.Forms.TextBox();
+            this.btnUpdateImage = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnDeleteImage = new System.Windows.Forms.Button();
+            this.btnSearchByProjectImg = new System.Windows.Forms.Button();
             this.dataGridView7 = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.donateImage_urlTextBox = new System.Windows.Forms.TextBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnReadImages = new System.Windows.Forms.Button();
-            this.btnDeleteImage = new System.Windows.Forms.Button();
-            this.btnUpdateImage = new System.Windows.Forms.Button();
             this.btnCreateImage = new System.Windows.Forms.Button();
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.is_mainCheckBox = new System.Windows.Forms.CheckBox();
             this.donateProject_idComboBox = new System.Windows.Forms.ComboBox();
-            this.image_idTextBox = new System.Windows.Forms.TextBox();
             this.donateCategoriesTableAdapter = new SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.donateCategoriesTableAdapter();
             this.tableAdapterManager = new SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.TableAdapterManager();
             this.donateProjectsTableAdapter = new SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.donateProjectsTableAdapter();
             this.donatePlansTableAdapter = new SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.donatePlansTableAdapter();
             this.donateImagesTableAdapter = new SpecialTopic.Fund.TeamA_ProjectDataSetTableAdapters.donateImagesTableAdapter();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label13 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
             nameLabel = new System.Windows.Forms.Label();
             titleLabel = new System.Windows.Forms.Label();
             descriptionLabel = new System.Windows.Forms.Label();
@@ -167,12 +167,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.donatePlansBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donateImagesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -386,7 +386,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Font = new System.Drawing.Font("華康新特明體(P)", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tabControl1.Font = new System.Drawing.Font("華康新特明體(P)", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -405,10 +405,10 @@
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Font = new System.Drawing.Font("華康新特明體(P)", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tabPage1.ForeColor = System.Drawing.Color.Black;
-            this.tabPage1.Location = new System.Drawing.Point(8, 42);
+            this.tabPage1.Location = new System.Drawing.Point(8, 63);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1656, 1046);
+            this.tabPage1.Size = new System.Drawing.Size(1656, 1025);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "募資分類";
             // 
@@ -527,7 +527,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("華康新特圓體", 28.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(585, 53);
+            this.label1.Location = new System.Drawing.Point(585, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(488, 75);
             this.label1.TabIndex = 0;
@@ -559,10 +559,10 @@
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Font = new System.Drawing.Font("華康新特明體(P)", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tabPage2.Location = new System.Drawing.Point(8, 42);
+            this.tabPage2.Location = new System.Drawing.Point(8, 63);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1656, 1046);
+            this.tabPage2.Size = new System.Drawing.Size(1656, 1025);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "募資項目";
             // 
@@ -571,7 +571,7 @@
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("華康新特圓體", 28.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label11.Location = new System.Drawing.Point(600, 33);
+            this.label11.Location = new System.Drawing.Point(600, 22);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(488, 75);
             this.label11.TabIndex = 39;
@@ -788,7 +788,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("華康新特圓體", 22.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(544, -121);
+            this.label2.Location = new System.Drawing.Point(544, -132);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(385, 59);
             this.label2.TabIndex = 2;
@@ -813,10 +813,10 @@
             this.tabPage3.Controls.Add(this.dataGridView3);
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Font = new System.Drawing.Font("華康新特明體(P)", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tabPage3.Location = new System.Drawing.Point(8, 42);
+            this.tabPage3.Location = new System.Drawing.Point(8, 63);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1656, 1046);
+            this.tabPage3.Size = new System.Drawing.Size(1656, 1025);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "募資方案";
             // 
@@ -993,7 +993,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("華康新特圓體", 28.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(609, 47);
+            this.label3.Location = new System.Drawing.Point(609, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(488, 75);
             this.label3.TabIndex = 2;
@@ -1016,44 +1016,29 @@
             this.tabPage4.Controls.Add(donateProject_idLabel);
             this.tabPage4.Controls.Add(this.donateProject_idComboBox);
             this.tabPage4.Controls.Add(donateImage_urlLabel);
-            this.tabPage4.Location = new System.Drawing.Point(8, 42);
+            this.tabPage4.Location = new System.Drawing.Point(8, 63);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1656, 1046);
+            this.tabPage4.Size = new System.Drawing.Size(1656, 1025);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "募資圖片";
             // 
-            // label9
+            // panel4
             // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("華康新特圓體", 28.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label9.Location = new System.Drawing.Point(585, 47);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(488, 75);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "募資圖片管理";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(1030, 77);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(275, 258);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 19;
-            this.pictureBox2.TabStop = false;
-            // 
-            // btnSearchByProjectImg
-            // 
-            this.btnSearchByProjectImg.Location = new System.Drawing.Point(867, 22);
-            this.btnSearchByProjectImg.Name = "btnSearchByProjectImg";
-            this.btnSearchByProjectImg.Size = new System.Drawing.Size(127, 40);
-            this.btnSearchByProjectImg.TabIndex = 18;
-            this.btnSearchByProjectImg.Text = "搜尋";
-            this.btnSearchByProjectImg.UseVisualStyleBackColor = true;
-            this.btnSearchByProjectImg.Click += new System.EventHandler(this.btnSearchByProjectImg_Click);
+            this.panel4.BackColor = System.Drawing.Color.MistyRose;
+            this.panel4.Controls.Add(this.donateProject_idComboBox1);
+            this.panel4.Controls.Add(this.label13);
+            this.panel4.Controls.Add(this.image_idTextBox);
+            this.panel4.Controls.Add(this.btnUpdateImage);
+            this.panel4.Controls.Add(this.pictureBox2);
+            this.panel4.Controls.Add(this.btnDeleteImage);
+            this.panel4.Controls.Add(this.btnSearchByProjectImg);
+            this.panel4.Controls.Add(this.dataGridView7);
+            this.panel4.Controls.Add(donateProject_idLabel3);
+            this.panel4.Location = new System.Drawing.Point(146, 503);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1352, 470);
+            this.panel4.TabIndex = 48;
             // 
             // donateProject_idComboBox1
             // 
@@ -1070,6 +1055,68 @@
             this.donateImagesBindingSource.DataMember = "donateImages";
             this.donateImagesBindingSource.DataSource = this.teamA_ProjectDataSet;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("華康新特明體(P)", 13.875F);
+            this.label13.Location = new System.Drawing.Point(40, 361);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(419, 37);
+            this.label13.TabIndex = 47;
+            this.label13.Text = "輸入預修改、刪除圖片id";
+            // 
+            // image_idTextBox
+            // 
+            this.image_idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateImagesBindingSource, "image_id", true));
+            this.image_idTextBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold);
+            this.image_idTextBox.Location = new System.Drawing.Point(465, 357);
+            this.image_idTextBox.Name = "image_idTextBox";
+            this.image_idTextBox.Size = new System.Drawing.Size(284, 46);
+            this.image_idTextBox.TabIndex = 1;
+            // 
+            // btnUpdateImage
+            // 
+            this.btnUpdateImage.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold);
+            this.btnUpdateImage.Location = new System.Drawing.Point(767, 347);
+            this.btnUpdateImage.Name = "btnUpdateImage";
+            this.btnUpdateImage.Size = new System.Drawing.Size(151, 45);
+            this.btnUpdateImage.TabIndex = 10;
+            this.btnUpdateImage.Text = "修改";
+            this.btnUpdateImage.UseVisualStyleBackColor = true;
+            this.btnUpdateImage.Click += new System.EventHandler(this.btnUpdateImage_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Location = new System.Drawing.Point(1030, 77);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(275, 258);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 19;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnDeleteImage
+            // 
+            this.btnDeleteImage.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold);
+            this.btnDeleteImage.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteImage.Location = new System.Drawing.Point(767, 407);
+            this.btnDeleteImage.Name = "btnDeleteImage";
+            this.btnDeleteImage.Size = new System.Drawing.Size(151, 45);
+            this.btnDeleteImage.TabIndex = 11;
+            this.btnDeleteImage.Text = "刪除";
+            this.btnDeleteImage.UseVisualStyleBackColor = true;
+            this.btnDeleteImage.Click += new System.EventHandler(this.btnDeleteImage_Click);
+            // 
+            // btnSearchByProjectImg
+            // 
+            this.btnSearchByProjectImg.Location = new System.Drawing.Point(867, 22);
+            this.btnSearchByProjectImg.Name = "btnSearchByProjectImg";
+            this.btnSearchByProjectImg.Size = new System.Drawing.Size(127, 40);
+            this.btnSearchByProjectImg.TabIndex = 18;
+            this.btnSearchByProjectImg.Text = "搜尋";
+            this.btnSearchByProjectImg.UseVisualStyleBackColor = true;
+            this.btnSearchByProjectImg.Click += new System.EventHandler(this.btnSearchByProjectImg_Click);
+            // 
             // dataGridView7
             // 
             this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1080,6 +1127,18 @@
             this.dataGridView7.Size = new System.Drawing.Size(945, 258);
             this.dataGridView7.TabIndex = 16;
             this.dataGridView7.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView7_CellContentClick);
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("華康新特圓體", 28.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label9.Location = new System.Drawing.Point(585, 36);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(488, 75);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "募資圖片管理";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox1
             // 
@@ -1095,7 +1154,7 @@
             // 
             this.donateImage_urlTextBox.Location = new System.Drawing.Point(44, 286);
             this.donateImage_urlTextBox.Name = "donateImage_urlTextBox";
-            this.donateImage_urlTextBox.Size = new System.Drawing.Size(489, 34);
+            this.donateImage_urlTextBox.Size = new System.Drawing.Size(489, 55);
             this.donateImage_urlTextBox.TabIndex = 14;
             // 
             // linkLabel1
@@ -1119,29 +1178,6 @@
             this.btnReadImages.TabIndex = 12;
             this.btnReadImages.Text = "重整";
             this.btnReadImages.UseVisualStyleBackColor = true;
-            // 
-            // btnDeleteImage
-            // 
-            this.btnDeleteImage.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold);
-            this.btnDeleteImage.ForeColor = System.Drawing.Color.Red;
-            this.btnDeleteImage.Location = new System.Drawing.Point(767, 407);
-            this.btnDeleteImage.Name = "btnDeleteImage";
-            this.btnDeleteImage.Size = new System.Drawing.Size(151, 45);
-            this.btnDeleteImage.TabIndex = 11;
-            this.btnDeleteImage.Text = "刪除";
-            this.btnDeleteImage.UseVisualStyleBackColor = true;
-            this.btnDeleteImage.Click += new System.EventHandler(this.btnDeleteImage_Click);
-            // 
-            // btnUpdateImage
-            // 
-            this.btnUpdateImage.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold);
-            this.btnUpdateImage.Location = new System.Drawing.Point(767, 347);
-            this.btnUpdateImage.Name = "btnUpdateImage";
-            this.btnUpdateImage.Size = new System.Drawing.Size(151, 45);
-            this.btnUpdateImage.TabIndex = 10;
-            this.btnUpdateImage.Text = "修改";
-            this.btnUpdateImage.UseVisualStyleBackColor = true;
-            this.btnUpdateImage.Click += new System.EventHandler(this.btnUpdateImage_Click);
             // 
             // btnCreateImage
             // 
@@ -1185,15 +1221,6 @@
             this.donateProject_idComboBox.Name = "donateProject_idComboBox";
             this.donateProject_idComboBox.Size = new System.Drawing.Size(284, 40);
             this.donateProject_idComboBox.TabIndex = 6;
-            // 
-            // image_idTextBox
-            // 
-            this.image_idTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.donateImagesBindingSource, "image_id", true));
-            this.image_idTextBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold);
-            this.image_idTextBox.Location = new System.Drawing.Point(465, 357);
-            this.image_idTextBox.Name = "image_idTextBox";
-            this.image_idTextBox.Size = new System.Drawing.Size(284, 46);
-            this.image_idTextBox.TabIndex = 1;
             // 
             // donateCategoriesTableAdapter
             // 
@@ -1251,33 +1278,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("華康新特明體(P)", 13.875F);
-            this.label13.Location = new System.Drawing.Point(40, 361);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(419, 37);
-            this.label13.TabIndex = 47;
-            this.label13.Text = "輸入預修改、刪除圖片id";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.MistyRose;
-            this.panel4.Controls.Add(this.donateProject_idComboBox1);
-            this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.image_idTextBox);
-            this.panel4.Controls.Add(this.btnUpdateImage);
-            this.panel4.Controls.Add(this.pictureBox2);
-            this.panel4.Controls.Add(this.btnDeleteImage);
-            this.panel4.Controls.Add(this.btnSearchByProjectImg);
-            this.panel4.Controls.Add(this.dataGridView7);
-            this.panel4.Controls.Add(donateProject_idLabel3);
-            this.panel4.Location = new System.Drawing.Point(146, 503);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1352, 470);
-            this.panel4.TabIndex = 48;
-            // 
             // FundControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
@@ -1310,13 +1310,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.donateImagesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
