@@ -403,7 +403,7 @@
             this.tabPage1.Controls.Add(this.txtName);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Font = new System.Drawing.Font("華康新特明體(P)", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tabPage1.Font = new System.Drawing.Font("華康新特明體(P)", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.tabPage1.ForeColor = System.Drawing.Color.Black;
             this.tabPage1.Location = new System.Drawing.Point(8, 63);
             this.tabPage1.Name = "tabPage1";
@@ -430,7 +430,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(15, 54);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(419, 37);
+            this.label12.Size = new System.Drawing.Size(362, 32);
             this.label12.TabIndex = 44;
             this.label12.Text = "輸入預修改、刪除類別id";
             // 
@@ -558,7 +558,7 @@
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Font = new System.Drawing.Font("華康新特明體(P)", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tabPage2.Font = new System.Drawing.Font("華康新特明體(P)", 12F);
             this.tabPage2.Location = new System.Drawing.Point(8, 63);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -600,7 +600,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(214, 280);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(419, 37);
+            this.label10.Size = new System.Drawing.Size(362, 32);
             this.label10.TabIndex = 45;
             this.label10.Text = "輸入預修改、刪除項目id";
             // 
@@ -812,7 +812,7 @@
             this.tabPage3.Controls.Add(this.titleTextBox);
             this.tabPage3.Controls.Add(this.dataGridView3);
             this.tabPage3.Controls.Add(this.label3);
-            this.tabPage3.Font = new System.Drawing.Font("華康新特明體(P)", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.tabPage3.Font = new System.Drawing.Font("華康新特明體(P)", 12F);
             this.tabPage3.Location = new System.Drawing.Point(8, 63);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -842,7 +842,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(170, 380);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(419, 37);
+            this.label8.Size = new System.Drawing.Size(362, 32);
             this.label8.TabIndex = 46;
             this.label8.Text = "輸入預修改、刪除方案id";
             // 
@@ -1016,6 +1016,7 @@
             this.tabPage4.Controls.Add(donateProject_idLabel);
             this.tabPage4.Controls.Add(this.donateProject_idComboBox);
             this.tabPage4.Controls.Add(donateImage_urlLabel);
+            this.tabPage4.Font = new System.Drawing.Font("華康新特明體(P)", 12F);
             this.tabPage4.Location = new System.Drawing.Point(8, 63);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -1088,9 +1089,9 @@
             // pictureBox2
             // 
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(1030, 77);
+            this.pictureBox2.Location = new System.Drawing.Point(1040, 77);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(275, 258);
+            this.pictureBox2.Size = new System.Drawing.Size(254, 272);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 19;
             this.pictureBox2.TabStop = false;
@@ -1119,6 +1120,7 @@
             // 
             // dataGridView7
             // 
+            this.dataGridView7.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView7.Location = new System.Drawing.Point(49, 77);
             this.dataGridView7.Name = "dataGridView7";
@@ -1143,9 +1145,9 @@
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(559, 105);
+            this.pictureBox1.Location = new System.Drawing.Point(576, 105);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(271, 272);
+            this.pictureBox1.Size = new System.Drawing.Size(254, 272);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
@@ -1154,7 +1156,7 @@
             // 
             this.donateImage_urlTextBox.Location = new System.Drawing.Point(44, 286);
             this.donateImage_urlTextBox.Name = "donateImage_urlTextBox";
-            this.donateImage_urlTextBox.Size = new System.Drawing.Size(489, 55);
+            this.donateImage_urlTextBox.Size = new System.Drawing.Size(489, 39);
             this.donateImage_urlTextBox.TabIndex = 14;
             // 
             // linkLabel1

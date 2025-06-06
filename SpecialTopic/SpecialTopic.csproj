@@ -587,6 +587,18 @@
     <None Include="Resources\stock-vector-refresh-icon-vector-illustration-reload-sign-and-symbol-update-icon-2293717071.png" />
     <None Include="Resources\重整.png" />
     <None Include="Resources\重整1.png" />
+    <Content Include="Fund\donatePjImage\動漫周邊設計募資.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fund\donatePjImage\原創少女漫畫花之語.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fund\donatePjImage\夜幕下的星光物語.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fund\donatePjImage\異世界勇者插畫集.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="UsedBooks\Frontend\Assets\BookImages\2h68lgd_210x315.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
