@@ -41,6 +41,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.flpImages = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnUpload = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnSaveImages = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -158,11 +162,46 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "類別:";
             // 
+            // flpImages
+            // 
+            this.flpImages.AutoScroll = true;
+            this.flpImages.Location = new System.Drawing.Point(281, 286);
+            this.flpImages.Name = "flpImages";
+            this.flpImages.Size = new System.Drawing.Size(200, 100);
+            this.flpImages.TabIndex = 13;
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.Location = new System.Drawing.Point(281, 403);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(75, 23);
+            this.btnUpload.TabIndex = 14;
+            this.btnUpload.Text = "圖片上傳";
+            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnSaveImages
+            // 
+            this.btnSaveImages.Location = new System.Drawing.Point(401, 402);
+            this.btnSaveImages.Name = "btnSaveImages";
+            this.btnSaveImages.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveImages.TabIndex = 15;
+            this.btnSaveImages.Text = "儲存圖片";
+            this.btnSaveImages.UseVisualStyleBackColor = true;
+            this.btnSaveImages.Click += new System.EventHandler(this.btnSaveImages_Click);
+            // 
             // FrmPostDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSaveImages);
+            this.Controls.Add(this.btnUpload);
+            this.Controls.Add(this.flpImages);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -198,5 +237,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.FlowLayoutPanel flpImages;
+        private System.Windows.Forms.Button btnUpload;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnSaveImages;
     }
 }
